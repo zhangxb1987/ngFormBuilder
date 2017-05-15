@@ -3,7 +3,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('currency', {
-        icon: 'fa fa-usd',
+        icon: 'fa fa-jpy',
         views: [
           {
             name: 'Display',
