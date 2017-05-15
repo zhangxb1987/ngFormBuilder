@@ -2,13 +2,15 @@
 /*global window: false, console: false, jQuery: false */
 /*jshint browser: true */
 var fs = require('fs');
+var i18n = require('./i18n/zh-CN.js');
 
 var app = angular.module('ngFormBuilder', [
   'formio',
   'dndLists',
   'ngDialog',
   'ui.bootstrap.accordion',
-  'ckeditor'
+  'ckeditor',
+  'pascalprecht.translate'
 ]);
 
 app.constant('FORM_OPTIONS', require('./constants/formOptions'));
@@ -66,6 +68,8 @@ app.factory('BuilderUtils', require('./factories/BuilderUtils'));
 
 app.directive('formBuilder', require('./directives/formBuilder'));
 
+app.directive('formBuilderToolbar', require('./directives/formBuilderToolbar'));
+
 app.directive('formBuilderComponent', require('./directives/formBuilderComponent'));
 
 app.directive('formBuilderElement', require('./directives/formBuilderElement'));
@@ -105,6 +109,10 @@ app.directive('formBuilderConditional', require('./directives/formBuilderConditi
 app.value('dndDragIframeWorkaround', {
   isDragging: false
 });
+
+app.config(['$translateProvider',function($translateProvider) {
+    $translateProvider.translations('zh-CN', i18n).preferredLanguage('zh-CN');
+}]);
 
 app.run([
   '$templateCache',
@@ -146,6 +154,10 @@ app.run([
 
     $templateCache.put('formio/components/confirm-remove.html',
       fs.readFileSync(__dirname + '/templates/confirm-remove.html', 'utf8')
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar.html',
+      fs.readFileSync(__dirname + '/templates/toolbar.html', 'utf8')
     );
   }
 ]);

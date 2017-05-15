@@ -289,3 +289,53 @@ ul.component-list li {
   text-align: left;
   padding-left: 15px;
 }
+
+/***************************** builder toolbar  *********************/
+.builder-toolbar {
+	padding-left: 5px;
+  background-color: #e8edf1;
+  min-height: 60px;
+  border-bottom: 1px solid #a4acb9;
+}
+
+.builder-toolbar > .btn-group {
+	margin: 12px 15px 0px 0px;
+}
+
+.builder-toolbar .btn.btn-inverse {
+    background-color: #395684;
+    color: #ffffff;
+    border-color: #ffffff;
+	  font-size: 24px;
+	  color: #FFFFFF;
+    padding: 3px 6px 0px 6px;
+    box-shadow: none;
+    text-shadow: none;
+    text-align: center;
+    border: none;
+    margin: 0px 0px 0px 5px;
+    height: 36px;
+    min-width: 36px;
+}
+.builder-toolbar .btn.btn-inverse.pressed {
+	background-color: #cc573e;
+}
+
+.builder-toolbar .btn.btn-inverse.disabled, .builder-toolbar .btn.btn-inverse[disabled], .builder-toolbar .btn.btn-inverse[disabled]:active, .builder-toolbar .btn.btn-inverse[disabled]:hover {
+	background-color: #668b94;
+	border-color: #668b94;
+}
+
+.builder-toolbar .btn.btn-inverse.separator {
+	background: transparent;
+	padding: 4px 5px 0px 5px;
+	width: 1px;
+	min-width: 1px;
+}
+
+.builder-toolbar .toolbar-separator {
+	background: #a4acb9;
+	width: 1px;
+	height: 30px;
+}
+
