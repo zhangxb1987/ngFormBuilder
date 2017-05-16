@@ -7,16 +7,16 @@ module.exports = function(app) {
         '<form id="component-settings" novalidate>' +
           '<div class="row">' +
             '<div class="col-md-6">' +
-              '<p class="lead" ng-if="::formComponent.title" style="margin-top:10px;">{{::formComponent.title | translate}} {{\'Component\' | translate}}</p>' +
+              '<p class="lead" ng-if="::formComponent.title" style="margin-top:0;margin-bottom:10px;">{{::formComponent.title | translate}} {{\'Component\' | translate}}</p>' +
             '</div>' +
           '</div>' +
           '<div class="row">' +
-            '<div class="col-xs-6">' +
+            '<div class="col-xs-7">' +
               '<uib-tabset>' +
                 '<uib-tab ng-repeat="view in ::formComponent.views" heading="{{ ::view.name | translate }}"><ng-include src="::view.template"></ng-include></uib-tab>' +
               '</uib-tabset>' +
             '</div>' +
-            '<div class="col-xs-6">' +
+            '<div class="col-xs-5">' +
               '<div class="panel panel-default preview-panel" style="margin-top:44px;">' +
                 '<div class="panel-heading">{{\'Preview\' | translate}}</div>' +
                 '<div class="panel-body">' +
@@ -79,25 +79,25 @@ module.exports = function(app) {
           '<form-builder-option property="style[\'margin-bottom\']"></form-builder-option>' +
           '<form-builder-option property="style[\'margin-left\']"></form-builder-option>' +
           '<uib-accordion>' +
-          '  <div uib-accordion-group heading="Overlay" class="panel panel-default">' +
+          '  <div uib-accordion-group heading="{{\'Layout.Overlay\'|translate}}" class="panel panel-default">' +
           '    <div class="form-group">' +
-          '      <label for="overlay-style">Style</label>' +
+          '      <label for="overlay-style">{{\'Layout.Overlay.Style\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-style" name="overlay-style" ng-model="component.overlay.style"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-left">Left</label>' +
+          '      <label for="overlay-left">{{\'Layout.Overlay.Left\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-left" name="overlay-left" ng-model="component.overlay.left"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-right">Top</label>' +
+          '      <label for="overlay-right">{{\'Layout.Overlay.Top\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-top" name="overlay-top" ng-model="component.overlay.top"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-width">Width</label>' +
+          '      <label for="overlay-width">{{\'Layout.Overlay.Width\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-width" name="overlay-width" ng-model="component.overlay.width"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-height">Height</label>' +
+          '      <label for="overlay-height">{{\'Layout.Overlay.Height\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-height" name="overlay-height" ng-model="component.overlay.height"></input>' +
           '    </div>' +
           '  </div>' +

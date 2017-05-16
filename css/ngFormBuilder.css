@@ -42,6 +42,16 @@ li:not(:hover) .component-btn-group .component-settings-button {
   margin-bottom: 0;
 }
 
+.formbuilder .alert {
+  border-radius: 0;
+}
+
+.formbuilder .alert-dnd {
+    color: #395684;
+    background-color: #f5f5f5;
+    border-color: #cccccc;
+} 
+
 .form-builder-panel .panel-body {
   padding: 5px;
 }
@@ -331,6 +341,7 @@ ul.component-list li {
 	padding: 4px 5px 0px 5px;
 	width: 1px;
 	min-width: 1px;
+  pointer-events:none;
 }
 
 .builder-toolbar .toolbar-separator {

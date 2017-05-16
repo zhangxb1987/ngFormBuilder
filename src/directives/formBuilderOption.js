@@ -16,7 +16,6 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
     replace: true,
     template: function(el, attrs) {
       var formioTranslate = $filter('formioTranslate');
-
       var property = attrs.property;
       var label = attrs.label || (COMMON_OPTIONS[property] && COMMON_OPTIONS[property].label) || '';
       var placeholder = (COMMON_OPTIONS[property] && COMMON_OPTIONS[property].placeholder) || null;
@@ -57,7 +56,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
       }
 
       input.addClass('form-control');
-      return '<div class="form-group">' +
+      return '<div class="form-group" style="margin-bottom:7px;">' +
                 '<label for="' + property + '" form-builder-tooltip="' + formioTranslate(tooltip) + '">' + formioTranslate(label) + '</label>' +
                 input.prop('outerHTML') +
               '</div>';

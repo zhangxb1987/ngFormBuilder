@@ -70,10 +70,33 @@ module.exports = {
     'TOOLBAR.ACTION.EXPORT': '导出',
     'TOOLBAR.ACTION.TEMPLATE': '模板',
 
+    'Label':'标签',
+    'Placeholder':'占位符',
+    'Description':'描述',
+    'Input Mask':'输入掩码',
+    'Prefix':'前缀',
+    'Suffix':'后缀',
+    'Custom CSS Class':'自定义样式类',
+
+    'Display':'显示',
+    'Data':'数据',
+    'Validation':'验证',
+    'API':'属性',
+    'Layout':'布局',
+    'Conditional':'约束条件',
+
+    'Layout.Overlay':'Overlay',
+    'Layout.Overlay.Style':'样式',
+    'Layout.Overlay.Left':'左边',
+    'Layout.Overlay.Top':'顶部',
+    'Layout.Overlay.Width':'宽度',
+    'Layout.Overlay.Height':'高度',
+
     'Removing this component will also': '移除该控件会同时',
     'remove all of its children': '移除它的所有子元素',
     'Are you sure you want to do this': '您是否确认',
     'Drag and Drop a form component': '请 拖 拽 控 件',
+    'Preview':'预 览',
 
     'Basic Components': '基础控件',
     'Special Components': '高级控件',
