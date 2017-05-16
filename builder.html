@@ -8,6 +8,7 @@
 	href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="bower_components/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="bower_components/json-formatter/dist/json-formatter.min.css">
 <link rel="stylesheet" href="dist/ngFormBuilder-full.css" />
 </head>
 <body ng-app="formBuilder">
@@ -54,12 +55,22 @@
 }
 
 .component-settings .nav-link {
-	font-size: 0.6em;
+	font-size: 14px;
 }
 
 .jsonviewer {
-	max-height: 600px;
-	overflow: scroll;
+	margin-left: 25px;
+    margin-right: 25px;
+    max-height: 500px;
+    overflow-y: scroll;
+    background-color: #333;
+    color: #07f507;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.jsonviewer .collapser{
+	color:#f5f5f5;
 }
 
 .form-type-select {
@@ -86,6 +97,15 @@
 			<div class="row">
 				<form-builder-toolbar></form-builder-toolbar>
 			</div>
+
+			<div class="row">
+	          <div class="jsonviewer">
+	          	<p><strong>&gt;_root@localhost</strong></p>
+	          	<p>表单JSON对象：</p>
+	          	<json-formatter open="1" json="form" ng-class="'json-formatter-dark'"></json-formatter>
+	          </div>
+			</div>
+
 			<div class="row">
 				<form-builder form="form"></form-builder>
 			</div>
@@ -98,13 +118,13 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 	<script
-		src="https://cdn.rawgit.com/odra/ng-json-explorer/master/dist/angular-json-explorer.min.js"></script>
+		src="bower_components/json-formatter/dist/json-formatter.min.js"></script>
 	<script type="text/javascript">
 		angular
 				.module(
 						"formBuilder",
 						[ "ui.bootstrap", "ui.select", "formio",
-								"ngFormBuilder", "ngJsonExplorer" ])
+								"ngFormBuilder", "jsonFormatter" ])
 				.run(
 						[
 								"$rootScope",
@@ -119,155 +139,7 @@
 										title : 'Wizard'
 									} ];
 									$rootScope.form = {
-										components : [
-												{
-													input : true,
-													tableView : true,
-													inputType : 'text',
-													inputMask : '',
-													label : 'First Name',
-													key : 'firstName',
-													placeholder : 'Enter your first name',
-													prefix : '',
-													suffix : '',
-													multiple : false,
-													defaultValue : '',
-													protected : false,
-													unique : false,
-													persistent : true,
-													validate : {
-														required : false,
-														minLength : '',
-														maxLength : '',
-														pattern : '',
-														custom : '',
-														customPrivate : false
-													},
-													conditional : {
-														show : false,
-														when : null,
-														eq : ''
-													},
-													type : 'textfield'
-												},
-												{
-													input : true,
-													tableView : true,
-													inputType : 'text',
-													inputMask : '',
-													label : 'Last Name',
-													key : 'lastName',
-													placeholder : 'Enter your last name',
-													prefix : '',
-													suffix : '',
-													multiple : false,
-													defaultValue : '',
-													protected : false,
-													unique : false,
-													persistent : true,
-													validate : {
-														required : false,
-														minLength : '',
-														maxLength : '',
-														pattern : '',
-														custom : '',
-														customPrivate : false
-													},
-													conditional : {
-														show : false,
-														when : null,
-														eq : ''
-													},
-													type : 'textfield'
-												},
-												{
-													type : 'select',
-													validate : {
-														required : false
-													},
-													clearOnHide : true,
-													persistent : true,
-													unique : false,
-													protected : false,
-													multiple : true,
-													template : '<span>{{ item.label }}</span>',
-													authenticate : false,
-													filter : '',
-													refreshOn : '',
-													defaultValue : '',
-													valueProperty : '',
-													dataSrc : 'values',
-													data : {
-														custom : '',
-														resource : '',
-														url : '',
-														json : '',
-														values : [
-																{
-																	label : 'Raindrops on roses',
-																	value : 'raindropsOnRoses'
-																},
-																{
-																	label : 'Whiskers on Kittens',
-																	value : 'whiskersOnKittens'
-																},
-																{
-																	label : 'Bright copper kettles',
-																	value : 'brightCopperKettles'
-																},
-																{
-																	label : 'Warm woolen Mittens',
-																	value : 'warmWoolenMittens'
-																}, [
-
-																] ]
-													},
-													placeholder : 'Select a few',
-													key : 'favoriteThings',
-													label : 'Favorite Things',
-													tableView : true,
-													input : true
-												},
-												{
-													input : true,
-													tableView : true,
-													label : 'Message',
-													key : 'message',
-													placeholder : 'What do you think?',
-													prefix : '',
-													suffix : '',
-													rows : 3,
-													multiple : false,
-													defaultValue : '',
-													protected : false,
-													persistent : true,
-													validate : {
-														required : false,
-														minLength : '',
-														maxLength : '',
-														pattern : '',
-														custom : ''
-													},
-													type : 'textarea',
-													conditional : {
-														show : false,
-														when : null,
-														eq : ''
-													}
-												}, {
-													type : 'button',
-													theme : 'primary',
-													disableOnInvalid : true,
-													action : 'submit',
-													block : false,
-													rightIcon : '',
-													leftIcon : '',
-													size : 'md',
-													key : 'submit',
-													tableView : false,
-													label : 'Submit',
-													input : true
-												} ],
+										components : [],
 										display : 'form'
 									};
 
