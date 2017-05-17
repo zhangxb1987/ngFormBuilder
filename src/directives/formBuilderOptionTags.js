@@ -9,7 +9,7 @@ module.exports = function() {
     template: function() {
       return '' +
         '<div class="form-group">' +
-        '  <label class="control-label" form-builder-tooltip="Tag the field for use in custom logic.">Field Tags</label>' +
+        '  <label class="control-label" form-builder-tooltip="API.Field Tags">{{\'API.Field Tags\' | translate}}</label>' +
         '  <tags-input ng-model="tags" on-tag-added="addTag($tag)" on-tag-removed="removeTag($tag)"></tags-input>' +
         '</div>';
     },
