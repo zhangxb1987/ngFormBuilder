@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="bower_components/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="bower_components/json-formatter/dist/json-formatter.min.css">
+<link rel="stylesheet" type="text/css" href="bower_components/ng-tags-input/ng-tags-input.min.css">
 <link rel="stylesheet" href="dist/ngFormBuilder-full.css" />
 </head>
 <body ng-app="formBuilder">
@@ -56,6 +57,12 @@
 
 .component-settings .nav-link {
 	font-size: 14px;
+}
+
+.formRender{
+	margin-top: 10px;
+	margin-left: 25px;
+    margin-right: 25px;
 }
 
 .jsonviewer {
@@ -109,14 +116,16 @@
 			<div class="row">
 				<form-builder form="form"></form-builder>
 			</div>
+
+			<div class="row formRender">
+				<formio form="form" ng-if="renderForm"></formio>
+			</div>
 		</div>
 	</div>
-	<script src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
-	<script
-		src="https://unpkg.com/signature_pad@1.5.3/signature_pad.min.js"></script>
+
 	<script src="dist/ngFormBuilder-full.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+	<script src="bower_components/lodash/dist/lodash.min.js"></script>
+	<script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
 	<script
 		src="bower_components/json-formatter/dist/json-formatter.min.js"></script>
 	<script type="text/javascript">
