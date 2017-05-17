@@ -11,6 +11,9 @@ module.exports = {
     'ADVANCED_COMPONENTS_TITLE': '高 级 控 件',
     'LAYOUT_COMPONENTS_TITLE': '布 局',
 
+    'false':'否',
+    'true':'是',
+
     'Component': '控件',
     'Text Field': '文本',
     'Number': '数字',
@@ -54,6 +57,7 @@ module.exports = {
     'ACTION.MOVE.UP': '上移',
     'ACTION.MOVE.DOWN': '下移',
 
+    'DIALOG.ACTION.SAVE': '保存',
     'DIALOG.ACTION.CANCEL': '取消',
     'DIALOG.ACTION.REMOVE': '删除',
 
@@ -215,6 +219,18 @@ module.exports = {
     'Add Resource Text':'Add Resource Text',
     'Add Resource Text.placeholder': 'Add Resource',
     'Add Resource Text.tooltip': 'Set the text of the Add Resource button.',
+
+    'API.Field Tags':'属性标签',
+    'API.Property Name':'属性名称',
+
+    'Conditional.Simple':'简单',
+    'Conditional.Simple.Display':'是否显示',
+    'Conditional.Simple.Component':'元素',
+    'Conditional.Simple.Value':'值',
+    'Conditional.Advanced':'高级',
+    'Conditional.Advanced.Tooltip':'<small><p>必须指定 <strong>show</strong> 变量的值为 <strong>true</strong> 或 <strong>false</strong>.</p><p>提供全局变量 <strong>data</strong> , 可以通过元素属性获取元素的值.</p><p><strong>提示: 高级条件设置的条件会覆盖简单条件设置的条件.</strong></p></small>',
+    'Conditional.JSON Conditional':'JSON Conditional',
+    'Conditional.JSON Conditional.Tooltip':'<small><p>执行自定义 <strong>JsonLogic</strong>.</p><p>可以通过元素属性获取元素的值.</p></small>',
 
     'Display':'显示',
     'Data':'数据',
