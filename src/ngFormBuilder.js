@@ -10,7 +10,8 @@ var app = angular.module('ngFormBuilder', [
   'ngDialog',
   'ui.bootstrap.accordion',
   'ckeditor',
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'ngTagsInput'
 ]);
 
 app.constant('FORM_OPTIONS', require('./constants/formOptions'));
