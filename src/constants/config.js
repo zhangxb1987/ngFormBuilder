@@ -6,7 +6,7 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.SAVE',
         'cssClass': 'glyphicon glyphicon-floppy-disk',
-        'action': 'TOOLBAR.ACTIONS.saveModel'
+        'action': 'saveModel'
 			}, {
         'type': 'separator',
         'title': '',
@@ -15,7 +15,7 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.TEMPLATE',
         'cssClass': 'glyphicon glyphicon-list-alt',
-        'action': 'TOOLBAR.ACTIONS.cut',
+        'action': 'template',
         'enabledAction': 'element'
 			}, {
         'type': 'separator',
@@ -25,13 +25,13 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.IMPORT',
         'cssClass': 'glyphicon glyphicon-import',
-        'action': 'TOOLBAR.ACTIONS.copy',
+        'action': 'import',
         'enabledAction': 'element'
 			}, {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.EXPORT',
         'cssClass': 'glyphicon glyphicon-export',
-        'action': 'TOOLBAR.ACTIONS.paste'
+        'action': 'export'
 			}, {
         'type': 'separator',
         'title': '',
@@ -40,7 +40,7 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.PREVIEW',
         'cssClass': 'glyphicon glyphicon-eye-open',
-        'action': 'TOOLBAR.ACTIONS.deleteItem',
+        'action': 'preview',
         'enabledAction': 'element'
 			}, {
         'type': 'separator',
@@ -50,7 +50,7 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.DEBUG',
         'cssClass': 'glyphicon glyphicon-console',
-        'action': 'TOOLBAR.ACTIONS.deleteItem',
+        'action': 'debug',
         'enabledAction': 'element'
 			}],
 
@@ -58,7 +58,7 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.HELP',
         'cssClass': 'glyphicon glyphicon-question-sign',
-        'action': 'TOOLBAR.ACTIONS.help'
+        'action': 'help'
 			}, {
         'type': 'separator',
         'title': '',
@@ -67,6 +67,16 @@ module.exports = {
         'type': 'button',
         'title': 'TOOLBAR.ACTION.CLOSE',
         'cssClass': 'glyphicon glyphicon-remove',
-        'action': 'TOOLBAR.ACTIONS.closeEditor'
-			}]
+        'action': 'closeEditor'
+			}],
+
+    'actions':{
+        'saveModel': function() {},
+        'template':function() {},
+        'import':function() {},
+        'export':function() {},
+        'debug':function() {},
+        'help':function() {},
+        'closeEditor':function() {}
+    }
 };
