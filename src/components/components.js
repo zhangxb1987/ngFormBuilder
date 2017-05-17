@@ -29,9 +29,9 @@ module.exports = function(app) {
               '</div>' +
               '<formio-settings-info component="component" data="{}" formio="::formio"></formio-settings-info>' +
               '<div class="form-group">' +
-                '<button type="submit" class="btn btn-success" ng-click="closeThisDialog(true)">{{\'Save\' | translate}}</button>&nbsp;' +
-                '<button type="button" class="btn btn-default" ng-click="closeThisDialog(false)" ng-if="!component.isNew">{{\'Cancel\' | translate}}</button>&nbsp;' +
-                '<button type="button" class="btn btn-danger" ng-click="removeComponent(component, formComponents[component.type].confirmRemove); closeThisDialog(false)">{{\'Remove\' | translate}}</button>' +
+                '<button type="submit" class="btn btn-success" ng-click="closeThisDialog(true)">{{\'DIALOG.ACTION.SAVE\' | translate}}</button>&nbsp;' +
+                '<button type="button" class="btn btn-default" ng-click="closeThisDialog(false)" ng-if="!component.isNew">{{\'DIALOG.ACTION.CANCEL\' | translate}}</button>&nbsp;' +
+                '<button type="button" class="btn btn-danger" ng-click="removeComponent(component, formComponents[component.type].confirmRemove); closeThisDialog(false)">{{\'DIALOG.ACTION.REMOVE\' | translate}}</button>' +
               '</div>' +
             '</div>' +
           '</div>' +
