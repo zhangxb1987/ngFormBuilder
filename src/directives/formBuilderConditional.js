@@ -2,40 +2,32 @@
 var utils = require('formiojs/utils');
 var _get = require('lodash/get');
 var _reject = require('lodash/reject');
-module.exports = [
-  function() {
+module.exports = ['$filter',
+  function($filter) {
+    var formioTranslate = $filter('formioTranslate');
     return {
       restrict: 'E',
       scope: true,
       template: '' +
         '<uib-accordion>' +
-          '<div uib-accordion-group heading="Simple" class="panel panel-default" is-open="status.simple">' +
-            'This component should Display:' +
+          '<div uib-accordion-group heading="{{\'Conditional.Simple\' | translate}}" class="panel panel-default" is-open="status.simple">' +
+            '{{\'Conditional.Simple.Display\' | translate}}:' +
             '<select class="form-control input-md" ng-model="component.conditional.show">' +
-            '<option ng-repeat="item in _booleans track by $index" value="{{item}}">{{item.toString()}}</option>' +
+            '<option ng-repeat="item in _booleans track by $index" value="{{item}}">{{item.toString() | translate}}</option>' +
             '</select>' +
-            '<br>When the form component:' +
+            '<br>{{\'Conditional.Simple.Component\' | translate}}:' +
             '<select class="form-control input-md" ng-model="component.conditional.when">' +
             '<option ng-repeat="item in _components track by $index" value="{{item.key}}">{{item !== "" ? item.label + " (" + item.key + ")" : ""}}</option>' +
             '</select>' +
-            '<br>Has the value:' +
+            '<br>{{\'Conditional.Simple.Value\' | translate}}:' +
             '<input type="text" class="form-control input-md" ng-model="component.conditional.eq">' +
           '</div>' +
-          '<div uib-accordion-group heading="Advanced" class="panel panel-default" is-open="status.advanced">' +
+          '<div uib-accordion-group heading="{{\'Conditional.Advanced\' | translate}}" class="panel panel-default" is-open="status.advanced">' +
             '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.customConditional" placeholder="/*** Example Code ***/\nshow = (data[\'mykey\'] > 1);"></textarea>' +
-            '<small>' +
-            '<p>Enter custom conditional code.</p>' +
-            '<p>You must assign the <strong>show</strong> variable as either <strong>true</strong> or <strong>false</strong>.</p>' +
-            '<p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
-            '<p><strong>Note: Advanced Conditional logic will override the results of the Simple Conditional logic.</strong></p>' +
-            '</small>' +
+            formioTranslate('Conditional.Advanced.Tooltip') +
           '</div>' +
-          '<div uib-accordion-group heading="JSON Conditional" class="panel panel-default" is-open="status.json">' +
-            '<small>' +
-              '<p>Execute custom validation logic with JSON and <a href="http://jsonlogic.com/">JsonLogic</a>.</p>' +
-              '<p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
-              '<p><a href="http://formio.github.io/formio.js/app/examples/conditions.html" target="_blank">Click here for an example</a></p>' +
-            '</small>' +
+          '<div uib-accordion-group heading="{{\'Conditional.JSON Conditional\' | translate}}" class="panel panel-default" is-open="status.json">' +
+            formioTranslate('Conditional.JSON Conditional.Tooltip') +
             '<textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.conditional.json" placeholder="{ ... }"></textarea>' +
           '</div>' +
         '</uib-accordion>',
