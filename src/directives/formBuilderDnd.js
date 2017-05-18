@@ -157,6 +157,7 @@ module.exports = [
         // Show confirm dialog before removing a component
         ngDialog.open({
           template: 'formio/components/confirm-remove.html',
+          width: 500,
           showClose: false
         }).closePromise.then(function(e) {
           var cancelled = e.value === false || e.value === '$closeButton' || e.value === '$document' || e.value === '$escape';

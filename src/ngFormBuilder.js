@@ -160,6 +160,30 @@ app.run([
     $templateCache.put('formio/formbuilder/toolbar.html',
       fs.readFileSync(__dirname + '/templates/toolbar.html', 'utf8')
     );
+
+    $templateCache.put('formio/formbuilder/toolbar/save.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/save.html', 'utf8')
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/preview.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/preview.html', 'utf8')
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/templates.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/templates.html', 'utf8')
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/import.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/import.html', 'utf8')
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/confirm-close.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/confirm-close.html', 'utf8')
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/help.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/help.html', 'utf8')
+    );
   }
 ]);
 

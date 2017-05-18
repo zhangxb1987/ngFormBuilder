@@ -5,7 +5,9 @@ module.exports = function() {
 			restrict: 'E',
 			replace: true,
 			templateUrl: 'formio/formbuilder/toolbar.html',
-			controller:['$rootScope','$scope','$log', function($rootScope,$scope,$log) {
+			controller:['$rootScope','$scope','ngDialog','$log', function($rootScope,$scope,ngDialog,$log) {
+				$scope.toolbarConfig = formioBuilderToolbarCongfig;
+				var services = {'rootScope':$rootScope,'scope':$scope,'ngDialog':ngDialog,'log':$log};
 				var executeFunctionByName = function(fn) {
 					var args = _slice(arguments, 1);
 					return fn.apply(this, args);
@@ -14,10 +16,9 @@ module.exports = function() {
 				$scope.toolbarSecondaryButtonClicked = function($index) {
 					var item = formioBuilderToolbarCongfig.secondaryItems[$index];
 					if (item) {
-						$log.info(item.action);
 						var fn = formioBuilderToolbarCongfig.actions[item.action];
 						if (fn && typeof (fn) === 'function') {
-							executeFunctionByName(fn, $rootScope, $scope);
+							executeFunctionByName(fn, services);
 						}
 					}
 				},
@@ -25,16 +26,14 @@ module.exports = function() {
 				$scope.toolbarButtonClicked = function($index) {
 					var item = formioBuilderToolbarCongfig.items[$index];
 					if (item) {
-						$log.info(item.action);
 						var fn = formioBuilderToolbarCongfig.actions[item.action];
 						if (fn && typeof (fn) === 'function') {
-							executeFunctionByName(fn, $rootScope, $scope);
+							executeFunctionByName(fn, services);
 						}
 					}
 				};
 			}],
 			link: function(scope, element, attrs, controllers) {
-				scope.toolbarConfig = formioBuilderToolbarCongfig;
 				/*TODO 添加点击事件处理函数*/
 			}
 	};

@@ -71,11 +71,27 @@ module.exports = {
 			}],
 
     'actions':{
-        'saveModel': function() {},
+        'saveModel': function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            var log = services['log'];
+            var dialog = ngDialog.open({
+                template: 'formio/formbuilder/toolbar/save.html',
+                controller:['$scope',function(scope) {
+
+                }]
+            }).closePromise.then(function(e) {
+                log.debug(e);
+            });
+        },
         'template':function() {},
         'import':function() {},
         'export':function() {},
-        'debug':function() {},
+        'debug':function() {
+            var services = arguments[0];
+            var rootScope = services['rootScope'];
+            rootScope.showDebugConsole = (!rootScope.showDebugConsole);
+        },
         'help':function() {},
         'closeEditor':function() {}
     }
