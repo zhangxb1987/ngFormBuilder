@@ -5,9 +5,9 @@ module.exports = function() {
 			restrict: 'E',
 			replace: true,
 			templateUrl: 'formio/formbuilder/toolbar.html',
-			controller:['$rootScope','$scope','ngDialog','$log', function($rootScope,$scope,ngDialog,$log) {
+			controller:['$rootScope','$scope','ngDialog','$http','$log', function($rootScope,$scope,ngDialog,$http,$log) {
 				$scope.toolbarConfig = formioBuilderToolbarCongfig;
-				var services = {'rootScope':$rootScope,'scope':$scope,'ngDialog':ngDialog,'log':$log};
+				var services = {'rootScope':$rootScope,'scope':$scope,'ngDialog':ngDialog,'http':$http,'log':$log};
 				var executeFunctionByName = function(fn) {
 					var args = _slice(arguments, 1);
 					return fn.apply(this, args);

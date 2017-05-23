@@ -252,6 +252,12 @@ module.exports = {
     'Drag and Drop a form component': '请 拖 拽 控 件',
     'Preview':'预 览',
 
+    'MODEL.NAEM.title':'表单名称',
+    'MODEL.NAEM.placeholder':'请填写表单名称信息',
+    'MODEL.DESC.title':'表单描述',
+    'MODEL.DESC.placeholder':'请填写表单描述信息',
+    'TOOLBAR.ACTION.SAVE.title':'保存模型',
+
     'Basic Components': '基础控件',
     'Special Components': '高级控件',
     'Layout Components': '布局'
