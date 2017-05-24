@@ -317,6 +317,7 @@ node server</pre>
           display: 'form'
         };
 
+        console.debug(angular.toJson($rootScope.form));
         $rootScope.renderForm = true;
         $rootScope.$on('formUpdate', function(event, form) {
           angular.merge($rootScope.form, form);

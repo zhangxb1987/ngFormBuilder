@@ -77,6 +77,7 @@ module.exports = {
             var log = services['log'];
             var dialog = ngDialog.open({
                 template: 'formio/formbuilder/toolbar/save.html',
+                scope:services['rootScope'],
                 controller:['$scope',function(scope) {
 
                 }]

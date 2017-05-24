@@ -61,6 +61,7 @@
     "lodash": "^4.17.4",
     "ng-dialog": "^1.1.0",
     "ng-formio": "^2.16.6",
-    "ng-tags-input": "^3.1.2"
+    "ng-tags-input": "^3.1.2",
+    "wiredep": "^4.0.0"
   }
 }

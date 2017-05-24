@@ -4,13 +4,20 @@
 <meta charset="utf-8">
 <title>表单设计器</title>
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet"
-	href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="bower_components/font-awesome/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="bower_components/json-formatter/dist/json-formatter.min.css">
-<link rel="stylesheet" type="text/css" href="bower_components/ng-tags-input/ng-tags-input.min.css">
-<link rel="stylesheet" href="dist/ngFormBuilder-full.css" />
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="bower_components/loading/HoldOn.min.css">
+<!-- bower:css -->
+<link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
+<link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+<link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+<link rel="stylesheet" href="bower_components/ng-formio/css/formio.css" />
+<link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css" />
+<link rel="stylesheet" href="bower_components/json-formatter/dist/json-formatter.css" />
+  <!-- endbower -->
+
+<link rel="stylesheet" href="dist/ngFormBuilder.min.css" />
+
 </head>
 <body ng-app="formBuilder" ng-cloak>
 	<!-- BROWSE HAPPY BEGINS HERE -->
@@ -118,81 +125,176 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/ng-template" id="parameter-modelId-error.html">
+		<p class="text-danger"><strong>参数错误：</strong>表单模型ID参数为空！</p>
+	</script>
+	<script type="text/ng-template" id="parameter-context-error.html">
+		<p class="text-danger"><strong>参数错误：</strong>应用上下文路径参数为空！</p>
+	</script>
 
-	<script src="dist/ngFormBuilder-full.js"></script>
-	<script src="bower_components/lodash/dist/lodash.min.js"></script>
-	<script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-	<script
-		src="bower_components/json-formatter/dist/json-formatter.min.js"></script>
+	<!-- bower:js -->
+	  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+	  <script src="bower_components/angular/angular.js"></script>
+	  <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+	  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	  <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
+	  <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+	  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	  <script src="bower_components/moment/moment.js"></script>
+	  <script src="bower_components/angular-moment/angular-moment.js"></script>
+	  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	  <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+	  <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+	  <script src="bower_components/blob-polyfill/Blob.js"></script>
+	  <script src="bower_components/file-saver.js/FileSaver.js"></script>
+	  <script src="bower_components/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+	  <script src="bower_components/angular-ui-select/dist/select.js"></script>
+	  <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+	  <script src="bower_components/angular-ckeditor/angular-ckeditor.js"></script>
+	  <script src="bower_components/angular-translate/angular-translate.js"></script>
+	  <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+	  <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
+  	  <script src="bower_components/lodash/lodash.js"></script>
+  	  <script src="bower_components/loading/HoldOn.min.js"></script>
+  	  <script src="bower_components/ng-formio/dist/formio.js"></script>
+  	  <script src="dist/ngFormBuilder.js"></script>
+  <!-- endbower -->
+
+	<!--<script src="dist/ngFormBuilder-full.js"></script>-->
 	<script type="text/javascript">
 		angular.module(
 						"formBuilder",
 						[ "ui.bootstrap", "ui.select", "formio",
 								"ngFormBuilder", "jsonFormatter" ])
-				.run(
-						[
+				.config(["$locationProvider", function ($locationProvider) {
+									$locationProvider.html5Mode({
+								  		enabled: true,
+								  		requireBase: false
+									});
+								}])
+				.run([
 								"$rootScope",
 								'formioComponents',
 								'$timeout',
+								'$window',
 								'$document',
-								function($rootScope, formioComponents, $timeout, $document) {
+								'$location',
+								'$http',
+								'$q',
+								'ngDialog',
+								function($rootScope, formioComponents, $timeout, $window, $document, $location, $http, $q, ngDialog) {
+									//define loading overlay
+						            $rootScope.holdOn = function(action){
+						        		if(HoldOn && HoldOn[action]){
+						        	    	HoldOn[action]();
+						        		}
+						            };
+									$rootScope.initialized = false;
+
 									$rootScope.displays = [ {
 										name : 'form',
 										title : '普通表单'
 									}, {
 										name : 'wizard',
-										title : '向导表单'
+										title : '向导型表单'
 									} ];
+
 									$rootScope.form = {
 										components : [],
 										display : 'form'
 									};
 
-									$rootScope.formUpdateUnsaved = false;
-									$rootScope.showDebugConsole = false;
-									$rootScope.renderForm = true;
-									$rootScope.$on('formUpdate', 
-										function(event, form) {
-											angular.merge($rootScope.form, form);
-											$rootScope.renderForm = false;
-											$rootScope.formUpdateUnsaved = true;
-											setTimeout(function() {
-												$rootScope.renderForm = true;
-											}, 10);
-									});
+									var urlParams = $location.search();
+									$rootScope.modelId = urlParams['modelId'];
+									$rootScope.contextPath = urlParams['context'];
+									$rootScope.modelJsonDataDefer = $q.defer();
+									
+									if(!$rootScope.contextPath){
+										ngDialog.open({
+										    template: 'parameter-context-error.html',
+										    width: 300
+										});
 
-									$rootScope.$watch('formUpdateUnsaved', function(newValue, oldValue) {
-										var prifix = '[*未保存]';
-										if(newValue && (!_.startsWith($document[0].title, prifix))) {
-											$document[0].title = prifix + $document[0].title;
-											return;
+										$rootScope.modelJsonDataDefer.reject();	
+									}else{
+										if ($rootScope.modelId) {
+										//fetch model json data
+										$http({
+											method: 'GET',
+											url: 'form-service/model/' + $rootScope.modelId + '/json.zf'
+										}).then(
+												function(response){
+													$rootScope.modelJsonDataDefer.resolve(response);
+												},
+												function(response){
+													$rootScope.modelJsonDataDefer.reject();	
+												}
+												);
+										}else{
+											ngDialog.open({
+											    template: 'parameter-modelId-error.html',
+											    width: 300
+											});
+											$rootScope.modelJsonDataDefer.reject();
 										}
-										if((!newValue) && _.startsWith($document[0].title, prifix)) {
-											$document[0].title = _.trimLeft($document[0].title, prifix);
-										}
-									});
+									}
 
-									var originalComps = _.cloneDeep($rootScope.form.components);
-									originalComps.push(angular.copy(formioComponents.components.button.settings));
-									var currentDisplay = 'form';
-									$rootScope.$watch('form.display',
-													function(display) {
-														if (display
-																&& (display !== currentDisplay)) {
-															currentDisplay = display;
-															if (display === 'form') {
-																$rootScope.form.components = originalComps;
-															} else {
-																$rootScope.form.components = [ {
-																	type : 'panel',
-																	input : false,
-																	title : 'Page 1',
-																	theme : 'default',
-																	components : originalComps
-																} ];
+									
+
+									//
+									$rootScope.modelJsonDataDefer.promise.then(function(data){
+										$rootScope.initialiaed = true;
+										angular.merge($rootScope.form, data['json_modelData']);
+										$rootScope.modelName = data['name'];
+										$rootScope.modelDesc = data['description'];
+										$rootScope.formUpdateUnsaved = false;
+										$rootScope.showDebugConsole = false;
+										$rootScope.renderForm = true;
+										$rootScope.$on('formUpdate', 
+											function(event, form) {
+												angular.merge($rootScope.form, form);
+												$rootScope.renderForm = false;
+												$rootScope.formUpdateUnsaved = true;
+												setTimeout(function() {
+													$rootScope.renderForm = true;
+												}, 10);
+										});
+
+										$rootScope.$watch('formUpdateUnsaved', function(newValue, oldValue) {
+											var prifix = '[*未保存]';
+											if(newValue && (!_.startsWith($document[0].title, prifix))) {
+												$document[0].title = prifix + $document[0].title;
+												return;
+											}
+											if((!newValue) && _.startsWith($document[0].title, prifix)) {
+												$document[0].title = _.trimLeft($document[0].title, prifix);
+											}
+										});
+
+										var originalComps = _.cloneDeep($rootScope.form.components);
+										originalComps.push(angular.copy(formioComponents.components.button.settings));
+										var currentDisplay = 'form';
+										$rootScope.$watch('form.display',
+														function(display) {
+															if (display
+																	&& (display !== currentDisplay)) {
+																currentDisplay = display;
+																if (display === 'form') {
+																	$rootScope.form.components = originalComps;
+																} else {
+																	$rootScope.form.components = [ {
+																		type : 'panel',
+																		input : false,
+																		title : 'Page 1',
+																		theme : 'default',
+																		components : originalComps
+																	} ];
+																}
 															}
-														}
-													});
+														});
+
+									});
+
 								} ]);
 	</script>
 </body>

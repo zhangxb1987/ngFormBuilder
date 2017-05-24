@@ -2287,7 +2287,7 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
 
 module.exports = baseMergeDeep;
 
-},{"./_assignMergeValue":29,"./_cloneBuffer":76,"./_cloneTypedArray":82,"./_copyArray":83,"./_initCloneObject":121,"./isArguments":180,"./isArray":181,"./isArrayLikeObject":183,"./isBuffer":184,"./isFunction":185,"./isObject":188,"./isPlainObject":190,"./isTypedArray":192,"./toPlainObject":205}],60:[function(_dereq_,module,exports){
+},{"./_assignMergeValue":29,"./_cloneBuffer":76,"./_cloneTypedArray":82,"./_copyArray":83,"./_initCloneObject":121,"./isArguments":180,"./isArray":181,"./isArrayLikeObject":183,"./isBuffer":184,"./isFunction":185,"./isObject":188,"./isPlainObject":190,"./isTypedArray":192,"./toPlainObject":209}],60:[function(_dereq_,module,exports){
 var baseGet = _dereq_('./_baseGet'),
     baseSet = _dereq_('./_baseSet'),
     castPath = _dereq_('./_castPath');
@@ -2625,7 +2625,7 @@ function castPath(value, object) {
 
 module.exports = castPath;
 
-},{"./_isKey":124,"./_stringToPath":161,"./isArray":181,"./toString":206}],74:[function(_dereq_,module,exports){
+},{"./_isKey":124,"./_stringToPath":161,"./isArray":181,"./toString":210}],74:[function(_dereq_,module,exports){
 var baseSlice = _dereq_('./_baseSlice');
 
 /**
@@ -3091,7 +3091,7 @@ function createCaseFirst(methodName) {
 
 module.exports = createCaseFirst;
 
-},{"./_castSlice":74,"./_hasUnicode":112,"./_stringToArray":160,"./toString":206}],93:[function(_dereq_,module,exports){
+},{"./_castSlice":74,"./_hasUnicode":112,"./_stringToArray":160,"./toString":210}],93:[function(_dereq_,module,exports){
 var arrayReduce = _dereq_('./_arrayReduce'),
     deburr = _dereq_('./deburr'),
     words = _dereq_('./words');
@@ -3117,7 +3117,7 @@ function createCompounder(callback) {
 
 module.exports = createCompounder;
 
-},{"./_arrayReduce":25,"./deburr":172,"./words":208}],94:[function(_dereq_,module,exports){
+},{"./_arrayReduce":25,"./deburr":172,"./words":212}],94:[function(_dereq_,module,exports){
 var basePropertyOf = _dereq_('./_basePropertyOf');
 
 /** Used to map Latin Unicode letters to basic Latin letters. */
@@ -3691,7 +3691,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
 
 module.exports = getSymbols;
 
-},{"./_arrayFilter":21,"./stubArray":203}],108:[function(_dereq_,module,exports){
+},{"./_arrayFilter":21,"./stubArray":204}],108:[function(_dereq_,module,exports){
 var arrayPush = _dereq_('./_arrayPush'),
     getPrototype = _dereq_('./_getPrototype'),
     getSymbols = _dereq_('./_getSymbols'),
@@ -3718,7 +3718,7 @@ var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
 
 module.exports = getSymbolsIn;
 
-},{"./_arrayPush":24,"./_getPrototype":105,"./_getSymbols":107,"./stubArray":203}],109:[function(_dereq_,module,exports){
+},{"./_arrayPush":24,"./_getPrototype":105,"./_getSymbols":107,"./stubArray":204}],109:[function(_dereq_,module,exports){
 var DataView = _dereq_('./_DataView'),
     Map = _dereq_('./_Map'),
     Promise = _dereq_('./_Promise'),
@@ -5281,7 +5281,7 @@ function capitalize(string) {
 
 module.exports = capitalize;
 
-},{"./toString":206,"./upperFirst":207}],169:[function(_dereq_,module,exports){
+},{"./toString":210,"./upperFirst":211}],169:[function(_dereq_,module,exports){
 var baseClone = _dereq_('./_baseClone');
 
 /** Used to compose bitmasks for cloning. */
@@ -5425,7 +5425,7 @@ function deburr(string) {
 
 module.exports = deburr;
 
-},{"./_deburrLetter":94,"./toString":206}],173:[function(_dereq_,module,exports){
+},{"./_deburrLetter":94,"./toString":210}],173:[function(_dereq_,module,exports){
 module.exports = _dereq_('./forEach');
 
 },{"./forEach":175}],174:[function(_dereq_,module,exports){
@@ -5823,7 +5823,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-},{"./_root":149,"./stubFalse":204}],185:[function(_dereq_,module,exports){
+},{"./_root":149,"./stubFalse":205}],185:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isObject = _dereq_('./isObject');
 
@@ -6566,6 +6566,45 @@ function reject(collection, predicate) {
 module.exports = reject;
 
 },{"./_arrayFilter":21,"./_baseFilter":39,"./_baseIteratee":52,"./isArray":181,"./negate":198}],203:[function(_dereq_,module,exports){
+var baseSlice = _dereq_('./_baseSlice'),
+    isIterateeCall = _dereq_('./_isIterateeCall'),
+    toInteger = _dereq_('./toInteger');
+
+/**
+ * Creates a slice of `array` from `start` up to, but not including, `end`.
+ *
+ * **Note:** This method is used instead of
+ * [`Array#slice`](https://mdn.io/Array/slice) to ensure dense arrays are
+ * returned.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Array
+ * @param {Array} array The array to slice.
+ * @param {number} [start=0] The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the slice of `array`.
+ */
+function slice(array, start, end) {
+  var length = array == null ? 0 : array.length;
+  if (!length) {
+    return [];
+  }
+  if (end && typeof end != 'number' && isIterateeCall(array, start, end)) {
+    start = 0;
+    end = length;
+  }
+  else {
+    start = start == null ? 0 : toInteger(start);
+    end = end === undefined ? length : toInteger(end);
+  }
+  return baseSlice(array, start, end);
+}
+
+module.exports = slice;
+
+},{"./_baseSlice":67,"./_isIterateeCall":123,"./toInteger":207}],204:[function(_dereq_,module,exports){
 /**
  * This method returns a new empty array.
  *
@@ -6590,7 +6629,7 @@ function stubArray() {
 
 module.exports = stubArray;
 
-},{}],204:[function(_dereq_,module,exports){
+},{}],205:[function(_dereq_,module,exports){
 /**
  * This method returns `false`.
  *
@@ -6610,7 +6649,157 @@ function stubFalse() {
 
 module.exports = stubFalse;
 
-},{}],205:[function(_dereq_,module,exports){
+},{}],206:[function(_dereq_,module,exports){
+var toNumber = _dereq_('./toNumber');
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_INTEGER = 1.7976931348623157e+308;
+
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */
+function toFinite(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = (value < 0 ? -1 : 1);
+    return sign * MAX_INTEGER;
+  }
+  return value === value ? value : 0;
+}
+
+module.exports = toFinite;
+
+},{"./toNumber":208}],207:[function(_dereq_,module,exports){
+var toFinite = _dereq_('./toFinite');
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */
+function toInteger(value) {
+  var result = toFinite(value),
+      remainder = result % 1;
+
+  return result === result ? (remainder ? result - remainder : result) : 0;
+}
+
+module.exports = toInteger;
+
+},{"./toFinite":206}],208:[function(_dereq_,module,exports){
+var isObject = _dereq_('./isObject'),
+    isSymbol = _dereq_('./isSymbol');
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = toNumber;
+
+},{"./isObject":188,"./isSymbol":191}],209:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     keysIn = _dereq_('./keysIn');
 
@@ -6644,7 +6833,7 @@ function toPlainObject(value) {
 
 module.exports = toPlainObject;
 
-},{"./_copyObject":84,"./keysIn":194}],206:[function(_dereq_,module,exports){
+},{"./_copyObject":84,"./keysIn":194}],210:[function(_dereq_,module,exports){
 var baseToString = _dereq_('./_baseToString');
 
 /**
@@ -6674,7 +6863,7 @@ function toString(value) {
 
 module.exports = toString;
 
-},{"./_baseToString":69}],207:[function(_dereq_,module,exports){
+},{"./_baseToString":69}],211:[function(_dereq_,module,exports){
 var createCaseFirst = _dereq_('./_createCaseFirst');
 
 /**
@@ -6698,7 +6887,7 @@ var upperFirst = createCaseFirst('toUpperCase');
 
 module.exports = upperFirst;
 
-},{"./_createCaseFirst":92}],208:[function(_dereq_,module,exports){
+},{"./_createCaseFirst":92}],212:[function(_dereq_,module,exports){
 var asciiWords = _dereq_('./_asciiWords'),
     hasUnicodeWord = _dereq_('./_hasUnicodeWord'),
     toString = _dereq_('./toString'),
@@ -6735,7 +6924,7 @@ function words(string, pattern, guard) {
 
 module.exports = words;
 
-},{"./_asciiWords":28,"./_hasUnicodeWord":113,"./_unicodeWords":165,"./toString":206}],209:[function(_dereq_,module,exports){
+},{"./_asciiWords":28,"./_hasUnicodeWord":113,"./_unicodeWords":165,"./toString":210}],213:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -6807,7 +6996,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],210:[function(_dereq_,module,exports){
+},{}],214:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -6881,7 +7070,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],211:[function(_dereq_,module,exports){
+},{}],215:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -6972,7 +7161,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],212:[function(_dereq_,module,exports){
+},{}],216:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7020,7 +7209,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],213:[function(_dereq_,module,exports){
+},{}],217:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.run([
@@ -7031,23 +7220,18 @@ module.exports = function(app) {
         '<form id="component-settings" novalidate>' +
           '<div class="row">' +
             '<div class="col-md-6">' +
-              '<p class="lead" ng-if="::formComponent.title" style="margin-top:10px;">{{::formComponent.title}} {{\'Component\' | formioTranslate}}</p>' +
-            '</div>' +
-            '<div class="col-md-6">' +
-              '<div class="pull-right" ng-if="::formComponent.documentation" style="margin-top:10px; margin-right:20px;">' +
-                '<a ng-href="{{ ::formComponent.documentation }}" target="_blank"><i class="glyphicon glyphicon-new-window"></i> {{\'Help!\' | formioTranslate}}</a>' +
-              '</div>' +
+              '<p class="lead" ng-if="::formComponent.title" style="margin-top:0;margin-bottom:10px;">{{::formComponent.title | translate}} {{\'Component\' | translate}}</p>' +
             '</div>' +
           '</div>' +
           '<div class="row">' +
-            '<div class="col-xs-6">' +
+            '<div class="col-xs-7">' +
               '<uib-tabset>' +
-                '<uib-tab ng-repeat="view in ::formComponent.views" heading="{{ ::view.name | formioTranslate }}"><ng-include src="::view.template"></ng-include></uib-tab>' +
+                '<uib-tab ng-repeat="view in ::formComponent.views" heading="{{ ::view.name | translate }}"><ng-include src="::view.template"></ng-include></uib-tab>' +
               '</uib-tabset>' +
             '</div>' +
-            '<div class="col-xs-6">' +
+            '<div class="col-xs-5">' +
               '<div class="panel panel-default preview-panel" style="margin-top:44px;">' +
-                '<div class="panel-heading">{{\'Preview\' | formioTranslate}}</div>' +
+                '<div class="panel-heading">{{\'Preview\' | translate}}</div>' +
                 '<div class="panel-body">' +
                   '<div class="form-group" ng-if="component.wysiwyg && editorVisible">' +
                     '<label for="editor-preview" class="control-label" ng-if="component.label">{{ component.label }}</label>' +
@@ -7058,9 +7242,9 @@ module.exports = function(app) {
               '</div>' +
               '<formio-settings-info component="component" data="{}" formio="::formio"></formio-settings-info>' +
               '<div class="form-group">' +
-                '<button type="submit" class="btn btn-success" ng-click="closeThisDialog(true)">{{\'Save\' | formioTranslate}}</button>&nbsp;' +
-                '<button type="button" class="btn btn-default" ng-click="closeThisDialog(false)" ng-if="!component.isNew">{{\'Cancel\' | formioTranslate}}</button>&nbsp;' +
-                '<button type="button" class="btn btn-danger" ng-click="removeComponent(component, formComponents[component.type].confirmRemove); closeThisDialog(false)">{{\'Remove\' | formioTranslate}}</button>' +
+                '<button type="submit" class="btn btn-success" ng-click="closeThisDialog(true)">{{\'DIALOG.ACTION.SAVE\' | translate}}</button>&nbsp;' +
+                '<button type="button" class="btn btn-default" ng-click="closeThisDialog(false)" ng-if="!component.isNew">{{\'DIALOG.ACTION.CANCEL\' | translate}}</button>&nbsp;' +
+                '<button type="button" class="btn btn-danger" ng-click="removeComponent(component, formComponents[component.type].confirmRemove); closeThisDialog(false)">{{\'DIALOG.ACTION.REMOVE\' | translate}}</button>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -7108,25 +7292,25 @@ module.exports = function(app) {
           '<form-builder-option property="style[\'margin-bottom\']"></form-builder-option>' +
           '<form-builder-option property="style[\'margin-left\']"></form-builder-option>' +
           '<uib-accordion>' +
-          '  <div uib-accordion-group heading="Overlay" class="panel panel-default">' +
+          '  <div uib-accordion-group heading="{{\'Layout.Overlay\'|translate}}" class="panel panel-default">' +
           '    <div class="form-group">' +
-          '      <label for="overlay-style">Style</label>' +
+          '      <label for="overlay-style">{{\'Layout.Overlay.Style\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-style" name="overlay-style" ng-model="component.overlay.style"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-left">Left</label>' +
+          '      <label for="overlay-left">{{\'Layout.Overlay.Left\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-left" name="overlay-left" ng-model="component.overlay.left"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-right">Top</label>' +
+          '      <label for="overlay-right">{{\'Layout.Overlay.Top\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-top" name="overlay-top" ng-model="component.overlay.top"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-width">Width</label>' +
+          '      <label for="overlay-width">{{\'Layout.Overlay.Width\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-width" name="overlay-width" ng-model="component.overlay.width"></input>' +
           '    </div>' +
           '    <div class="form-group">' +
-          '      <label for="overlay-height">Height</label>' +
+          '      <label for="overlay-height">{{\'Layout.Overlay.Height\' | translate}}</label>' +
           '      <input class="form-control" id="overlay-height" name="overlay-height" ng-model="component.overlay.height"></input>' +
           '    </div>' +
           '  </div>' +
@@ -7142,7 +7326,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],214:[function(_dereq_,module,exports){
+},{}],218:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7194,7 +7378,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],215:[function(_dereq_,module,exports){
+},{}],219:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7265,14 +7449,14 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],216:[function(_dereq_,module,exports){
+},{}],220:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('currency', {
-        icon: 'fa fa-usd',
+        icon: 'fa fa-jpy',
         views: [
           {
             name: 'Display',
@@ -7335,7 +7519,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],217:[function(_dereq_,module,exports){
+},{}],221:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7398,7 +7582,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],218:[function(_dereq_,module,exports){
+},{}],222:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7464,7 +7648,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],219:[function(_dereq_,module,exports){
+},{}],223:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7654,7 +7838,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],220:[function(_dereq_,module,exports){
+},{}],224:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7729,7 +7913,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],221:[function(_dereq_,module,exports){
+},{}],225:[function(_dereq_,module,exports){
 "use strict";
 var _cloneDeep = _dereq_('lodash/cloneDeep');
 var _each = _dereq_('lodash/each');
@@ -7778,7 +7962,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/cloneDeep":170,"lodash/each":173}],222:[function(_dereq_,module,exports){
+},{"lodash/cloneDeep":170,"lodash/each":173}],226:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7833,7 +8017,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],223:[function(_dereq_,module,exports){
+},{}],227:[function(_dereq_,module,exports){
 "use strict";
 var _map = _dereq_('lodash/map');
 module.exports = function(app) {
@@ -7919,7 +8103,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/map":195}],224:[function(_dereq_,module,exports){
+},{"lodash/map":195}],228:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7979,7 +8163,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],225:[function(_dereq_,module,exports){
+},{}],229:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8039,7 +8223,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],226:[function(_dereq_,module,exports){
+},{}],230:[function(_dereq_,module,exports){
 "use strict";
 var app = angular.module('ngFormBuilder');
 
@@ -8081,7 +8265,7 @@ _dereq_('./panel')(app);
 _dereq_('./table')(app);
 _dereq_('./well')(app);
 
-},{"./address":209,"./button":210,"./checkbox":211,"./columns":212,"./components":213,"./container":214,"./content":215,"./currency":216,"./custom":217,"./datagrid":218,"./datetime":219,"./day":220,"./email":221,"./fieldset":222,"./file":223,"./hidden":224,"./htmlelement":225,"./number":227,"./page":228,"./panel":229,"./password":230,"./phonenumber":231,"./radio":232,"./resource":233,"./select":234,"./selectboxes":235,"./signature":236,"./survey":237,"./table":238,"./textarea":239,"./textfield":240,"./well":241}],227:[function(_dereq_,module,exports){
+},{"./address":213,"./button":214,"./checkbox":215,"./columns":216,"./components":217,"./container":218,"./content":219,"./currency":220,"./custom":221,"./datagrid":222,"./datetime":223,"./day":224,"./email":225,"./fieldset":226,"./file":227,"./hidden":228,"./htmlelement":229,"./number":231,"./page":232,"./panel":233,"./password":234,"./phonenumber":235,"./radio":236,"./resource":237,"./select":238,"./selectboxes":239,"./signature":240,"./survey":241,"./table":242,"./textarea":243,"./textfield":244,"./well":245}],231:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8156,7 +8340,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],228:[function(_dereq_,module,exports){
+},{}],232:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8177,7 +8361,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],229:[function(_dereq_,module,exports){
+},{}],233:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8244,7 +8428,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],230:[function(_dereq_,module,exports){
+},{}],234:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8314,7 +8498,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],231:[function(_dereq_,module,exports){
+},{}],235:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8387,7 +8571,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],232:[function(_dereq_,module,exports){
+},{}],236:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8455,7 +8639,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],233:[function(_dereq_,module,exports){
+},{}],237:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8545,7 +8729,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],234:[function(_dereq_,module,exports){
+},{}],238:[function(_dereq_,module,exports){
 "use strict";
 var _clone = _dereq_('lodash/clone');
 module.exports = function(app) {
@@ -8780,7 +8964,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/clone":169}],235:[function(_dereq_,module,exports){
+},{"lodash/clone":169}],239:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8852,7 +9036,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],236:[function(_dereq_,module,exports){
+},{}],240:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8915,7 +9099,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],237:[function(_dereq_,module,exports){
+},{}],241:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8981,7 +9165,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],238:[function(_dereq_,module,exports){
+},{}],242:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9052,7 +9236,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],239:[function(_dereq_,module,exports){
+},{}],243:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9157,7 +9341,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],240:[function(_dereq_,module,exports){
+},{}],244:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9232,7 +9416,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],241:[function(_dereq_,module,exports){
+},{}],245:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9278,7 +9462,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],242:[function(_dereq_,module,exports){
+},{}],246:[function(_dereq_,module,exports){
 "use strict";
 /**
   * These are component options that can be reused
@@ -9288,28 +9472,28 @@ module.exports = function(app) {
 module.exports = {
   label: {
     label: 'Label',
-    placeholder: 'Field Label',
-    tooltip: 'The label for this field that will appear next to it.'
+    placeholder: 'Label.placeholder',
+    tooltip: 'Label.tooltip'
   },
   defaultValue: {
     label: 'Default Value',
-    placeholder: 'Default Value',
-    tooltip: 'The will be the value for this field, before user interaction. Having a default value will override the placeholder text.'
+    placeholder: 'Default Value.placeholder',
+    tooltip: 'Default Value.tooltip'
   },
   placeholder: {
     label: 'Placeholder',
-    placeholder: 'Placeholder',
-    tooltip: 'The placeholder text that will appear when this field is empty.'
+    placeholder: 'Placeholder.placeholder',
+    tooltip: 'Placeholder.tooltip'
   },
   description: {
     label: 'Description',
-    placeholder: 'Description for this field.',
-    tooltip: 'The description is text that will appear below the input field.'
+    placeholder: 'Description.placeholder',
+    tooltip: 'Description.tooltip'
   },
   inputMask: {
     label: 'Input Mask',
-    placeholder: 'Input Mask',
-    tooltip: 'An input mask helps the user with input by ensuring a predefined format.<br><br>9: numeric<br>a: alphabetical<br>*: alphanumeric<br><br>Example telephone mask: (999) 999-9999<br><br>See the <a target=\'_blank\' href=\'https://github.com/RobinHerbots/jquery.inputmask\'>jquery.inputmask documentation</a> for more information.</a>'
+    placeholder: 'Input Mask.placeholder',
+    tooltip: 'Input Mask.tooltip'
   },
   authenticate: {
     label: 'Formio Authenticate',
@@ -9323,195 +9507,297 @@ module.exports = {
   },
   prefix: {
     label: 'Prefix',
-    placeholder: 'example \'$\', \'@\'',
-    tooltip: 'The text to show before a field.'
+    placeholder: 'Prefix.placeholder',
+    tooltip: 'Prefix.tooltip'
   },
   suffix: {
     label: 'Suffix',
-    placeholder: 'example \'$\', \'@\'',
-    tooltip: 'The text to show after a field.'
+    placeholder: 'Suffix.placeholder',
+    tooltip: 'Suffix.tooltip'
   },
   multiple: {
     label: 'Multiple Values',
     type: 'checkbox',
-    tooltip: 'Allows multiple values to be entered for this field.'
+    tooltip: 'Multiple Values.tooltip'
   },
   disabled: {
     label: 'Disabled',
     type: 'checkbox',
-    tooltip: 'Disable the form input.'
+    tooltip: 'Disabled.tooltip'
   },
   clearOnRefresh: {
     label: 'Clear Value On Refresh',
     type: 'checkbox',
-    tooltip: 'When the Refresh On field is changed, clear the selected value.'
+    tooltip: 'Clear Value On Refresh.tooltip'
   },
   clearOnHide: {
     label: 'Clear Value When Hidden',
     type: 'checkbox',
-    tooltip: 'When a field is hidden, clear the value.'
+    tooltip: 'Clear Value When Hidden.tooltip'
   },
   unique: {
     label: 'Unique',
     type: 'checkbox',
-    tooltip: 'Makes sure the data submitted for this field is unique, and has not been submitted before.'
+    tooltip: 'Unique.tooltip'
   },
   protected: {
     label: 'Protected',
     type: 'checkbox',
-    tooltip: 'A protected field will not be returned when queried via API.'
+    tooltip: 'Protected.tooltip'
   },
   image: {
     label: 'Display as images',
     type: 'checkbox',
-    tooltip: 'Instead of a list of linked files, images will be rendered in the view.'
+    tooltip: 'Display as images.tooltip'
   },
   imageSize: {
     label: 'Image Size',
     placeholder: '100',
-    tooltip: 'The image size for previewing images.'
+    tooltip: 'Image Size.tooltip'
   },
   persistent: {
     label: 'Persistent',
     type: 'checkbox',
-    tooltip: 'A persistent field will be stored in database when the form is submitted.'
+    tooltip: 'Persistent.tooltip'
   },
   hidden: {
-    label: 'Hidden',
+    label: 'PHidden',
     type: 'checkbox',
-    tooltip: 'A hidden field is still a part of the form, but is hidden from view.'
+    tooltip: 'PHidden.tooltip'
   },
   block: {
     label: 'Block',
     type: 'checkbox',
-    tooltip: 'This control should span the full width of the bounding container.'
+    tooltip: 'Block.tooltip'
   },
   leftIcon: {
     label: 'Left Icon',
-    placeholder: 'Enter icon classes',
-    tooltip: 'This is the full icon class string to show the icon. Example: \'glyphicon glyphicon-search\' or \'fa fa-plus\''
+    placeholder: 'Left Icon.placeholder',
+    tooltip: 'Left Icon.tooltip'
   },
   rightIcon: {
     label: 'Right Icon',
-    placeholder: 'Enter icon classes',
-    tooltip: 'This is the full icon class string to show the icon. Example: \'glyphicon glyphicon-search\' or \'fa fa-plus\''
+    placeholder: 'Right Icon.placeholder',
+    tooltip: 'Right Icon.tooltip'
   },
   url: {
     label: 'Upload Url',
-    placeholder: 'Enter the url to post the files to.',
-    tooltip: 'See <a href=\'https://github.com/danialfarid/ng-file-upload#server-side\' target=\'_blank\'>https://github.com/danialfarid/ng-file-upload#server-side</a> for how to set up the server.'
+    placeholder: 'Upload Url.placeholder',
+    tooltip: 'Upload Url.tooltip'
   },
   dir: {
     label: 'Directory',
-    placeholder: '(optional) Enter a directory for the files',
-    tooltip: 'This will place all the files uploaded in this field in the directory'
+    placeholder: 'Directory.placeholder',
+    tooltip: 'Directory.tooltip'
   },
   disableOnInvalid: {
     label: 'Disable on Form Invalid',
     type: 'checkbox',
-    tooltip: 'This will disable this field if the form is invalid.'
+    tooltip: 'Disable on Form Invalid.tooltip'
   },
   striped: {
     label: 'Striped',
     type: 'checkbox',
-    tooltip: 'This will stripe the table if checked.'
+    tooltip: 'Striped.tooltip'
   },
   bordered: {
     label: 'Bordered',
     type: 'checkbox',
-    tooltip: 'This will border the table if checked.'
+    tooltip: 'Bordered.tooltip'
   },
   hover: {
     label: 'Hover',
     type: 'checkbox',
-    tooltip: 'Highlight a row on hover.'
+    tooltip: 'Hover.tooltip'
   },
   condensed: {
     label: 'Condensed',
     type: 'checkbox',
-    tooltip: 'Condense the size of the table.'
+    tooltip: 'Condensed.tooltip'
   },
   datagridLabel: {
     label: 'Datagrid Label',
     type: 'checkbox',
-    tooltip: 'Show the label when in a datagrid.'
+    tooltip: 'Datagrid Label.tooltip'
   },
   'validate.required': {
     label: 'Required',
     type: 'checkbox',
-    tooltip: 'A required field must be filled in before the form can be submitted.'
+    tooltip: 'Required.tooltip'
   },
   'validate.minLength': {
     label: 'Minimum Length',
-    placeholder: 'Minimum Length',
+    placeholder: 'Minimum Length.placeholder',
     type: 'number',
-    tooltip: 'The minimum length requirement this field must meet.'
+    tooltip: 'Minimum Length.tooltip'
   },
   'validate.maxLength': {
     label: 'Maximum Length',
-    placeholder: 'Maximum Length',
+    placeholder: 'Maximum Length.placeholder',
     type: 'number',
-    tooltip: 'The maximum length requirement this field must meet'
+    tooltip: 'Maximum Length.tooltip'
   },
   'validate.pattern': {
     label: 'Regular Expression Pattern',
-    placeholder: 'Regular Expression Pattern',
-    tooltip: 'The regular expression pattern test that the field value must pass before the form can be submitted.'
+    placeholder: 'Regular Expression Pattern.placeholder',
+    tooltip: 'Regular Expression Pattern.tooltip'
   },
   'customClass': {
     label: 'Custom CSS Class',
-    placeholder: 'Custom CSS Class',
-    tooltip: 'Custom CSS class to add to this component.'
+    placeholder: 'Custom CSS Class.placeholder',
+    tooltip: 'Custom CSS Class.tooltip'
   },
   'tabindex': {
     label: 'Tab Index',
-    placeholder: 'Tab Index',
-    tooltip: 'Sets the tabindex attribute of this component to override the tab order of the form. See the <a href=\'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex\'>MDN documentation</a> on tabindex for more information.'
+    placeholder: 'Tab Index.placeholder',
+    tooltip: 'Tab Index.tooltip'
   },
   'addAnother': {
     label: 'Add Another Text',
-    placeholder: 'Add Another',
-    tooltip: 'Set the text of the Add Another button.'
+    placeholder: 'Add Another Text.placeholder',
+    tooltip: 'placeholder.tooltip'
   },
   'defaultDate': {
     label: 'Default Value',
-    placeholder: 'Default Value',
-    tooltip: 'You can use Moment.js functions to set the default value to a specific date. For example: \n \n moment().subtract(10, \'days\').calendar();'
+    placeholder: 'Default Value.placeholder',
+    tooltip: 'Default Value.tooltip'
   },
   // Need to use array notation to have dash in name
   'style[\'margin-top\']': {
     label: 'Margin Top',
-    placeholder: '0px',
-    tooltip: 'Sets the top margin of this component. Must be a valid CSS measurement like `10px`.'
+    placeholder: 'tooltip.placeholder',
+    tooltip: 'Margin Top.tooltip'
   },
   'style[\'margin-right\']': {
     label: 'Margin Right',
-    placeholder: '0px',
-    tooltip: 'Sets the right margin of this component. Must be a valid CSS measurement like `10px`.'
+    placeholder: 'Margin Right.placeholder',
+    tooltip: 'Margin Right.tooltip'
   },
   'style[\'margin-bottom\']': {
     label: 'Margin Bottom',
-    placeholder: '0px',
-    tooltip: 'Sets the bottom margin of this component. Must be a valid CSS measurement like `10px`.'
+    placeholder: 'Margin Bottom.placeholder',
+    tooltip: 'Margin Bottom.tooltip'
   },
   'style[\'margin-left\']': {
     label: 'Margin Left',
-    placeholder: '0px',
-    tooltip: 'Sets the left margin of this component. Must be a valid CSS measurement like `10px`.'
+    placeholder: 'Margin Left.placeholder',
+    tooltip: 'Margin Left.tooltip'
   },
   'addResource': {
     label: 'Show Add Resource Button',
     type: 'checkbox',
-    tooltip: 'Include a button for adding a new resource'
+    tooltip: 'Show Add Resource Button.tooltip'
   },
   'addResourceLabel': {
     label: 'Add Resource Text',
-    placeholder: 'Add Resource',
-    tooltip: 'Set the text of the Add Resource button.'
+    placeholder: 'Add Resource Text.placeholder',
+    tooltip: 'Add Resource Text.tooltip'
   }
 };
 
-},{}],243:[function(_dereq_,module,exports){
+},{}],247:[function(_dereq_,module,exports){
+"use strict";
+/**
+ * 表单设计器控制工具菜单定义
+ */
+module.exports = {
+    'items': [{
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.SAVE',
+        'cssClass': 'glyphicon glyphicon-floppy-disk',
+        'action': 'saveModel'
+			}, {
+        'type': 'separator',
+        'title': '',
+        'cssClass': 'toolbar-separator'
+			}, {
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.TEMPLATE',
+        'cssClass': 'glyphicon glyphicon-list-alt',
+        'action': 'template',
+        'enabledAction': 'element'
+			}, {
+        'type': 'separator',
+        'title': '',
+        'cssClass': 'toolbar-separator'
+			}, {
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.IMPORT',
+        'cssClass': 'glyphicon glyphicon-import',
+        'action': 'import',
+        'enabledAction': 'element'
+			}, {
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.EXPORT',
+        'cssClass': 'glyphicon glyphicon-export',
+        'action': 'export'
+			}, {
+        'type': 'separator',
+        'title': '',
+        'cssClass': 'toolbar-separator'
+			}, {
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.PREVIEW',
+        'cssClass': 'glyphicon glyphicon-eye-open',
+        'action': 'preview',
+        'enabledAction': 'element'
+			}, {
+        'type': 'separator',
+        'title': '',
+        'cssClass': 'toolbar-separator'
+			}, {
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.DEBUG',
+        'cssClass': 'glyphicon glyphicon-console',
+        'action': 'debug',
+        'enabledAction': 'element'
+			}],
+
+    'secondaryItems': [{
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.HELP',
+        'cssClass': 'glyphicon glyphicon-question-sign',
+        'action': 'help'
+			}, {
+        'type': 'separator',
+        'title': '',
+        'cssClass': 'toolbar-separator'
+			}, {
+        'type': 'button',
+        'title': 'TOOLBAR.ACTION.CLOSE',
+        'cssClass': 'glyphicon glyphicon-remove',
+        'action': 'closeEditor'
+			}],
+
+    'actions':{
+        'saveModel': function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            var log = services['log'];
+            var dialog = ngDialog.open({
+                template: 'formio/formbuilder/toolbar/save.html',
+                scope:services['rootScope'],
+                controller:['$scope',function(scope) {
+
+                }]
+            }).closePromise.then(function(e) {
+                log.debug(e);
+            });
+        },
+        'template':function() {},
+        'import':function() {},
+        'export':function() {},
+        'debug':function() {
+            var services = arguments[0];
+            var rootScope = services['rootScope'];
+            rootScope.showDebugConsole = (!rootScope.showDebugConsole);
+        },
+        'help':function() {},
+        'closeEditor':function() {}
+    }
+};
+
+},{}],248:[function(_dereq_,module,exports){
 "use strict";
 module.exports = {
   actions: [
@@ -9578,7 +9864,7 @@ module.exports = {
   ]
 };
 
-},{}],244:[function(_dereq_,module,exports){
+},{}],249:[function(_dereq_,module,exports){
 "use strict";
 /*eslint max-statements: 0*/
 var _cloneDeep = _dereq_('lodash/cloneDeep');
@@ -9890,7 +10176,7 @@ module.exports = ['debounce', function(debounce) {
   };
 }];
 
-},{"lodash/capitalize":168,"lodash/cloneDeep":170,"lodash/each":173,"lodash/groupBy":177,"lodash/merge":197,"lodash/omitBy":199,"lodash/upperFirst":207}],245:[function(_dereq_,module,exports){
+},{"lodash/capitalize":168,"lodash/cloneDeep":170,"lodash/each":173,"lodash/groupBy":177,"lodash/merge":197,"lodash/omitBy":199,"lodash/upperFirst":211}],250:[function(_dereq_,module,exports){
 "use strict";
 /**
  * Create the form-builder-component directive.
@@ -9906,46 +10192,38 @@ module.exports = [
   }
 ];
 
-},{}],246:[function(_dereq_,module,exports){
+},{}],251:[function(_dereq_,module,exports){
 "use strict";
 'use strict';
 var utils = _dereq_('formiojs/utils');
 var _get = _dereq_('lodash/get');
 var _reject = _dereq_('lodash/reject');
-module.exports = [
-  function() {
+module.exports = ['$filter',
+  function($filter) {
+    var formioTranslate = $filter('formioTranslate');
     return {
       restrict: 'E',
       scope: true,
       template: '' +
         '<uib-accordion>' +
-          '<div uib-accordion-group heading="Simple" class="panel panel-default" is-open="status.simple">' +
-            'This component should Display:' +
+          '<div uib-accordion-group heading="{{\'Conditional.Simple\' | translate}}" class="panel panel-default" is-open="status.simple">' +
+            '{{\'Conditional.Simple.Display\' | translate}}:' +
             '<select class="form-control input-md" ng-model="component.conditional.show">' +
-            '<option ng-repeat="item in _booleans track by $index" value="{{item}}">{{item.toString()}}</option>' +
+            '<option ng-repeat="item in _booleans track by $index" value="{{item}}">{{item.toString() | translate}}</option>' +
             '</select>' +
-            '<br>When the form component:' +
+            '<br>{{\'Conditional.Simple.Component\' | translate}}:' +
             '<select class="form-control input-md" ng-model="component.conditional.when">' +
             '<option ng-repeat="item in _components track by $index" value="{{item.key}}">{{item !== "" ? item.label + " (" + item.key + ")" : ""}}</option>' +
             '</select>' +
-            '<br>Has the value:' +
+            '<br>{{\'Conditional.Simple.Value\' | translate}}:' +
             '<input type="text" class="form-control input-md" ng-model="component.conditional.eq">' +
           '</div>' +
-          '<div uib-accordion-group heading="Advanced" class="panel panel-default" is-open="status.advanced">' +
+          '<div uib-accordion-group heading="{{\'Conditional.Advanced\' | translate}}" class="panel panel-default" is-open="status.advanced">' +
             '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.customConditional" placeholder="/*** Example Code ***/\nshow = (data[\'mykey\'] > 1);"></textarea>' +
-            '<small>' +
-            '<p>Enter custom conditional code.</p>' +
-            '<p>You must assign the <strong>show</strong> variable as either <strong>true</strong> or <strong>false</strong>.</p>' +
-            '<p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
-            '<p><strong>Note: Advanced Conditional logic will override the results of the Simple Conditional logic.</strong></p>' +
-            '</small>' +
+            formioTranslate('Conditional.Advanced.Tooltip') +
           '</div>' +
-          '<div uib-accordion-group heading="JSON Conditional" class="panel panel-default" is-open="status.json">' +
-            '<small>' +
-              '<p>Execute custom validation logic with JSON and <a href="http://jsonlogic.com/">JsonLogic</a>.</p>' +
-              '<p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
-              '<p><a href="http://formio.github.io/formio.js/app/examples/conditions.html" target="_blank">Click here for an example</a></p>' +
-            '</small>' +
+          '<div uib-accordion-group heading="{{\'Conditional.JSON Conditional\' | translate}}" class="panel panel-default" is-open="status.json">' +
+            formioTranslate('Conditional.JSON Conditional.Tooltip') +
             '<textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.conditional.json" placeholder="{ ... }"></textarea>' +
           '</div>' +
         '</uib-accordion>',
@@ -10001,7 +10279,7 @@ module.exports = [
   }
 ];
 
-},{"formiojs/utils":2,"lodash/get":176,"lodash/reject":202}],247:[function(_dereq_,module,exports){
+},{"formiojs/utils":2,"lodash/get":176,"lodash/reject":202}],252:[function(_dereq_,module,exports){
 "use strict";
 var _isNumber = _dereq_('lodash/isNumber');
 var _camelCase = _dereq_('lodash/camelCase');
@@ -10162,6 +10440,7 @@ module.exports = [
         // Show confirm dialog before removing a component
         ngDialog.open({
           template: 'formio/components/confirm-remove.html',
+          width: 500,
           showClose: false
         }).closePromise.then(function(e) {
           var cancelled = e.value === false || e.value === '$closeButton' || e.value === '$document' || e.value === '$escape';
@@ -10266,7 +10545,7 @@ module.exports = [
   }
 ];
 
-},{"lodash/assign":166,"lodash/camelCase":167,"lodash/isNumber":187}],248:[function(_dereq_,module,exports){
+},{"lodash/assign":166,"lodash/camelCase":167,"lodash/isNumber":187}],253:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   'formioElementDirective',
@@ -10291,7 +10570,7 @@ module.exports = [
   }
 ];
 
-},{}],249:[function(_dereq_,module,exports){
+},{}],254:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   function() {
@@ -10314,7 +10593,7 @@ module.exports = [
   }
 ];
 
-},{}],250:[function(_dereq_,module,exports){
+},{}],255:[function(_dereq_,module,exports){
 "use strict";
 /**
 * This directive creates a field for tweaking component options.
@@ -10334,7 +10613,6 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
     replace: true,
     template: function(el, attrs) {
       var formioTranslate = $filter('formioTranslate');
-
       var property = attrs.property;
       var label = attrs.label || (COMMON_OPTIONS[property] && COMMON_OPTIONS[property].label) || '';
       var placeholder = (COMMON_OPTIONS[property] && COMMON_OPTIONS[property].placeholder) || null;
@@ -10375,7 +10653,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
       }
 
       input.addClass('form-control');
-      return '<div class="form-group">' +
+      return '<div class="form-group" style="margin-bottom:7px;">' +
                 '<label for="' + property + '" form-builder-tooltip="' + formioTranslate(tooltip) + '">' + formioTranslate(label) + '</label>' +
                 input.prop('outerHTML') +
               '</div>';
@@ -10383,7 +10661,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
   };
 }];
 
-},{}],251:[function(_dereq_,module,exports){
+},{}],256:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for editing a component's custom validation.
@@ -10424,7 +10702,7 @@ module.exports = function() {
   };
 };
 
-},{}],252:[function(_dereq_,module,exports){
+},{}],257:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for a field to edit a component's key.
@@ -10438,7 +10716,7 @@ module.exports = function() {
                 '<div class="alert alert-warning" role="alert" ng-if="!component.isNew">' +
                 'Changing the API key will cause you to lose existing submission data associated with this component.' +
                 '</div>' +
-                '<label for="key" class="control-label" form-builder-tooltip="The name of this field in the API endpoint.">Property Name</label>' +
+                '<label for="key" class="control-label" form-builder-tooltip="API.Property Name">{{\'API.Property Name\' | translate}}</label>' +
                 '<input type="text" class="form-control" id="key" name="key" ng-model="component.key" valid-api-key value="{{ component.key }}" ' +
                 'ng-disabled="component.source" ng-blur="onBlur()">' +
                 '<p ng-if="shouldWarnAboutEmbedding()" class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> ' +
@@ -10470,7 +10748,7 @@ module.exports = function() {
   };
 };
 
-},{}],253:[function(_dereq_,module,exports){
+},{}],258:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for a field to edit a component's tags.
@@ -10483,7 +10761,7 @@ module.exports = function() {
     template: function() {
       return '' +
         '<div class="form-group">' +
-        '  <label class="control-label" form-builder-tooltip="Tag the field for use in custom logic.">Field Tags</label>' +
+        '  <label class="control-label" form-builder-tooltip="API.Field Tags">{{\'API.Field Tags\' | translate}}</label>' +
         '  <tags-input ng-model="tags" on-tag-added="addTag($tag)" on-tag-removed="removeTag($tag)"></tags-input>' +
         '</div>';
     },
@@ -10514,7 +10792,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/map":195}],254:[function(_dereq_,module,exports){
+},{"lodash/map":195}],259:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   function() {
@@ -10536,7 +10814,7 @@ module.exports = [
   }
 ];
 
-},{}],255:[function(_dereq_,module,exports){
+},{}],260:[function(_dereq_,module,exports){
 "use strict";
 /**
  * A directive for a table builder
@@ -10590,7 +10868,50 @@ module.exports = function() {
   };
 };
 
-},{"lodash/merge":197}],256:[function(_dereq_,module,exports){
+},{"lodash/merge":197}],261:[function(_dereq_,module,exports){
+"use strict";
+var formioBuilderToolbarCongfig = _dereq_('../constants/config');
+var _slice = _dereq_('lodash/slice');
+module.exports = function() {
+	return {
+			restrict: 'E',
+			replace: true,
+			templateUrl: 'formio/formbuilder/toolbar.html',
+			controller:['$rootScope','$scope','ngDialog','$http','$log', function($rootScope,$scope,ngDialog,$http,$log) {
+				$scope.toolbarConfig = formioBuilderToolbarCongfig;
+				var services = {'rootScope':$rootScope,'scope':$scope,'ngDialog':ngDialog,'http':$http,'log':$log};
+				var executeFunctionByName = function(fn) {
+					var args = _slice(arguments, 1);
+					return fn.apply(this, args);
+				};
+
+				$scope.toolbarSecondaryButtonClicked = function($index) {
+					var item = formioBuilderToolbarCongfig.secondaryItems[$index];
+					if (item) {
+						var fn = formioBuilderToolbarCongfig.actions[item.action];
+						if (fn && typeof (fn) === 'function') {
+							executeFunctionByName(fn, services);
+						}
+					}
+				},
+
+				$scope.toolbarButtonClicked = function($index) {
+					var item = formioBuilderToolbarCongfig.items[$index];
+					if (item) {
+						var fn = formioBuilderToolbarCongfig.actions[item.action];
+						if (fn && typeof (fn) === 'function') {
+							executeFunctionByName(fn, services);
+						}
+					}
+				};
+			}],
+			link: function(scope, element, attrs, controllers) {
+				/*TODO 添加点击事件处理函数*/
+			}
+	};
+};
+
+},{"../constants/config":247,"lodash/slice":203}],262:[function(_dereq_,module,exports){
 "use strict";
 /**
 * Invokes Bootstrap's popover jquery plugin on an element
@@ -10631,7 +10952,7 @@ module.exports = ['$filter', function($filter) {
   };
 }];
 
-},{}],257:[function(_dereq_,module,exports){
+},{}],263:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function() {
   return {
@@ -10668,7 +10989,7 @@ module.exports = function() {
   };
 };
 
-},{}],258:[function(_dereq_,module,exports){
+},{}],264:[function(_dereq_,module,exports){
 "use strict";
 /*
 * Prevents user inputting invalid api key characters.
@@ -10691,7 +11012,7 @@ module.exports = function() {
   };
 };
 
-},{}],259:[function(_dereq_,module,exports){
+},{}],265:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive that provides a UI to add {value, label} objects to an array.
@@ -10772,7 +11093,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/camelCase":167,"lodash/map":195}],260:[function(_dereq_,module,exports){
+},{"lodash/camelCase":167,"lodash/map":195}],266:[function(_dereq_,module,exports){
 "use strict";
 'use strict';
 
@@ -10881,7 +11202,7 @@ module.exports = ['FormioUtils', function(FormioUtils) {
   };
 }];
 
-},{}],261:[function(_dereq_,module,exports){
+},{}],267:[function(_dereq_,module,exports){
 "use strict";
 // Create an AngularJS service called debounce
 module.exports = ['$timeout','$q', function($timeout, $q) {
@@ -10915,19 +11236,289 @@ module.exports = ['$timeout','$q', function($timeout, $q) {
   };
 }];
 
-},{}],262:[function(_dereq_,module,exports){
+},{}],268:[function(_dereq_,module,exports){
 "use strict";
-/*! ng-formio-builder v2.16.6 | https://unpkg.com/ng-formio-builder@2.16.6/LICENSE.txt */
+/**
+ * [exports description]
+ * @type {Object}
+ */
+module.exports = {
+    'HEADER.BRAND': '表单设计器',
+    'HEADER.TITLE': '表单设计器@Xiaobin.Zhang',
+    'PAGE.HEADER': 'Orchestration Details',
+
+    'BASIC_COMPONENTS_TITLE': '基 础 控 件',
+    'ADVANCED_COMPONENTS_TITLE': '高 级 控 件',
+    'LAYOUT_COMPONENTS_TITLE': '布 局',
+
+    'false':'否',
+    'true':'是',
+
+    'Component': '控件',
+    'Text Field': '文本',
+    'Number': '数字',
+    'Password':'密码',
+    'Text Area':'文本域',
+    'Check Box':'复选框',
+    'Select Boxes':'复选框组',
+    'Select':'下拉框',
+    'Radio':'单选框',
+    'HTML Element':'HTML元素',
+    'Content':'描述文本',
+    'Button':'按钮',
+    'Email':'电子邮件',
+    'Phone Number':'移动电话',
+    'Address':'地址',
+    'Date / Time':'日期／时间',
+    'Day':'日期',
+    'Currency':'货币',
+    'Hidden':'隐藏域',
+    'Resource':'资源',
+    'File':'附件',
+    'Signature':'签名画板',
+    'Custom':'自定义',
+    'Container':'容器',
+    'Data Grid':'数据表格',
+    'Survey':'问卷',
+    'Columns':'列',
+    'Field Set':'元素组',
+    'Panel':'面板',
+    'Table':'表格',
+    'Well':'Well',
+
+    'ACTION.OK': '确认',
+    'ACTION.SAVE': '保存',
+    'ACTION.SAVE-AND-CLOSE': '保存并关闭',
+    'ACTION.SEND': '发送',
+    'ACTION.CANCEL': '取消',
+    'ACTION.SELECT': '选择',
+    'ACTION.ADD': '添加',
+    'ACTION.REMOVE': '清除',
+    'ACTION.MOVE.UP': '上移',
+    'ACTION.MOVE.DOWN': '下移',
+
+    'DIALOG.ACTION.SAVE': '保存',
+    'DIALOG.ACTION.CANCEL': '取消',
+    'DIALOG.ACTION.REMOVE': '删除',
+
+    'MAIN_NAVIGATION_ORCHESTRATIONS': '业务流程',
+    'MAIN_NAVIGATION_DISPATCH_RULES': '调度规则',
+    'MAIN_NAVIGATION_ASSET_GROUPS': '审批组',
+    'MAIN_NAVIGATION_SOLUTIONS': '解决',
+
+    'TOOLBAR.ACTION.CLOSE': '关闭设计器',
+    'TOOLBAR.ACTION.SAVE': '保存',
+    'TOOLBAR.ACTION.PREVIEW': '预览',
+    'TOOLBAR.ACTION.DEBUG': '开发模式',
+    'TOOLBAR.ACTION.IMPORT': '导入',
+    'TOOLBAR.ACTION.EXPORT': '导出',
+    'TOOLBAR.ACTION.TEMPLATE': '模板',
+
+    'Label':'标签',
+    'Label.placeholder':'请填写标签信息',
+    'Label.tooltip':'标签为元素显示名称',
+
+    'Default Value':'默认值',
+    'Default Value.placeholder':'请填写默认值',
+    'Default Value.tooltip':'如果值为空，用该默认值替换',
+
+    'Placeholder':'占位符',
+    'Placeholder.placeholder':'请填写占位符信息',
+    'Placeholder.tooltip':'占位符会在元素没有值输入的情况下出现',
+
+    'Description':'描述',
+    'Description.placeholder':'请填写描述信息',
+    'Description.tooltip':'描述该元素相关信息',
+
+    'Input Mask':'输入掩码',
+    'Input Mask.placeholder':'请输入掩码信息',
+    'Input Mask.tooltip':'掩码可以帮助用户快速正确输入信息.<br><br>9: 数字<br>a: 字母<br>*: 字母和数字<br><br>举例 手机号码: (+86) 99999999999<br>',
+
+    'Prefix':'前缀',
+    'Prefix.placeholder':'请填写前缀信息,例如 \'￥\', \'@\'',
+    'Prefix.tooltip':'前缀会显示在元素之前',
+
+    'Suffix':'后缀',
+    'Suffix.placeholder':'请填写后缀信息,例如 \'￥\', \'@\'',
+    'Suffix.tooltip':'后缀会显示在元素之后',
+
+    'Custom CSS Class':'自定义样式类',
+    'Custom CSS Class.placeholder':'请输入样式类信息',
+    'Custom CSS Class.tooltip':'自定义样式类',
+
+    'Multiple Values':'允许多值',
+    'Multiple Values.tooltip':'该元素允许输入多个值',
+
+    'Disabled':'是否禁用',
+    'Disabled.tooltip':'禁用该元素',
+
+    'Clear Value On Refresh':'当刷新时清空值',
+    'Clear Value On Refresh.tooltip':'当刷新时清空值',
+
+    'Clear Value When Hidden':'当隐藏时清空值',
+    'Clear Value When Hidden.tooltip':'当隐藏时清空值',
+
+    'Unique':'唯一',
+    'Unique.tooltip':'该值在数据库中保持唯一',
+
+    'Protected':'受保护',
+    'Protected.tooltip':'受保护的元素在查询时不可见',
+
+    'Display as images':'以图片方式展示',
+    'Display as images.tooltip':'以图片方式展示',
+
+    'Image Size':'图片尺寸',
+    'Image Size.tooltip':'图片尺寸',
+
+    'Persistent':'持久化',
+    'Persistent.tooltip': '持久化的元素值会保存在后端数据库中',
+
+    'PHidden':'隐藏',
+    'PHidden.tooltip': '元素会被影藏，但任然是表单的一部分',
+
+    'Block':'块级元素',
+    'Block.tooltip': '块级元素会撑满父容器的空间',
+
+    'Left Icon':'左图标',
+    'Left Icon.placeholder': '输入图片样式类',
+    'Left Icon.tooltip': '用于显示图标. 举例: \'glyphicon glyphicon-search\' 或 \'fa fa-plus\'',
+
+    'Right Icon':'右图标',
+    'Right Icon.placeholder': '输入图片样式类',
+    'Right Icon.tooltip': '用于显示图标. 举例: \'glyphicon glyphicon-search\' 或 \'fa fa-plus\'',
+
+    'Upload Url':'上传路径',
+    'Upload.placeholder': '输入文件上传的路径',
+    'Upload.tooltip': '文件上传的路径',
+
+    'Directory':'目录',
+    'Directory.placeholder': '(可选) 输入文件存放的目录',
+    'Directory.tooltip': '该目录用于存放所有上传的文件',
+
+    'Disable on Form Invalid':'表单验证非法时禁用',
+    'Disable on Form Invalid.tooltip': '如果表单验证不通过，该元素将被禁用',
+
+    'Striped':'条纹',
+    'Striped.tooltip': '设置表格为条纹状',
+
+    'Bordered':'边框',
+    'Bordered.tooltip': '设置表格的边框',
+
+    'Hover':'悬停',
+    'Hover.tooltip': '鼠标悬停时高亮',
+
+    'Condensed': '紧凑',
+    'Condensed.tooltip': '设置表格紧凑',
+
+    'Datagrid Label':'数据表格标签',
+    'Datagrid Label.tooltip': '当在表格中时展示该标签',
+
+    'Required':'必填',
+    'Required.tooltip':'必填',
+
+    'Minimum Length':'最小长度',
+    'Minimum Length.placeholder':'请输入最小长度信息',
+    'Minimum Length.tooltip': '最小长度',
+
+    'Maximum Length':'最大长度',
+    'Maximum Length.placeholder': '请输入最大长度信息',
+    'Maximum Length.tooltip': '最大长度',
+
+    'Regular Expression Pattern':'正则表达式',
+    'Regular Expression Pattern.placeholder': '请输入正则表达式',
+    'Regular Expression.tooltip': '正则表达式',
+
+    'Tab Index':'Tab键顺序',
+    'Tab Index.placeholder': '请输入Tab键顺序',
+    'Tab Index.tooltip': 'Tab键顺序',
+
+    'Add Another Text': '增加',
+    'Add Another Text.placeholder': '增加',
+    'Add Another Text.tooltip': '设置增加按钮名称',
+
+  // Need to use array notation to have dash in name
+    'Margin Top':'外边距[Top]',
+    'Margin Top.placeholder': '0px',
+    'Margin Top.tooltip': '外边距[Top]',
+
+    'Margin Bottom':'外边距[Bottom]',
+    'Margin Bottom.placeholder': '0px',
+    'Margin Bottom.tooltip': '外边距[Bottom]',
+
+    'Margin Left':'外边距[Left]',
+    'Margin Left.placeholder': '0px',
+    'Margin Left.tooltip': '外边距[Left]',
+
+    'Margin Right':'外边距[Right]',
+    'Margin Right.placeholder': '0px',
+    'Margin Right.tooltip': '外边距[Right]',
+
+    'Show Add Resource Button':'显示增加资源按钮',
+    'Show Add Resource Button.tooltip': '包含一个增加资源的按钮',
+
+    'Add Resource Text':'Add Resource Text',
+    'Add Resource Text.placeholder': 'Add Resource',
+    'Add Resource Text.tooltip': 'Set the text of the Add Resource button.',
+
+    'API.Field Tags':'属性标签',
+    'API.Property Name':'属性名称',
+
+    'Conditional.Simple':'简单',
+    'Conditional.Simple.Display':'是否显示',
+    'Conditional.Simple.Component':'元素',
+    'Conditional.Simple.Value':'值',
+    'Conditional.Advanced':'高级',
+    'Conditional.Advanced.Tooltip':'<small><p>必须指定 <strong>show</strong> 变量的值为 <strong>true</strong> 或 <strong>false</strong>.</p><p>提供全局变量 <strong>data</strong> , 可以通过元素属性获取元素的值.</p><p><strong>提示: 高级条件设置的条件会覆盖简单条件设置的条件.</strong></p></small>',
+    'Conditional.JSON Conditional':'JSON Conditional',
+    'Conditional.JSON Conditional.Tooltip':'<small><p>执行自定义 <strong>JsonLogic</strong>.</p><p>可以通过元素属性获取元素的值.</p></small>',
+
+    'Display':'显示',
+    'Data':'数据',
+    'Validation':'验证',
+    'API':'属性',
+    'Layout':'布局',
+    'Conditional':'约束条件',
+
+    'Layout.Overlay':'Overlay',
+    'Layout.Overlay.Style':'样式',
+    'Layout.Overlay.Left':'左边',
+    'Layout.Overlay.Top':'顶部',
+    'Layout.Overlay.Width':'宽度',
+    'Layout.Overlay.Height':'高度',
+
+    'Removing this component will also': '移除该控件会同时',
+    'remove all of its children': '移除它的所有子元素',
+    'Are you sure you want to do this': '您是否确认',
+    'Drag and Drop a form component': '请 拖 拽 控 件',
+    'Preview':'预 览',
+
+    'MODEL.NAEM.title':'表单名称',
+    'MODEL.NAEM.placeholder':'请填写表单名称信息',
+    'MODEL.DESC.title':'表单描述',
+    'MODEL.DESC.placeholder':'请填写表单描述信息',
+    'TOOLBAR.ACTION.SAVE.title':'保存模型',
+
+    'Basic Components': '基础控件',
+    'Special Components': '高级控件',
+    'Layout Components': '布局'
+};
+
+},{}],269:[function(_dereq_,module,exports){
+"use strict";
+/*! ng-formio-builder v2.17.0 | https://unpkg.com/ng-formio-builder@2.17.0/LICENSE.txt */
 /*global window: false, console: false, jQuery: false */
 /*jshint browser: true */
 
+var i18n = _dereq_('./i18n/zh-CN.js');
 
 var app = angular.module('ngFormBuilder', [
   'formio',
   'dndLists',
   'ngDialog',
   'ui.bootstrap.accordion',
-  'ckeditor'
+  'ckeditor',
+  'pascalprecht.translate',
+  'ngTagsInput'
 ]);
 
 app.constant('FORM_OPTIONS', _dereq_('./constants/formOptions'));
@@ -10985,6 +11576,8 @@ app.factory('BuilderUtils', _dereq_('./factories/BuilderUtils'));
 
 app.directive('formBuilder', _dereq_('./directives/formBuilder'));
 
+app.directive('formBuilderToolbar', _dereq_('./directives/formBuilderToolbar'));
+
 app.directive('formBuilderComponent', _dereq_('./directives/formBuilderComponent'));
 
 app.directive('formBuilderElement', _dereq_('./directives/formBuilderElement'));
@@ -11025,6 +11618,10 @@ app.value('dndDragIframeWorkaround', {
   isDragging: false
 });
 
+app.config(['$translateProvider',function($translateProvider) {
+    $translateProvider.translations('zh-CN', i18n).preferredLanguage('zh-CN');
+}]);
+
 app.run([
   '$templateCache',
   '$rootScope',
@@ -11040,36 +11637,64 @@ app.run([
     });
 
     $templateCache.put('formio/formbuilder/editbuttons.html',
-      "<div class=\"component-btn-group\">\n  <div class=\"btn btn-xxs btn-danger component-settings-button component-settings-button-remove\" style=\"z-index: 1000\" ng-click=\"removeComponent(component, formComponent.confirmRemove)\"><span class=\"glyphicon glyphicon-remove\"></span></div>\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-clone\" style=\"z-index: 1000\" ng-click=\"cloneComponent(component)\"><span class=\"glyphicon glyphicon-new-window\"></span></div>\n  <div ng-if=\"::!hideMoveButton\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-move\" style=\"z-index: 1000\"><span class=\"glyphicon glyphicon glyphicon-move\"></span></div>\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-edit\" style=\"z-index: 1000\" ng-click=\"editComponent(component)\"><span class=\"glyphicon glyphicon-cog\"></span></div>\n</div>\n"
+      "<div class=\"component-btn-group\">\r\n  <div class=\"btn btn-xxs btn-danger component-settings-button component-settings-button-remove\" style=\"z-index: 1000\" ng-click=\"removeComponent(component, formComponent.confirmRemove)\"><span class=\"glyphicon glyphicon-remove\"></span></div>\r\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-clone\" style=\"z-index: 1000\" ng-click=\"cloneComponent(component)\"><span class=\"glyphicon glyphicon-new-window\"></span></div>\r\n  <div ng-if=\"::!hideMoveButton\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-move\" style=\"z-index: 1000\"><span class=\"glyphicon glyphicon glyphicon-move\"></span></div>\r\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-edit\" style=\"z-index: 1000\" ng-click=\"editComponent(component)\"><span class=\"glyphicon glyphicon-cog\"></span></div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/component.html',
-      "<div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\n  <div ng-if=\"::!hideButtons\" ng-include=\"'formio/formbuilder/editbuttons.html'\"></div>\n  <div class=\"form-group has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\n    <form-builder-element></form-builder-element>\n  </div>\n</div>\n"
+      "<div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\r\n  <div ng-if=\"::!hideButtons\" ng-include=\"'formio/formbuilder/editbuttons.html'\"></div>\r\n  <div class=\"form-group has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\r\n    <form-builder-element></form-builder-element>\r\n  </div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/list.html',
-      "<ul class=\"component-list\"\n    dnd-list=\"component.components\"\n    dnd-drop=\"addComponent(item, index)\">\n  <li ng-if=\"component.components.length < hideCount\">\n    <div class=\"alert alert-info\" style=\"text-align:center; margin-bottom: 5px;\" role=\"alert\">\n      Drag and Drop a form component\n    </div>\n  </li>\n  <!-- DO NOT PUT \"track by $index\" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->\n  <li ng-repeat=\"component in component.components\"\n      ng-if=\"!rootList || !form.display || (form.display === 'form') || (form.page === $index)\"\n      dnd-draggable=\"component\"\n      dnd-effect-allowed=\"move\"\n      dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n      dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n      dnd-moved=\"removeComponent(component, false)\">\n    <form-builder-component ng-if=\"!component.hideBuilder\"></form-builder-component>\n    <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\n  </li>\n</ul>\n"
+      "<ul class=\"component-list\"\r\n    dnd-list=\"component.components\"\r\n    dnd-drop=\"addComponent(item, index)\">\r\n  <li ng-if=\"component.components.length < hideCount\">\r\n    <div class=\"alert alert-dnd\" style=\"text-align:center; margin-bottom: 5px;\" role=\"alert\">\r\n      {{'Drag and Drop a form component' | translate}}\r\n    </div>\r\n  </li>\r\n  <!-- DO NOT PUT \"track by $index\" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->\r\n  <li ng-repeat=\"component in component.components\"\r\n      ng-if=\"!rootList || !form.display || (form.display === 'form') || (form.page === $index)\"\r\n      dnd-draggable=\"component\"\r\n      dnd-effect-allowed=\"move\"\r\n      dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n      dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n      dnd-moved=\"removeComponent(component, false)\">\r\n    <form-builder-component ng-if=\"!component.hideBuilder\"></form-builder-component>\r\n    <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\r\n  </li>\r\n</ul>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/row.html',
-      "<div class=\"formbuilder-row\">\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\n  <ul class=\"component-row formbuilder-group\"\n      dnd-list=\"component.components\"\n      dnd-drop=\"addComponent(item, index)\"\n      dnd-horizontal-list=\"true\">\n    <li ng-repeat=\"component in component.components\"\n        class=\"formbuilder-group-row pull-left\"\n        dnd-draggable=\"component\"\n        dnd-effect-allowed=\"move\"\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n        dnd-moved=\"removeComponent(component, false)\">\n      <form-builder-component></form-builder-component>\n      <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\n    </li>\n    <li class=\"formbuilder-group-row form-builder-drop\" ng-if=\"component.components.length < hideCount\">\n      <div class=\"alert alert-info\" role=\"alert\">\n        Drag and Drop a form component\n      </div>\n    </li>\n  </ul>\n  <div style=\"clear:both;\"></div>\n</div>\n"
+      "<div class=\"formbuilder-row\">\r\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\r\n  <ul class=\"component-row formbuilder-group\"\r\n      dnd-list=\"component.components\"\r\n      dnd-drop=\"addComponent(item, index)\"\r\n      dnd-horizontal-list=\"true\">\r\n    <li ng-repeat=\"component in component.components\"\r\n        class=\"formbuilder-group-row pull-left\"\r\n        dnd-draggable=\"component\"\r\n        dnd-effect-allowed=\"move\"\r\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n        dnd-moved=\"removeComponent(component, false)\">\r\n      <form-builder-component></form-builder-component>\r\n      <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\r\n    </li>\r\n    <li class=\"formbuilder-group-row form-builder-drop\" ng-if=\"component.components.length < hideCount\">\r\n      <div class=\"alert alert-info\" role=\"alert\">\r\n        Drag and Drop a form component\r\n      </div>\r\n    </li>\r\n  </ul>\r\n  <div style=\"clear:both;\"></div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/builder.html',
-      "<div class=\"row formbuilder\">\n  <div class=\"col-xs-4 col-sm-3 col-md-2 formcomponents\" ng-if=\"form && form.display\">\n    <uib-accordion close-others=\"true\" ng-if=\"form.display !== 'pdf'\">\n      <div uib-accordion-group ng-repeat=\"(groupName, group) in formComponentGroups\" heading=\"{{ group.title }}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel {{ group.panelClass }}\">\n        <uib-accordion close-others=\"true\" ng-if=\"group.subgroups\">\n          <div uib-accordion-group ng-repeat=\"(subgroupName, subgroup) in group.subgroups\" heading=\"{{ subgroup.title }}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel subgroup-accordion\">\n            <div ng-repeat=\"component in formComponentsByGroup[groupName][subgroupName]\" ng-if=\"component.title\"\n                dnd-draggable=\"component.settings\"\n                dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n                dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n                dnd-effect-allowed=\"copy\"\n                class=\"formcomponentcontainer\">\n              <span class=\"btn btn-primary btn-xs btn-block formcomponent\" title=\"{{component.title}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n                <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title }}\n              </span>\n            </div>\n          </div>\n        </uib-accordion>\n        <div ng-repeat=\"component in formComponentsByGroup[groupName]\" ng-if=\"!group.subgroup && component.title\"\n            dnd-draggable=\"component.settings\"\n            dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n            dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n            dnd-effect-allowed=\"copy\"\n            class=\"formcomponentcontainer\">\n          <span class=\"btn btn-primary btn-xs btn-block formcomponent\" title=\"{{component.title}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n            <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title }}\n          </span>\n        </div>\n      </div>\n    </uib-accordion>\n    <uib-accordion close-others=\"true\" ng-if=\"form.display === 'pdf'\">\n      <div uib-accordion-group heading=\"PDF Fields\" is-open=\"true\" class=\"panel panel-default form-builder-panel\">\n        <div class=\"formcomponentcontainer\" ng-repeat=\"pdftype in pdftypes\">\n          <span class=\"btn btn-primary btn-xs btn-block formcomponent\" title=\"{{ pdftype.title }}\" style=\"overflow: hidden; text-overflow: ellipsis;\" form-builder-draggable=\"pdftype\">\n            <i ng-if=\"pdftype.icon\" class=\"{{ pdftype.icon }}\"></i> {{ pdftype.title }}\n          </span>\n        </div>\n      </div>\n    </uib-accordion>\n  </div>\n  <div class=\"col-xs-8 col-sm-9 col-md-10 formarea\" ng-if=\"form && form.display\">\n    <ol class=\"breadcrumb\" ng-if=\"form.display === 'wizard'\">\n      <li ng-repeat=\"title in pages() track by $index\"><a class=\"label\" style=\"font-size:1em;\" ng-class=\"{'label-info': ($index === form.page), 'label-primary': ($index !== form.page)}\" ng-click=\"showPage($index)\">{{ title }}</a></li>\n      <li><a class=\"label label-success\" style=\"font-size:1em;\" ng-click=\"newPage()\" data-toggle=\"tooltip\" title=\"Create Page\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> page</a></li>\n    </ol>\n    <div class=\"dropzone\">\n      <div ng-if=\"form.display === 'pdf'\" ng-controller=\"formBuilderDnd\">\n        <div form-builder-droppable style=\"width:100%;height:2000px;position:absolute;\" id=\"fb-drop-zone\"></div>\n        <formio form=\"form\" ng-init=\"form.builder = true;\"></formio>\n      </div>\n      <form-builder-list ng-if=\"form.display !== 'pdf'\" component=\"form\" form=\"form\" formio=\"::formio\" hide-dnd-box-count=\"hideCount\" root-list=\"true\" class=\"rootlist\" options=\"options\"></form-builder-list>\n    </div>\n  </div>\n</div>\n"
+      "<div class=\"row formbuilder\">\r\n  <div class=\"col-xs-4 col-sm-3 col-md-2 formcomponents\" ng-if=\"form && form.display\">\r\n    <uib-accordion close-others=\"false\" ng-if=\"form.display !== 'pdf'\">\r\n      <div uib-accordion-group ng-repeat=\"(groupName, group) in formComponentGroups\" heading=\"{{ group.title | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel {{ group.panelClass }}\">\r\n        <uib-accordion close-others=\"false\" ng-if=\"group.subgroups\">\r\n          <div uib-accordion-group ng-repeat=\"(subgroupName, subgroup) in group.subgroups\" heading=\"{{ subgroup.title  | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel subgroup-accordion\">\r\n            <div ng-repeat=\"component in formComponentsByGroup[groupName][subgroupName]\" ng-if=\"component.title\"\r\n                dnd-draggable=\"component.settings\"\r\n                dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n                dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n                dnd-effect-allowed=\"copy\"\r\n                class=\"formcomponentcontainer\">\r\n              <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\r\n                <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </uib-accordion>\r\n        <div ng-repeat=\"component in formComponentsByGroup[groupName]\" ng-if=\"!group.subgroup && component.title\"\r\n            dnd-draggable=\"component.settings\"\r\n            dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n            dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n            dnd-effect-allowed=\"copy\"\r\n            class=\"formcomponentcontainer\">\r\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\r\n            <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </uib-accordion>\r\n    <uib-accordion close-others=\"false\" ng-if=\"form.display === 'pdf'\">\r\n      <div uib-accordion-group heading=\"PDF Fields\" is-open=\"true\" class=\"panel panel-default form-builder-panel\">\r\n        <div class=\"formcomponentcontainer\" ng-repeat=\"pdftype in pdftypes\">\r\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{ pdftype.title }}\" style=\"overflow: hidden; text-overflow: ellipsis;\" form-builder-draggable=\"pdftype\">\r\n            <i ng-if=\"pdftype.icon\" class=\"{{ pdftype.icon }}\"></i> {{ pdftype.title | translate}}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </uib-accordion>\r\n  </div>\r\n  <div class=\"col-xs-8 col-sm-7 col-md-7 col-sm-offset-1 col-md-offset-1 formarea\" ng-if=\"form && form.display\">\r\n    <ol class=\"breadcrumb\" ng-if=\"form.display === 'wizard'\">\r\n      <li ng-repeat=\"title in pages() track by $index\"><a class=\"label\" style=\"font-size:1em;\" ng-class=\"{'label-info': ($index === form.page), 'label-default': ($index !== form.page)}\" ng-click=\"showPage($index)\">{{ title }}</a></li>\r\n      <li><a class=\"label label-success\" style=\"font-size:1em;\" ng-click=\"newPage()\" data-toggle=\"tooltip\" title=\"Create Page\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> page</a></li>\r\n    </ol>\r\n    <div class=\"dropzone\">\r\n      <div ng-if=\"form.display === 'pdf'\" ng-controller=\"formBuilderDnd\">\r\n        <div form-builder-droppable style=\"width:100%;height:2000px;position:absolute;\" id=\"fb-drop-zone\"></div>\r\n        <formio form=\"form\" ng-init=\"form.builder = true;\"></formio>\r\n      </div>\r\n      <form-builder-list ng-if=\"form.display !== 'pdf'\" component=\"form\" form=\"form\" formio=\"::formio\" hide-dnd-box-count=\"hideCount\" root-list=\"true\" class=\"rootlist\" options=\"options\"></form-builder-list>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/datagrid.html',
-      "<div class=\"datagrid-dnd dropzone\" ng-controller=\"formBuilderDnd\">\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\n  <table class=\"table datagrid-table\" ng-class=\"{'table-striped': component.striped, 'table-bordered': component.bordered, 'table-hover': component.hover, 'table-condensed': component.condensed}\">\n    <tr>\n      <th style=\"padding:30px 0 10px 0\" ng-repeat=\"component in component.components\" ng-class=\"{'field-required': component.validate.required}\">\n        {{ (component.label || '') | formioTranslate:null:builder }}\n        <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\n      </th>\n    </tr>\n    <tr\n      class=\"component-list\"\n      dnd-list=\"component.components\"\n      dnd-drop=\"addComponent(item, index)\"\n    >\n      <td\n        ng-repeat=\"component in component.components\"\n        ng-init=\"hideMoveButton = true; component.hideLabel = true\"\n        dnd-draggable=\"component\"\n        dnd-effect-allowed=\"move\"\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n        dnd-moved=\"removeComponent(component, false)\"\n      >\n        <div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\n          <div class=\"has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\n            <div class=\"input-group\">\n              <form-builder-component></form-builder-component>\n            </div>\n          </div>\n        </div>\n      </td>\n      <td ng-if=\"component.components.length === 0\">\n        <div class=\"alert alert-info\" role=\"alert\">\n          Datagrid Components\n        </div>\n      </td>\n    </tr>\n  </table>\n  <div style=\"clear:both;\"></div>\n</div>\n"
+      "<div class=\"datagrid-dnd dropzone\" ng-controller=\"formBuilderDnd\">\r\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\r\n  <table class=\"table datagrid-table\" ng-class=\"{'table-striped': component.striped, 'table-bordered': component.bordered, 'table-hover': component.hover, 'table-condensed': component.condensed}\">\r\n    <tr>\r\n      <th style=\"padding:30px 0 10px 0\" ng-repeat=\"component in component.components\" ng-class=\"{'field-required': component.validate.required}\">\r\n        {{ (component.label || '') | formioTranslate:null:builder }}\r\n        <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\r\n      </th>\r\n    </tr>\r\n    <tr\r\n      class=\"component-list\"\r\n      dnd-list=\"component.components\"\r\n      dnd-drop=\"addComponent(item, index)\"\r\n    >\r\n      <td\r\n        ng-repeat=\"component in component.components\"\r\n        ng-init=\"hideMoveButton = true; component.hideLabel = true\"\r\n        dnd-draggable=\"component\"\r\n        dnd-effect-allowed=\"move\"\r\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n        dnd-moved=\"removeComponent(component, false)\"\r\n      >\r\n        <div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\r\n          <div class=\"has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\r\n            <div class=\"input-group\">\r\n              <form-builder-component></form-builder-component>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </td>\r\n      <td ng-if=\"component.components.length === 0\">\r\n        <div class=\"alert alert-info\" role=\"alert\">\r\n          Datagrid Components\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n  <div style=\"clear:both;\"></div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/components/confirm-remove.html',
-      "<form id=\"confirm-remove-dialog\">\n  <p>Removing this component will also <strong>remove all of its children</strong>! Are you sure you want to do this?</p>\n  <div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">Remove</button>&nbsp;\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">Cancel</button>&nbsp;\n    </div>\n  </div>\n</form>\n"
+      "<form id=\"confirm-remove-dialog\">\r\n  <p>{{'Removing this component will also' | translate}} <strong>{{'remove all of its children' | translate}}</strong>! {{'Are you sure you want to do this' | translate}}?</p>\r\n  <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.REMOVE' | translate}}</button>&nbsp;\r\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar.html',
+      "<div class=\"builder-toolbar\" id=\"builder-toolbar\">\r\n\t<div class=\"btn-group\">\r\n\t\t<div class=\"btn-toolbar pull-left\"\r\n\t\t\tng-cloak>\r\n\t\t\t<button id=\"{{item.id}}\" title=\"{{item.title | translate}}\"\r\n\t\t\t\tng-repeat=\"item in toolbarConfig.items\" ng-switch on=\"item.type\"\r\n\t\t\t\tclass=\"btn btn-inverse\"\r\n\t\t\t\tng-class=\"{'separator': item.type == 'separator'}\"\r\n\t\t\t\tng-disabled=\"item.type == 'separator' || item.enabled == false\"\r\n\t\t\t\tng-click=\"toolbarButtonClicked($index)\">\r\n\t\t\t\t<i ng-switch-when=\"button\" ng-class=\"item.cssClass\"\r\n\t\t\t\t\tclass=\"toolbar-button\" data-toggle=\"tooltip\"\r\n\t\t\t\t\ttitle=\"{{item.title | translate}}\"></i>\r\n\t\t\t\t<div ng-switch-when=\"separator\" ng-class=\"item.cssClass\"></div>\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div class=\"btn-group pull-right\" ng-show=\"!secondaryItems.length\">\r\n\t\t<div class=\"btn-toolbar pull-right\">\r\n\t\t\t<button title=\"{{item.title | translate}}\"\r\n\t\t\t\tng-repeat=\"item in toolbarConfig.secondaryItems\" ng-switch on=\"item.type\"\r\n\t\t\t\tclass=\"btn btn-inverse\"\r\n\t\t\t\tng-class=\"{'separator': item.type == 'separator'}\"\r\n\t\t\t\tng-disabled=\"item.type == 'separator'\"\r\n\t\t\t\tng-click=\"toolbarSecondaryButtonClicked($index)\" id=\"{{item.id}}\">\r\n\t\t\t\t<i ng-switch-when=\"button\" ng-class=\"item.cssClass\"\r\n\t\t\t\t\tclass=\"toolbar-button\" data-toggle=\"tooltip\"\r\n\t\t\t\t\ttitle=\"{{item.title | translate}}\"></i>\r\n\t\t\t\t<div ng-switch-when=\"separator\" ng-class=\"item.cssClass\"></div>\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/save.html',
+      "<form class=\"toolbar-action model-save\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-6\">\r\n  \t\t<p class=\"lead\" style=\"margin-top:0;margin-bottom:10px;\">{{'TOOLBAR.ACTION.SAVE.title' | translate}}</p>\r\n  \t</div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"modelName\">{{'MODEL.NAEM.title' | translate}}</label>\r\n    <input type=\"text\" class=\"form-control\" id=\"modelName\" placeholder=\"{{'MODEL.NAEM.placeholder' | translate}}\" ng-model=\"modelName\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"modelDesc\">{{'MODEL.DESC.title' | translate}}</label>\r\n    <textarea class=\"form-control\" id=\"modelDesc\" rows=\"3\" placeholder=\"{{'MODEL.DESC.placeholder' | translate}}\" ng-model=\"modelDesc\"></textarea>\r\n  </div>\r\n  <button type=\"submit\" class=\"btn btn-success pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.SAVE' | translate}}</button>&nbsp;\r\n  <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>\r\n</form>"
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/preview.html',
+      "<div class=\"row formRender\">\r\n\t<formio form=\"form\"></formio>\r\n</div>"
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/templates.html',
+      ""
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/import.html',
+      ""
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/confirm-close.html',
+      ""
+    );
+
+    $templateCache.put('formio/formbuilder/toolbar/help.html',
+      ""
     );
   }
 ]);
 
 _dereq_('./components');
 
-},{"./components":226,"./constants/commonOptions":242,"./constants/formOptions":243,"./directives/formBuilder":244,"./directives/formBuilderComponent":245,"./directives/formBuilderConditional":246,"./directives/formBuilderDnd":247,"./directives/formBuilderElement":248,"./directives/formBuilderList":249,"./directives/formBuilderOption":250,"./directives/formBuilderOptionCustomValidation":251,"./directives/formBuilderOptionKey":252,"./directives/formBuilderOptionTags":253,"./directives/formBuilderRow":254,"./directives/formBuilderTable":255,"./directives/formBuilderTooltip":256,"./directives/jsonInput":257,"./directives/validApiKey":258,"./directives/valueBuilder":259,"./factories/BuilderUtils":260,"./factories/debounce":261}]},{},[262])(262)
+},{"./components":230,"./constants/commonOptions":246,"./constants/formOptions":248,"./directives/formBuilder":249,"./directives/formBuilderComponent":250,"./directives/formBuilderConditional":251,"./directives/formBuilderDnd":252,"./directives/formBuilderElement":253,"./directives/formBuilderList":254,"./directives/formBuilderOption":255,"./directives/formBuilderOptionCustomValidation":256,"./directives/formBuilderOptionKey":257,"./directives/formBuilderOptionTags":258,"./directives/formBuilderRow":259,"./directives/formBuilderTable":260,"./directives/formBuilderToolbar":261,"./directives/formBuilderTooltip":262,"./directives/jsonInput":263,"./directives/validApiKey":264,"./directives/valueBuilder":265,"./factories/BuilderUtils":266,"./factories/debounce":267,"./i18n/zh-CN.js":268}]},{},[269])(269)
 });
