@@ -56,10 +56,17 @@ module.exports = {
     'ACTION.REMOVE': '清除',
     'ACTION.MOVE.UP': '上移',
     'ACTION.MOVE.DOWN': '下移',
+    'ACTION.PREVIEW':'预览',
+    'ACTION.CHOOSE':'选择',
+    'ACTION.DELETE':'删除',
 
+    'DIALOG.ACTION.OK': '确认',
     'DIALOG.ACTION.SAVE': '保存',
     'DIALOG.ACTION.CANCEL': '取消',
     'DIALOG.ACTION.REMOVE': '删除',
+    'DIALOG.ACTION.CLOSE-EDITOR': '关闭设计器',
+    'DIALOG.ACTION.IMPORT':'导入',
+    'DIALOG.ACTION.EXPORT':'导出',
 
     'MAIN_NAVIGATION_ORCHESTRATIONS': '业务流程',
     'MAIN_NAVIGATION_DISPATCH_RULES': '调度规则',
@@ -73,7 +80,14 @@ module.exports = {
     'TOOLBAR.ACTION.IMPORT': '导入',
     'TOOLBAR.ACTION.EXPORT': '导出',
     'TOOLBAR.ACTION.TEMPLATE': '模板',
-
+    'TOOLBAR.ACTION.SAVE.tooltip':'保存中...',
+    'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip':'保存成功！',
+    'TOOLBAR.ACTION.SAVE.FAIL.tooltip':'ERROR:保存失败！',
+  
+    'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip':'非常抱歉，暂时没有模板可供选择！',
+    'TOOLBAR.ACTION.HELP.NOT-IMPLEMENTED.tooltip':'非常抱歉,暂时没有帮助信息！',
+    'TOOLBAR.ACTION.CLOSE.UNSAVED-CLOSE.tooltip':'您未保存当前编辑内容，关闭设计器会导致数据丢失！',
+    
     'Label':'标签',
     'Label.placeholder':'请填写标签信息',
     'Label.tooltip':'标签为元素显示名称',

@@ -47,8 +47,9 @@ li:not(:hover) .component-btn-group .component-settings-button {
 }
 
 .formbuilder .alert-dnd {
-    color: #395684;
-    background-color: #f5f5f5;
+    color: #ffffff;
+    background-color: #395684;
+    font-weight: bold;
     border-color: #cccccc;
 } 
 
@@ -298,6 +299,7 @@ ul.component-list li {
 .formcomponents .formcomponent {
   text-align: left;
   padding-left: 15px;
+  background-color: #ccc;
 }
 
 /***************************** builder toolbar  *********************/
@@ -350,3 +352,26 @@ ul.component-list li {
 	height: 30px;
 }
 
+.model-templates .no-templates{
+    font-size: 18px;
+}
+
+.model-templates .thumbnail .desc{
+    color: #999;
+    font-size:13px;
+}
+
+.model-preview .model-metainfo{
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 15px;
+}
+
+.model-preview .model-render{
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 35px;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ccced0;
+}

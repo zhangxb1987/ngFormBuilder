@@ -1,17 +1,20 @@
 <form class="toolbar-action model-save">
   <div class="row">
-  	<div class="col-md-6">
-  		<p class="lead" style="margin-top:0;margin-bottom:10px;">{{'TOOLBAR.ACTION.SAVE.title' | translate}}</p>
+  	<div class="col-md-12">
+  		<p class="lead" style="margin-top:0;margin-bottom:10px;">
+            <i class="fa fa-cog fa-spin fa-2x fa-fw" ng-if="isLoading"></i>
+            <span ng-if="isLoading">&nbsp;&nbsp;{{'TOOLBAR.ACTION.SAVE.tooltip' | translate}}</span>
+            <span class="text-success" ng-if="(!isLoading) && requestSuccess">{{'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip' | translate}}</span>
+            <span class="text-danger" ng-if="(!isLoading) && (!requestSuccess)">{{'TOOLBAR.ACTION.SAVE.FAIL.tooltip' | translate}}</span>
+        </p>
   	</div>
   </div>
-  <div class="form-group">
+  <!--<div class="form-group">
     <label for="modelName">{{'MODEL.NAEM.title' | translate}}</label>
     <input type="text" class="form-control" id="modelName" placeholder="{{'MODEL.NAEM.placeholder' | translate}}" ng-model="modelName">
   </div>
   <div class="form-group">
     <label for="modelDesc">{{'MODEL.DESC.title' | translate}}</label>
     <textarea class="form-control" id="modelDesc" rows="3" placeholder="{{'MODEL.DESC.placeholder' | translate}}" ng-model="modelDesc"></textarea>
-  </div>
-  <button type="submit" class="btn btn-success pull-right" ng-click="closeThisDialog(true)">{{'DIALOG.ACTION.SAVE' | translate}}</button>&nbsp;
-  <button type="button" class="btn btn-default pull-right" style="margin-right: 5px;" ng-click="closeThisDialog(false)">{{'DIALOG.ACTION.CANCEL' | translate}}</button>
+  </div>-->
 </form>

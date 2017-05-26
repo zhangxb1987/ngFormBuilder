@@ -234,7 +234,7 @@ module.exports = {
   }
 };
 
-},{"json-logic-js":3,"lodash/get":176}],2:[function(_dereq_,module,exports){
+},{"json-logic-js":3,"lodash/get":179}],2:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = _dereq_('./build/utils');
@@ -614,7 +614,7 @@ var DataView = getNative(root, 'DataView');
 
 module.exports = DataView;
 
-},{"./_getNative":104,"./_root":149}],5:[function(_dereq_,module,exports){
+},{"./_getNative":106,"./_root":152}],5:[function(_dereq_,module,exports){
 var hashClear = _dereq_('./_hashClear'),
     hashDelete = _dereq_('./_hashDelete'),
     hashGet = _dereq_('./_hashGet'),
@@ -648,7 +648,7 @@ Hash.prototype.set = hashSet;
 
 module.exports = Hash;
 
-},{"./_hashClear":114,"./_hashDelete":115,"./_hashGet":116,"./_hashHas":117,"./_hashSet":118}],6:[function(_dereq_,module,exports){
+},{"./_hashClear":116,"./_hashDelete":117,"./_hashGet":118,"./_hashHas":119,"./_hashSet":120}],6:[function(_dereq_,module,exports){
 var listCacheClear = _dereq_('./_listCacheClear'),
     listCacheDelete = _dereq_('./_listCacheDelete'),
     listCacheGet = _dereq_('./_listCacheGet'),
@@ -682,7 +682,7 @@ ListCache.prototype.set = listCacheSet;
 
 module.exports = ListCache;
 
-},{"./_listCacheClear":129,"./_listCacheDelete":130,"./_listCacheGet":131,"./_listCacheHas":132,"./_listCacheSet":133}],7:[function(_dereq_,module,exports){
+},{"./_listCacheClear":131,"./_listCacheDelete":132,"./_listCacheGet":133,"./_listCacheHas":134,"./_listCacheSet":135}],7:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -691,7 +691,7 @@ var Map = getNative(root, 'Map');
 
 module.exports = Map;
 
-},{"./_getNative":104,"./_root":149}],8:[function(_dereq_,module,exports){
+},{"./_getNative":106,"./_root":152}],8:[function(_dereq_,module,exports){
 var mapCacheClear = _dereq_('./_mapCacheClear'),
     mapCacheDelete = _dereq_('./_mapCacheDelete'),
     mapCacheGet = _dereq_('./_mapCacheGet'),
@@ -725,7 +725,7 @@ MapCache.prototype.set = mapCacheSet;
 
 module.exports = MapCache;
 
-},{"./_mapCacheClear":134,"./_mapCacheDelete":135,"./_mapCacheGet":136,"./_mapCacheHas":137,"./_mapCacheSet":138}],9:[function(_dereq_,module,exports){
+},{"./_mapCacheClear":136,"./_mapCacheDelete":137,"./_mapCacheGet":138,"./_mapCacheHas":139,"./_mapCacheSet":140}],9:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -734,7 +734,7 @@ var Promise = getNative(root, 'Promise');
 
 module.exports = Promise;
 
-},{"./_getNative":104,"./_root":149}],10:[function(_dereq_,module,exports){
+},{"./_getNative":106,"./_root":152}],10:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -743,7 +743,7 @@ var Set = getNative(root, 'Set');
 
 module.exports = Set;
 
-},{"./_getNative":104,"./_root":149}],11:[function(_dereq_,module,exports){
+},{"./_getNative":106,"./_root":152}],11:[function(_dereq_,module,exports){
 var MapCache = _dereq_('./_MapCache'),
     setCacheAdd = _dereq_('./_setCacheAdd'),
     setCacheHas = _dereq_('./_setCacheHas');
@@ -772,7 +772,7 @@ SetCache.prototype.has = setCacheHas;
 
 module.exports = SetCache;
 
-},{"./_MapCache":8,"./_setCacheAdd":150,"./_setCacheHas":151}],12:[function(_dereq_,module,exports){
+},{"./_MapCache":8,"./_setCacheAdd":153,"./_setCacheHas":154}],12:[function(_dereq_,module,exports){
 var ListCache = _dereq_('./_ListCache'),
     stackClear = _dereq_('./_stackClear'),
     stackDelete = _dereq_('./_stackDelete'),
@@ -801,7 +801,7 @@ Stack.prototype.set = stackSet;
 
 module.exports = Stack;
 
-},{"./_ListCache":6,"./_stackClear":155,"./_stackDelete":156,"./_stackGet":157,"./_stackHas":158,"./_stackSet":159}],13:[function(_dereq_,module,exports){
+},{"./_ListCache":6,"./_stackClear":158,"./_stackDelete":159,"./_stackGet":160,"./_stackHas":161,"./_stackSet":162}],13:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Built-in value references. */
@@ -809,7 +809,7 @@ var Symbol = root.Symbol;
 
 module.exports = Symbol;
 
-},{"./_root":149}],14:[function(_dereq_,module,exports){
+},{"./_root":152}],14:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Built-in value references. */
@@ -817,7 +817,7 @@ var Uint8Array = root.Uint8Array;
 
 module.exports = Uint8Array;
 
-},{"./_root":149}],15:[function(_dereq_,module,exports){
+},{"./_root":152}],15:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -826,7 +826,7 @@ var WeakMap = getNative(root, 'WeakMap');
 
 module.exports = WeakMap;
 
-},{"./_getNative":104,"./_root":149}],16:[function(_dereq_,module,exports){
+},{"./_getNative":106,"./_root":152}],16:[function(_dereq_,module,exports){
 /**
  * Adds the key-value `pair` to `map`.
  *
@@ -1009,7 +1009,7 @@ function arrayLikeKeys(value, inherited) {
 
 module.exports = arrayLikeKeys;
 
-},{"./_baseTimes":68,"./_isIndex":122,"./isArguments":180,"./isArray":181,"./isBuffer":184,"./isTypedArray":192}],23:[function(_dereq_,module,exports){
+},{"./_baseTimes":69,"./_isIndex":124,"./isArguments":183,"./isArray":184,"./isBuffer":187,"./isTypedArray":195}],23:[function(_dereq_,module,exports){
 /**
  * A specialized version of `_.map` for arrays without support for iteratee
  * shorthands.
@@ -1160,7 +1160,7 @@ function assignMergeValue(object, key, value) {
 
 module.exports = assignMergeValue;
 
-},{"./_baseAssignValue":35,"./eq":174}],30:[function(_dereq_,module,exports){
+},{"./_baseAssignValue":35,"./eq":177}],30:[function(_dereq_,module,exports){
 var baseAssignValue = _dereq_('./_baseAssignValue'),
     eq = _dereq_('./eq');
 
@@ -1190,7 +1190,7 @@ function assignValue(object, key, value) {
 
 module.exports = assignValue;
 
-},{"./_baseAssignValue":35,"./eq":174}],31:[function(_dereq_,module,exports){
+},{"./_baseAssignValue":35,"./eq":177}],31:[function(_dereq_,module,exports){
 var eq = _dereq_('./eq');
 
 /**
@@ -1213,7 +1213,7 @@ function assocIndexOf(array, key) {
 
 module.exports = assocIndexOf;
 
-},{"./eq":174}],32:[function(_dereq_,module,exports){
+},{"./eq":177}],32:[function(_dereq_,module,exports){
 var baseEach = _dereq_('./_baseEach');
 
 /**
@@ -1255,7 +1255,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"./_copyObject":84,"./keys":193}],34:[function(_dereq_,module,exports){
+},{"./_copyObject":86,"./keys":196}],34:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     keysIn = _dereq_('./keysIn');
 
@@ -1274,7 +1274,7 @@ function baseAssignIn(object, source) {
 
 module.exports = baseAssignIn;
 
-},{"./_copyObject":84,"./keysIn":194}],35:[function(_dereq_,module,exports){
+},{"./_copyObject":86,"./keysIn":197}],35:[function(_dereq_,module,exports){
 var defineProperty = _dereq_('./_defineProperty');
 
 /**
@@ -1301,7 +1301,7 @@ function baseAssignValue(object, key, value) {
 
 module.exports = baseAssignValue;
 
-},{"./_defineProperty":95}],36:[function(_dereq_,module,exports){
+},{"./_defineProperty":97}],36:[function(_dereq_,module,exports){
 var Stack = _dereq_('./_Stack'),
     arrayEach = _dereq_('./_arrayEach'),
     assignValue = _dereq_('./_assignValue'),
@@ -1456,7 +1456,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 
 module.exports = baseClone;
 
-},{"./_Stack":12,"./_arrayEach":20,"./_assignValue":30,"./_baseAssign":33,"./_baseAssignIn":34,"./_cloneBuffer":76,"./_copyArray":83,"./_copySymbols":85,"./_copySymbolsIn":86,"./_getAllKeys":100,"./_getAllKeysIn":101,"./_getTag":109,"./_initCloneArray":119,"./_initCloneByTag":120,"./_initCloneObject":121,"./isArray":181,"./isBuffer":184,"./isObject":188,"./keys":193}],37:[function(_dereq_,module,exports){
+},{"./_Stack":12,"./_arrayEach":20,"./_assignValue":30,"./_baseAssign":33,"./_baseAssignIn":34,"./_cloneBuffer":78,"./_copyArray":85,"./_copySymbols":87,"./_copySymbolsIn":88,"./_getAllKeys":102,"./_getAllKeysIn":103,"./_getTag":111,"./_initCloneArray":121,"./_initCloneByTag":122,"./_initCloneObject":123,"./isArray":184,"./isBuffer":187,"./isObject":191,"./keys":196}],37:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject');
 
 /** Built-in value references. */
@@ -1488,7 +1488,7 @@ var baseCreate = (function() {
 
 module.exports = baseCreate;
 
-},{"./isObject":188}],38:[function(_dereq_,module,exports){
+},{"./isObject":191}],38:[function(_dereq_,module,exports){
 var baseForOwn = _dereq_('./_baseForOwn'),
     createBaseEach = _dereq_('./_createBaseEach');
 
@@ -1504,7 +1504,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./_baseForOwn":41,"./_createBaseEach":90}],39:[function(_dereq_,module,exports){
+},{"./_baseForOwn":41,"./_createBaseEach":92}],39:[function(_dereq_,module,exports){
 var baseEach = _dereq_('./_baseEach');
 
 /**
@@ -1545,7 +1545,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./_createBaseFor":91}],41:[function(_dereq_,module,exports){
+},{"./_createBaseFor":93}],41:[function(_dereq_,module,exports){
 var baseFor = _dereq_('./_baseFor'),
     keys = _dereq_('./keys');
 
@@ -1563,7 +1563,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"./_baseFor":40,"./keys":193}],42:[function(_dereq_,module,exports){
+},{"./_baseFor":40,"./keys":196}],42:[function(_dereq_,module,exports){
 var castPath = _dereq_('./_castPath'),
     toKey = _dereq_('./_toKey');
 
@@ -1589,7 +1589,7 @@ function baseGet(object, path) {
 
 module.exports = baseGet;
 
-},{"./_castPath":73,"./_toKey":162}],43:[function(_dereq_,module,exports){
+},{"./_castPath":75,"./_toKey":165}],43:[function(_dereq_,module,exports){
 var arrayPush = _dereq_('./_arrayPush'),
     isArray = _dereq_('./isArray');
 
@@ -1611,7 +1611,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 
 module.exports = baseGetAllKeys;
 
-},{"./_arrayPush":24,"./isArray":181}],44:[function(_dereq_,module,exports){
+},{"./_arrayPush":24,"./isArray":184}],44:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol'),
     getRawTag = _dereq_('./_getRawTag'),
     objectToString = _dereq_('./_objectToString');
@@ -1641,7 +1641,7 @@ function baseGetTag(value) {
 
 module.exports = baseGetTag;
 
-},{"./_Symbol":13,"./_getRawTag":106,"./_objectToString":146}],45:[function(_dereq_,module,exports){
+},{"./_Symbol":13,"./_getRawTag":108,"./_objectToString":148}],45:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.hasIn` without support for deep paths.
  *
@@ -1676,7 +1676,7 @@ function baseIsArguments(value) {
 
 module.exports = baseIsArguments;
 
-},{"./_baseGetTag":44,"./isObjectLike":189}],47:[function(_dereq_,module,exports){
+},{"./_baseGetTag":44,"./isObjectLike":192}],47:[function(_dereq_,module,exports){
 var baseIsEqualDeep = _dereq_('./_baseIsEqualDeep'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -1706,7 +1706,7 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 
 module.exports = baseIsEqual;
 
-},{"./_baseIsEqualDeep":48,"./isObjectLike":189}],48:[function(_dereq_,module,exports){
+},{"./_baseIsEqualDeep":48,"./isObjectLike":192}],48:[function(_dereq_,module,exports){
 var Stack = _dereq_('./_Stack'),
     equalArrays = _dereq_('./_equalArrays'),
     equalByTag = _dereq_('./_equalByTag'),
@@ -1791,7 +1791,7 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 
 module.exports = baseIsEqualDeep;
 
-},{"./_Stack":12,"./_equalArrays":96,"./_equalByTag":97,"./_equalObjects":98,"./_getTag":109,"./isArray":181,"./isBuffer":184,"./isTypedArray":192}],49:[function(_dereq_,module,exports){
+},{"./_Stack":12,"./_equalArrays":98,"./_equalByTag":99,"./_equalObjects":100,"./_getTag":111,"./isArray":184,"./isBuffer":187,"./isTypedArray":195}],49:[function(_dereq_,module,exports){
 var Stack = _dereq_('./_Stack'),
     baseIsEqual = _dereq_('./_baseIsEqual');
 
@@ -1904,7 +1904,7 @@ function baseIsNative(value) {
 
 module.exports = baseIsNative;
 
-},{"./_isMasked":126,"./_toSource":163,"./isFunction":185,"./isObject":188}],51:[function(_dereq_,module,exports){
+},{"./_isMasked":128,"./_toSource":166,"./isFunction":188,"./isObject":191}],51:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isLength = _dereq_('./isLength'),
     isObjectLike = _dereq_('./isObjectLike');
@@ -1966,7 +1966,7 @@ function baseIsTypedArray(value) {
 
 module.exports = baseIsTypedArray;
 
-},{"./_baseGetTag":44,"./isLength":186,"./isObjectLike":189}],52:[function(_dereq_,module,exports){
+},{"./_baseGetTag":44,"./isLength":189,"./isObjectLike":192}],52:[function(_dereq_,module,exports){
 var baseMatches = _dereq_('./_baseMatches'),
     baseMatchesProperty = _dereq_('./_baseMatchesProperty'),
     identity = _dereq_('./identity'),
@@ -1999,7 +1999,7 @@ function baseIteratee(value) {
 
 module.exports = baseIteratee;
 
-},{"./_baseMatches":56,"./_baseMatchesProperty":57,"./identity":179,"./isArray":181,"./property":201}],53:[function(_dereq_,module,exports){
+},{"./_baseMatches":56,"./_baseMatchesProperty":57,"./identity":182,"./isArray":184,"./property":205}],53:[function(_dereq_,module,exports){
 var isPrototype = _dereq_('./_isPrototype'),
     nativeKeys = _dereq_('./_nativeKeys');
 
@@ -2031,7 +2031,7 @@ function baseKeys(object) {
 
 module.exports = baseKeys;
 
-},{"./_isPrototype":127,"./_nativeKeys":143}],54:[function(_dereq_,module,exports){
+},{"./_isPrototype":129,"./_nativeKeys":145}],54:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject'),
     isPrototype = _dereq_('./_isPrototype'),
     nativeKeysIn = _dereq_('./_nativeKeysIn');
@@ -2066,7 +2066,7 @@ function baseKeysIn(object) {
 
 module.exports = baseKeysIn;
 
-},{"./_isPrototype":127,"./_nativeKeysIn":144,"./isObject":188}],55:[function(_dereq_,module,exports){
+},{"./_isPrototype":129,"./_nativeKeysIn":146,"./isObject":191}],55:[function(_dereq_,module,exports){
 var baseEach = _dereq_('./_baseEach'),
     isArrayLike = _dereq_('./isArrayLike');
 
@@ -2090,7 +2090,7 @@ function baseMap(collection, iteratee) {
 
 module.exports = baseMap;
 
-},{"./_baseEach":38,"./isArrayLike":182}],56:[function(_dereq_,module,exports){
+},{"./_baseEach":38,"./isArrayLike":185}],56:[function(_dereq_,module,exports){
 var baseIsMatch = _dereq_('./_baseIsMatch'),
     getMatchData = _dereq_('./_getMatchData'),
     matchesStrictComparable = _dereq_('./_matchesStrictComparable');
@@ -2114,7 +2114,7 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"./_baseIsMatch":49,"./_getMatchData":103,"./_matchesStrictComparable":140}],57:[function(_dereq_,module,exports){
+},{"./_baseIsMatch":49,"./_getMatchData":105,"./_matchesStrictComparable":142}],57:[function(_dereq_,module,exports){
 var baseIsEqual = _dereq_('./_baseIsEqual'),
     get = _dereq_('./get'),
     hasIn = _dereq_('./hasIn'),
@@ -2149,7 +2149,7 @@ function baseMatchesProperty(path, srcValue) {
 
 module.exports = baseMatchesProperty;
 
-},{"./_baseIsEqual":47,"./_isKey":124,"./_isStrictComparable":128,"./_matchesStrictComparable":140,"./_toKey":162,"./get":176,"./hasIn":178}],58:[function(_dereq_,module,exports){
+},{"./_baseIsEqual":47,"./_isKey":126,"./_isStrictComparable":130,"./_matchesStrictComparable":142,"./_toKey":165,"./get":179,"./hasIn":181}],58:[function(_dereq_,module,exports){
 var Stack = _dereq_('./_Stack'),
     assignMergeValue = _dereq_('./_assignMergeValue'),
     baseFor = _dereq_('./_baseFor'),
@@ -2192,7 +2192,7 @@ function baseMerge(object, source, srcIndex, customizer, stack) {
 
 module.exports = baseMerge;
 
-},{"./_Stack":12,"./_assignMergeValue":29,"./_baseFor":40,"./_baseMergeDeep":59,"./isObject":188,"./keysIn":194}],59:[function(_dereq_,module,exports){
+},{"./_Stack":12,"./_assignMergeValue":29,"./_baseFor":40,"./_baseMergeDeep":59,"./isObject":191,"./keysIn":197}],59:[function(_dereq_,module,exports){
 var assignMergeValue = _dereq_('./_assignMergeValue'),
     cloneBuffer = _dereq_('./_cloneBuffer'),
     cloneTypedArray = _dereq_('./_cloneTypedArray'),
@@ -2287,7 +2287,7 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
 
 module.exports = baseMergeDeep;
 
-},{"./_assignMergeValue":29,"./_cloneBuffer":76,"./_cloneTypedArray":82,"./_copyArray":83,"./_initCloneObject":121,"./isArguments":180,"./isArray":181,"./isArrayLikeObject":183,"./isBuffer":184,"./isFunction":185,"./isObject":188,"./isPlainObject":190,"./isTypedArray":192,"./toPlainObject":209}],60:[function(_dereq_,module,exports){
+},{"./_assignMergeValue":29,"./_cloneBuffer":78,"./_cloneTypedArray":84,"./_copyArray":85,"./_initCloneObject":123,"./isArguments":183,"./isArray":184,"./isArrayLikeObject":186,"./isBuffer":187,"./isFunction":188,"./isObject":191,"./isPlainObject":193,"./isTypedArray":195,"./toPlainObject":214}],60:[function(_dereq_,module,exports){
 var baseGet = _dereq_('./_baseGet'),
     baseSet = _dereq_('./_baseSet'),
     castPath = _dereq_('./_castPath');
@@ -2319,7 +2319,7 @@ function basePickBy(object, paths, predicate) {
 
 module.exports = basePickBy;
 
-},{"./_baseGet":42,"./_baseSet":65,"./_castPath":73}],61:[function(_dereq_,module,exports){
+},{"./_baseGet":42,"./_baseSet":66,"./_castPath":75}],61:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.property` without support for deep paths.
  *
@@ -2370,6 +2370,45 @@ function basePropertyOf(object) {
 module.exports = basePropertyOf;
 
 },{}],64:[function(_dereq_,module,exports){
+var baseUnset = _dereq_('./_baseUnset'),
+    isIndex = _dereq_('./_isIndex');
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype;
+
+/** Built-in value references. */
+var splice = arrayProto.splice;
+
+/**
+ * The base implementation of `_.pullAt` without support for individual
+ * indexes or capturing the removed elements.
+ *
+ * @private
+ * @param {Array} array The array to modify.
+ * @param {number[]} indexes The indexes of elements to remove.
+ * @returns {Array} Returns `array`.
+ */
+function basePullAt(array, indexes) {
+  var length = array ? indexes.length : 0,
+      lastIndex = length - 1;
+
+  while (length--) {
+    var index = indexes[length];
+    if (length == lastIndex || index !== previous) {
+      var previous = index;
+      if (isIndex(index)) {
+        splice.call(array, index, 1);
+      } else {
+        baseUnset(array, index);
+      }
+    }
+  }
+  return array;
+}
+
+module.exports = basePullAt;
+
+},{"./_baseUnset":72,"./_isIndex":124}],65:[function(_dereq_,module,exports){
 var identity = _dereq_('./identity'),
     overRest = _dereq_('./_overRest'),
     setToString = _dereq_('./_setToString');
@@ -2388,7 +2427,7 @@ function baseRest(func, start) {
 
 module.exports = baseRest;
 
-},{"./_overRest":148,"./_setToString":153,"./identity":179}],65:[function(_dereq_,module,exports){
+},{"./_overRest":150,"./_setToString":156,"./identity":182}],66:[function(_dereq_,module,exports){
 var assignValue = _dereq_('./_assignValue'),
     castPath = _dereq_('./_castPath'),
     isIndex = _dereq_('./_isIndex'),
@@ -2437,7 +2476,7 @@ function baseSet(object, path, value, customizer) {
 
 module.exports = baseSet;
 
-},{"./_assignValue":30,"./_castPath":73,"./_isIndex":122,"./_toKey":162,"./isObject":188}],66:[function(_dereq_,module,exports){
+},{"./_assignValue":30,"./_castPath":75,"./_isIndex":124,"./_toKey":165,"./isObject":191}],67:[function(_dereq_,module,exports){
 var constant = _dereq_('./constant'),
     defineProperty = _dereq_('./_defineProperty'),
     identity = _dereq_('./identity');
@@ -2461,7 +2500,7 @@ var baseSetToString = !defineProperty ? identity : function(func, string) {
 
 module.exports = baseSetToString;
 
-},{"./_defineProperty":95,"./constant":171,"./identity":179}],67:[function(_dereq_,module,exports){
+},{"./_defineProperty":97,"./constant":174,"./identity":182}],68:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.slice` without an iteratee call guard.
  *
@@ -2494,7 +2533,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],68:[function(_dereq_,module,exports){
+},{}],69:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.times` without support for iteratee shorthands
  * or max array length checks.
@@ -2516,7 +2555,7 @@ function baseTimes(n, iteratee) {
 
 module.exports = baseTimes;
 
-},{}],69:[function(_dereq_,module,exports){
+},{}],70:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol'),
     arrayMap = _dereq_('./_arrayMap'),
     isArray = _dereq_('./isArray'),
@@ -2555,7 +2594,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{"./_Symbol":13,"./_arrayMap":23,"./isArray":181,"./isSymbol":191}],70:[function(_dereq_,module,exports){
+},{"./_Symbol":13,"./_arrayMap":23,"./isArray":184,"./isSymbol":194}],71:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.unary` without support for storing metadata.
  *
@@ -2571,7 +2610,29 @@ function baseUnary(func) {
 
 module.exports = baseUnary;
 
-},{}],71:[function(_dereq_,module,exports){
+},{}],72:[function(_dereq_,module,exports){
+var castPath = _dereq_('./_castPath'),
+    last = _dereq_('./last'),
+    parent = _dereq_('./_parent'),
+    toKey = _dereq_('./_toKey');
+
+/**
+ * The base implementation of `_.unset`.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {Array|string} path The property path to unset.
+ * @returns {boolean} Returns `true` if the property is deleted, else `false`.
+ */
+function baseUnset(object, path) {
+  path = castPath(path, object);
+  object = parent(object, path);
+  return object == null || delete object[toKey(last(path))];
+}
+
+module.exports = baseUnset;
+
+},{"./_castPath":75,"./_parent":151,"./_toKey":165,"./last":198}],73:[function(_dereq_,module,exports){
 /**
  * Checks if a `cache` value for `key` exists.
  *
@@ -2586,7 +2647,7 @@ function cacheHas(cache, key) {
 
 module.exports = cacheHas;
 
-},{}],72:[function(_dereq_,module,exports){
+},{}],74:[function(_dereq_,module,exports){
 var identity = _dereq_('./identity');
 
 /**
@@ -2602,7 +2663,7 @@ function castFunction(value) {
 
 module.exports = castFunction;
 
-},{"./identity":179}],73:[function(_dereq_,module,exports){
+},{"./identity":182}],75:[function(_dereq_,module,exports){
 var isArray = _dereq_('./isArray'),
     isKey = _dereq_('./_isKey'),
     stringToPath = _dereq_('./_stringToPath'),
@@ -2625,7 +2686,7 @@ function castPath(value, object) {
 
 module.exports = castPath;
 
-},{"./_isKey":124,"./_stringToPath":161,"./isArray":181,"./toString":210}],74:[function(_dereq_,module,exports){
+},{"./_isKey":126,"./_stringToPath":164,"./isArray":184,"./toString":215}],76:[function(_dereq_,module,exports){
 var baseSlice = _dereq_('./_baseSlice');
 
 /**
@@ -2645,7 +2706,7 @@ function castSlice(array, start, end) {
 
 module.exports = castSlice;
 
-},{"./_baseSlice":67}],75:[function(_dereq_,module,exports){
+},{"./_baseSlice":68}],77:[function(_dereq_,module,exports){
 var Uint8Array = _dereq_('./_Uint8Array');
 
 /**
@@ -2663,7 +2724,7 @@ function cloneArrayBuffer(arrayBuffer) {
 
 module.exports = cloneArrayBuffer;
 
-},{"./_Uint8Array":14}],76:[function(_dereq_,module,exports){
+},{"./_Uint8Array":14}],78:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Detect free variable `exports`. */
@@ -2700,7 +2761,7 @@ function cloneBuffer(buffer, isDeep) {
 
 module.exports = cloneBuffer;
 
-},{"./_root":149}],77:[function(_dereq_,module,exports){
+},{"./_root":152}],79:[function(_dereq_,module,exports){
 var cloneArrayBuffer = _dereq_('./_cloneArrayBuffer');
 
 /**
@@ -2718,7 +2779,7 @@ function cloneDataView(dataView, isDeep) {
 
 module.exports = cloneDataView;
 
-},{"./_cloneArrayBuffer":75}],78:[function(_dereq_,module,exports){
+},{"./_cloneArrayBuffer":77}],80:[function(_dereq_,module,exports){
 var addMapEntry = _dereq_('./_addMapEntry'),
     arrayReduce = _dereq_('./_arrayReduce'),
     mapToArray = _dereq_('./_mapToArray');
@@ -2742,7 +2803,7 @@ function cloneMap(map, isDeep, cloneFunc) {
 
 module.exports = cloneMap;
 
-},{"./_addMapEntry":16,"./_arrayReduce":25,"./_mapToArray":139}],79:[function(_dereq_,module,exports){
+},{"./_addMapEntry":16,"./_arrayReduce":25,"./_mapToArray":141}],81:[function(_dereq_,module,exports){
 /** Used to match `RegExp` flags from their coerced string values. */
 var reFlags = /\w*$/;
 
@@ -2761,7 +2822,7 @@ function cloneRegExp(regexp) {
 
 module.exports = cloneRegExp;
 
-},{}],80:[function(_dereq_,module,exports){
+},{}],82:[function(_dereq_,module,exports){
 var addSetEntry = _dereq_('./_addSetEntry'),
     arrayReduce = _dereq_('./_arrayReduce'),
     setToArray = _dereq_('./_setToArray');
@@ -2785,7 +2846,7 @@ function cloneSet(set, isDeep, cloneFunc) {
 
 module.exports = cloneSet;
 
-},{"./_addSetEntry":17,"./_arrayReduce":25,"./_setToArray":152}],81:[function(_dereq_,module,exports){
+},{"./_addSetEntry":17,"./_arrayReduce":25,"./_setToArray":155}],83:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol');
 
 /** Used to convert symbols to primitives and strings. */
@@ -2805,7 +2866,7 @@ function cloneSymbol(symbol) {
 
 module.exports = cloneSymbol;
 
-},{"./_Symbol":13}],82:[function(_dereq_,module,exports){
+},{"./_Symbol":13}],84:[function(_dereq_,module,exports){
 var cloneArrayBuffer = _dereq_('./_cloneArrayBuffer');
 
 /**
@@ -2823,7 +2884,7 @@ function cloneTypedArray(typedArray, isDeep) {
 
 module.exports = cloneTypedArray;
 
-},{"./_cloneArrayBuffer":75}],83:[function(_dereq_,module,exports){
+},{"./_cloneArrayBuffer":77}],85:[function(_dereq_,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -2845,7 +2906,7 @@ function copyArray(source, array) {
 
 module.exports = copyArray;
 
-},{}],84:[function(_dereq_,module,exports){
+},{}],86:[function(_dereq_,module,exports){
 var assignValue = _dereq_('./_assignValue'),
     baseAssignValue = _dereq_('./_baseAssignValue');
 
@@ -2887,7 +2948,7 @@ function copyObject(source, props, object, customizer) {
 
 module.exports = copyObject;
 
-},{"./_assignValue":30,"./_baseAssignValue":35}],85:[function(_dereq_,module,exports){
+},{"./_assignValue":30,"./_baseAssignValue":35}],87:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     getSymbols = _dereq_('./_getSymbols');
 
@@ -2905,7 +2966,7 @@ function copySymbols(source, object) {
 
 module.exports = copySymbols;
 
-},{"./_copyObject":84,"./_getSymbols":107}],86:[function(_dereq_,module,exports){
+},{"./_copyObject":86,"./_getSymbols":109}],88:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     getSymbolsIn = _dereq_('./_getSymbolsIn');
 
@@ -2923,7 +2984,7 @@ function copySymbolsIn(source, object) {
 
 module.exports = copySymbolsIn;
 
-},{"./_copyObject":84,"./_getSymbolsIn":108}],87:[function(_dereq_,module,exports){
+},{"./_copyObject":86,"./_getSymbolsIn":110}],89:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Used to detect overreaching core-js shims. */
@@ -2931,7 +2992,7 @@ var coreJsData = root['__core-js_shared__'];
 
 module.exports = coreJsData;
 
-},{"./_root":149}],88:[function(_dereq_,module,exports){
+},{"./_root":152}],90:[function(_dereq_,module,exports){
 var arrayAggregator = _dereq_('./_arrayAggregator'),
     baseAggregator = _dereq_('./_baseAggregator'),
     baseIteratee = _dereq_('./_baseIteratee'),
@@ -2956,7 +3017,7 @@ function createAggregator(setter, initializer) {
 
 module.exports = createAggregator;
 
-},{"./_arrayAggregator":19,"./_baseAggregator":32,"./_baseIteratee":52,"./isArray":181}],89:[function(_dereq_,module,exports){
+},{"./_arrayAggregator":19,"./_baseAggregator":32,"./_baseIteratee":52,"./isArray":184}],91:[function(_dereq_,module,exports){
 var baseRest = _dereq_('./_baseRest'),
     isIterateeCall = _dereq_('./_isIterateeCall');
 
@@ -2995,7 +3056,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"./_baseRest":64,"./_isIterateeCall":123}],90:[function(_dereq_,module,exports){
+},{"./_baseRest":65,"./_isIterateeCall":125}],92:[function(_dereq_,module,exports){
 var isArrayLike = _dereq_('./isArrayLike');
 
 /**
@@ -3029,7 +3090,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./isArrayLike":182}],91:[function(_dereq_,module,exports){
+},{"./isArrayLike":185}],93:[function(_dereq_,module,exports){
 /**
  * Creates a base function for methods like `_.forIn` and `_.forOwn`.
  *
@@ -3056,7 +3117,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{}],92:[function(_dereq_,module,exports){
+},{}],94:[function(_dereq_,module,exports){
 var castSlice = _dereq_('./_castSlice'),
     hasUnicode = _dereq_('./_hasUnicode'),
     stringToArray = _dereq_('./_stringToArray'),
@@ -3091,7 +3152,7 @@ function createCaseFirst(methodName) {
 
 module.exports = createCaseFirst;
 
-},{"./_castSlice":74,"./_hasUnicode":112,"./_stringToArray":160,"./toString":210}],93:[function(_dereq_,module,exports){
+},{"./_castSlice":76,"./_hasUnicode":114,"./_stringToArray":163,"./toString":215}],95:[function(_dereq_,module,exports){
 var arrayReduce = _dereq_('./_arrayReduce'),
     deburr = _dereq_('./deburr'),
     words = _dereq_('./words');
@@ -3117,7 +3178,7 @@ function createCompounder(callback) {
 
 module.exports = createCompounder;
 
-},{"./_arrayReduce":25,"./deburr":172,"./words":212}],94:[function(_dereq_,module,exports){
+},{"./_arrayReduce":25,"./deburr":175,"./words":217}],96:[function(_dereq_,module,exports){
 var basePropertyOf = _dereq_('./_basePropertyOf');
 
 /** Used to map Latin Unicode letters to basic Latin letters. */
@@ -3190,7 +3251,7 @@ var deburrLetter = basePropertyOf(deburredLetters);
 
 module.exports = deburrLetter;
 
-},{"./_basePropertyOf":63}],95:[function(_dereq_,module,exports){
+},{"./_basePropertyOf":63}],97:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative');
 
 var defineProperty = (function() {
@@ -3203,7 +3264,7 @@ var defineProperty = (function() {
 
 module.exports = defineProperty;
 
-},{"./_getNative":104}],96:[function(_dereq_,module,exports){
+},{"./_getNative":106}],98:[function(_dereq_,module,exports){
 var SetCache = _dereq_('./_SetCache'),
     arraySome = _dereq_('./_arraySome'),
     cacheHas = _dereq_('./_cacheHas');
@@ -3288,7 +3349,7 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 
 module.exports = equalArrays;
 
-},{"./_SetCache":11,"./_arraySome":26,"./_cacheHas":71}],97:[function(_dereq_,module,exports){
+},{"./_SetCache":11,"./_arraySome":26,"./_cacheHas":73}],99:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol'),
     Uint8Array = _dereq_('./_Uint8Array'),
     eq = _dereq_('./eq'),
@@ -3402,7 +3463,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 
 module.exports = equalByTag;
 
-},{"./_Symbol":13,"./_Uint8Array":14,"./_equalArrays":96,"./_mapToArray":139,"./_setToArray":152,"./eq":174}],98:[function(_dereq_,module,exports){
+},{"./_Symbol":13,"./_Uint8Array":14,"./_equalArrays":98,"./_mapToArray":141,"./_setToArray":155,"./eq":177}],100:[function(_dereq_,module,exports){
 var getAllKeys = _dereq_('./_getAllKeys');
 
 /** Used to compose bitmasks for value comparisons. */
@@ -3493,7 +3554,7 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 
 module.exports = equalObjects;
 
-},{"./_getAllKeys":100}],99:[function(_dereq_,module,exports){
+},{"./_getAllKeys":102}],101:[function(_dereq_,module,exports){
 (function (global){
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -3501,7 +3562,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 module.exports = freeGlobal;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],100:[function(_dereq_,module,exports){
+},{}],102:[function(_dereq_,module,exports){
 var baseGetAllKeys = _dereq_('./_baseGetAllKeys'),
     getSymbols = _dereq_('./_getSymbols'),
     keys = _dereq_('./keys');
@@ -3519,7 +3580,7 @@ function getAllKeys(object) {
 
 module.exports = getAllKeys;
 
-},{"./_baseGetAllKeys":43,"./_getSymbols":107,"./keys":193}],101:[function(_dereq_,module,exports){
+},{"./_baseGetAllKeys":43,"./_getSymbols":109,"./keys":196}],103:[function(_dereq_,module,exports){
 var baseGetAllKeys = _dereq_('./_baseGetAllKeys'),
     getSymbolsIn = _dereq_('./_getSymbolsIn'),
     keysIn = _dereq_('./keysIn');
@@ -3538,7 +3599,7 @@ function getAllKeysIn(object) {
 
 module.exports = getAllKeysIn;
 
-},{"./_baseGetAllKeys":43,"./_getSymbolsIn":108,"./keysIn":194}],102:[function(_dereq_,module,exports){
+},{"./_baseGetAllKeys":43,"./_getSymbolsIn":110,"./keysIn":197}],104:[function(_dereq_,module,exports){
 var isKeyable = _dereq_('./_isKeyable');
 
 /**
@@ -3558,7 +3619,7 @@ function getMapData(map, key) {
 
 module.exports = getMapData;
 
-},{"./_isKeyable":125}],103:[function(_dereq_,module,exports){
+},{"./_isKeyable":127}],105:[function(_dereq_,module,exports){
 var isStrictComparable = _dereq_('./_isStrictComparable'),
     keys = _dereq_('./keys');
 
@@ -3584,7 +3645,7 @@ function getMatchData(object) {
 
 module.exports = getMatchData;
 
-},{"./_isStrictComparable":128,"./keys":193}],104:[function(_dereq_,module,exports){
+},{"./_isStrictComparable":130,"./keys":196}],106:[function(_dereq_,module,exports){
 var baseIsNative = _dereq_('./_baseIsNative'),
     getValue = _dereq_('./_getValue');
 
@@ -3603,7 +3664,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"./_baseIsNative":50,"./_getValue":110}],105:[function(_dereq_,module,exports){
+},{"./_baseIsNative":50,"./_getValue":112}],107:[function(_dereq_,module,exports){
 var overArg = _dereq_('./_overArg');
 
 /** Built-in value references. */
@@ -3611,7 +3672,7 @@ var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 module.exports = getPrototype;
 
-},{"./_overArg":147}],106:[function(_dereq_,module,exports){
+},{"./_overArg":149}],108:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol');
 
 /** Used for built-in method references. */
@@ -3659,7 +3720,7 @@ function getRawTag(value) {
 
 module.exports = getRawTag;
 
-},{"./_Symbol":13}],107:[function(_dereq_,module,exports){
+},{"./_Symbol":13}],109:[function(_dereq_,module,exports){
 var arrayFilter = _dereq_('./_arrayFilter'),
     stubArray = _dereq_('./stubArray');
 
@@ -3691,7 +3752,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
 
 module.exports = getSymbols;
 
-},{"./_arrayFilter":21,"./stubArray":204}],108:[function(_dereq_,module,exports){
+},{"./_arrayFilter":21,"./stubArray":209}],110:[function(_dereq_,module,exports){
 var arrayPush = _dereq_('./_arrayPush'),
     getPrototype = _dereq_('./_getPrototype'),
     getSymbols = _dereq_('./_getSymbols'),
@@ -3718,7 +3779,7 @@ var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
 
 module.exports = getSymbolsIn;
 
-},{"./_arrayPush":24,"./_getPrototype":105,"./_getSymbols":107,"./stubArray":204}],109:[function(_dereq_,module,exports){
+},{"./_arrayPush":24,"./_getPrototype":107,"./_getSymbols":109,"./stubArray":209}],111:[function(_dereq_,module,exports){
 var DataView = _dereq_('./_DataView'),
     Map = _dereq_('./_Map'),
     Promise = _dereq_('./_Promise'),
@@ -3778,7 +3839,7 @@ if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
 
 module.exports = getTag;
 
-},{"./_DataView":4,"./_Map":7,"./_Promise":9,"./_Set":10,"./_WeakMap":15,"./_baseGetTag":44,"./_toSource":163}],110:[function(_dereq_,module,exports){
+},{"./_DataView":4,"./_Map":7,"./_Promise":9,"./_Set":10,"./_WeakMap":15,"./_baseGetTag":44,"./_toSource":166}],112:[function(_dereq_,module,exports){
 /**
  * Gets the value at `key` of `object`.
  *
@@ -3793,7 +3854,7 @@ function getValue(object, key) {
 
 module.exports = getValue;
 
-},{}],111:[function(_dereq_,module,exports){
+},{}],113:[function(_dereq_,module,exports){
 var castPath = _dereq_('./_castPath'),
     isArguments = _dereq_('./isArguments'),
     isArray = _dereq_('./isArray'),
@@ -3834,7 +3895,7 @@ function hasPath(object, path, hasFunc) {
 
 module.exports = hasPath;
 
-},{"./_castPath":73,"./_isIndex":122,"./_toKey":162,"./isArguments":180,"./isArray":181,"./isLength":186}],112:[function(_dereq_,module,exports){
+},{"./_castPath":75,"./_isIndex":124,"./_toKey":165,"./isArguments":183,"./isArray":184,"./isLength":189}],114:[function(_dereq_,module,exports){
 /** Used to compose unicode character classes. */
 var rsAstralRange = '\\ud800-\\udfff',
     rsComboMarksRange = '\\u0300-\\u036f',
@@ -3862,7 +3923,7 @@ function hasUnicode(string) {
 
 module.exports = hasUnicode;
 
-},{}],113:[function(_dereq_,module,exports){
+},{}],115:[function(_dereq_,module,exports){
 /** Used to detect strings that need a more robust regexp to match words. */
 var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
@@ -3879,7 +3940,7 @@ function hasUnicodeWord(string) {
 
 module.exports = hasUnicodeWord;
 
-},{}],114:[function(_dereq_,module,exports){
+},{}],116:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /**
@@ -3896,7 +3957,7 @@ function hashClear() {
 
 module.exports = hashClear;
 
-},{"./_nativeCreate":142}],115:[function(_dereq_,module,exports){
+},{"./_nativeCreate":144}],117:[function(_dereq_,module,exports){
 /**
  * Removes `key` and its value from the hash.
  *
@@ -3915,7 +3976,7 @@ function hashDelete(key) {
 
 module.exports = hashDelete;
 
-},{}],116:[function(_dereq_,module,exports){
+},{}],118:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -3947,7 +4008,7 @@ function hashGet(key) {
 
 module.exports = hashGet;
 
-},{"./_nativeCreate":142}],117:[function(_dereq_,module,exports){
+},{"./_nativeCreate":144}],119:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /** Used for built-in method references. */
@@ -3972,7 +4033,7 @@ function hashHas(key) {
 
 module.exports = hashHas;
 
-},{"./_nativeCreate":142}],118:[function(_dereq_,module,exports){
+},{"./_nativeCreate":144}],120:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -3997,7 +4058,7 @@ function hashSet(key, value) {
 
 module.exports = hashSet;
 
-},{"./_nativeCreate":142}],119:[function(_dereq_,module,exports){
+},{"./_nativeCreate":144}],121:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -4025,7 +4086,7 @@ function initCloneArray(array) {
 
 module.exports = initCloneArray;
 
-},{}],120:[function(_dereq_,module,exports){
+},{}],122:[function(_dereq_,module,exports){
 var cloneArrayBuffer = _dereq_('./_cloneArrayBuffer'),
     cloneDataView = _dereq_('./_cloneDataView'),
     cloneMap = _dereq_('./_cloneMap'),
@@ -4107,7 +4168,7 @@ function initCloneByTag(object, tag, cloneFunc, isDeep) {
 
 module.exports = initCloneByTag;
 
-},{"./_cloneArrayBuffer":75,"./_cloneDataView":77,"./_cloneMap":78,"./_cloneRegExp":79,"./_cloneSet":80,"./_cloneSymbol":81,"./_cloneTypedArray":82}],121:[function(_dereq_,module,exports){
+},{"./_cloneArrayBuffer":77,"./_cloneDataView":79,"./_cloneMap":80,"./_cloneRegExp":81,"./_cloneSet":82,"./_cloneSymbol":83,"./_cloneTypedArray":84}],123:[function(_dereq_,module,exports){
 var baseCreate = _dereq_('./_baseCreate'),
     getPrototype = _dereq_('./_getPrototype'),
     isPrototype = _dereq_('./_isPrototype');
@@ -4127,7 +4188,7 @@ function initCloneObject(object) {
 
 module.exports = initCloneObject;
 
-},{"./_baseCreate":37,"./_getPrototype":105,"./_isPrototype":127}],122:[function(_dereq_,module,exports){
+},{"./_baseCreate":37,"./_getPrototype":107,"./_isPrototype":129}],124:[function(_dereq_,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -4151,7 +4212,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],123:[function(_dereq_,module,exports){
+},{}],125:[function(_dereq_,module,exports){
 var eq = _dereq_('./eq'),
     isArrayLike = _dereq_('./isArrayLike'),
     isIndex = _dereq_('./_isIndex'),
@@ -4183,7 +4244,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"./_isIndex":122,"./eq":174,"./isArrayLike":182,"./isObject":188}],124:[function(_dereq_,module,exports){
+},{"./_isIndex":124,"./eq":177,"./isArrayLike":185,"./isObject":191}],126:[function(_dereq_,module,exports){
 var isArray = _dereq_('./isArray'),
     isSymbol = _dereq_('./isSymbol');
 
@@ -4214,7 +4275,7 @@ function isKey(value, object) {
 
 module.exports = isKey;
 
-},{"./isArray":181,"./isSymbol":191}],125:[function(_dereq_,module,exports){
+},{"./isArray":184,"./isSymbol":194}],127:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is suitable for use as unique object key.
  *
@@ -4231,7 +4292,7 @@ function isKeyable(value) {
 
 module.exports = isKeyable;
 
-},{}],126:[function(_dereq_,module,exports){
+},{}],128:[function(_dereq_,module,exports){
 var coreJsData = _dereq_('./_coreJsData');
 
 /** Used to detect methods masquerading as native. */
@@ -4253,7 +4314,7 @@ function isMasked(func) {
 
 module.exports = isMasked;
 
-},{"./_coreJsData":87}],127:[function(_dereq_,module,exports){
+},{"./_coreJsData":89}],129:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -4273,7 +4334,7 @@ function isPrototype(value) {
 
 module.exports = isPrototype;
 
-},{}],128:[function(_dereq_,module,exports){
+},{}],130:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject');
 
 /**
@@ -4290,7 +4351,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"./isObject":188}],129:[function(_dereq_,module,exports){
+},{"./isObject":191}],131:[function(_dereq_,module,exports){
 /**
  * Removes all key-value entries from the list cache.
  *
@@ -4305,7 +4366,7 @@ function listCacheClear() {
 
 module.exports = listCacheClear;
 
-},{}],130:[function(_dereq_,module,exports){
+},{}],132:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /** Used for built-in method references. */
@@ -4342,7 +4403,7 @@ function listCacheDelete(key) {
 
 module.exports = listCacheDelete;
 
-},{"./_assocIndexOf":31}],131:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":31}],133:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /**
@@ -4363,7 +4424,7 @@ function listCacheGet(key) {
 
 module.exports = listCacheGet;
 
-},{"./_assocIndexOf":31}],132:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":31}],134:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /**
@@ -4381,7 +4442,7 @@ function listCacheHas(key) {
 
 module.exports = listCacheHas;
 
-},{"./_assocIndexOf":31}],133:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":31}],135:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /**
@@ -4409,7 +4470,7 @@ function listCacheSet(key, value) {
 
 module.exports = listCacheSet;
 
-},{"./_assocIndexOf":31}],134:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":31}],136:[function(_dereq_,module,exports){
 var Hash = _dereq_('./_Hash'),
     ListCache = _dereq_('./_ListCache'),
     Map = _dereq_('./_Map');
@@ -4432,7 +4493,7 @@ function mapCacheClear() {
 
 module.exports = mapCacheClear;
 
-},{"./_Hash":5,"./_ListCache":6,"./_Map":7}],135:[function(_dereq_,module,exports){
+},{"./_Hash":5,"./_ListCache":6,"./_Map":7}],137:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -4452,7 +4513,7 @@ function mapCacheDelete(key) {
 
 module.exports = mapCacheDelete;
 
-},{"./_getMapData":102}],136:[function(_dereq_,module,exports){
+},{"./_getMapData":104}],138:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -4470,7 +4531,7 @@ function mapCacheGet(key) {
 
 module.exports = mapCacheGet;
 
-},{"./_getMapData":102}],137:[function(_dereq_,module,exports){
+},{"./_getMapData":104}],139:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -4488,7 +4549,7 @@ function mapCacheHas(key) {
 
 module.exports = mapCacheHas;
 
-},{"./_getMapData":102}],138:[function(_dereq_,module,exports){
+},{"./_getMapData":104}],140:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -4512,7 +4573,7 @@ function mapCacheSet(key, value) {
 
 module.exports = mapCacheSet;
 
-},{"./_getMapData":102}],139:[function(_dereq_,module,exports){
+},{"./_getMapData":104}],141:[function(_dereq_,module,exports){
 /**
  * Converts `map` to its key-value pairs.
  *
@@ -4532,7 +4593,7 @@ function mapToArray(map) {
 
 module.exports = mapToArray;
 
-},{}],140:[function(_dereq_,module,exports){
+},{}],142:[function(_dereq_,module,exports){
 /**
  * A specialized version of `matchesProperty` for source values suitable
  * for strict equality comparisons, i.e. `===`.
@@ -4554,7 +4615,7 @@ function matchesStrictComparable(key, srcValue) {
 
 module.exports = matchesStrictComparable;
 
-},{}],141:[function(_dereq_,module,exports){
+},{}],143:[function(_dereq_,module,exports){
 var memoize = _dereq_('./memoize');
 
 /** Used as the maximum memoize cache size. */
@@ -4582,7 +4643,7 @@ function memoizeCapped(func) {
 
 module.exports = memoizeCapped;
 
-},{"./memoize":196}],142:[function(_dereq_,module,exports){
+},{"./memoize":200}],144:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative');
 
 /* Built-in method references that are verified to be native. */
@@ -4590,7 +4651,7 @@ var nativeCreate = getNative(Object, 'create');
 
 module.exports = nativeCreate;
 
-},{"./_getNative":104}],143:[function(_dereq_,module,exports){
+},{"./_getNative":106}],145:[function(_dereq_,module,exports){
 var overArg = _dereq_('./_overArg');
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -4598,7 +4659,7 @@ var nativeKeys = overArg(Object.keys, Object);
 
 module.exports = nativeKeys;
 
-},{"./_overArg":147}],144:[function(_dereq_,module,exports){
+},{"./_overArg":149}],146:[function(_dereq_,module,exports){
 /**
  * This function is like
  * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
@@ -4620,7 +4681,7 @@ function nativeKeysIn(object) {
 
 module.exports = nativeKeysIn;
 
-},{}],145:[function(_dereq_,module,exports){
+},{}],147:[function(_dereq_,module,exports){
 var freeGlobal = _dereq_('./_freeGlobal');
 
 /** Detect free variable `exports`. */
@@ -4644,7 +4705,7 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-},{"./_freeGlobal":99}],146:[function(_dereq_,module,exports){
+},{"./_freeGlobal":101}],148:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -4668,7 +4729,7 @@ function objectToString(value) {
 
 module.exports = objectToString;
 
-},{}],147:[function(_dereq_,module,exports){
+},{}],149:[function(_dereq_,module,exports){
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
  *
@@ -4685,7 +4746,7 @@ function overArg(func, transform) {
 
 module.exports = overArg;
 
-},{}],148:[function(_dereq_,module,exports){
+},{}],150:[function(_dereq_,module,exports){
 var apply = _dereq_('./_apply');
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -4723,7 +4784,25 @@ function overRest(func, start, transform) {
 
 module.exports = overRest;
 
-},{"./_apply":18}],149:[function(_dereq_,module,exports){
+},{"./_apply":18}],151:[function(_dereq_,module,exports){
+var baseGet = _dereq_('./_baseGet'),
+    baseSlice = _dereq_('./_baseSlice');
+
+/**
+ * Gets the parent value at `path` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} path The path to get the parent value of.
+ * @returns {*} Returns the parent value.
+ */
+function parent(object, path) {
+  return path.length < 2 ? object : baseGet(object, baseSlice(path, 0, -1));
+}
+
+module.exports = parent;
+
+},{"./_baseGet":42,"./_baseSlice":68}],152:[function(_dereq_,module,exports){
 var freeGlobal = _dereq_('./_freeGlobal');
 
 /** Detect free variable `self`. */
@@ -4734,7 +4813,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
 
-},{"./_freeGlobal":99}],150:[function(_dereq_,module,exports){
+},{"./_freeGlobal":101}],153:[function(_dereq_,module,exports){
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
 
@@ -4755,7 +4834,7 @@ function setCacheAdd(value) {
 
 module.exports = setCacheAdd;
 
-},{}],151:[function(_dereq_,module,exports){
+},{}],154:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is in the array cache.
  *
@@ -4771,7 +4850,7 @@ function setCacheHas(value) {
 
 module.exports = setCacheHas;
 
-},{}],152:[function(_dereq_,module,exports){
+},{}],155:[function(_dereq_,module,exports){
 /**
  * Converts `set` to an array of its values.
  *
@@ -4791,7 +4870,7 @@ function setToArray(set) {
 
 module.exports = setToArray;
 
-},{}],153:[function(_dereq_,module,exports){
+},{}],156:[function(_dereq_,module,exports){
 var baseSetToString = _dereq_('./_baseSetToString'),
     shortOut = _dereq_('./_shortOut');
 
@@ -4807,7 +4886,7 @@ var setToString = shortOut(baseSetToString);
 
 module.exports = setToString;
 
-},{"./_baseSetToString":66,"./_shortOut":154}],154:[function(_dereq_,module,exports){
+},{"./_baseSetToString":67,"./_shortOut":157}],157:[function(_dereq_,module,exports){
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
 var HOT_COUNT = 800,
     HOT_SPAN = 16;
@@ -4846,7 +4925,7 @@ function shortOut(func) {
 
 module.exports = shortOut;
 
-},{}],155:[function(_dereq_,module,exports){
+},{}],158:[function(_dereq_,module,exports){
 var ListCache = _dereq_('./_ListCache');
 
 /**
@@ -4863,7 +4942,7 @@ function stackClear() {
 
 module.exports = stackClear;
 
-},{"./_ListCache":6}],156:[function(_dereq_,module,exports){
+},{"./_ListCache":6}],159:[function(_dereq_,module,exports){
 /**
  * Removes `key` and its value from the stack.
  *
@@ -4883,7 +4962,7 @@ function stackDelete(key) {
 
 module.exports = stackDelete;
 
-},{}],157:[function(_dereq_,module,exports){
+},{}],160:[function(_dereq_,module,exports){
 /**
  * Gets the stack value for `key`.
  *
@@ -4899,7 +4978,7 @@ function stackGet(key) {
 
 module.exports = stackGet;
 
-},{}],158:[function(_dereq_,module,exports){
+},{}],161:[function(_dereq_,module,exports){
 /**
  * Checks if a stack value for `key` exists.
  *
@@ -4915,7 +4994,7 @@ function stackHas(key) {
 
 module.exports = stackHas;
 
-},{}],159:[function(_dereq_,module,exports){
+},{}],162:[function(_dereq_,module,exports){
 var ListCache = _dereq_('./_ListCache'),
     Map = _dereq_('./_Map'),
     MapCache = _dereq_('./_MapCache');
@@ -4951,7 +5030,7 @@ function stackSet(key, value) {
 
 module.exports = stackSet;
 
-},{"./_ListCache":6,"./_Map":7,"./_MapCache":8}],160:[function(_dereq_,module,exports){
+},{"./_ListCache":6,"./_Map":7,"./_MapCache":8}],163:[function(_dereq_,module,exports){
 var asciiToArray = _dereq_('./_asciiToArray'),
     hasUnicode = _dereq_('./_hasUnicode'),
     unicodeToArray = _dereq_('./_unicodeToArray');
@@ -4971,7 +5050,7 @@ function stringToArray(string) {
 
 module.exports = stringToArray;
 
-},{"./_asciiToArray":27,"./_hasUnicode":112,"./_unicodeToArray":164}],161:[function(_dereq_,module,exports){
+},{"./_asciiToArray":27,"./_hasUnicode":114,"./_unicodeToArray":167}],164:[function(_dereq_,module,exports){
 var memoizeCapped = _dereq_('./_memoizeCapped');
 
 /** Used to match property names within property paths. */
@@ -5001,7 +5080,7 @@ var stringToPath = memoizeCapped(function(string) {
 
 module.exports = stringToPath;
 
-},{"./_memoizeCapped":141}],162:[function(_dereq_,module,exports){
+},{"./_memoizeCapped":143}],165:[function(_dereq_,module,exports){
 var isSymbol = _dereq_('./isSymbol');
 
 /** Used as references for various `Number` constants. */
@@ -5024,7 +5103,7 @@ function toKey(value) {
 
 module.exports = toKey;
 
-},{"./isSymbol":191}],163:[function(_dereq_,module,exports){
+},{"./isSymbol":194}],166:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var funcProto = Function.prototype;
 
@@ -5052,7 +5131,7 @@ function toSource(func) {
 
 module.exports = toSource;
 
-},{}],164:[function(_dereq_,module,exports){
+},{}],167:[function(_dereq_,module,exports){
 /** Used to compose unicode character classes. */
 var rsAstralRange = '\\ud800-\\udfff',
     rsComboMarksRange = '\\u0300-\\u036f',
@@ -5094,7 +5173,7 @@ function unicodeToArray(string) {
 
 module.exports = unicodeToArray;
 
-},{}],165:[function(_dereq_,module,exports){
+},{}],168:[function(_dereq_,module,exports){
 /** Used to compose unicode character classes. */
 var rsAstralRange = '\\ud800-\\udfff',
     rsComboMarksRange = '\\u0300-\\u036f',
@@ -5165,7 +5244,7 @@ function unicodeWords(string) {
 
 module.exports = unicodeWords;
 
-},{}],166:[function(_dereq_,module,exports){
+},{}],169:[function(_dereq_,module,exports){
 var assignValue = _dereq_('./_assignValue'),
     copyObject = _dereq_('./_copyObject'),
     createAssigner = _dereq_('./_createAssigner'),
@@ -5225,7 +5304,7 @@ var assign = createAssigner(function(object, source) {
 
 module.exports = assign;
 
-},{"./_assignValue":30,"./_copyObject":84,"./_createAssigner":89,"./_isPrototype":127,"./isArrayLike":182,"./keys":193}],167:[function(_dereq_,module,exports){
+},{"./_assignValue":30,"./_copyObject":86,"./_createAssigner":91,"./_isPrototype":129,"./isArrayLike":185,"./keys":196}],170:[function(_dereq_,module,exports){
 var capitalize = _dereq_('./capitalize'),
     createCompounder = _dereq_('./_createCompounder');
 
@@ -5256,7 +5335,7 @@ var camelCase = createCompounder(function(result, word, index) {
 
 module.exports = camelCase;
 
-},{"./_createCompounder":93,"./capitalize":168}],168:[function(_dereq_,module,exports){
+},{"./_createCompounder":95,"./capitalize":171}],171:[function(_dereq_,module,exports){
 var toString = _dereq_('./toString'),
     upperFirst = _dereq_('./upperFirst');
 
@@ -5281,7 +5360,7 @@ function capitalize(string) {
 
 module.exports = capitalize;
 
-},{"./toString":210,"./upperFirst":211}],169:[function(_dereq_,module,exports){
+},{"./toString":215,"./upperFirst":216}],172:[function(_dereq_,module,exports){
 var baseClone = _dereq_('./_baseClone');
 
 /** Used to compose bitmasks for cloning. */
@@ -5319,7 +5398,7 @@ function clone(value) {
 
 module.exports = clone;
 
-},{"./_baseClone":36}],170:[function(_dereq_,module,exports){
+},{"./_baseClone":36}],173:[function(_dereq_,module,exports){
 var baseClone = _dereq_('./_baseClone');
 
 /** Used to compose bitmasks for cloning. */
@@ -5350,7 +5429,7 @@ function cloneDeep(value) {
 
 module.exports = cloneDeep;
 
-},{"./_baseClone":36}],171:[function(_dereq_,module,exports){
+},{"./_baseClone":36}],174:[function(_dereq_,module,exports){
 /**
  * Creates a function that returns `value`.
  *
@@ -5378,7 +5457,7 @@ function constant(value) {
 
 module.exports = constant;
 
-},{}],172:[function(_dereq_,module,exports){
+},{}],175:[function(_dereq_,module,exports){
 var deburrLetter = _dereq_('./_deburrLetter'),
     toString = _dereq_('./toString');
 
@@ -5425,10 +5504,10 @@ function deburr(string) {
 
 module.exports = deburr;
 
-},{"./_deburrLetter":94,"./toString":210}],173:[function(_dereq_,module,exports){
+},{"./_deburrLetter":96,"./toString":215}],176:[function(_dereq_,module,exports){
 module.exports = _dereq_('./forEach');
 
-},{"./forEach":175}],174:[function(_dereq_,module,exports){
+},{"./forEach":178}],177:[function(_dereq_,module,exports){
 /**
  * Performs a
  * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
@@ -5467,7 +5546,7 @@ function eq(value, other) {
 
 module.exports = eq;
 
-},{}],175:[function(_dereq_,module,exports){
+},{}],178:[function(_dereq_,module,exports){
 var arrayEach = _dereq_('./_arrayEach'),
     baseEach = _dereq_('./_baseEach'),
     castFunction = _dereq_('./_castFunction'),
@@ -5510,7 +5589,7 @@ function forEach(collection, iteratee) {
 
 module.exports = forEach;
 
-},{"./_arrayEach":20,"./_baseEach":38,"./_castFunction":72,"./isArray":181}],176:[function(_dereq_,module,exports){
+},{"./_arrayEach":20,"./_baseEach":38,"./_castFunction":74,"./isArray":184}],179:[function(_dereq_,module,exports){
 var baseGet = _dereq_('./_baseGet');
 
 /**
@@ -5545,7 +5624,7 @@ function get(object, path, defaultValue) {
 
 module.exports = get;
 
-},{"./_baseGet":42}],177:[function(_dereq_,module,exports){
+},{"./_baseGet":42}],180:[function(_dereq_,module,exports){
 var baseAssignValue = _dereq_('./_baseAssignValue'),
     createAggregator = _dereq_('./_createAggregator');
 
@@ -5588,7 +5667,7 @@ var groupBy = createAggregator(function(result, value, key) {
 
 module.exports = groupBy;
 
-},{"./_baseAssignValue":35,"./_createAggregator":88}],178:[function(_dereq_,module,exports){
+},{"./_baseAssignValue":35,"./_createAggregator":90}],181:[function(_dereq_,module,exports){
 var baseHasIn = _dereq_('./_baseHasIn'),
     hasPath = _dereq_('./_hasPath');
 
@@ -5624,7 +5703,7 @@ function hasIn(object, path) {
 
 module.exports = hasIn;
 
-},{"./_baseHasIn":45,"./_hasPath":111}],179:[function(_dereq_,module,exports){
+},{"./_baseHasIn":45,"./_hasPath":113}],182:[function(_dereq_,module,exports){
 /**
  * This method returns the first argument it receives.
  *
@@ -5647,7 +5726,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],180:[function(_dereq_,module,exports){
+},{}],183:[function(_dereq_,module,exports){
 var baseIsArguments = _dereq_('./_baseIsArguments'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -5685,7 +5764,7 @@ var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsAr
 
 module.exports = isArguments;
 
-},{"./_baseIsArguments":46,"./isObjectLike":189}],181:[function(_dereq_,module,exports){
+},{"./_baseIsArguments":46,"./isObjectLike":192}],184:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -5713,7 +5792,7 @@ var isArray = Array.isArray;
 
 module.exports = isArray;
 
-},{}],182:[function(_dereq_,module,exports){
+},{}],185:[function(_dereq_,module,exports){
 var isFunction = _dereq_('./isFunction'),
     isLength = _dereq_('./isLength');
 
@@ -5748,7 +5827,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./isFunction":185,"./isLength":186}],183:[function(_dereq_,module,exports){
+},{"./isFunction":188,"./isLength":189}],186:[function(_dereq_,module,exports){
 var isArrayLike = _dereq_('./isArrayLike'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -5783,7 +5862,7 @@ function isArrayLikeObject(value) {
 
 module.exports = isArrayLikeObject;
 
-},{"./isArrayLike":182,"./isObjectLike":189}],184:[function(_dereq_,module,exports){
+},{"./isArrayLike":185,"./isObjectLike":192}],187:[function(_dereq_,module,exports){
 var root = _dereq_('./_root'),
     stubFalse = _dereq_('./stubFalse');
 
@@ -5823,7 +5902,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-},{"./_root":149,"./stubFalse":205}],185:[function(_dereq_,module,exports){
+},{"./_root":152,"./stubFalse":210}],188:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isObject = _dereq_('./isObject');
 
@@ -5862,7 +5941,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./_baseGetTag":44,"./isObject":188}],186:[function(_dereq_,module,exports){
+},{"./_baseGetTag":44,"./isObject":191}],189:[function(_dereq_,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -5899,7 +5978,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],187:[function(_dereq_,module,exports){
+},{}],190:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -5939,7 +6018,7 @@ function isNumber(value) {
 
 module.exports = isNumber;
 
-},{"./_baseGetTag":44,"./isObjectLike":189}],188:[function(_dereq_,module,exports){
+},{"./_baseGetTag":44,"./isObjectLike":192}],191:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -5972,7 +6051,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],189:[function(_dereq_,module,exports){
+},{}],192:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -6003,7 +6082,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],190:[function(_dereq_,module,exports){
+},{}],193:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     getPrototype = _dereq_('./_getPrototype'),
     isObjectLike = _dereq_('./isObjectLike');
@@ -6067,7 +6146,7 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{"./_baseGetTag":44,"./_getPrototype":105,"./isObjectLike":189}],191:[function(_dereq_,module,exports){
+},{"./_baseGetTag":44,"./_getPrototype":107,"./isObjectLike":192}],194:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -6098,7 +6177,7 @@ function isSymbol(value) {
 
 module.exports = isSymbol;
 
-},{"./_baseGetTag":44,"./isObjectLike":189}],192:[function(_dereq_,module,exports){
+},{"./_baseGetTag":44,"./isObjectLike":192}],195:[function(_dereq_,module,exports){
 var baseIsTypedArray = _dereq_('./_baseIsTypedArray'),
     baseUnary = _dereq_('./_baseUnary'),
     nodeUtil = _dereq_('./_nodeUtil');
@@ -6127,7 +6206,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 
 module.exports = isTypedArray;
 
-},{"./_baseIsTypedArray":51,"./_baseUnary":70,"./_nodeUtil":145}],193:[function(_dereq_,module,exports){
+},{"./_baseIsTypedArray":51,"./_baseUnary":71,"./_nodeUtil":147}],196:[function(_dereq_,module,exports){
 var arrayLikeKeys = _dereq_('./_arrayLikeKeys'),
     baseKeys = _dereq_('./_baseKeys'),
     isArrayLike = _dereq_('./isArrayLike');
@@ -6166,7 +6245,7 @@ function keys(object) {
 
 module.exports = keys;
 
-},{"./_arrayLikeKeys":22,"./_baseKeys":53,"./isArrayLike":182}],194:[function(_dereq_,module,exports){
+},{"./_arrayLikeKeys":22,"./_baseKeys":53,"./isArrayLike":185}],197:[function(_dereq_,module,exports){
 var arrayLikeKeys = _dereq_('./_arrayLikeKeys'),
     baseKeysIn = _dereq_('./_baseKeysIn'),
     isArrayLike = _dereq_('./isArrayLike');
@@ -6200,7 +6279,29 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"./_arrayLikeKeys":22,"./_baseKeysIn":54,"./isArrayLike":182}],195:[function(_dereq_,module,exports){
+},{"./_arrayLikeKeys":22,"./_baseKeysIn":54,"./isArrayLike":185}],198:[function(_dereq_,module,exports){
+/**
+ * Gets the last element of `array`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Array
+ * @param {Array} array The array to query.
+ * @returns {*} Returns the last element of `array`.
+ * @example
+ *
+ * _.last([1, 2, 3]);
+ * // => 3
+ */
+function last(array) {
+  var length = array == null ? 0 : array.length;
+  return length ? array[length - 1] : undefined;
+}
+
+module.exports = last;
+
+},{}],199:[function(_dereq_,module,exports){
 var arrayMap = _dereq_('./_arrayMap'),
     baseIteratee = _dereq_('./_baseIteratee'),
     baseMap = _dereq_('./_baseMap'),
@@ -6255,7 +6356,7 @@ function map(collection, iteratee) {
 
 module.exports = map;
 
-},{"./_arrayMap":23,"./_baseIteratee":52,"./_baseMap":55,"./isArray":181}],196:[function(_dereq_,module,exports){
+},{"./_arrayMap":23,"./_baseIteratee":52,"./_baseMap":55,"./isArray":184}],200:[function(_dereq_,module,exports){
 var MapCache = _dereq_('./_MapCache');
 
 /** Error message constants. */
@@ -6330,7 +6431,7 @@ memoize.Cache = MapCache;
 
 module.exports = memoize;
 
-},{"./_MapCache":8}],197:[function(_dereq_,module,exports){
+},{"./_MapCache":8}],201:[function(_dereq_,module,exports){
 var baseMerge = _dereq_('./_baseMerge'),
     createAssigner = _dereq_('./_createAssigner');
 
@@ -6371,7 +6472,7 @@ var merge = createAssigner(function(object, source, srcIndex) {
 
 module.exports = merge;
 
-},{"./_baseMerge":58,"./_createAssigner":89}],198:[function(_dereq_,module,exports){
+},{"./_baseMerge":58,"./_createAssigner":91}],202:[function(_dereq_,module,exports){
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
@@ -6413,7 +6514,7 @@ function negate(predicate) {
 
 module.exports = negate;
 
-},{}],199:[function(_dereq_,module,exports){
+},{}],203:[function(_dereq_,module,exports){
 var baseIteratee = _dereq_('./_baseIteratee'),
     negate = _dereq_('./negate'),
     pickBy = _dereq_('./pickBy');
@@ -6444,7 +6545,7 @@ function omitBy(object, predicate) {
 
 module.exports = omitBy;
 
-},{"./_baseIteratee":52,"./negate":198,"./pickBy":200}],200:[function(_dereq_,module,exports){
+},{"./_baseIteratee":52,"./negate":202,"./pickBy":204}],204:[function(_dereq_,module,exports){
 var arrayMap = _dereq_('./_arrayMap'),
     baseIteratee = _dereq_('./_baseIteratee'),
     basePickBy = _dereq_('./_basePickBy'),
@@ -6483,7 +6584,7 @@ function pickBy(object, predicate) {
 
 module.exports = pickBy;
 
-},{"./_arrayMap":23,"./_baseIteratee":52,"./_basePickBy":60,"./_getAllKeysIn":101}],201:[function(_dereq_,module,exports){
+},{"./_arrayMap":23,"./_baseIteratee":52,"./_basePickBy":60,"./_getAllKeysIn":103}],205:[function(_dereq_,module,exports){
 var baseProperty = _dereq_('./_baseProperty'),
     basePropertyDeep = _dereq_('./_basePropertyDeep'),
     isKey = _dereq_('./_isKey'),
@@ -6517,7 +6618,7 @@ function property(path) {
 
 module.exports = property;
 
-},{"./_baseProperty":61,"./_basePropertyDeep":62,"./_isKey":124,"./_toKey":162}],202:[function(_dereq_,module,exports){
+},{"./_baseProperty":61,"./_basePropertyDeep":62,"./_isKey":126,"./_toKey":165}],206:[function(_dereq_,module,exports){
 var arrayFilter = _dereq_('./_arrayFilter'),
     baseFilter = _dereq_('./_baseFilter'),
     baseIteratee = _dereq_('./_baseIteratee'),
@@ -6565,7 +6666,62 @@ function reject(collection, predicate) {
 
 module.exports = reject;
 
-},{"./_arrayFilter":21,"./_baseFilter":39,"./_baseIteratee":52,"./isArray":181,"./negate":198}],203:[function(_dereq_,module,exports){
+},{"./_arrayFilter":21,"./_baseFilter":39,"./_baseIteratee":52,"./isArray":184,"./negate":202}],207:[function(_dereq_,module,exports){
+var baseIteratee = _dereq_('./_baseIteratee'),
+    basePullAt = _dereq_('./_basePullAt');
+
+/**
+ * Removes all elements from `array` that `predicate` returns truthy for
+ * and returns an array of the removed elements. The predicate is invoked
+ * with three arguments: (value, index, array).
+ *
+ * **Note:** Unlike `_.filter`, this method mutates `array`. Use `_.pull`
+ * to pull elements from an array by value.
+ *
+ * @static
+ * @memberOf _
+ * @since 2.0.0
+ * @category Array
+ * @param {Array} array The array to modify.
+ * @param {Function} [predicate=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new array of removed elements.
+ * @example
+ *
+ * var array = [1, 2, 3, 4];
+ * var evens = _.remove(array, function(n) {
+ *   return n % 2 == 0;
+ * });
+ *
+ * console.log(array);
+ * // => [1, 3]
+ *
+ * console.log(evens);
+ * // => [2, 4]
+ */
+function remove(array, predicate) {
+  var result = [];
+  if (!(array && array.length)) {
+    return result;
+  }
+  var index = -1,
+      indexes = [],
+      length = array.length;
+
+  predicate = baseIteratee(predicate, 3);
+  while (++index < length) {
+    var value = array[index];
+    if (predicate(value, index, array)) {
+      result.push(value);
+      indexes.push(index);
+    }
+  }
+  basePullAt(array, indexes);
+  return result;
+}
+
+module.exports = remove;
+
+},{"./_baseIteratee":52,"./_basePullAt":64}],208:[function(_dereq_,module,exports){
 var baseSlice = _dereq_('./_baseSlice'),
     isIterateeCall = _dereq_('./_isIterateeCall'),
     toInteger = _dereq_('./toInteger');
@@ -6604,7 +6760,7 @@ function slice(array, start, end) {
 
 module.exports = slice;
 
-},{"./_baseSlice":67,"./_isIterateeCall":123,"./toInteger":207}],204:[function(_dereq_,module,exports){
+},{"./_baseSlice":68,"./_isIterateeCall":125,"./toInteger":212}],209:[function(_dereq_,module,exports){
 /**
  * This method returns a new empty array.
  *
@@ -6629,7 +6785,7 @@ function stubArray() {
 
 module.exports = stubArray;
 
-},{}],205:[function(_dereq_,module,exports){
+},{}],210:[function(_dereq_,module,exports){
 /**
  * This method returns `false`.
  *
@@ -6649,7 +6805,7 @@ function stubFalse() {
 
 module.exports = stubFalse;
 
-},{}],206:[function(_dereq_,module,exports){
+},{}],211:[function(_dereq_,module,exports){
 var toNumber = _dereq_('./toNumber');
 
 /** Used as references for various `Number` constants. */
@@ -6693,7 +6849,7 @@ function toFinite(value) {
 
 module.exports = toFinite;
 
-},{"./toNumber":208}],207:[function(_dereq_,module,exports){
+},{"./toNumber":213}],212:[function(_dereq_,module,exports){
 var toFinite = _dereq_('./toFinite');
 
 /**
@@ -6731,7 +6887,7 @@ function toInteger(value) {
 
 module.exports = toInteger;
 
-},{"./toFinite":206}],208:[function(_dereq_,module,exports){
+},{"./toFinite":211}],213:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject'),
     isSymbol = _dereq_('./isSymbol');
 
@@ -6799,7 +6955,7 @@ function toNumber(value) {
 
 module.exports = toNumber;
 
-},{"./isObject":188,"./isSymbol":191}],209:[function(_dereq_,module,exports){
+},{"./isObject":191,"./isSymbol":194}],214:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     keysIn = _dereq_('./keysIn');
 
@@ -6833,7 +6989,7 @@ function toPlainObject(value) {
 
 module.exports = toPlainObject;
 
-},{"./_copyObject":84,"./keysIn":194}],210:[function(_dereq_,module,exports){
+},{"./_copyObject":86,"./keysIn":197}],215:[function(_dereq_,module,exports){
 var baseToString = _dereq_('./_baseToString');
 
 /**
@@ -6863,7 +7019,7 @@ function toString(value) {
 
 module.exports = toString;
 
-},{"./_baseToString":69}],211:[function(_dereq_,module,exports){
+},{"./_baseToString":70}],216:[function(_dereq_,module,exports){
 var createCaseFirst = _dereq_('./_createCaseFirst');
 
 /**
@@ -6887,7 +7043,7 @@ var upperFirst = createCaseFirst('toUpperCase');
 
 module.exports = upperFirst;
 
-},{"./_createCaseFirst":92}],212:[function(_dereq_,module,exports){
+},{"./_createCaseFirst":94}],217:[function(_dereq_,module,exports){
 var asciiWords = _dereq_('./_asciiWords'),
     hasUnicodeWord = _dereq_('./_hasUnicodeWord'),
     toString = _dereq_('./toString'),
@@ -6924,7 +7080,7 @@ function words(string, pattern, guard) {
 
 module.exports = words;
 
-},{"./_asciiWords":28,"./_hasUnicodeWord":113,"./_unicodeWords":165,"./toString":210}],213:[function(_dereq_,module,exports){
+},{"./_asciiWords":28,"./_hasUnicodeWord":115,"./_unicodeWords":168,"./toString":215}],218:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -6996,7 +7152,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],214:[function(_dereq_,module,exports){
+},{}],219:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7070,7 +7226,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],215:[function(_dereq_,module,exports){
+},{}],220:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7161,7 +7317,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],216:[function(_dereq_,module,exports){
+},{}],221:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7209,7 +7365,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],217:[function(_dereq_,module,exports){
+},{}],222:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.run([
@@ -7326,7 +7482,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],218:[function(_dereq_,module,exports){
+},{}],223:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7378,7 +7534,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],219:[function(_dereq_,module,exports){
+},{}],224:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7449,7 +7605,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],220:[function(_dereq_,module,exports){
+},{}],225:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7519,7 +7675,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],221:[function(_dereq_,module,exports){
+},{}],226:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7582,7 +7738,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],222:[function(_dereq_,module,exports){
+},{}],227:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7648,7 +7804,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],223:[function(_dereq_,module,exports){
+},{}],228:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7838,7 +7994,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],224:[function(_dereq_,module,exports){
+},{}],229:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7913,7 +8069,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],225:[function(_dereq_,module,exports){
+},{}],230:[function(_dereq_,module,exports){
 "use strict";
 var _cloneDeep = _dereq_('lodash/cloneDeep');
 var _each = _dereq_('lodash/each');
@@ -7962,7 +8118,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/cloneDeep":170,"lodash/each":173}],226:[function(_dereq_,module,exports){
+},{"lodash/cloneDeep":173,"lodash/each":176}],231:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8017,7 +8173,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],227:[function(_dereq_,module,exports){
+},{}],232:[function(_dereq_,module,exports){
 "use strict";
 var _map = _dereq_('lodash/map');
 module.exports = function(app) {
@@ -8103,7 +8259,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/map":195}],228:[function(_dereq_,module,exports){
+},{"lodash/map":199}],233:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8163,7 +8319,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],229:[function(_dereq_,module,exports){
+},{}],234:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8223,7 +8379,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],230:[function(_dereq_,module,exports){
+},{}],235:[function(_dereq_,module,exports){
 "use strict";
 var app = angular.module('ngFormBuilder');
 
@@ -8265,7 +8421,7 @@ _dereq_('./panel')(app);
 _dereq_('./table')(app);
 _dereq_('./well')(app);
 
-},{"./address":213,"./button":214,"./checkbox":215,"./columns":216,"./components":217,"./container":218,"./content":219,"./currency":220,"./custom":221,"./datagrid":222,"./datetime":223,"./day":224,"./email":225,"./fieldset":226,"./file":227,"./hidden":228,"./htmlelement":229,"./number":231,"./page":232,"./panel":233,"./password":234,"./phonenumber":235,"./radio":236,"./resource":237,"./select":238,"./selectboxes":239,"./signature":240,"./survey":241,"./table":242,"./textarea":243,"./textfield":244,"./well":245}],231:[function(_dereq_,module,exports){
+},{"./address":218,"./button":219,"./checkbox":220,"./columns":221,"./components":222,"./container":223,"./content":224,"./currency":225,"./custom":226,"./datagrid":227,"./datetime":228,"./day":229,"./email":230,"./fieldset":231,"./file":232,"./hidden":233,"./htmlelement":234,"./number":236,"./page":237,"./panel":238,"./password":239,"./phonenumber":240,"./radio":241,"./resource":242,"./select":243,"./selectboxes":244,"./signature":245,"./survey":246,"./table":247,"./textarea":248,"./textfield":249,"./well":250}],236:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8340,7 +8496,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],232:[function(_dereq_,module,exports){
+},{}],237:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8361,7 +8517,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],233:[function(_dereq_,module,exports){
+},{}],238:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8428,7 +8584,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],234:[function(_dereq_,module,exports){
+},{}],239:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8498,7 +8654,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],235:[function(_dereq_,module,exports){
+},{}],240:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8571,7 +8727,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],236:[function(_dereq_,module,exports){
+},{}],241:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8639,7 +8795,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],237:[function(_dereq_,module,exports){
+},{}],242:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8729,7 +8885,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],238:[function(_dereq_,module,exports){
+},{}],243:[function(_dereq_,module,exports){
 "use strict";
 var _clone = _dereq_('lodash/clone');
 module.exports = function(app) {
@@ -8964,7 +9120,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/clone":169}],239:[function(_dereq_,module,exports){
+},{"lodash/clone":172}],244:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9036,7 +9192,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],240:[function(_dereq_,module,exports){
+},{}],245:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9099,7 +9255,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],241:[function(_dereq_,module,exports){
+},{}],246:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9165,7 +9321,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],242:[function(_dereq_,module,exports){
+},{}],247:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9236,7 +9392,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],243:[function(_dereq_,module,exports){
+},{}],248:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9341,7 +9497,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],244:[function(_dereq_,module,exports){
+},{}],249:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9416,7 +9572,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],245:[function(_dereq_,module,exports){
+},{}],250:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9462,7 +9618,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],246:[function(_dereq_,module,exports){
+},{}],251:[function(_dereq_,module,exports){
 "use strict";
 /**
   * These are component options that can be reused
@@ -9695,11 +9851,12 @@ module.exports = {
   }
 };
 
-},{}],247:[function(_dereq_,module,exports){
+},{}],252:[function(_dereq_,module,exports){
 "use strict";
 /**
  * 表单设计器控制工具菜单定义
  */
+var _remove = _dereq_('lodash/remove');
 module.exports = {
     'items': [{
         'type': 'button',
@@ -9774,30 +9931,211 @@ module.exports = {
             var services = arguments[0];
             var ngDialog = services['ngDialog'];
             var log = services['log'];
+            var rootScope = services['rootScope'];
+            var http = services['http'];
             var dialog = ngDialog.open({
                 template: 'formio/formbuilder/toolbar/save.html',
-                scope:services['rootScope'],
+                showClose:false,
+                closeByEscape:false,
+                closeByNavigation:false,
+                closeByDocument:false,
+                width:250,
+                scope:rootScope,
                 controller:['$scope',function(scope) {
-
+                    log.info(rootScope);
+                    scope.isLoading = true;
+                    scope.requestSuccess = false;
+                    var saveUrl = rootScope.contextPath + '/form-service/model/' + rootScope.modelId + '/save.zf';
+                    var parameters = 
+                        {
+                            'json_modelData':JSON.stringify(rootScope.form)
+                        };
+                    var saveRequest = http.put(saveUrl, parameters, {
+                        headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                                },
+                        transformRequest: function (obj) {
+                                var str = [];
+                                for (var p in obj) {
+                                    str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                                }
+                                return str.join('&');
+                            }
+                        }).then(function(response) {
+                        services['timeout'](function(){
+                            scope.isLoading = false;
+                            scope.requestSuccess = true;
+                            rootScope.$apply(rootScope.formUpdateUnsaved = false);
+                        }, 500).then(function(){
+                            services['timeout'](function(){
+                                scope.closeThisDialog();
+                            },500);
+                        });
+                    }, function(response) {
+                        services['timeout'](function(){
+                            scope.isLoading = false;
+                            scope.requestSuccess = false;
+                        }, 500).then(function(){
+                            services['timeout'](function(){
+                                scope.closeThisDialog();
+                            },500);
+                        });
+                        //dialog.close();
+                    });
                 }]
-            }).closePromise.then(function(e) {
-                log.debug(e);
+            });
+            
+            dialog.closePromise.then(function(e) {
+                //log.debug(e);
             });
         },
-        'template':function() {},
-        'import':function() {},
+        'template':function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            var log = services['log'];
+            var rootScope = services['rootScope'];
+            var http = services['http'];
+            var dialog = ngDialog.open({
+                template: 'formio/formbuilder/toolbar/templates.html',
+                showClose:false,
+                closeByEscape:false,
+                closeByNavigation:false,
+                closeByDocument:false,
+                scope:rootScope,
+                controller:['$scope',function(scope) {
+                    //fetch tempates form server
+                    var fetchUrl = rootScope.contextPath + '/form-service/template/list.zf';
+                    http({
+                        method: 'GET',
+                        url: fetchUrl
+                    }).then(function(response){
+                        scope.formTemplates = response['data'];
+                    },function(response){
+                        scope.formTemplates = [];
+                    });
+                    
+                    scope.delete = function(modelId){
+                        var deleteUrl = rootScope.contextPath + '/form-service/template/' + modelId + '/del.zf';
+                        http({
+                            method: 'GET',
+                            url: deleteUrl
+                        }).then(function(response){
+                            _remove(scope.formTemplates, function(n){
+                                return n.json_modelId === modelId;
+                            });
+                        });
+                    };
+                    
+                    scope.choose = function(modelId){
+                        var modeaDataUrl = rootScope.contextPath + '/form-service/template/' + modelId + '/json.zf';
+                        http({
+                            method: 'GET',
+                            url: modeaDataUrl
+                        }).then(function(response){
+                            if(response['data']){
+                                rootScope.form = response['data'];
+                                scope.closeThisDialog();
+                            }
+                        });
+                    };
+                }]
+            });
+        },
+        'import':function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            var log = services['log'];
+            var rootScope = services['rootScope'];
+            ngDialog.open({
+                template: 'formio/formbuilder/toolbar/import.html',
+                showClose:true,
+                closeByEscape:false,
+                closeByDocument:false,
+                width:400,
+                scope:rootScope,
+                controller:['$scope','Upload',function($scope,Upload){
+                    var uploadUrl = rootScope.contextPath + '/form-service/model/import.zf';
+                    $scope.uploadModel = function(file) {
+                        file.upload = Upload.upload({
+                          url: uploadUrl,
+                          data: {file: file}
+                        });
+
+                        file.upload.then(function (response) {
+                          //response.data;
+                        }, function (response) {
+                          if (response.status > 0){
+                              $scope.errorMsg = response.status + ': ' + response.data;
+                          }
+                        }, function (evt) {
+                          file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                        });
+                    };
+                }]
+            });
+        },
         'export':function() {},
+        'preview':function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            var log = services['log'];
+            var rootScope = services['rootScope'];
+            ngDialog.open({
+                template: 'formio/formbuilder/toolbar/preview.html',
+                showClose:true,
+                closeByEscape:false,
+                closeByDocument:false,
+                scope:rootScope,
+                controller:['$scope',function(scope){
+                    scope.formData = rootScope.form;
+                    scope.modelName = rootScope.modelName;
+                    scope.modelDesc = rootScope.modelDesc;
+                }]
+            });
+        },
         'debug':function() {
             var services = arguments[0];
             var rootScope = services['rootScope'];
             rootScope.showDebugConsole = (!rootScope.showDebugConsole);
         },
-        'help':function() {},
-        'closeEditor':function() {}
+        'help':function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            ngDialog.open({
+                template: 'formio/formbuilder/toolbar/help.html',
+                showClose:true,
+                closeByEscape:false,
+                closeByDocument:false,
+                width:400
+            });
+        },
+        'closeEditor':function() {
+            var services = arguments[0];
+            var ngDialog = services['ngDialog'];
+            var rootScope = services['rootScope'];
+            var window = services['window'];
+            var log = services['log'];
+            if(rootScope.formUpdateUnsaved){
+                var dialog = ngDialog.open({
+                    template: 'formio/formbuilder/toolbar/confirm-close.html',
+                    showClose:true,
+                    closeByEscape:false,
+                    closeByDocument:false,
+                    width:450
+                }).closePromise.then(function(closeDecision){
+                    if(closeDecision.value){
+                        window.close();
+                    }
+                });
+            }else {
+                window.close();
+            }
+        }
     }
 };
 
-},{}],248:[function(_dereq_,module,exports){
+},{"lodash/remove":207}],253:[function(_dereq_,module,exports){
 "use strict";
 module.exports = {
   actions: [
@@ -9864,7 +10202,7 @@ module.exports = {
   ]
 };
 
-},{}],249:[function(_dereq_,module,exports){
+},{}],254:[function(_dereq_,module,exports){
 "use strict";
 /*eslint max-statements: 0*/
 var _cloneDeep = _dereq_('lodash/cloneDeep');
@@ -10176,7 +10514,7 @@ module.exports = ['debounce', function(debounce) {
   };
 }];
 
-},{"lodash/capitalize":168,"lodash/cloneDeep":170,"lodash/each":173,"lodash/groupBy":177,"lodash/merge":197,"lodash/omitBy":199,"lodash/upperFirst":211}],250:[function(_dereq_,module,exports){
+},{"lodash/capitalize":171,"lodash/cloneDeep":173,"lodash/each":176,"lodash/groupBy":180,"lodash/merge":201,"lodash/omitBy":203,"lodash/upperFirst":216}],255:[function(_dereq_,module,exports){
 "use strict";
 /**
  * Create the form-builder-component directive.
@@ -10192,7 +10530,7 @@ module.exports = [
   }
 ];
 
-},{}],251:[function(_dereq_,module,exports){
+},{}],256:[function(_dereq_,module,exports){
 "use strict";
 'use strict';
 var utils = _dereq_('formiojs/utils');
@@ -10279,7 +10617,7 @@ module.exports = ['$filter',
   }
 ];
 
-},{"formiojs/utils":2,"lodash/get":176,"lodash/reject":202}],252:[function(_dereq_,module,exports){
+},{"formiojs/utils":2,"lodash/get":179,"lodash/reject":206}],257:[function(_dereq_,module,exports){
 "use strict";
 var _isNumber = _dereq_('lodash/isNumber');
 var _camelCase = _dereq_('lodash/camelCase');
@@ -10545,7 +10883,7 @@ module.exports = [
   }
 ];
 
-},{"lodash/assign":166,"lodash/camelCase":167,"lodash/isNumber":187}],253:[function(_dereq_,module,exports){
+},{"lodash/assign":169,"lodash/camelCase":170,"lodash/isNumber":190}],258:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   'formioElementDirective',
@@ -10570,7 +10908,7 @@ module.exports = [
   }
 ];
 
-},{}],254:[function(_dereq_,module,exports){
+},{}],259:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   function() {
@@ -10593,7 +10931,7 @@ module.exports = [
   }
 ];
 
-},{}],255:[function(_dereq_,module,exports){
+},{}],260:[function(_dereq_,module,exports){
 "use strict";
 /**
 * This directive creates a field for tweaking component options.
@@ -10661,7 +10999,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
   };
 }];
 
-},{}],256:[function(_dereq_,module,exports){
+},{}],261:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for editing a component's custom validation.
@@ -10702,7 +11040,7 @@ module.exports = function() {
   };
 };
 
-},{}],257:[function(_dereq_,module,exports){
+},{}],262:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for a field to edit a component's key.
@@ -10748,7 +11086,7 @@ module.exports = function() {
   };
 };
 
-},{}],258:[function(_dereq_,module,exports){
+},{}],263:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for a field to edit a component's tags.
@@ -10792,7 +11130,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/map":195}],259:[function(_dereq_,module,exports){
+},{"lodash/map":199}],264:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   function() {
@@ -10814,7 +11152,7 @@ module.exports = [
   }
 ];
 
-},{}],260:[function(_dereq_,module,exports){
+},{}],265:[function(_dereq_,module,exports){
 "use strict";
 /**
  * A directive for a table builder
@@ -10868,7 +11206,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/merge":197}],261:[function(_dereq_,module,exports){
+},{"lodash/merge":201}],266:[function(_dereq_,module,exports){
 "use strict";
 var formioBuilderToolbarCongfig = _dereq_('../constants/config');
 var _slice = _dereq_('lodash/slice');
@@ -10877,9 +11215,9 @@ module.exports = function() {
 			restrict: 'E',
 			replace: true,
 			templateUrl: 'formio/formbuilder/toolbar.html',
-			controller:['$rootScope','$scope','ngDialog','$http','$log', function($rootScope,$scope,ngDialog,$http,$log) {
+			controller:['$rootScope','$scope','ngDialog','$http','$log','$timeout','$window', function($rootScope,$scope,ngDialog,$http,$log,$timeout,$window) {
 				$scope.toolbarConfig = formioBuilderToolbarCongfig;
-				var services = {'rootScope':$rootScope,'scope':$scope,'ngDialog':ngDialog,'http':$http,'log':$log};
+				var services = {'rootScope':$rootScope,'scope':$scope,'ngDialog':ngDialog,'http':$http,'log':$log, 'timeout':$timeout,'window':$window};
 				var executeFunctionByName = function(fn) {
 					var args = _slice(arguments, 1);
 					return fn.apply(this, args);
@@ -10911,7 +11249,7 @@ module.exports = function() {
 	};
 };
 
-},{"../constants/config":247,"lodash/slice":203}],262:[function(_dereq_,module,exports){
+},{"../constants/config":252,"lodash/slice":208}],267:[function(_dereq_,module,exports){
 "use strict";
 /**
 * Invokes Bootstrap's popover jquery plugin on an element
@@ -10952,7 +11290,7 @@ module.exports = ['$filter', function($filter) {
   };
 }];
 
-},{}],263:[function(_dereq_,module,exports){
+},{}],268:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function() {
   return {
@@ -10989,7 +11327,7 @@ module.exports = function() {
   };
 };
 
-},{}],264:[function(_dereq_,module,exports){
+},{}],269:[function(_dereq_,module,exports){
 "use strict";
 /*
 * Prevents user inputting invalid api key characters.
@@ -11012,7 +11350,7 @@ module.exports = function() {
   };
 };
 
-},{}],265:[function(_dereq_,module,exports){
+},{}],270:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive that provides a UI to add {value, label} objects to an array.
@@ -11093,7 +11431,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/camelCase":167,"lodash/map":195}],266:[function(_dereq_,module,exports){
+},{"lodash/camelCase":170,"lodash/map":199}],271:[function(_dereq_,module,exports){
 "use strict";
 'use strict';
 
@@ -11202,7 +11540,7 @@ module.exports = ['FormioUtils', function(FormioUtils) {
   };
 }];
 
-},{}],267:[function(_dereq_,module,exports){
+},{}],272:[function(_dereq_,module,exports){
 "use strict";
 // Create an AngularJS service called debounce
 module.exports = ['$timeout','$q', function($timeout, $q) {
@@ -11236,7 +11574,7 @@ module.exports = ['$timeout','$q', function($timeout, $q) {
   };
 }];
 
-},{}],268:[function(_dereq_,module,exports){
+},{}],273:[function(_dereq_,module,exports){
 "use strict";
 /**
  * [exports description]
@@ -11296,10 +11634,17 @@ module.exports = {
     'ACTION.REMOVE': '清除',
     'ACTION.MOVE.UP': '上移',
     'ACTION.MOVE.DOWN': '下移',
+    'ACTION.PREVIEW':'预览',
+    'ACTION.CHOOSE':'选择',
+    'ACTION.DELETE':'删除',
 
+    'DIALOG.ACTION.OK': '确认',
     'DIALOG.ACTION.SAVE': '保存',
     'DIALOG.ACTION.CANCEL': '取消',
     'DIALOG.ACTION.REMOVE': '删除',
+    'DIALOG.ACTION.CLOSE-EDITOR': '关闭设计器',
+    'DIALOG.ACTION.IMPORT':'导入',
+    'DIALOG.ACTION.EXPORT':'导出',
 
     'MAIN_NAVIGATION_ORCHESTRATIONS': '业务流程',
     'MAIN_NAVIGATION_DISPATCH_RULES': '调度规则',
@@ -11313,7 +11658,14 @@ module.exports = {
     'TOOLBAR.ACTION.IMPORT': '导入',
     'TOOLBAR.ACTION.EXPORT': '导出',
     'TOOLBAR.ACTION.TEMPLATE': '模板',
-
+    'TOOLBAR.ACTION.SAVE.tooltip':'保存中...',
+    'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip':'保存成功！',
+    'TOOLBAR.ACTION.SAVE.FAIL.tooltip':'ERROR:保存失败！',
+  
+    'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip':'非常抱歉，暂时没有模板可供选择！',
+    'TOOLBAR.ACTION.HELP.NOT-IMPLEMENTED.tooltip':'非常抱歉,暂时没有帮助信息！',
+    'TOOLBAR.ACTION.CLOSE.UNSAVED-CLOSE.tooltip':'您未保存当前编辑内容，关闭设计器会导致数据丢失！',
+    
     'Label':'标签',
     'Label.placeholder':'请填写标签信息',
     'Label.tooltip':'标签为元素显示名称',
@@ -11503,7 +11855,7 @@ module.exports = {
     'Layout Components': '布局'
 };
 
-},{}],269:[function(_dereq_,module,exports){
+},{}],274:[function(_dereq_,module,exports){
 "use strict";
 /*! ng-formio-builder v2.17.0 | https://unpkg.com/ng-formio-builder@2.17.0/LICENSE.txt */
 /*global window: false, console: false, jQuery: false */
@@ -11669,32 +12021,32 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/toolbar/save.html',
-      "<form class=\"toolbar-action model-save\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-6\">\r\n  \t\t<p class=\"lead\" style=\"margin-top:0;margin-bottom:10px;\">{{'TOOLBAR.ACTION.SAVE.title' | translate}}</p>\r\n  \t</div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"modelName\">{{'MODEL.NAEM.title' | translate}}</label>\r\n    <input type=\"text\" class=\"form-control\" id=\"modelName\" placeholder=\"{{'MODEL.NAEM.placeholder' | translate}}\" ng-model=\"modelName\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"modelDesc\">{{'MODEL.DESC.title' | translate}}</label>\r\n    <textarea class=\"form-control\" id=\"modelDesc\" rows=\"3\" placeholder=\"{{'MODEL.DESC.placeholder' | translate}}\" ng-model=\"modelDesc\"></textarea>\r\n  </div>\r\n  <button type=\"submit\" class=\"btn btn-success pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.SAVE' | translate}}</button>&nbsp;\r\n  <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>\r\n</form>"
+      "<form class=\"toolbar-action model-save\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-12\">\r\n  \t\t<p class=\"lead\" style=\"margin-top:0;margin-bottom:10px;\">\r\n            <i class=\"fa fa-cog fa-spin fa-2x fa-fw\" ng-if=\"isLoading\"></i>\r\n            <span ng-if=\"isLoading\">&nbsp;&nbsp;{{'TOOLBAR.ACTION.SAVE.tooltip' | translate}}</span>\r\n            <span class=\"text-success\" ng-if=\"(!isLoading) && requestSuccess\">{{'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip' | translate}}</span>\r\n            <span class=\"text-danger\" ng-if=\"(!isLoading) && (!requestSuccess)\">{{'TOOLBAR.ACTION.SAVE.FAIL.tooltip' | translate}}</span>\r\n        </p>\r\n  \t</div>\r\n  </div>\r\n  <!--<div class=\"form-group\">\r\n    <label for=\"modelName\">{{'MODEL.NAEM.title' | translate}}</label>\r\n    <input type=\"text\" class=\"form-control\" id=\"modelName\" placeholder=\"{{'MODEL.NAEM.placeholder' | translate}}\" ng-model=\"modelName\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"modelDesc\">{{'MODEL.DESC.title' | translate}}</label>\r\n    <textarea class=\"form-control\" id=\"modelDesc\" rows=\"3\" placeholder=\"{{'MODEL.DESC.placeholder' | translate}}\" ng-model=\"modelDesc\"></textarea>\r\n  </div>-->\r\n</form>"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/preview.html',
-      "<div class=\"row formRender\">\r\n\t<formio form=\"form\"></formio>\r\n</div>"
+      "<div class=\"toolbar-action model-preview\">\r\n    <div class=\"row model-metainfo\">\r\n        <blockquote>\r\n          <h3>{{modelName}}</h3>\r\n          <footer>{{modelDesc}}</footer>\r\n        </blockquote>\r\n    </div>\r\n    \r\n    <div class=\"row model-render\">\r\n        <formio form=\"formData\"></formio>\r\n    </div>\r\n</div>"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/templates.html',
-      ""
+      "<form class=\"toolbar-action model-templates\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-3\" ng-repeat=\"template in formTemplates\">\r\n            <div class=\"thumbnail\">\r\n              <div class=\"caption\">\r\n                <h3>{{template.json_modelName}}</h3>\r\n                <p class=\"desc\">{{template.json_modelDesc}}</p>\r\n                <p>\r\n                    <a href=\"#\" class=\"btn btn-danger\" role=\"button\" ng-click=\"delete(template.json_modelId);\" ng-if=\"!template.json_modelDefault\">{{'ACTION.DELETE' | translate}}</a>\r\n                    <a href=\"#\" class=\"btn btn-primary\" role=\"button\" ng-click=\"choose(template.json_modelId);\">{{'ACTION.CHOOSE' | translate}}</a></p>\r\n              </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"no-templates text-center\" ng-if=\"(!formTemplates) || (formTemplates.length == 0)\">\r\n            <span class=\"text-danger \">{{'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip' | translate}}</span>\r\n        </div>\r\n    </div>\r\n    \r\n    <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n  </div>\r\n</form>"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/import.html',
-      ""
+      "<form class=\"toolbar-action model-import\" name=\"modelImportForm\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-12\">\r\n        <input type=\"file\" ngf-select ng-model=\"importModelDataFile\" name=\"file\"    \r\n             ngf-max-size=\"10MB\" required\r\n             ngf-model-invalid=\"errorFile\" />\r\n  \t</div>\r\n  </div>\r\n    \r\n    <div class=\"progress\" ng-show=\"importModelDataFile.progress >= 0\">\r\n      <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"45\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{importModelDataFile.progress}}%\">\r\n        <span class=\"sr-only\">{{importModelDataFile.progress}}% Complete</span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"button\" \r\n              class=\"btn btn-danger pull-right\" \r\n              ng-disabled=\"!modelImportForm.$valid\"\r\n              ng-click=\"uploadModel(importModelDataFile)\">{{'DIALOG.ACTION.IMPORT' | translate}}</button>&nbsp;\r\n      <button type=\"button\" \r\n              class=\"btn btn-default pull-right\" \r\n              style=\"margin-right: 5px;\" \r\n              ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n    </div>\r\n</form>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/confirm-close.html',
-      ""
+      "<form id=\"confirm-close-dialog\">\r\n    <p class=\"text-danger\"><strong>{{'TOOLBAR.ACTION.CLOSE.UNSAVED-CLOSE.tooltip' | translate}}</strong></p>\r\n  <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.CLOSE-EDITOR' | translate}}</button>&nbsp;\r\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n  </div>\r\n</form>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/help.html',
-      ""
+      "<div class=\"toolbar-action help-info\">\r\n    <h3>{{'TOOLBAR.ACTION.HELP.NOT-IMPLEMENTED.tooltip' | translate}}</h3>\r\n</div>"
     );
   }
 ]);
 
 _dereq_('./components');
 
-},{"./components":230,"./constants/commonOptions":246,"./constants/formOptions":248,"./directives/formBuilder":249,"./directives/formBuilderComponent":250,"./directives/formBuilderConditional":251,"./directives/formBuilderDnd":252,"./directives/formBuilderElement":253,"./directives/formBuilderList":254,"./directives/formBuilderOption":255,"./directives/formBuilderOptionCustomValidation":256,"./directives/formBuilderOptionKey":257,"./directives/formBuilderOptionTags":258,"./directives/formBuilderRow":259,"./directives/formBuilderTable":260,"./directives/formBuilderToolbar":261,"./directives/formBuilderTooltip":262,"./directives/jsonInput":263,"./directives/validApiKey":264,"./directives/valueBuilder":265,"./factories/BuilderUtils":266,"./factories/debounce":267,"./i18n/zh-CN.js":268}]},{},[269])(269)
+},{"./components":235,"./constants/commonOptions":251,"./constants/formOptions":253,"./directives/formBuilder":254,"./directives/formBuilderComponent":255,"./directives/formBuilderConditional":256,"./directives/formBuilderDnd":257,"./directives/formBuilderElement":258,"./directives/formBuilderList":259,"./directives/formBuilderOption":260,"./directives/formBuilderOptionCustomValidation":261,"./directives/formBuilderOptionKey":262,"./directives/formBuilderOptionTags":263,"./directives/formBuilderRow":264,"./directives/formBuilderTable":265,"./directives/formBuilderToolbar":266,"./directives/formBuilderTooltip":267,"./directives/jsonInput":268,"./directives/validApiKey":269,"./directives/valueBuilder":270,"./factories/BuilderUtils":271,"./factories/debounce":272,"./i18n/zh-CN.js":273}]},{},[274])(274)
 });

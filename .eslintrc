@@ -9,6 +9,16 @@
     "_": true
   },
   "rules": {
+    "no-unused-vars": 0,
+    "keyword-spacing":0,
+    "brace-style":0,
+    "no-trailing-spaces":0,
+    "no-spaced-func":0,
+    "space-after-keywords": [0, "always"],
+    "space-before-blocks": [0, "always"],
+    "space-before-function-paren": [0, "always"],
+    "spaced-comment": 0,
+    "no-mixed-spaces-and-tabs": 0,
     "new-cap": [2, {"capIsNewExceptions": ["FormioPlugins"]}]
   }
 }

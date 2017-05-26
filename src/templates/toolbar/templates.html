@@ -1,0 +1,24 @@
+<form class="toolbar-action model-templates">
+    <div class="row">
+        <div class="col-sm-6 col-md-3" ng-repeat="template in formTemplates">
+            <div class="thumbnail">
+              <div class="caption">
+                <h3>{{template.json_modelName}}</h3>
+                <p class="desc">{{template.json_modelDesc}}</p>
+                <p>
+                    <a href="#" class="btn btn-danger" role="button" ng-click="delete(template.json_modelId);" ng-if="!template.json_modelDefault">{{'ACTION.DELETE' | translate}}</a>
+                    <a href="#" class="btn btn-primary" role="button" ng-click="choose(template.json_modelId);">{{'ACTION.CHOOSE' | translate}}</a></p>
+              </div>
+            </div>
+        </div>
+        <div class="no-templates text-center" ng-if="(!formTemplates) || (formTemplates.length == 0)">
+            <span class="text-danger ">{{'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip' | translate}}</span>
+        </div>
+    </div>
+    
+    <div>
+    <div class="form-group">
+      <button type="button" class="btn btn-default pull-right" style="margin-right: 5px;" ng-click="closeThisDialog(false)">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;
+    </div>
+  </div>
+</form>
