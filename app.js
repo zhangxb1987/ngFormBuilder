@@ -90,6 +90,8 @@ angular
 					angular.extend($rootScope.form, data['json_modelData']);
 					$rootScope.modelName = data['name'];
 					$rootScope.modelDesc = data['description'];
+                    $rootScope.modelFormKey = data['key'];
+                    $rootScope.modelRevision = data['revision'];
 					$rootScope.formUpdateUnsaved = false;
 					$rootScope.showDebugConsole = false;
 					$rootScope.renderForm = true;

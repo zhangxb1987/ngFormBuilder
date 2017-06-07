@@ -9884,11 +9884,6 @@ module.exports = {
         'action': 'import',
         'enabledAction': 'element'
 			}, {
-        'type': 'button',
-        'title': 'TOOLBAR.ACTION.EXPORT',
-        'cssClass': 'glyphicon glyphicon-export',
-        'action': 'export'
-			}, {
         'type': 'separator',
         'title': '',
         'cssClass': 'toolbar-separator'
@@ -10034,7 +10029,7 @@ module.exports = {
                             url: modeaDataUrl
                         }).then(function(response){
                             if(response['data']){
-                                rootScope.form = response['data'];
+                                rootScope.form.components = (response['data'] === undefined ? {} : response['data'].components);
                                 scope.closeThisDialog();
                             }
                         });
@@ -10075,7 +10070,6 @@ module.exports = {
                 }]
             });
         },
-        'export':function() {},
         'preview':function() {
             var services = arguments[0];
             var ngDialog = services['ngDialog'];
@@ -12033,7 +12027,11 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/toolbar/import.html',
-      "<form class=\"toolbar-action model-import\" name=\"modelImportForm\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-12\">\r\n        <input type=\"file\" ngf-select ng-model=\"importModelDataFile\" name=\"file\"    \r\n             ngf-max-size=\"10MB\" required\r\n             ngf-model-invalid=\"errorFile\" />\r\n  \t</div>\r\n  </div>\r\n    \r\n    <div class=\"progress\" ng-show=\"importModelDataFile.progress >= 0\">\r\n      <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"45\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{importModelDataFile.progress}}%\">\r\n        <span class=\"sr-only\">{{importModelDataFile.progress}}% Complete</span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"button\" \r\n              class=\"btn btn-danger pull-right\" \r\n              ng-disabled=\"!modelImportForm.$valid\"\r\n              ng-click=\"uploadModel(importModelDataFile)\">{{'DIALOG.ACTION.IMPORT' | translate}}</button>&nbsp;\r\n      <button type=\"button\" \r\n              class=\"btn btn-default pull-right\" \r\n              style=\"margin-right: 5px;\" \r\n              ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n    </div>\r\n</form>\r\n"
+      "<form class=\"toolbar-action model-import\" name=\"modelImportForm\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-12\">\r\n        <input type=\"file\" ngf-select ng-model=\"importModelDataFile\" name=\"file\"    \r\n             ngf-max-size=\"10MB\" required\r\n             ngf-model-invalid=\"errorFile\" />\r\n  \t</div>\r\n  </div>\r\n    \r\n    <div class=\"progress\" ng-show=\"importModelDataFile.progress >= 0\">\r\n      <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"45\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{importModelDataFile.progress}}%\">\r\n      </div>\r\n    </div>\r\n    \r\n    <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"button\" \r\n              class=\"btn btn-danger pull-right\" \r\n              ng-disabled=\"!modelImportForm.$valid\"\r\n              ng-click=\"uploadModel(importModelDataFile)\">{{'DIALOG.ACTION.IMPORT' | translate}}</button>&nbsp;\r\n<!--\r\n      <button type=\"button\" \r\n              class=\"btn btn-default pull-right\" \r\n              style=\"margin-right: 5px;\" \r\n              ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n-->\r\n    </div>\r\n    </div>\r\n</form>\r\n"
+    );
+        
+    $templateCache.put('formio/formbuilder/toolbar/export.html',
+      ""
     );
 
     $templateCache.put('formio/formbuilder/toolbar/confirm-close.html',

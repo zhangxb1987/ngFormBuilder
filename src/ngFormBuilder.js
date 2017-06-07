@@ -176,6 +176,10 @@ app.run([
     $templateCache.put('formio/formbuilder/toolbar/import.html',
       fs.readFileSync(__dirname + '/templates/toolbar/import.html', 'utf8')
     );
+        
+    $templateCache.put('formio/formbuilder/toolbar/export.html',
+      fs.readFileSync(__dirname + '/templates/toolbar/export.html', 'utf8')
+    );
 
     $templateCache.put('formio/formbuilder/toolbar/confirm-close.html',
       fs.readFileSync(__dirname + '/templates/toolbar/confirm-close.html', 'utf8')

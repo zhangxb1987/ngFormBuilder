@@ -29,11 +29,6 @@ module.exports = {
         'action': 'import',
         'enabledAction': 'element'
 			}, {
-        'type': 'button',
-        'title': 'TOOLBAR.ACTION.EXPORT',
-        'cssClass': 'glyphicon glyphicon-export',
-        'action': 'export'
-			}, {
         'type': 'separator',
         'title': '',
         'cssClass': 'toolbar-separator'
@@ -179,7 +174,7 @@ module.exports = {
                             url: modeaDataUrl
                         }).then(function(response){
                             if(response['data']){
-                                rootScope.form = response['data'];
+                                rootScope.form.components = (response['data'] === undefined ? {} : response['data'].components);
                                 scope.closeThisDialog();
                             }
                         });
@@ -220,7 +215,6 @@ module.exports = {
                 }]
             });
         },
-        'export':function() {},
         'preview':function() {
             var services = arguments[0];
             var ngDialog = services['ngDialog'];

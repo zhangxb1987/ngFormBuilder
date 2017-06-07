@@ -375,3 +375,11 @@ ul.component-list li {
     padding: 15px;
     border: 1px solid #ccced0;
 }
+
+.model-import{
+    margin-top:20px;
+}
+
+.model-import .progress{
+    margin-top:20px;
+}
