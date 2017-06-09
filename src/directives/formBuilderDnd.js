@@ -11,6 +11,7 @@ module.exports = [
   'dndDragIframeWorkaround',
   '$timeout',
   'BuilderUtils',
+  '$log',
   function(
     $scope,
     $element,
@@ -20,7 +21,8 @@ module.exports = [
     ngDialog,
     dndDragIframeWorkaround,
     $timeout,
-    BuilderUtils
+    BuilderUtils,
+    $log
   ) {
     $scope.builder = true;
     $rootScope.builder = true;
@@ -74,6 +76,7 @@ module.exports = [
       }
       // Only edit immediately for components that are not resource comps.
       if (component.isNew && !component.lockConfiguration && (!component.key || (component.key.indexOf('.') === -1))) {
+        $log.debug(component);
         $scope.editComponent(component);
       }
       else {

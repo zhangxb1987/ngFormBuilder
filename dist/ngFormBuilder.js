@@ -9941,7 +9941,7 @@ module.exports = {
                     scope.isLoading = true;
                     scope.requestSuccess = false;
                     var saveUrl = rootScope.contextPath + '/form-service/model/' + rootScope.modelId + '/save.zf';
-                    var parameters = 
+                    var parameters =
                         {
                             'json_modelData':JSON.stringify(rootScope.form)
                         };
@@ -9980,7 +9980,7 @@ module.exports = {
                     });
                 }]
             });
-            
+
             dialog.closePromise.then(function(e) {
                 //log.debug(e);
             });
@@ -10009,7 +10009,7 @@ module.exports = {
                     },function(response){
                         scope.formTemplates = [];
                     });
-                    
+
                     scope.delete = function(modelId){
                         var deleteUrl = rootScope.contextPath + '/form-service/template/' + modelId + '/del.zf';
                         http({
@@ -10021,7 +10021,7 @@ module.exports = {
                             });
                         });
                     };
-                    
+
                     scope.choose = function(modelId){
                         var modeaDataUrl = rootScope.contextPath + '/form-service/template/' + modelId + '/json.zf';
                         http({
@@ -10080,6 +10080,7 @@ module.exports = {
                 showClose:true,
                 closeByEscape:false,
                 closeByDocument:false,
+                width:'50%',
                 scope:rootScope,
                 controller:['$scope',function(scope){
                     scope.formData = rootScope.form;
@@ -10626,6 +10627,7 @@ module.exports = [
   'dndDragIframeWorkaround',
   '$timeout',
   'BuilderUtils',
+  '$log',
   function(
     $scope,
     $element,
@@ -10635,7 +10637,8 @@ module.exports = [
     ngDialog,
     dndDragIframeWorkaround,
     $timeout,
-    BuilderUtils
+    BuilderUtils,
+    $log
   ) {
     $scope.builder = true;
     $rootScope.builder = true;
@@ -10689,6 +10692,7 @@ module.exports = [
       }
       // Only edit immediately for components that are not resource comps.
       if (component.isNew && !component.lockConfiguration && (!component.key || (component.key.indexOf('.') === -1))) {
+        $log.debug(component);
         $scope.editComponent(component);
       }
       else {
