@@ -123,6 +123,17 @@ module.exports = {
   },
 
   /**
+   * Returns if this component has a conditional statement.
+   *
+   * @param component - The component JSON schema.
+   *
+   * @returns {boolean} - TRUE - This component has a conditional, FALSE - No conditional provided.
+   */
+  hasCondition: function hasCondition(component) {
+    return component.hasOwnProperty('customConditional') && component.customConditional || component.hasOwnProperty('conditional') && component.conditional && component.conditional.when || component.hasOwnProperty('conditional') && component.conditional && component.conditional.json;
+  },
+
+  /**
    * Checks the conditions for a provided component and data.
    *
    * @param component
@@ -7324,6 +7335,14 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('columns', {
+        onEdit: ['$scope', function($scope) {
+          $scope.removeColumn = function(index) {
+            $scope.component.columns.splice(index, 1);
+          };
+          $scope.addColumn = function() {
+            $scope.component.columns.push({components: [], width: 1, offset: 0, push: 0, pull: 0});
+          };
+        }],
         fbtemplate: 'formio/formbuilder/columns.html',
         icon: 'fa fa-columns',
         documentation: 'http://help.form.io/userguide/#columns',
@@ -7351,14 +7370,40 @@ module.exports = function(app) {
     function($templateCache) {
       $templateCache.put('formio/formbuilder/columns.html',
         '<div class="row">' +
-          '<div class="col-xs-6 component-form-group" ng-repeat="component in component.columns">' +
-            '<form-builder-list class="formio-column" component="component" form="form" formio="::formio"></form-builder-list>' +
+          '<div ng-show="column.width" ng-class="\'col-xs-\' + column.width + \' col-xs-offset-\' + column.offset + \' col-xs-push-\' + column.push + \' col-xs-pull-\' + column.pull" component-form-group" ng-repeat="column in component.columns">' +
+            '<form-builder-list class="formio-column" component="column" form="form" formio="::formio"></form-builder-list>' +
           '</div>' +
         '</div>'
       );
       $templateCache.put('formio/components/columns/display.html',
         '<ng-form>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
+          '<div class="form-group">' +
+            '<label form-builder-tooltip="The width, offset, push and pull settings for the columns">{{\'Column Properties\' | formioTranslate}}</label>' +
+            '<table class="table table-condensed">' +
+              '<thead>' +
+                '<tr>' +
+                  '<th class="col-xs-2">{{\'Column\' | formioTranslate}}</th>' +
+                  '<th class="col-xs-2">{{\'Width\' | formioTranslate}}</th>' +
+                  '<th class="col-xs-2">{{\'Offset\' | formioTranslate}}</th>' +
+                  '<th class="col-xs-2">{{\'Push\' | formioTranslate}}</th>' +
+                  '<th class="col-xs-2">{{\'Pull\' | formioTranslate}}</th>' +
+                  '<th class="col-xs-1"></th>' +
+                '</tr>' +
+              '</thead>' +
+              '<tbody>' +
+                '<tr ng-repeat="column in component.columns track by $index">' +
+                  '<td class="col-xs-2"><input type="number" class="form-control" ng-value="$index + 1" disabled/></td>' +
+                  '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.width"/></td>' +
+                  '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.offset"/></td>' +
+                  '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.push"/></td>' +
+                  '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.pull"/></td>' +
+                  '<td class="col-xs-1"><button type="button" class="btn btn-danger btn-xs" ng-click="removeColumn($index)" tabindex="-1"><span class="glyphicon glyphicon-remove-circle"></span></button></td>' +
+                '</tr>' +
+              '</tbody>' +
+            '</table>' +
+            '<button type="button" class="btn" ng-click="addColumn()">{{\'Add Column\' | formioTranslate}}</button>' +
+          '</div>' +
         '</ng-form>'
       );
     }
@@ -7412,21 +7457,45 @@ module.exports = function(app) {
         '<form-builder-option property="defaultValue"></form-builder-option>' +
         '<uib-accordion>' +
         '  <div uib-accordion-group heading="Custom Default Value" class="panel panel-default">' +
-        '    <textarea class="form-control" rows="5" id="customDefaultValue" name="customDefaultValue" ng-model="component.customDefaultValue" placeholder="/*** Example Code ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
-        '    <small>' +
-        '      <p>Enter custom default value code.</p>' +
-        '      <p>You must assign the <strong>value</strong> variable as the result you want for the default value.</p>' +
-        '      <p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
-        '      <p>Default Values are only calculated on form load. Use Calculated Value for a value that will update with the form.</p>' +
-        '    </small>' +
+        '    <uib-accordion>' +
+        '      <div uib-accordion-group heading="JavaScript Default" class="panel panel-default" is-open="true">' +
+        '        <textarea class="form-control" rows="5" id="customDefaultValue" name="customDefaultValue" ng-model="component.customDefaultValue" placeholder="/*** Example Code ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
+        '        <small>' +
+        '          <p>Enter custom default value code.</p>' +
+        '          <p>You must assign the <strong>value</strong> variable as the result you want for the default value.</p>' +
+        '          <p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
+        '          <p>Default Values are only calculated on form load. Use Calculated Value for a value that will update with the form.</p>' +
+        '        </small>' +
+        '      </div>' +
+        '      <div uib-accordion-group heading="JSONLogic Default" class="panel panel-default">' +
+        '        <small>' +
+        '          <p>Execute custom default value using <a href="http://jsonlogic.com/">JSONLogic</a>.</p>' +
+        '          <p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
+        '          <p><a href="http://formio.github.io/formio.js/app/examples/calculated.html" target="_blank">Click here for an example</a></p>' +
+        '        </small>' +
+        '        <textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.customDefaultValue" placeholder=\'{ ... }\'></textarea>' +
+        '      </div>' +
+        '    </uib-accordion>' +
         '  </div>' +
         '  <div uib-accordion-group heading="Calculated Value" class="panel panel-default">' +
-        '    <textarea class="form-control" rows="5" id="calculateValue" name="calculateValue" ng-model="component.calculateValue" placeholder="/*** Example Code ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
-        '    <small>' +
-        '      <p>Enter code to calculate a value.</p>' +
-        '      <p>You must assign the <strong>value</strong> variable as the result you want for the default value.</p>' +
-        '      <p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
-        '    </small>' +
+        '    <uib-accordion>' +
+        '      <div uib-accordion-group heading="JavaScript Value" class="panel panel-default" is-open="true">' +
+        '        <textarea class="form-control" rows="5" id="calculateValue" name="calculateValue" ng-model="component.calculateValue" placeholder="/*** Example Code ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
+        '        <small>' +
+        '          <p>Enter code to calculate a value.</p>' +
+        '          <p>You must assign the <strong>value</strong> variable as the result you want for the default value.</p>' +
+        '          <p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
+        '        </small>' +
+        '      </div>' +
+        '      <div uib-accordion-group heading="JSONLogic Value" class="panel panel-default">' +
+        '        <small>' +
+        '          <p>Execute custom calculation logic with JSON and <a href="http://jsonlogic.com/">JSONLogic</a>.</p>' +
+        '          <p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
+        '          <p><a href="http://formio.github.io/formio.js/app/examples/calculated.html" target="_blank">Click here for an example</a></p>' +
+        '        </small>' +
+        '        <textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.calculateValue" placeholder=\'{ ... }\'></textarea>' +
+        '      </div>' +
+        '    </uib-accordion>' +
         '  </div>' +
         '</uib-accordion>'
       );
@@ -7706,8 +7775,9 @@ module.exports = function(app) {
       formioComponents
     ) {
       // Because of the weirdnesses of prototype inheritence, components can't update themselves, only their properties.
-      var originComponent = $scope.component;
-      $scope.$watch('component', function(newValue) {
+      var currentKey = $scope.component.key;
+      $scope.customComponent = angular.copy($scope.component);
+      $scope.$watch('customComponent', function(newValue) {
         if (newValue) {
           // Don't allow a type of a real type.
           newValue.type = (formioComponents.components.hasOwnProperty(newValue.type) ? 'custom' : newValue.type);
@@ -7715,7 +7785,8 @@ module.exports = function(app) {
           newValue.key = newValue.key || newValue.type;
           newValue.protected = (newValue.hasOwnProperty('protected') ? newValue.protected : false);
           newValue.persistent = (newValue.hasOwnProperty('persistent') ? newValue.persistent : true);
-          $scope.updateComponent(newValue, originComponent);
+          $scope.updateComponent(newValue, currentKey);
+          currentKey = newValue.key;
         }
       });
     }
@@ -7730,7 +7801,7 @@ module.exports = function(app) {
         '<div class="form-group">' +
         '<p>Custom components can be used to render special fields or widgets inside your app. For information on how to display in an app, see <a href="http://help.form.io/userguide/#custom" target="_blank">custom component documentation</a>.</p>' +
         '<label for="json" form-builder-tooltip="Enter the JSON for this custom element.">Custom Element JSON</label>' +
-        '<textarea ng-controller="customComponent" class="form-control" id="json" name="json" json-input ng-model="component" placeholder="{}" rows="10"></textarea>' +
+        '<textarea ng-controller="customComponent" class="form-control" id="json" name="json" json-input ng-model="customComponent" placeholder="{}" rows="10"></textarea>' +
         '</div>' +
         '</ng-form>'
       );
@@ -8265,6 +8336,96 @@ module.exports = function(app) {
   app.config([
     'formioComponentsProvider',
     function(formioComponentsProvider) {
+      formioComponentsProvider.register('form', {
+        fbtemplate: 'formio/formbuilder/form.html',
+        icon: 'fa fa-wpforms',
+        views: [
+          {
+            name: 'Display',
+            template: 'formio/components/form/display.html'
+          },
+          {
+            name: 'Data',
+            template: 'formio/components/common/data.html'
+          },
+          {
+            name: 'API',
+            template: 'formio/components/common/api.html'
+          },
+          {
+            name: 'Conditional',
+            template: 'formio/components/common/conditional.html'
+          }
+        ],
+        documentation: 'http://help.form.io/userguide/#form',
+        onEdit: ['$scope', function($scope) {
+          $scope.forms = [];
+          $scope.component.project = $scope.formio.projectId;
+          $scope.formio.loadForms({params: {limit: 100}}).then(function(forms) {
+            $scope.forms = forms;
+            if (!$scope.component.form) {
+              $scope.component.form = forms[0]._id;
+            }
+          });
+        }]
+      });
+
+      // Override the controller for form building.
+      var formComponent = formioComponentsProvider.$get().components.form;
+      var formController = formComponent.controller;
+      formComponent.controller = [
+        '$scope',
+        '$controller',
+        function(
+          $scope,
+          $controller
+        ) {
+          if (!$scope.builder) {
+            return $controller(formController, {$scope: $scope});
+          }
+
+          $scope.form = {};
+          $scope.formio.loadForms({params: {limit: 100}}).then(function(forms) {
+            angular.forEach(forms, function(form) {
+              if (form._id === $scope.component.form) {
+                $scope.form = form;
+              }
+            });
+          });
+        }
+      ];
+    }
+  ]);
+  app.run([
+    '$templateCache',
+    function($templateCache) {
+      $templateCache.put('formio/formbuilder/form.html', '<span class="hidden-element-text">{{ form.title }} {{ form.type }}</span>');
+
+      // Create the settings markup.
+      $templateCache.put('formio/components/form/display.html',
+        '<ng-form>' +
+          '<form-builder-option property="label" label="Name" placeholder="Enter the name for this form field" title="The name for this field. It is only used for administrative purposes such as generating the automatic property name in the API tab (which may be changed manually)."></form-builder-option>' +
+          '<div class="form-group">' +
+            '<label for="form" form-builder-tooltip="The form to load within this form component..">Form</label>' +
+            '<select class="form-control" id="form" name="form" ng-options="value._id as value.title for value in forms" ng-model="component.form"></select>' +
+          '</div>' +
+          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="reference"></form-builder-option>' +
+          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +
+          '<form-builder-option property="tableView"></form-builder-option>' +
+        '</ng-form>'
+      );
+    }
+  ]);
+};
+
+},{}],225:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(app) {
+  app.config([
+    'formioComponentsProvider',
+    function(formioComponentsProvider) {
       formioComponentsProvider.register('hidden', {
         fbtemplate: 'formio/formbuilder/hidden.html',
         icon: 'fa fa-user-secret',
@@ -8319,7 +8480,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],234:[function(_dereq_,module,exports){
+=======
+},{}],226:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8379,7 +8544,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],235:[function(_dereq_,module,exports){
+=======
+},{}],227:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 var app = angular.module('ngFormBuilder');
 
@@ -8407,6 +8576,7 @@ _dereq_('./currency')(app);
 _dereq_('./hidden')(app);
 _dereq_('./resource')(app);
 _dereq_('./file')(app);
+_dereq_('./form')(app);
 _dereq_('./signature')(app);
 _dereq_('./custom')(app);
 _dereq_('./datagrid')(app);
@@ -8421,7 +8591,11 @@ _dereq_('./panel')(app);
 _dereq_('./table')(app);
 _dereq_('./well')(app);
 
+<<<<<<< HEAD
 },{"./address":218,"./button":219,"./checkbox":220,"./columns":221,"./components":222,"./container":223,"./content":224,"./currency":225,"./custom":226,"./datagrid":227,"./datetime":228,"./day":229,"./email":230,"./fieldset":231,"./file":232,"./hidden":233,"./htmlelement":234,"./number":236,"./page":237,"./panel":238,"./password":239,"./phonenumber":240,"./radio":241,"./resource":242,"./select":243,"./selectboxes":244,"./signature":245,"./survey":246,"./table":247,"./textarea":248,"./textfield":249,"./well":250}],236:[function(_dereq_,module,exports){
+=======
+},{"./address":209,"./button":210,"./checkbox":211,"./columns":212,"./components":213,"./container":214,"./content":215,"./currency":216,"./custom":217,"./datagrid":218,"./datetime":219,"./day":220,"./email":221,"./fieldset":222,"./file":223,"./form":224,"./hidden":225,"./htmlelement":226,"./number":228,"./page":229,"./panel":230,"./password":231,"./phonenumber":232,"./radio":233,"./resource":234,"./select":235,"./selectboxes":236,"./signature":237,"./survey":238,"./table":239,"./textarea":240,"./textfield":241,"./well":242}],228:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8496,7 +8670,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],237:[function(_dereq_,module,exports){
+=======
+},{}],229:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8517,7 +8695,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],238:[function(_dereq_,module,exports){
+=======
+},{}],230:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8532,6 +8714,19 @@ module.exports = function(app) {
         icon: 'fa fa-list-alt',
         onEdit: ['$scope', function($scope) {
           $scope.themes = FORM_OPTIONS.themes;
+          if (!$scope.component.breadcrumb) {
+            $scope.component.breadcrumb = 'default';
+          }
+          $scope.breadcrumbs = [
+            {
+              name: 'default',
+              title: 'Yes'
+            },
+            {
+              name: 'none',
+              title: 'No'
+            }
+          ];
         }],
         views: [
           {
@@ -8548,7 +8743,7 @@ module.exports = function(app) {
           },
           {
             name: 'Conditional',
-            template: 'formio/components/common/conditional.html'
+            template: 'formio/components/panel/conditional.html'
           }
         ],
         documentation: 'http://help.form.io/userguide/#panels',
@@ -8577,14 +8772,44 @@ module.exports = function(app) {
             '<label for="theme" form-builder-tooltip="The color theme of this panel.">Theme</label>' +
             '<select class="form-control" id="theme" name="theme" ng-options="theme.name as theme.title for theme in themes" ng-model="component.theme"></select>' +
           '</div>' +
+          '<div class="form-group">' +
+            '<label for="breadcrumb" form-builder-tooltip="The breadcrumb to show with this page.">Show Breadcrumb</label>' +
+            '<select class="form-control" id="breadcrumb" name="breadcrumb" ng-options="breadcrumb.name as breadcrumb.title for breadcrumb in breadcrumbs" ng-model="component.breadcrumb"></select>' +
+          '</div>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
         '</ng-form>'
+      );
+
+      $templateCache.put('formio/components/panel/conditional.html',
+        '<form-builder-conditional></form-builder-conditional>' +
+        '<uib-accordion>' +
+          '<div uib-accordion-group heading="Advanced Next Page" class="panel panel-default">' +
+            '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.nextPage" placeholder="/*** Example Code ***/\nnext = (data[\'mykey\'] > 1) ? \'pageA\' : \'pageB\';"></textarea>' +
+            '<small>' +
+              '<p>Enter custom conditional code.</p>' +
+              '<p>You must assign the <strong>next</strong> variable with the API key of the next page.</p>' +
+              '<p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
+            '</small>' +
+          '</div>' +
+          '<div uib-accordion-group heading="JSON Next Page" class="panel panel-default">' +
+            '<small>' +
+              '<p>Execute custom next page with JSON and <a href="http://jsonlogic.com/">JsonLogic</a>.</p>' +
+              '<p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
+              '<p><a href="http://formio.github.io/formio.js/app/examples/multiform.html" target="_blank">Click here for an example</a></p>' +
+            '</small>' +
+            '<textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.nextPage" placeholder="{ ... }"></textarea>' +
+          '</div>' +
+        '</uib-accordion>'
       );
     }
   ]);
 };
 
+<<<<<<< HEAD
 },{}],239:[function(_dereq_,module,exports){
+=======
+},{}],231:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8654,7 +8879,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],240:[function(_dereq_,module,exports){
+=======
+},{}],232:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8727,7 +8956,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],241:[function(_dereq_,module,exports){
+=======
+},{}],233:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8795,7 +9028,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],242:[function(_dereq_,module,exports){
+=======
+},{}],234:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8848,25 +9085,26 @@ module.exports = function(app) {
           '<form-builder-option property="label"></form-builder-option>' +
           '<form-builder-option property="placeholder"></form-builder-option>' +
           '<div class="form-group">' +
-            '<label for="placeholder" form-builder-tooltip="The resource to be used with this field.">Resource</label>' +
+            '<label for="resource" form-builder-tooltip="The resource to be used with this field.">Resource</label>' +
             '<select class="form-control" id="resource" name="resource" ng-options="value._id as value.title for value in resources" ng-model="component.resource"></select>' +
           '</div>' +
           '<div class="form-group">' +
-            '<label for="placeholder" form-builder-tooltip="The properties on the resource to return as part of the options. Separate property names by commas. If left blank, all properties will be returned.">Select Fields</label>' +
+            '<label for="selectFields" form-builder-tooltip="The properties on the resource to return as part of the options. Separate property names by commas. If left blank, all properties will be returned.">Select Fields</label>' +
             '<input type="text" class="form-control" id="selectFields" name="selectFields" ng-model="component.selectFields" placeholder="Comma separated list of fields to select." value="{{ component.selectFields }}">' +
           '</div>' +
           '<div class="form-group">' +
-            '<label for="placeholder" form-builder-tooltip="A list of search filters based on the fields of the resource. See the <a target=\'_blank\' href=\'https://github.com/travist/resourcejs#filtering-the-results\'>Resource.js documentation</a> for the format of these filters.">Search Fields</label>' +
+            '<label for="searchFields" form-builder-tooltip="A list of search filters based on the fields of the resource. See the <a target=\'_blank\' href=\'https://github.com/travist/resourcejs#filtering-the-results\'>Resource.js documentation</a> for the format of these filters.">Search Fields</label>' +
             '<input type="text" class="form-control" id="searchFields" name="searchFields" ng-model="component.searchFields" ng-list placeholder="The fields to query on the server" value="{{ component.searchFields }}">' +
           '</div>' +
           '<div class="form-group">' +
-            '<label for="placeholder" form-builder-tooltip="The HTML template for the result data items.">Item Template</label>' +
+            '<label for="template" form-builder-tooltip="The HTML template for the result data items.">Item Template</label>' +
             '<textarea class="form-control" id="template" name="template" ng-model="component.template" rows="3">{{ component.template }}</textarea>' +
           '</div>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
           '<form-builder-option property="tabindex"></form-builder-option>' +
           '<form-builder-option property="multiple" label="Allow Multiple Resources"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
+          '<form-builder-option property="reference"></form-builder-option>' +
           '<form-builder-option property="addResource"></form-builder-option>' +
           '<form-builder-option property="addResourceLabel" ng-if="component.addResource"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
@@ -8885,7 +9123,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],243:[function(_dereq_,module,exports){
+=======
+},{}],235:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 var _clone = _dereq_('lodash/clone');
 module.exports = function(app) {
@@ -9059,9 +9301,12 @@ module.exports = function(app) {
               '<label for="data.json" form-builder-tooltip="A raw JSON array to use as a data source.">Data Source Raw JSON</label>' +
               '<textarea class="form-control" id="data.json" name="data.json" ng-model="component.data.json" placeholder="Raw JSON Array" json-input rows="3">{{ component.data.json }}</textarea>' +
             '</div>' +
-            '<form-builder-option ng-switch-when="url" property="data.url" label="Data Source URL" placeholder="Data Source URL" title="A URL that returns a JSON array to use as the data source."></form-builder-option>' +
+            '<div ng-switch-when="url">' +
+            '  <form-builder-option property="data.url" label="Data Source URL" placeholder="Data Source URL" title="A URL that returns a JSON array to use as the data source."></form-builder-option>' +
+            '</div>' +
+            '<value-builder ng-switch-when="url" data=component.data.headers label="Request Headers" tooltip-text="Set any headers that should be sent along with the request to the url. This is useful for authentication." label-label="Key" label-property="key" />' +
             '<value-builder ng-switch-when="values" data="component.data.values" label="Data Source Values" tooltip-text="Values to use as the data source. Labels are shown in the select field. Values are the corresponding values saved with the submission."></value-builder>' +
-          '<div class="form-group" ng-switch-when="resource">' +
+            '<div class="form-group" ng-switch-when="resource">' +
             '<label for="placeholder" form-builder-tooltip="The resource to be used with this field.">Resource</label>' +
             '<ui-select ui-select-required ui-select-open-on-focus ng-model="component.data.resource" theme="bootstrap">' +
               '<ui-select-match class="ui-select-match" placeholder="">' +
@@ -9083,6 +9328,10 @@ module.exports = function(app) {
           '  <label for="placeholder" form-builder-tooltip="The properties on the resource to return as part of the options. Separate property names by commas. If left blank, all properties will be returned.">Select Fields</label>' +
           '  <input type="text" class="form-control" id="selectFields" name="selectFields" ng-model="component.selectFields" placeholder="Comma separated list of fields to select." value="{{ component.selectFields }}">' +
           '</div>' +
+          '<div ng-show="component.dataSrc == \'url\'">' +
+          '<input type="checkbox" ng-model="component.data.disableLimit" name="disableLimit"></input>' +
+          '  <label for="disableLimit" form-builder-tooltip="When enabled the request will not include the limit and skip options in the query string">Disable limiting response</label>' +
+          '</div>' +
           '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\'" property="searchField" label="Search Query Name" placeholder="Name of URL query parameter" title="The name of the search querystring parameter used when sending a request to filter results with. The server at the URL must handle this query parameter."></form-builder-option>' +
           '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\'" property="filter" label="Filter Query" placeholder="The filter query for results." title="Use this to provide additional filtering using query parameters."></form-builder-option>' +
           '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\' || component.dataSrc == \'json\'" property="limit" label="Limit" placeholder="Maximum number of items to view per page of results." title="Use this to limit the number of items to request or view."></form-builder-option>' +
@@ -9103,6 +9352,7 @@ module.exports = function(app) {
           '  <select class="form-control" id="refreshOn" name="refreshOn" ng-options="field.key as field.label for field in formFields" ng-model="component.refreshOn"></select>' +
           '</div>' +
           '<form-builder-option ng-show="component.dataSrc == \'resource\' || component.dataSrc == \'url\' || component.dataSrc == \'custom\'" property="clearOnRefresh"></form-builder-option>' +
+          '<form-builder-option ng-show="component.dataSrc == \'resource\'" property="reference"></form-builder-option>' +
           '<form-builder-option ng-show="component.dataSrc == \'url\'" property="authenticate"></form-builder-option>' +
           '<form-builder-option property="defaultValue"></form-builder-option>' +
         '</ng-form>'
@@ -9120,7 +9370,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{"lodash/clone":172}],244:[function(_dereq_,module,exports){
+=======
+},{"lodash/clone":169}],236:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9192,7 +9446,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],245:[function(_dereq_,module,exports){
+=======
+},{}],237:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9255,7 +9513,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],246:[function(_dereq_,module,exports){
+=======
+},{}],238:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9321,7 +9583,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],247:[function(_dereq_,module,exports){
+=======
+},{}],239:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9392,7 +9658,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],248:[function(_dereq_,module,exports){
+=======
+},{}],240:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9497,7 +9767,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],249:[function(_dereq_,module,exports){
+=======
+},{}],241:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9572,7 +9846,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],250:[function(_dereq_,module,exports){
+=======
+},{}],242:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9618,7 +9896,11 @@ module.exports = function(app) {
   ]);
 };
 
+<<<<<<< HEAD
 },{}],251:[function(_dereq_,module,exports){
+=======
+},{}],243:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
   * These are component options that can be reused
@@ -9645,6 +9927,11 @@ module.exports = {
     label: 'Description',
     placeholder: 'Description.placeholder',
     tooltip: 'Description.tooltip'
+  },
+  path: {
+    label: 'Form Path',
+    placeholder: 'Enter the path of the Form to load',
+    tooltip: 'This is the path of the form to load.'
   },
   inputMask: {
     label: 'Input Mask',
@@ -9720,6 +10007,11 @@ module.exports = {
     label: 'PHidden',
     type: 'checkbox',
     tooltip: 'PHidden.tooltip'
+  },
+  reference: {
+    label: 'Save as reference',
+    type: 'checkbox',
+    tooltip: 'Using this option will save this field as a reference and link its value to the value of the origin record.'
   },
   block: {
     label: 'Block',
@@ -9851,6 +10143,7 @@ module.exports = {
   }
 };
 
+<<<<<<< HEAD
 },{}],252:[function(_dereq_,module,exports){
 "use strict";
 /**
@@ -10131,6 +10424,9 @@ module.exports = {
 };
 
 },{"lodash/remove":207}],253:[function(_dereq_,module,exports){
+=======
+},{}],244:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = {
   actions: [
@@ -10197,7 +10493,11 @@ module.exports = {
   ]
 };
 
+<<<<<<< HEAD
 },{}],254:[function(_dereq_,module,exports){
+=======
+},{}],245:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /*eslint max-statements: 0*/
 var _cloneDeep = _dereq_('lodash/cloneDeep');
@@ -10228,6 +10528,7 @@ module.exports = ['debounce', function(debounce) {
       'FormioUtils',
       'dndDragIframeWorkaround',
       '$interval',
+      '$timeout',
       function(
         $scope,
         formioComponents,
@@ -10235,7 +10536,8 @@ module.exports = ['debounce', function(debounce) {
         Formio,
         FormioUtils,
         dndDragIframeWorkaround,
-        $interval
+        $interval,
+        $timeout
       ) {
         $scope.options = $scope.options || {};
 
@@ -10292,25 +10594,45 @@ module.exports = ['debounce', function(debounce) {
         if ($scope.src && $scope.formio && $scope.formio.formId) {
           $scope.formio.loadForm().then(function(form) {
             $scope.form = form;
-            $scope.form.page = 0;
             if (!$scope.form.display) {
               $scope.form.display = 'form';
             }
             if (!$scope.options.noSubmit && $scope.form.components.length === 0) {
               $scope.form.components.push(submitButton);
             }
+            $scope.showPage(0);
           });
         }
+
+        // Ensure we always have a page set.
+        $scope.$watch('form.page', function(page) {
+          if (page === undefined) {
+            $scope.showPage(0);
+          }
+        });
 
         $scope.$watch('form.display', function(display) {
           $scope.hideCount = (display === 'wizard') ? 1 : 2;
         });
 
+        // Ensure that they don't remove components by canceling the edit modal.
+        $scope.$watch('form._id', function(_id) {
+          if (!_id) {
+            return;
+          }
+          FormioUtils.eachComponent($scope.form.components, function(component) {
+            delete component.isNew;
+          }, true);
+        });
+
         // Make sure they can switch back and forth between wizard and pages.
         $scope.$on('formDisplay', function(event, display) {
           $scope.form.display = display;
-          $scope.form.page = 0;
           setNumPages();
+          $timeout(function() {
+            $scope.showPage(0);
+            $scope.$apply();
+          });
         });
 
         // Return the form pages.
@@ -10329,19 +10651,39 @@ module.exports = ['debounce', function(debounce) {
           return pages;
         };
 
-        // Show the form page.
-        $scope.showPage = function(page) {
-          var i = 0;
-          for (i = 0; i < $scope.form.components.length; i++) {
+        $scope.getPage = function() {
+          var pageNum = 0;
+          for (var i = 0; i < $scope.form.components.length; i++) {
             var component = $scope.form.components[i];
             if (component.type === 'panel') {
-              if (i === page) {
+              if (i === $scope.form.page) {
                 break;
+              }
+              pageNum++;
+            }
+          }
+          return pageNum;
+        };
+
+        // Show the form page.
+        /* eslint-disable max-depth */
+        $scope.showPage = function(page) {
+          var pageNum = 0;
+          if ($scope.form && $scope.form.components) {
+            for (var i = 0; i < $scope.form.components.length; i++) {
+              var component = $scope.form.components[i];
+              if (component.type === 'panel') {
+                if (pageNum === page) {
+                  pageNum = i;
+                  break;
+                }
+                pageNum++;
               }
             }
           }
-          $scope.form.page = i;
+          $scope.form.page = pageNum;
         };
+        /* eslint-enable max-depth */
 
         $scope.newPage = function() {
           var index = $scope.form.numPages;
@@ -10478,6 +10820,7 @@ module.exports = ['debounce', function(debounce) {
 
         // Add to scope so it can be used in templates
         $scope.dndDragIframeWorkaround = dndDragIframeWorkaround;
+        $scope.showPage(0);
       }
     ],
     link: function(scope, element) {
@@ -10509,7 +10852,11 @@ module.exports = ['debounce', function(debounce) {
   };
 }];
 
+<<<<<<< HEAD
 },{"lodash/capitalize":171,"lodash/cloneDeep":173,"lodash/each":176,"lodash/groupBy":180,"lodash/merge":201,"lodash/omitBy":203,"lodash/upperFirst":216}],255:[function(_dereq_,module,exports){
+=======
+},{"lodash/capitalize":168,"lodash/cloneDeep":170,"lodash/each":173,"lodash/groupBy":177,"lodash/merge":197,"lodash/omitBy":199,"lodash/upperFirst":207}],246:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
  * Create the form-builder-component directive.
@@ -10525,7 +10872,11 @@ module.exports = [
   }
 ];
 
+<<<<<<< HEAD
 },{}],256:[function(_dereq_,module,exports){
+=======
+},{}],247:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 'use strict';
 var utils = _dereq_('formiojs/utils');
@@ -10612,7 +10963,11 @@ module.exports = ['$filter',
   }
 ];
 
+<<<<<<< HEAD
 },{"formiojs/utils":2,"lodash/get":179,"lodash/reject":206}],257:[function(_dereq_,module,exports){
+=======
+},{"formiojs/utils":2,"lodash/get":176,"lodash/reject":202}],248:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 var _isNumber = _dereq_('lodash/isNumber');
 var _camelCase = _dereq_('lodash/camelCase');
@@ -10750,11 +11105,16 @@ module.exports = [
     };
 
     // Allow prototyped scopes to update the original component.
-    $scope.updateComponent = function(newComponent, oldComponent) {
+    $scope.updateComponent = function(newComponent, key) {
       var list = $scope.component.components;
-      list.splice(list.indexOf(oldComponent), 1, newComponent);
-      $scope.emit('update', newComponent);
-      $scope.$broadcast('iframeMessage', {name: 'updateElement', data: newComponent});
+      if (_.findIndex(list, {key: key}) !== -1) {
+        list.splice(_.findIndex(list, {key: key}), 1, newComponent);
+        $scope.emit('update', newComponent);
+        $scope.$broadcast('iframeMessage', {name: 'updateElement', data: newComponent});
+      }
+      else {
+        //console.warn('not found', key);
+      }
     };
 
     var remove = function(component) {
@@ -10881,7 +11241,11 @@ module.exports = [
   }
 ];
 
+<<<<<<< HEAD
 },{"lodash/assign":169,"lodash/camelCase":170,"lodash/isNumber":190}],258:[function(_dereq_,module,exports){
+=======
+},{"lodash/assign":166,"lodash/camelCase":167,"lodash/isNumber":187}],249:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = [
   'formioElementDirective',
@@ -10906,7 +11270,11 @@ module.exports = [
   }
 ];
 
+<<<<<<< HEAD
 },{}],259:[function(_dereq_,module,exports){
+=======
+},{}],250:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = [
   function() {
@@ -10929,7 +11297,11 @@ module.exports = [
   }
 ];
 
+<<<<<<< HEAD
 },{}],260:[function(_dereq_,module,exports){
+=======
+},{}],251:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
 * This directive creates a field for tweaking component options.
@@ -10997,7 +11369,11 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
   };
 }];
 
+<<<<<<< HEAD
 },{}],261:[function(_dereq_,module,exports){
+=======
+},{}],252:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
 * A directive for editing a component's custom validation.
@@ -11038,7 +11414,11 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{}],262:[function(_dereq_,module,exports){
+=======
+},{}],253:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
 * A directive for a field to edit a component's key.
@@ -11084,7 +11464,11 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{}],263:[function(_dereq_,module,exports){
+=======
+},{}],254:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
 * A directive for a field to edit a component's tags.
@@ -11128,7 +11512,11 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{"lodash/map":199}],264:[function(_dereq_,module,exports){
+=======
+},{"lodash/map":195}],255:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = [
   function() {
@@ -11150,7 +11538,11 @@ module.exports = [
   }
 ];
 
+<<<<<<< HEAD
 },{}],265:[function(_dereq_,module,exports){
+=======
+},{}],256:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
  * A directive for a table builder
@@ -11204,6 +11596,7 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{"lodash/merge":201}],266:[function(_dereq_,module,exports){
 "use strict";
 var formioBuilderToolbarCongfig = _dereq_('../constants/config');
@@ -11248,6 +11641,9 @@ module.exports = function() {
 };
 
 },{"../constants/config":252,"lodash/slice":208}],267:[function(_dereq_,module,exports){
+=======
+},{"lodash/merge":197}],257:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
 * Invokes Bootstrap's popover jquery plugin on an element
@@ -11288,7 +11684,11 @@ module.exports = ['$filter', function($filter) {
   };
 }];
 
+<<<<<<< HEAD
 },{}],268:[function(_dereq_,module,exports){
+=======
+},{}],258:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 module.exports = function() {
   return {
@@ -11325,7 +11725,11 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{}],269:[function(_dereq_,module,exports){
+=======
+},{}],259:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /*
 * Prevents user inputting invalid api key characters.
@@ -11348,7 +11752,11 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{}],270:[function(_dereq_,module,exports){
+=======
+},{}],260:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 /**
 * A directive that provides a UI to add {value, label} objects to an array.
@@ -11393,6 +11801,7 @@ module.exports = function() {
       $scope.labelProperty = $scope.labelProperty || 'label';
       $scope.valueLabel = $scope.valueLabel || 'Value';
       $scope.labelLabel = $scope.labelLabel || 'Label';
+      $scope.data = $scope.data || [];
 
       $scope.addValue = function() {
         var obj = {};
@@ -11429,7 +11838,11 @@ module.exports = function() {
   };
 };
 
+<<<<<<< HEAD
 },{"lodash/camelCase":170,"lodash/map":199}],271:[function(_dereq_,module,exports){
+=======
+},{"lodash/camelCase":167,"lodash/map":195}],261:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 'use strict';
 
@@ -11538,7 +11951,11 @@ module.exports = ['FormioUtils', function(FormioUtils) {
   };
 }];
 
+<<<<<<< HEAD
 },{}],272:[function(_dereq_,module,exports){
+=======
+},{}],262:[function(_dereq_,module,exports){
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 "use strict";
 // Create an AngularJS service called debounce
 module.exports = ['$timeout','$q', function($timeout, $q) {
@@ -11572,6 +11989,7 @@ module.exports = ['$timeout','$q', function($timeout, $q) {
   };
 }];
 
+<<<<<<< HEAD
 },{}],273:[function(_dereq_,module,exports){
 "use strict";
 /**
@@ -11856,6 +12274,11 @@ module.exports = {
 },{}],274:[function(_dereq_,module,exports){
 "use strict";
 /*! ng-formio-builder v2.17.0 | https://unpkg.com/ng-formio-builder@2.17.0/LICENSE.txt */
+=======
+},{}],263:[function(_dereq_,module,exports){
+"use strict";
+/*! ng-formio-builder v2.19.0 | https://unpkg.com/ng-formio-builder@2.19.0/LICENSE.txt */
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 /*global window: false, console: false, jQuery: false */
 /*jshint browser: true */
 
@@ -12003,7 +12426,11 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/builder.html',
+<<<<<<< HEAD
       "<div class=\"row formbuilder\">\r\n  <div class=\"col-xs-4 col-sm-3 col-md-2 formcomponents\" ng-if=\"form && form.display\">\r\n    <uib-accordion close-others=\"false\" ng-if=\"form.display !== 'pdf'\">\r\n      <div uib-accordion-group ng-repeat=\"(groupName, group) in formComponentGroups\" heading=\"{{ group.title | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel {{ group.panelClass }}\">\r\n        <uib-accordion close-others=\"false\" ng-if=\"group.subgroups\">\r\n          <div uib-accordion-group ng-repeat=\"(subgroupName, subgroup) in group.subgroups\" heading=\"{{ subgroup.title  | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel subgroup-accordion\">\r\n            <div ng-repeat=\"component in formComponentsByGroup[groupName][subgroupName]\" ng-if=\"component.title\"\r\n                dnd-draggable=\"component.settings\"\r\n                dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n                dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n                dnd-effect-allowed=\"copy\"\r\n                class=\"formcomponentcontainer\">\r\n              <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\r\n                <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </uib-accordion>\r\n        <div ng-repeat=\"component in formComponentsByGroup[groupName]\" ng-if=\"!group.subgroup && component.title\"\r\n            dnd-draggable=\"component.settings\"\r\n            dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n            dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n            dnd-effect-allowed=\"copy\"\r\n            class=\"formcomponentcontainer\">\r\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\r\n            <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </uib-accordion>\r\n    <uib-accordion close-others=\"false\" ng-if=\"form.display === 'pdf'\">\r\n      <div uib-accordion-group heading=\"PDF Fields\" is-open=\"true\" class=\"panel panel-default form-builder-panel\">\r\n        <div class=\"formcomponentcontainer\" ng-repeat=\"pdftype in pdftypes\">\r\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{ pdftype.title }}\" style=\"overflow: hidden; text-overflow: ellipsis;\" form-builder-draggable=\"pdftype\">\r\n            <i ng-if=\"pdftype.icon\" class=\"{{ pdftype.icon }}\"></i> {{ pdftype.title | translate}}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </uib-accordion>\r\n  </div>\r\n  <div class=\"col-xs-8 col-sm-7 col-md-7 col-sm-offset-1 col-md-offset-1 formarea\" ng-if=\"form && form.display\">\r\n    <ol class=\"breadcrumb\" ng-if=\"form.display === 'wizard'\">\r\n      <li ng-repeat=\"title in pages() track by $index\"><a class=\"label\" style=\"font-size:1em;\" ng-class=\"{'label-info': ($index === form.page), 'label-default': ($index !== form.page)}\" ng-click=\"showPage($index)\">{{ title }}</a></li>\r\n      <li><a class=\"label label-success\" style=\"font-size:1em;\" ng-click=\"newPage()\" data-toggle=\"tooltip\" title=\"Create Page\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> page</a></li>\r\n    </ol>\r\n    <div class=\"dropzone\">\r\n      <div ng-if=\"form.display === 'pdf'\" ng-controller=\"formBuilderDnd\">\r\n        <div form-builder-droppable style=\"width:100%;height:2000px;position:absolute;\" id=\"fb-drop-zone\"></div>\r\n        <formio form=\"form\" ng-init=\"form.builder = true;\"></formio>\r\n      </div>\r\n      <form-builder-list ng-if=\"form.display !== 'pdf'\" component=\"form\" form=\"form\" formio=\"::formio\" hide-dnd-box-count=\"hideCount\" root-list=\"true\" class=\"rootlist\" options=\"options\"></form-builder-list>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+=======
+      "<div class=\"row formbuilder\">\n  <div class=\"col-xs-4 col-sm-3 col-md-2 formcomponents\" ng-if=\"form && form.display\">\n    <uib-accordion close-others=\"true\" ng-if=\"form.display !== 'pdf'\">\n      <div uib-accordion-group ng-repeat=\"(groupName, group) in formComponentGroups\" heading=\"{{ group.title }}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel {{ group.panelClass }}\">\n        <uib-accordion close-others=\"true\" ng-if=\"group.subgroups\">\n          <div uib-accordion-group ng-repeat=\"(subgroupName, subgroup) in group.subgroups\" heading=\"{{ subgroup.title }}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel subgroup-accordion\">\n            <div ng-repeat=\"component in formComponentsByGroup[groupName][subgroupName]\" ng-if=\"component.title\"\n                dnd-draggable=\"component.settings\"\n                dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n                dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n                dnd-effect-allowed=\"copy\"\n                class=\"formcomponentcontainer\">\n              <span class=\"btn btn-primary btn-xs btn-block formcomponent\" title=\"{{component.title}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n                <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title }}\n              </span>\n            </div>\n          </div>\n        </uib-accordion>\n        <div ng-repeat=\"component in formComponentsByGroup[groupName]\" ng-if=\"!group.subgroup && component.title\"\n            dnd-draggable=\"component.settings\"\n            dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n            dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n            dnd-effect-allowed=\"copy\"\n            class=\"formcomponentcontainer\">\n          <span class=\"btn btn-primary btn-xs btn-block formcomponent\" title=\"{{component.title}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n            <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title }}\n          </span>\n        </div>\n      </div>\n    </uib-accordion>\n    <uib-accordion close-others=\"true\" ng-if=\"form.display === 'pdf'\">\n      <div uib-accordion-group heading=\"PDF Fields\" is-open=\"true\" class=\"panel panel-default form-builder-panel\">\n        <div class=\"formcomponentcontainer\" ng-repeat=\"pdftype in pdftypes\">\n          <span class=\"btn btn-primary btn-xs btn-block formcomponent\" title=\"{{ pdftype.title }}\" style=\"overflow: hidden; text-overflow: ellipsis;\" form-builder-draggable=\"pdftype\">\n            <i ng-if=\"pdftype.icon\" class=\"{{ pdftype.icon }}\"></i> {{ pdftype.title }}\n          </span>\n        </div>\n      </div>\n    </uib-accordion>\n  </div>\n  <div class=\"col-xs-8 col-sm-9 col-md-10 formarea\" ng-if=\"form && form.display\">\n    <ol class=\"breadcrumb\" ng-if=\"form.display === 'wizard'\">\n      <li ng-repeat=\"title in pages() track by $index\"><a class=\"label\" style=\"font-size:1em;\" ng-class=\"{'label-info': ($index === getPage()), 'label-primary': ($index !== getPage())}\" ng-click=\"showPage($index)\">{{ title }}</a></li>\n      <li><a class=\"label label-success\" style=\"font-size:1em;\" ng-click=\"newPage()\" data-toggle=\"tooltip\" title=\"Create Page\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> page</a></li>\n    </ol>\n    <div class=\"dropzone\">\n      <div ng-if=\"form.display === 'pdf'\" ng-controller=\"formBuilderDnd\">\n        <div form-builder-droppable style=\"width:100%;height:2000px;position:absolute;\" id=\"fb-drop-zone\"></div>\n        <formio form=\"form\" ng-init=\"form.builder = true;\"></formio>\n      </div>\n      <form-builder-list ng-if=\"form.display !== 'pdf'\" component=\"form\" form=\"form\" formio=\"::formio\" hide-dnd-box-count=\"hideCount\" root-list=\"true\" class=\"rootlist\" options=\"options\"></form-builder-list>\n    </div>\n  </div>\n</div>\n"
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
     );
 
     $templateCache.put('formio/formbuilder/datagrid.html',
@@ -12050,5 +12477,9 @@ app.run([
 
 _dereq_('./components');
 
+<<<<<<< HEAD
 },{"./components":235,"./constants/commonOptions":251,"./constants/formOptions":253,"./directives/formBuilder":254,"./directives/formBuilderComponent":255,"./directives/formBuilderConditional":256,"./directives/formBuilderDnd":257,"./directives/formBuilderElement":258,"./directives/formBuilderList":259,"./directives/formBuilderOption":260,"./directives/formBuilderOptionCustomValidation":261,"./directives/formBuilderOptionKey":262,"./directives/formBuilderOptionTags":263,"./directives/formBuilderRow":264,"./directives/formBuilderTable":265,"./directives/formBuilderToolbar":266,"./directives/formBuilderTooltip":267,"./directives/jsonInput":268,"./directives/validApiKey":269,"./directives/valueBuilder":270,"./factories/BuilderUtils":271,"./factories/debounce":272,"./i18n/zh-CN.js":273}]},{},[274])(274)
+=======
+},{"./components":227,"./constants/commonOptions":243,"./constants/formOptions":244,"./directives/formBuilder":245,"./directives/formBuilderComponent":246,"./directives/formBuilderConditional":247,"./directives/formBuilderDnd":248,"./directives/formBuilderElement":249,"./directives/formBuilderList":250,"./directives/formBuilderOption":251,"./directives/formBuilderOptionCustomValidation":252,"./directives/formBuilderOptionKey":253,"./directives/formBuilderOptionTags":254,"./directives/formBuilderRow":255,"./directives/formBuilderTable":256,"./directives/formBuilderTooltip":257,"./directives/jsonInput":258,"./directives/validApiKey":259,"./directives/valueBuilder":260,"./factories/BuilderUtils":261,"./factories/debounce":262}]},{},[263])(263)
+>>>>>>> 4c69fdaaf4043f7ae69ac53b82c2a43d92e8894d
 });

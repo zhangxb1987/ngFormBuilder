@@ -24,6 +24,11 @@ module.exports = {
     placeholder: 'Description.placeholder',
     tooltip: 'Description.tooltip'
   },
+  path: {
+    label: 'Form Path',
+    placeholder: 'Enter the path of the Form to load',
+    tooltip: 'This is the path of the form to load.'
+  },
   inputMask: {
     label: 'Input Mask',
     placeholder: 'Input Mask.placeholder',
@@ -98,6 +103,11 @@ module.exports = {
     label: 'PHidden',
     type: 'checkbox',
     tooltip: 'PHidden.tooltip'
+  },
+  reference: {
+    label: 'Save as reference',
+    type: 'checkbox',
+    tooltip: 'Using this option will save this field as a reference and link its value to the value of the origin record.'
   },
   block: {
     label: 'Block',
