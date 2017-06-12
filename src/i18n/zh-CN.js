@@ -83,11 +83,20 @@ module.exports = {
     'TOOLBAR.ACTION.SAVE.tooltip':'保存中...',
     'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip':'保存成功！',
     'TOOLBAR.ACTION.SAVE.FAIL.tooltip':'ERROR:保存失败！',
-  
+
     'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip':'非常抱歉，暂时没有模板可供选择！',
     'TOOLBAR.ACTION.HELP.NOT-IMPLEMENTED.tooltip':'非常抱歉,暂时没有帮助信息！',
     'TOOLBAR.ACTION.CLOSE.UNSAVED-CLOSE.tooltip':'您未保存当前编辑内容，关闭设计器会导致数据丢失！',
-    
+
+    'Column Properties':'列属性',
+    'Column Properties.tooltip':'列属性编辑：宽度，偏距，位移',
+    'Column':'列',
+    'Width':'宽',
+    'Offset':'偏距',
+    'Push':'向右',
+    'Pull':'向左',
+    'Add Column':'增加列',
+
     'Label':'标签',
     'Label.placeholder':'请填写标签信息',
     'Label.tooltip':'标签为元素显示名称',
@@ -95,6 +104,13 @@ module.exports = {
     'Default Value':'默认值',
     'Default Value.placeholder':'请填写默认值',
     'Default Value.tooltip':'如果值为空，用该默认值替换',
+    'Custom Default Value':'自定义默认值',
+    'JavaScript Default': 'Javacript脚本',
+    'Enter custom default value code':'输入自定义默认值脚本',
+    'You must assign the':'必须指定',
+    'variable as the result you want for the default value':'变量为默认值',
+    'The global variable':'提供了全局变量',
+    'and allows you to access the data of any form component, by using its API key':'通过属性获取表单中组件的值',
 
     'Placeholder':'占位符',
     'Placeholder.placeholder':'请填写占位符信息',
@@ -202,6 +218,12 @@ module.exports = {
     'Regular Expression Pattern.placeholder': '请输入正则表达式',
     'Regular Expression.tooltip': '正则表达式',
 
+    'Custom Validation':'自定义验证',
+    'Enter custom validation code':'输入自定义验证脚本',
+    'variable as either':'变量为',
+    'or an error message if validation fails':'或则是',
+    'Must be 3':'\'必须是3！\'',
+
     'Tab Index':'Tab键顺序',
     'Tab Index.placeholder': '请输入Tab键顺序',
     'Tab Index.tooltip': 'Tab键顺序',
@@ -234,8 +256,8 @@ module.exports = {
     'Add Resource Text.placeholder': 'Add Resource',
     'Add Resource Text.tooltip': 'Set the text of the Add Resource button.',
 
-    'API.Field Tags':'属性标签',
-    'API.Property Name':'属性名称',
+    'API.Field Tags':'标签',
+    'API.Property Name':'属性',
 
     'Conditional.Simple':'简单',
     'Conditional.Simple.Display':'是否显示',
@@ -251,7 +273,7 @@ module.exports = {
     'Validation':'验证',
     'API':'属性',
     'Layout':'布局',
-    'Conditional':'约束条件',
+    'Conditional':'显示条件',
 
     'Layout.Overlay':'Overlay',
     'Layout.Overlay.Style':'样式',
@@ -274,5 +296,7 @@ module.exports = {
 
     'Basic Components': '基础控件',
     'Special Components': '高级控件',
-    'Layout Components': '布局'
+    'Layout Components': '布局',
+
+    'Example Code':'示例'
 };

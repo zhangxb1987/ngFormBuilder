@@ -154,10 +154,10 @@
 	  <script src="bower_components/angular-translate/angular-translate.js"></script>
 	  <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 	  <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
-  	  <script src="bower_components/lodash/lodash.js"></script>
-  	  <script src="bower_components/loading/HoldOn.min.js"></script>
-  	  <script src="bower_components/ng-formio/dist/formio.js"></script>
-  	  <script src="dist/ngFormBuilder.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/loading/HoldOn.min.js"></script>
+    <script src="bower_components/ng-formio/dist/formio.js"></script>
+    <script src="dist/ngFormBuilder.js"></script>
   <!-- endbower -->
 
 	<!--<script src="dist/ngFormBuilder-full.js"></script>-->
@@ -208,14 +208,14 @@
 									$rootScope.modelId = urlParams['modelId'];
 									$rootScope.contextPath = urlParams['context'];
 									$rootScope.modelJsonDataDefer = $q.defer();
-									
+
 									if(!$rootScope.contextPath){
 										ngDialog.open({
 										    template: 'parameter-context-error.html',
 										    width: 300
 										});
 
-										$rootScope.modelJsonDataDefer.reject();	
+										$rootScope.modelJsonDataDefer.reject();
 									}else{
 										if ($rootScope.modelId) {
 										//fetch model json data
@@ -227,7 +227,7 @@
 													$rootScope.modelJsonDataDefer.resolve(response);
 												},
 												function(response){
-													$rootScope.modelJsonDataDefer.reject();	
+													$rootScope.modelJsonDataDefer.reject();
 												}
 												);
 										}else{
@@ -239,7 +239,7 @@
 										}
 									}
 
-									
+
 
 									//
 									$rootScope.modelJsonDataDefer.promise.then(function(data){
@@ -250,7 +250,7 @@
 										$rootScope.formUpdateUnsaved = false;
 										$rootScope.showDebugConsole = false;
 										$rootScope.renderForm = true;
-										$rootScope.$on('formUpdate', 
+										$rootScope.$on('formUpdate',
 											function(event, form) {
 												angular.merge($rootScope.form, form);
 												$rootScope.renderForm = false;

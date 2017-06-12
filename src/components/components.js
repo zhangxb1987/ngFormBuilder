@@ -40,33 +40,33 @@ module.exports = function(app) {
 
       // Create the common API tab markup.
       $templateCache.put('formio/components/common/data.html',
+        '<form-builder-option-key></form-builder-option-key>' +
         '<form-builder-option property="defaultValue"></form-builder-option>' +
         '<uib-accordion>' +
-        '  <div uib-accordion-group heading="Custom Default Value" class="panel panel-default">' +
+        '  <div uib-accordion-group heading="{{\'Custom Default Value\' | translate}}" class="panel panel-default">' +
         '    <uib-accordion>' +
-        '      <div uib-accordion-group heading="JavaScript Default" class="panel panel-default" is-open="true">' +
-        '        <textarea class="form-control" rows="5" id="customDefaultValue" name="customDefaultValue" ng-model="component.customDefaultValue" placeholder="/*** Example Code ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
+        '      <div uib-accordion-group heading="{{\'JavaScript Default\' | translate}}" class="panel panel-default" is-open="true">' +
+        '        <textarea class="form-control" rows="5" id="customDefaultValue" name="customDefaultValue" ng-model="component.customDefaultValue" placeholder="/*** {{\'Conditional.Simple\' | translate}} ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
         '        <small>' +
-        '          <p>Enter custom default value code.</p>' +
-        '          <p>You must assign the <strong>value</strong> variable as the result you want for the default value.</p>' +
-        '          <p>The global variable <strong>data</strong> is provided, and allows you to access the data of any form component, by using its API key.</p>' +
-        '          <p>Default Values are only calculated on form load. Use Calculated Value for a value that will update with the form.</p>' +
+        '          <p>{{\'Enter custom default value code\' | translate}}</p>' +
+        '          <p>{{\'You must assign the\' | translate}} <strong>value</strong> {{\'variable as the result you want for the default value\' | translate}}</p>' +
+        '          <p>{{\'The global variable\' | translate}} <strong>data</strong> , {{\'and allows you to access the data of any form component, by using its API key\' | translate}}</p>' +
         '        </small>' +
         '      </div>' +
-        '      <div uib-accordion-group heading="JSONLogic Default" class="panel panel-default">' +
-        '        <small>' +
-        '          <p>Execute custom default value using <a href="http://jsonlogic.com/">JSONLogic</a>.</p>' +
-        '          <p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
-        '          <p><a href="http://formio.github.io/formio.js/app/examples/calculated.html" target="_blank">Click here for an example</a></p>' +
-        '        </small>' +
-        '        <textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.customDefaultValue" placeholder=\'{ ... }\'></textarea>' +
-        '      </div>' +
+        // '      <div uib-accordion-group heading="JSONLogic Default" class="panel panel-default">' +
+        // '        <small>' +
+        // '          <p>Execute custom default value using <a href="http://jsonlogic.com/">JSONLogic</a>.</p>' +
+        // '          <p>Submission data is available as JsonLogic variables, with the same api key as your components.</p>' +
+        // '          <p><a href="http://formio.github.io/formio.js/app/examples/calculated.html" target="_blank">Click here for an example</a></p>' +
+        // '        </small>' +
+        // '        <textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.customDefaultValue" placeholder=\'{ ... }\'></textarea>' +
+        // '      </div>' +
         '    </uib-accordion>' +
         '  </div>' +
-        '  <div uib-accordion-group heading="Calculated Value" class="panel panel-default">' +
+        /*'  <div uib-accordion-group heading="Calculated Value" class="panel panel-default">' +
         '    <uib-accordion>' +
         '      <div uib-accordion-group heading="JavaScript Value" class="panel panel-default" is-open="true">' +
-        '        <textarea class="form-control" rows="5" id="calculateValue" name="calculateValue" ng-model="component.calculateValue" placeholder="/*** Example Code ***/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
+        '        <textarea class="form-control" rows="5" id="calculateValue" name="calculateValue" ng-model="component.calculateValue" placeholder="/!*** Example Code ***!/\nvalue = data[\'mykey\'] + data[\'anotherKey\'];"></textarea>' +
         '        <small>' +
         '          <p>Enter code to calculate a value.</p>' +
         '          <p>You must assign the <strong>value</strong> variable as the result you want for the default value.</p>' +
@@ -82,15 +82,21 @@ module.exports = function(app) {
         '        <textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.calculateValue" placeholder=\'{ ... }\'></textarea>' +
         '      </div>' +
         '    </uib-accordion>' +
-        '  </div>' +
+        '  </div>' +*/
         '</uib-accordion>'
       );
 
       // Create the common API tab markup.
-      $templateCache.put('formio/components/common/api.html',
+      /*$templateCache.put('formio/components/common/api.html',
         '<ng-form>' +
           '<form-builder-option-key></form-builder-option-key>' +
           '<form-builder-option-tags></form-builder-option-tags>' +
+        '</ng-form>'
+      );*/
+      //去掉tag
+      $templateCache.put('formio/components/common/api.html',
+        '<ng-form>' +
+        '<form-builder-option-key></form-builder-option-key>' +
         '</ng-form>'
       );
 

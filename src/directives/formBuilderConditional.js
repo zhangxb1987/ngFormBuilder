@@ -23,13 +23,13 @@ module.exports = ['$filter',
             '<input type="text" class="form-control input-md" ng-model="component.conditional.eq">' +
           '</div>' +
           '<div uib-accordion-group heading="{{\'Conditional.Advanced\' | translate}}" class="panel panel-default" is-open="status.advanced">' +
-            '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.customConditional" placeholder="/*** Example Code ***/\nshow = (data[\'mykey\'] > 1);"></textarea>' +
+            '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.customConditional" placeholder="/*** {{\'Example Code\'|translate}} ***/\nshow = (data[\'mykey\'] > 1);"></textarea>' +
             formioTranslate('Conditional.Advanced.Tooltip') +
           '</div>' +
-          '<div uib-accordion-group heading="{{\'Conditional.JSON Conditional\' | translate}}" class="panel panel-default" is-open="status.json">' +
-            formioTranslate('Conditional.JSON Conditional.Tooltip') +
-            '<textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.conditional.json" placeholder="{ ... }"></textarea>' +
-          '</div>' +
+          // '<div uib-accordion-group heading="{{\'Conditional.JSON Conditional\' | translate}}" class="panel panel-default" is-open="status.json">' +
+          //   formioTranslate('Conditional.JSON Conditional.Tooltip') +
+          //   '<textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.conditional.json" placeholder="{ ... }"></textarea>' +
+          // '</div>' +
         '</uib-accordion>',
       controller: [
         '$scope',

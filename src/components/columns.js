@@ -8,7 +8,7 @@ module.exports = function(app) {
             $scope.component.columns.splice(index, 1);
           };
           $scope.addColumn = function() {
-            $scope.component.columns.push({components: [], width: 1, offset: 0, push: 0, pull: 0});
+            $scope.component.columns.push({components: [], width: 6, offset: 0, push: 0, pull: 0});
           };
         }],
         fbtemplate: 'formio/formbuilder/columns.html',
@@ -47,7 +47,7 @@ module.exports = function(app) {
         '<ng-form>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
           '<div class="form-group">' +
-            '<label form-builder-tooltip="The width, offset, push and pull settings for the columns">{{\'Column Properties\' | formioTranslate}}</label>' +
+            '<label form-builder-tooltip="{{\'Column Properties.tooltip\' | formioTranslate}}">{{\'Column Properties\' | formioTranslate}}</label>' +
             '<table class="table table-condensed">' +
               '<thead>' +
                 '<tr>' +
