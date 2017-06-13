@@ -2,7 +2,6 @@
 /*global window: false, console: false, jQuery: false */
 /*jshint browser: true */
 var fs = require('fs');
-var i18n = require('./i18n/zh-CN.js');
 
 var app = angular.module('ngFormBuilder', [
   'formio',
@@ -10,7 +9,6 @@ var app = angular.module('ngFormBuilder', [
   'ngDialog',
   'ui.bootstrap.accordion',
   'ckeditor',
-  'pascalprecht.translate',
   'ngTagsInput'
 ]);
 
@@ -111,10 +109,6 @@ app.value('dndDragIframeWorkaround', {
   isDragging: false
 });
 
-app.config(['$translateProvider',function($translateProvider) {
-    $translateProvider.translations('zh-CN', i18n).preferredLanguage('zh-CN');
-}]);
-
 app.run([
   '$templateCache',
   '$rootScope',
@@ -176,7 +170,7 @@ app.run([
     $templateCache.put('formio/formbuilder/toolbar/import.html',
       fs.readFileSync(__dirname + '/templates/toolbar/import.html', 'utf8')
     );
-        
+
     $templateCache.put('formio/formbuilder/toolbar/export.html',
       fs.readFileSync(__dirname + '/templates/toolbar/export.html', 'utf8')
     );
