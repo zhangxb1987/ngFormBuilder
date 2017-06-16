@@ -181,6 +181,24 @@ module.exports = {
     type: 'number',
     tooltip: 'Maximum Length.tooltip'
   },
+  'validate.min': {
+    label: 'Minimum Value',
+    placeholder: 'Minimum Value.placeholder',
+    type: 'number',
+    tooltip: 'Minimum Value.tooltip'
+  },
+  'validate.max': {
+    label: 'Maximum Value',
+    placeholder: 'Maximum Value.placeholder',
+    type: 'number',
+    tooltip: 'Maximum Value.tooltip'
+  },
+  'validate.step': {
+    label: 'Increment Step',
+    placeholder: 'Increment Step.placeholder',
+    type: 'number',
+    tooltip: 'Increment Step.tooltip'
+  },
   'validate.pattern': {
     label: 'Regular Expression Pattern',
     placeholder: 'Regular Expression Pattern.placeholder',
@@ -190,6 +208,11 @@ module.exports = {
     label: 'Custom CSS Class',
     placeholder: 'Custom CSS Class.placeholder',
     tooltip: 'Custom CSS Class.tooltip'
+  },
+  'inline': {
+    type: 'checkbox',
+    label: 'Select Boxes.Inline Layout',
+    tooltip: 'Select Boxes.Inline Layout.tooltip'
   },
   'tabindex': {
     label: 'Tab Index',
@@ -205,6 +228,14 @@ module.exports = {
     label: 'Default Value',
     placeholder: 'Default Value.placeholder',
     tooltip: 'Default Value.tooltip'
+  },
+  'data.url':{
+    label:  'Data Source URL',
+    placeholder:  'Data Source URL.placeholder',
+    tooltip:  'Data Source URL.tooltip'
+  },
+  'valueProperty':{
+
   },
   // Need to use array notation to have dash in name
   'style[\'margin-top\']': {

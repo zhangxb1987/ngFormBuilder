@@ -17,20 +17,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/textfield/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#textarea'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#textarea'*/
       });
     }
   ]);
@@ -54,7 +54,7 @@ module.exports = function(app) {
       extraPlugins: 'justify,font',
       removeButtons: 'Cut,Copy,Paste,Underline,Subscript,Superscript,Scayt,About',
       uiColor: '#eeeeee',
-      height: '400px',
+      height: '200px',
       width: '100%'
     };
     $scope.$watch('wysiwygEnabled', function(value) {
@@ -78,23 +78,23 @@ module.exports = function(app) {
           '<form-builder-option property="inputMask"></form-builder-option>' +
           '<div ng-controller="wysiwygSettings">' +
             '<div class="checkbox">' +
-              '<label><input type="checkbox" ng-model="wysiwygEnabled"> Enable WYWIWYG</label>' +
+              '<label><input type="checkbox" ng-model="wysiwygEnabled"> {{\'Enable WYWIWYG\'|translate}}</label>' +
             '</div>' +
             '<div class="form-group">' +
-              '<label for="wysiwyg">WYSIWYG Settings</label>' +
-              '<textarea class="form-control" rows="5" id="wysiwyg" ng-model="wysiwygSettings" json-input placeholder="Enter the CKEditor JSON configuration to turn this TextArea into a WYSIWYG."></textarea>' +
+              '<label for="wysiwyg">{{\'WYSIWYG Settings\'|translate}}</label>' +
+              '<textarea class="form-control" rows="5" id="wysiwyg" ng-model="wysiwygSettings" json-input placeholder="{{\'WYSIWYG Settings.tooltip\'|translate}}"></textarea>' +
             '</div>' +
           '</div>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          /*'<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
     }

@@ -1,5 +1,5 @@
 <div class="row formbuilder">
-  <div class="col-xs-4 col-sm-3 col-md-2 formcomponents" ng-if="form && form.display">
+  <div class="col-xs-4 col-sm-3 col-md-3 formcomponents" ng-if="form && form.display">
     <uib-accordion close-others="true" ng-if="form.display !== 'pdf'">
       <div uib-accordion-group ng-repeat="(groupName, group) in formComponentGroups" heading="{{ group.title | translate}}" is-open="$first" class="panel panel-default form-builder-panel {{ group.panelClass }}">
         <uib-accordion close-others="false" ng-if="group.subgroups">
@@ -38,7 +38,7 @@
       </div>
     </uib-accordion>
   </div>
-  <div class="col-xs-8 col-sm-9 col-md-10 formarea" ng-if="form && form.display">
+  <div class="col-xs-8 col-sm-9 col-md-9 formarea" ng-if="form && form.display">
     <ol class="breadcrumb" ng-if="form.display === 'wizard'">
       <li ng-repeat="title in pages() track by $index"><a class="label" style="font-size:1em;" ng-class="{'label-info': ($index === form.page), 'label-default': ($index !== form.page)}" ng-click="showPage($index)">{{ title }}</a></li>
       <li><a class="label label-success" style="font-size:1em;" ng-click="newPage()" data-toggle="tooltip" title="Create Page"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> page</a></li>

@@ -7259,20 +7259,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/checkbox/validate.html'
           },
-          {
+          /*{
             name: 'API',
             template: 'formio/components/common/api.html'
-          },
-          {
+          },*/
+         /* {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#checkbox'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#checkbox'*/
       });
     }
   ]);
@@ -7283,8 +7283,8 @@ module.exports = function(app) {
       $templateCache.put('formio/components/checkbox/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<div class="form-group">' +
-            '<label for="inputType" form-builder-tooltip="This is the input type used for this checkbox.">Input Type</label>' +
+/*          '<div class="form-group">' +
+            '<label for="inputType" form-builder-tooltip="{{\'Checkbox.Input Type.tooltip\'|translate}}">{{\'Checkbox.Input Type\'|translate}}</label>' +
             '<select class="form-control" id="inputType" name="inputType" ng-options="inputType.name as inputType.title for inputType in inputTypes" ng-model="component.inputType"></select>' +
           '</div>' +
           '<div class="form-group" ng-if="component.inputType === \'radio\'">' +
@@ -7294,16 +7294,16 @@ module.exports = function(app) {
           '<div class="form-group" ng-if="component.inputType === \'radio\'">' +
           '  <label for="value" form-builder-tooltip="The value used with this radio button.">Radio Value</label>' +
           '  <input type="text" class="form-control" id="value" name="value" ng-model="component.value" placeholder="{{ component.value }}" />' +
-          '</div>' +
-          '<form-builder-option property="datagridLabel"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          '</div>' +*/
+          /*'<form-builder-option property="datagridLabel"></form-builder-option>' +*/
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+          /*'<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -8599,20 +8599,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/number/validate.html'
           },
-          {
+          /*{
             name: 'API',
             template: 'formio/components/common/api.html'
-          },
-          {
+          },*/
+          /*{
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#number'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#number'*/
       });
     }
   ]);
@@ -8625,18 +8625,17 @@ module.exports = function(app) {
           '<form-builder-option property="label"></form-builder-option>' +
           '<form-builder-option property="placeholder"></form-builder-option>' +
           '<form-builder-option property="description"></form-builder-option>' +
-          '<form-builder-option property="validate.step" label="Increment (Step)" placeholder="Enter how much to increment per step (or precision)." title="The amount to increment/decrement for each step."></form-builder-option>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          /*'<form-builder-option property="customClass"></form-builder-option>' +*/
+          /*'<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+          /*'<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+          /*'<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -8644,8 +8643,9 @@ module.exports = function(app) {
       $templateCache.put('formio/components/number/validate.html',
         '<ng-form>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
-          '<form-builder-option property="validate.min" type="number" label="Minimum Value" placeholder="Minimum Value" title="The minimum value this field must have before the form can be submitted."></form-builder-option>' +
-          '<form-builder-option property="validate.max" type="number" label="Maximum Value" placeholder="Maximum Value" title="The maximum value this field must have before the form can be submitted."></form-builder-option>' +
+          '<form-builder-option property="validate.step"></form-builder-option>' +
+          '<form-builder-option property="validate.min"></form-builder-option>' +
+          '<form-builder-option property="validate.max"></form-builder-option>' +
           '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
         '</ng-form>'
       );
@@ -8801,16 +8801,16 @@ module.exports = function(app) {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
-          {
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#password',
+        ],/*
+        documentation: 'http://help.form.io/userguide/#password',*/
         template: 'formio/components/password.html'
       });
     }
@@ -8836,14 +8836,14 @@ module.exports = function(app) {
           '<form-builder-option property="description"></form-builder-option>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          /*'<form-builder-option property="customClass"></form-builder-option>' +*/
+          /*'<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
     }
@@ -8944,20 +8944,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/radio/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#radio'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#radio'*/
       });
     }
   ]);
@@ -8968,16 +8968,17 @@ module.exports = function(app) {
       $templateCache.put('formio/components/radio/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<value-builder data="component.values" default="component.defaultValue" label="Values" tooltip-text="The radio button values that can be picked for this field. Values are text submitted with the form data. Labels are text that appears next to the radio buttons on the form."></value-builder>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
-          '<form-builder-option property="inline" type="checkbox" label="Inline Layout" title="Displays the radio buttons horizontally."></form-builder-option>' +
+
+          '<value-builder data="component.values" default="component.defaultValue" label="{{\'Radio.values.label\'|translate}}" tooltip-text="{{\'Radio.values.tooltip\'|translate}}"></value-builder>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
+          '<form-builder-option property="inline"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
       // Create the API markup.
@@ -9104,26 +9105,26 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/select/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
-          },
-          {
+          },*/
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
         ],
-        onEdit: ['$scope', 'FormioUtils', function($scope, FormioUtils) {
+        onEdit: ['$scope', 'FormioUtils','$filter', function($scope, FormioUtils) {
           $scope.dataSources = {
             values: 'Values',
-            json: 'Raw JSON',
-            url: 'URL',
-            resource: 'Resource',
-            custom: 'Custom'
+/*            json: 'Raw JSON',*/
+            url: 'URL'
+/*            resource: 'Resource',*/
+/*            custom: 'Custom'*/
           };
           $scope.resources = [];
           $scope.resourceFields = [];
@@ -9219,8 +9220,8 @@ module.exports = function(app) {
           });
 
           loadFields();
-        }],
-        documentation: 'http://help.form.io/userguide/#select'
+        }]/*,
+        documentation: 'http://help.form.io/userguide/#select'*/
       });
     }
   ]);
@@ -9233,35 +9234,40 @@ module.exports = function(app) {
           '<form-builder-option property="label"></form-builder-option>' +
           '<form-builder-option property="placeholder"></form-builder-option>' +
           '<form-builder-option property="description"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       $templateCache.put('formio/components/select/data.html',
         '<ng-form>' +
           '<div class="form-group">' +
-            '<label for="dataSrc" form-builder-tooltip="The source to use for the select data. Values lets you provide your own values and labels. JSON lets you provide raw JSON data. URL lets you provide a URL to retrieve the JSON data from.">Data Source Type</label>' +
-            '<select class="form-control" id="dataSrc" name="dataSrc" ng-model="component.dataSrc" ng-options="value as label for (value, label) in dataSources"></select>' +
+            '<label for="dataSrc" form-builder-tooltip="{{\'Data Source Type.tooltip\'|translate}}">{{\'Data Source Type\'|translate}}</label>' +
+            '<select class="form-control" ' +
+                      'id="dataSrc" ' +
+                      'name="dataSrc" ' +
+                      'ng-model="component.dataSrc" ' +
+                      'ng-options="value as label for (value, label) in dataSources">' +
+            '</select>' +
           '</div>' +
           '<ng-switch on="component.dataSrc">' +
-            '<div class="form-group" ng-switch-when="json">' +
+/*            '<div class="form-group" ng-switch-when="json">' +
               '<label for="data.json" form-builder-tooltip="A raw JSON array to use as a data source.">Data Source Raw JSON</label>' +
               '<textarea class="form-control" id="data.json" name="data.json" ng-model="component.data.json" placeholder="Raw JSON Array" json-input rows="3">{{ component.data.json }}</textarea>' +
-            '</div>' +
+            '</div>' +*/
             '<div ng-switch-when="url">' +
-            '  <form-builder-option property="data.url" label="Data Source URL" placeholder="Data Source URL" title="A URL that returns a JSON array to use as the data source."></form-builder-option>' +
+            '  <form-builder-option property="data.url"></form-builder-option>' +
             '</div>' +
-            '<value-builder ng-switch-when="url" data=component.data.headers label="Request Headers" tooltip-text="Set any headers that should be sent along with the request to the url. This is useful for authentication." label-label="Key" label-property="key" />' +
-            '<value-builder ng-switch-when="values" data="component.data.values" label="Data Source Values" tooltip-text="Values to use as the data source. Labels are shown in the select field. Values are the corresponding values saved with the submission."></value-builder>' +
-            '<div class="form-group" ng-switch-when="resource">' +
+            /*'<value-builder ng-switch-when="url" data=component.data.headers label="Request Headers" tooltip-text="Set any headers that should be sent along with the request to the url. This is useful for authentication." label-label="Key" label-property="key" />' +*/
+            '<value-builder ng-switch-when="values" data="component.data.values" label="{{\'Data Source Values.label\'|translate}}" tooltip-text="{{\'Data Source Values.tooltip\'|translate}}"></value-builder>' +
+/*            '<div class="form-group" ng-switch-when="resource">' +
             '<label for="placeholder" form-builder-tooltip="The resource to be used with this field.">Resource</label>' +
             '<ui-select ui-select-required ui-select-open-on-focus ng-model="component.data.resource" theme="bootstrap">' +
               '<ui-select-match class="ui-select-match" placeholder="">' +
@@ -9271,44 +9277,44 @@ module.exports = function(app) {
                 '<div ng-bind-html="value.title | highlight: $select.search"></div>' +
               '</ui-select-choices>' +
             '</ui-select>' +
-          '</div>' +
+          '</div>' +*/
           '</ng-switch>' +
-          '<form-builder-option ng-hide="component.dataSrc !== \'url\'" property="selectValues" label="Data Path" type="text" placeholder="The object path to the iterable items." title="The property within the source data, where iterable items reside. For example: results.items or results[0].items"></form-builder-option>' +
-          '<form-builder-option ng-hide="component.dataSrc == \'values\' || component.dataSrc == \'resource\' || component.dataSrc == \'custom\'" property="valueProperty" label="Value Property" placeholder="The selected item\'s property to save." title="The property of each item in the data source to use as the select value. If not specified, the item itself will be used."></form-builder-option>' +
-          '<div class="form-group" ng-hide="component.dataSrc !== \'resource\' || !component.data.resource || resourceFields.length == 0">' +
+          /*'<form-builder-option ng-hide="component.dataSrc !== \'url\'" property="selectValues" label="Data Path" type="text" placeholder="The object path to the iterable items." title="The property within the source data, where iterable items reside. For example: results.items or results[0].items"></form-builder-option>' +*/
+          '<form-builder-option ng-hide="component.dataSrc == \'values\' || component.dataSrc == \'resource\' || component.dataSrc == \'custom\'" property="valueProperty" label="{{\'Value Property.label\'|translate}}" placeholder="{{\'Value Property.placeholder\'|translate}}" title="{{\'Value Property.tooltip\'|translate}}"></form-builder-option>' +
+/*          '<div class="form-group" ng-hide="component.dataSrc !== \'resource\' || !component.data.resource || resourceFields.length == 0">' +
             '<label for="placeholder" form-builder-tooltip="The field to use as the value.">Value</label>' +
             '<select class="form-control" id="valueProperty" name="valueProperty" ng-options="value.property as value.title for value in resourceFields" ng-model="component.valueProperty"></select>' +
-          '</div>' +
-          '<div class="form-group" ng-if="component.dataSrc == \'resource\' && component.valueProperty === \'\'">' +
+          '</div>' +*/
+/*          '<div class="form-group" ng-if="component.dataSrc == \'resource\' && component.valueProperty === \'\'">' +
           '  <label for="placeholder" form-builder-tooltip="The properties on the resource to return as part of the options. Separate property names by commas. If left blank, all properties will be returned.">Select Fields</label>' +
           '  <input type="text" class="form-control" id="selectFields" name="selectFields" ng-model="component.selectFields" placeholder="Comma separated list of fields to select." value="{{ component.selectFields }}">' +
-          '</div>' +
-          '<div ng-show="component.dataSrc == \'url\'">' +
+          '</div>' +*/
+/*          '<div ng-show="component.dataSrc == \'url\'">' +
           '<input type="checkbox" ng-model="component.data.disableLimit" name="disableLimit"></input>' +
           '  <label for="disableLimit" form-builder-tooltip="When enabled the request will not include the limit and skip options in the query string">Disable limiting response</label>' +
-          '</div>' +
-          '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\'" property="searchField" label="Search Query Name" placeholder="Name of URL query parameter" title="The name of the search querystring parameter used when sending a request to filter results with. The server at the URL must handle this query parameter."></form-builder-option>' +
+          '</div>' +*/
+/*          '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\'" property="searchField" label="Search Query Name" placeholder="Name of URL query parameter" title="The name of the search querystring parameter used when sending a request to filter results with. The server at the URL must handle this query parameter."></form-builder-option>' +
           '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\'" property="filter" label="Filter Query" placeholder="The filter query for results." title="Use this to provide additional filtering using query parameters."></form-builder-option>' +
-          '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\' || component.dataSrc == \'json\'" property="limit" label="Limit" placeholder="Maximum number of items to view per page of results." title="Use this to limit the number of items to request or view."></form-builder-option>' +
-          '<div class="form-group" ng-show="component.dataSrc == \'json\'">' +
+          '<form-builder-option ng-show="component.dataSrc == \'url\' || component.dataSrc == \'resource\' || component.dataSrc == \'json\'" property="limit" label="Limit" placeholder="Maximum number of items to view per page of results." title="Use this to limit the number of items to request or view."></form-builder-option>' +*/
+/*          '<div class="form-group" ng-show="component.dataSrc == \'json\'">' +
           '  <label for="filter" form-builder-tooltip="The filter type for search.">Search Filter</label>' +
           '  <select class="form-control" id="filter" name="filter" ng-model="component.filter" ng-options="value as label for (value, label) in {none: \'No Search\', contains: \'Contains\', startsWith: \'Starts With\'}"></select>' +
-          '</div>' +
-          '<div class="form-group" ng-show="component.dataSrc == \'custom\'">' +
+          '</div>' +*/
+/*          '<div class="form-group" ng-show="component.dataSrc == \'custom\'">' +
           '  <label for="custom" form-builder-tooltip="Write custom code to return the value options. The form data object is available.">Custom Values</label>' +
-          '  <textarea class="form-control" rows="10" id="custom" name="custom" ng-model="component.data.custom" placeholder="/*** Example Code ***/\nvalues = data[\'mykey\'];">{{ component.data.custom }}</textarea>' +
-          '</div>' +
+          '  <textarea class="form-control" rows="10" id="custom" name="custom" ng-model="component.data.custom" placeholder="/!*** Example Code ***!/\nvalues = data[\'mykey\'];">{{ component.data.custom }}</textarea>' +
+          '</div>' +*/
           '<div class="form-group">' +
-            '<label for="placeholder" form-builder-tooltip="The HTML template for the result data items.">Item Template</label>' +
+            '<label for="placeholder" form-builder-tooltip="{{\'Item Template.tooltip\'|translate}}">{{\'Item Template\'|translate}}</label>' +
             '<textarea class="form-control" id="template" name="template" ng-model="component.template" rows="3">{{ component.template }}</textarea>' +
           '</div>' +
-          '<div class="form-group" ng-hide="component.dataSrc == \'values\' || component.dataSrc == \'json\'">' +
+/*          '<div class="form-group" ng-hide="component.dataSrc == \'values\' || component.dataSrc == \'json\'">' +
           '  <label for="placeholder" form-builder-tooltip="Refresh data when another field changes.">Refresh On</label>' +
           '  <select class="form-control" id="refreshOn" name="refreshOn" ng-options="field.key as field.label for field in formFields" ng-model="component.refreshOn"></select>' +
           '</div>' +
-          '<form-builder-option ng-show="component.dataSrc == \'resource\' || component.dataSrc == \'url\' || component.dataSrc == \'custom\'" property="clearOnRefresh"></form-builder-option>' +
-          '<form-builder-option ng-show="component.dataSrc == \'resource\'" property="reference"></form-builder-option>' +
-          '<form-builder-option ng-show="component.dataSrc == \'url\'" property="authenticate"></form-builder-option>' +
+          '<form-builder-option ng-show="component.dataSrc == \'resource\' || component.dataSrc == \'url\' || component.dataSrc == \'custom\'" property="clearOnRefresh"></form-builder-option>' +*/
+/*          '<form-builder-option ng-show="component.dataSrc == \'resource\'" property="reference"></form-builder-option>' +*/
+/*          '<form-builder-option ng-show="component.dataSrc == \'url\'" property="authenticate"></form-builder-option>' +*/
           '<form-builder-option property="defaultValue"></form-builder-option>' +
         '</ng-form>'
       );
@@ -9317,7 +9323,7 @@ module.exports = function(app) {
       $templateCache.put('formio/components/select/validate.html',
         '<ng-form>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
-          '<form-builder-option property="unique"></form-builder-option>' +
+/*          '<form-builder-option property="unique"></form-builder-option>' +*/
           '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
         '</ng-form>'
       );
@@ -9342,20 +9348,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/selectboxes/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/selectboxes/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#selectboxes'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#selectboxes'*/
       });
     }
   ]);
@@ -9366,16 +9372,19 @@ module.exports = function(app) {
       $templateCache.put('formio/components/selectboxes/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<value-builder data="component.values" label="Select Boxes" tooltip-text="Checkboxes to display. Labels are shown in the form. Values are the corresponding values saved with the submission."></value-builder>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
-          '<form-builder-option property="inline" type="checkbox" label="Inline Layout" title="Displays the checkboxes horizontally."></form-builder-option>' +
+          '<value-builder data="component.values" ' +
+          'label="{{\'Select Boxes.values.label\'|translate}}" ' +
+          'tooltip-text="{{\'Select Boxes.values.tooltip\'|translate}}">' +
+          '</value-builder>' +
+          /*'<form-builder-option property="customClass"></form-builder-option>' +*/
+          /*'<form-builder-option property="tabindex"></form-builder-option>' +*/
+          '<form-builder-option property="inline"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -9618,20 +9627,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/textfield/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#textarea'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#textarea'*/
       });
     }
   ]);
@@ -9655,7 +9664,7 @@ module.exports = function(app) {
       extraPlugins: 'justify,font',
       removeButtons: 'Cut,Copy,Paste,Underline,Subscript,Superscript,Scayt,About',
       uiColor: '#eeeeee',
-      height: '400px',
+      height: '200px',
       width: '100%'
     };
     $scope.$watch('wysiwygEnabled', function(value) {
@@ -9679,23 +9688,23 @@ module.exports = function(app) {
           '<form-builder-option property="inputMask"></form-builder-option>' +
           '<div ng-controller="wysiwygSettings">' +
             '<div class="checkbox">' +
-              '<label><input type="checkbox" ng-model="wysiwygEnabled"> Enable WYWIWYG</label>' +
+              '<label><input type="checkbox" ng-model="wysiwygEnabled"> {{\'Enable WYWIWYG\'|translate}}</label>' +
             '</div>' +
             '<div class="form-group">' +
-              '<label for="wysiwyg">WYSIWYG Settings</label>' +
-              '<textarea class="form-control" rows="5" id="wysiwyg" ng-model="wysiwygSettings" json-input placeholder="Enter the CKEditor JSON configuration to turn this TextArea into a WYSIWYG."></textarea>' +
+              '<label for="wysiwyg">{{\'WYSIWYG Settings\'|translate}}</label>' +
+              '<textarea class="form-control" rows="5" id="wysiwyg" ng-model="wysiwygSettings" json-input placeholder="{{\'WYSIWYG Settings.tooltip\'|translate}}"></textarea>' +
             '</div>' +
           '</div>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          /*'<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
     }
@@ -10008,6 +10017,24 @@ module.exports = {
     type: 'number',
     tooltip: 'Maximum Length.tooltip'
   },
+  'validate.min': {
+    label: 'Minimum Value',
+    placeholder: 'Minimum Value.placeholder',
+    type: 'number',
+    tooltip: 'Minimum Value.tooltip'
+  },
+  'validate.max': {
+    label: 'Maximum Value',
+    placeholder: 'Maximum Value.placeholder',
+    type: 'number',
+    tooltip: 'Maximum Value.tooltip'
+  },
+  'validate.step': {
+    label: 'Increment Step',
+    placeholder: 'Increment Step.placeholder',
+    type: 'number',
+    tooltip: 'Increment Step.tooltip'
+  },
   'validate.pattern': {
     label: 'Regular Expression Pattern',
     placeholder: 'Regular Expression Pattern.placeholder',
@@ -10017,6 +10044,11 @@ module.exports = {
     label: 'Custom CSS Class',
     placeholder: 'Custom CSS Class.placeholder',
     tooltip: 'Custom CSS Class.tooltip'
+  },
+  'inline': {
+    type: 'checkbox',
+    label: 'Select Boxes.Inline Layout',
+    tooltip: 'Select Boxes.Inline Layout.tooltip'
   },
   'tabindex': {
     label: 'Tab Index',
@@ -10032,6 +10064,14 @@ module.exports = {
     label: 'Default Value',
     placeholder: 'Default Value.placeholder',
     tooltip: 'Default Value.tooltip'
+  },
+  'data.url':{
+    label:  'Data Source URL',
+    placeholder:  'Data Source URL.placeholder',
+    tooltip:  'Data Source URL.tooltip'
+  },
+  'valueProperty':{
+
   },
   // Need to use array notation to have dash in name
   'style[\'margin-top\']': {
@@ -11654,8 +11694,8 @@ module.exports = function() {
     link: function($scope, el, attrs) {
       $scope.valueProperty = $scope.valueProperty || 'value';
       $scope.labelProperty = $scope.labelProperty || 'label';
-      $scope.valueLabel = $scope.valueLabel || 'Value';
-      $scope.labelLabel = $scope.labelLabel || 'Label';
+      $scope.valueLabel = $scope.valueLabel || 'valueLabel';
+      $scope.labelLabel = $scope.labelLabel || 'labelLabel';
       $scope.data = $scope.data || [];
 
       $scope.addValue = function() {
@@ -11980,7 +12020,7 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/builder.html',
-      "<div class=\"row formbuilder\">\r\n  <div class=\"col-xs-4 col-sm-3 col-md-2 formcomponents\" ng-if=\"form && form.display\">\r\n    <uib-accordion close-others=\"true\" ng-if=\"form.display !== 'pdf'\">\r\n      <div uib-accordion-group ng-repeat=\"(groupName, group) in formComponentGroups\" heading=\"{{ group.title | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel {{ group.panelClass }}\">\r\n        <uib-accordion close-others=\"false\" ng-if=\"group.subgroups\">\r\n          <div uib-accordion-group ng-repeat=\"(subgroupName, subgroup) in group.subgroups\" heading=\"{{ subgroup.title  | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel subgroup-accordion\">\r\n            <div ng-repeat=\"component in formComponentsByGroup[groupName][subgroupName]\" ng-if=\"component.title\"\r\n                dnd-draggable=\"component.settings\"\r\n                dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n                dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n                dnd-effect-allowed=\"copy\"\r\n                class=\"formcomponentcontainer\">\r\n              <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\r\n                <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </uib-accordion>\r\n        <div ng-repeat=\"component in formComponentsByGroup[groupName]\" ng-if=\"!group.subgroup && component.title\"\r\n            dnd-draggable=\"component.settings\"\r\n            dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n            dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n            dnd-effect-allowed=\"copy\"\r\n            class=\"formcomponentcontainer\">\r\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\r\n            <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </uib-accordion>\r\n    <uib-accordion close-others=\"true\" ng-if=\"form.display === 'pdf'\">\r\n      <div uib-accordion-group heading=\"PDF Fields\" is-open=\"true\" class=\"panel panel-default form-builder-panel\">\r\n        <div class=\"formcomponentcontainer\" ng-repeat=\"pdftype in pdftypes\">\r\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{ pdftype.title }}\" style=\"overflow: hidden; text-overflow: ellipsis;\" form-builder-draggable=\"pdftype\">\r\n            <i ng-if=\"pdftype.icon\" class=\"{{ pdftype.icon }}\"></i> {{ pdftype.title | translate}}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </uib-accordion>\r\n  </div>\r\n  <div class=\"col-xs-8 col-sm-9 col-md-10 formarea\" ng-if=\"form && form.display\">\r\n    <ol class=\"breadcrumb\" ng-if=\"form.display === 'wizard'\">\r\n      <li ng-repeat=\"title in pages() track by $index\"><a class=\"label\" style=\"font-size:1em;\" ng-class=\"{'label-info': ($index === form.page), 'label-default': ($index !== form.page)}\" ng-click=\"showPage($index)\">{{ title }}</a></li>\r\n      <li><a class=\"label label-success\" style=\"font-size:1em;\" ng-click=\"newPage()\" data-toggle=\"tooltip\" title=\"Create Page\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> page</a></li>\r\n    </ol>\r\n    <div class=\"dropzone\">\r\n      <div ng-if=\"form.display === 'pdf'\" ng-controller=\"formBuilderDnd\">\r\n        <div form-builder-droppable style=\"width:100%;height:2000px;position:absolute;\" id=\"fb-drop-zone\"></div>\r\n        <formio form=\"form\" ng-init=\"form.builder = true;\"></formio>\r\n      </div>\r\n      <form-builder-list ng-if=\"form.display !== 'pdf'\" component=\"form\" form=\"form\" formio=\"::formio\" hide-dnd-box-count=\"hideCount\" root-list=\"true\" class=\"rootlist\" options=\"options\"></form-builder-list>\r\n    </div>\r\n  </div>\r\n</div>"
+      "<div class=\"row formbuilder\">\n  <div class=\"col-xs-4 col-sm-3 col-md-3 formcomponents\" ng-if=\"form && form.display\">\n    <uib-accordion close-others=\"true\" ng-if=\"form.display !== 'pdf'\">\n      <div uib-accordion-group ng-repeat=\"(groupName, group) in formComponentGroups\" heading=\"{{ group.title | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel {{ group.panelClass }}\">\n        <uib-accordion close-others=\"false\" ng-if=\"group.subgroups\">\n          <div uib-accordion-group ng-repeat=\"(subgroupName, subgroup) in group.subgroups\" heading=\"{{ subgroup.title  | translate}}\" is-open=\"$first\" class=\"panel panel-default form-builder-panel subgroup-accordion\">\n            <div ng-repeat=\"component in formComponentsByGroup[groupName][subgroupName]\" ng-if=\"component.title\"\n                dnd-draggable=\"component.settings\"\n                dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n                dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n                dnd-effect-allowed=\"copy\"\n                class=\"formcomponentcontainer\">\n              <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n                <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\n              </span>\n            </div>\n          </div>\n        </uib-accordion>\n        <div ng-repeat=\"component in formComponentsByGroup[groupName]\" ng-if=\"!group.subgroup && component.title\"\n            dnd-draggable=\"component.settings\"\n            dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n            dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n            dnd-effect-allowed=\"copy\"\n            class=\"formcomponentcontainer\">\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{component.title | translate}}\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n            <i ng-if=\"component.icon\" class=\"{{ component.icon }}\"></i> {{ component.title | translate}}\n          </span>\n        </div>\n      </div>\n    </uib-accordion>\n    <uib-accordion close-others=\"true\" ng-if=\"form.display === 'pdf'\">\n      <div uib-accordion-group heading=\"PDF Fields\" is-open=\"true\" class=\"panel panel-default form-builder-panel\">\n        <div class=\"formcomponentcontainer\" ng-repeat=\"pdftype in pdftypes\">\n          <span class=\"btn btn-default btn-xs btn-block formcomponent\" title=\"{{ pdftype.title }}\" style=\"overflow: hidden; text-overflow: ellipsis;\" form-builder-draggable=\"pdftype\">\n            <i ng-if=\"pdftype.icon\" class=\"{{ pdftype.icon }}\"></i> {{ pdftype.title | translate}}\n          </span>\n        </div>\n      </div>\n    </uib-accordion>\n  </div>\n  <div class=\"col-xs-8 col-sm-9 col-md-9 formarea\" ng-if=\"form && form.display\">\n    <ol class=\"breadcrumb\" ng-if=\"form.display === 'wizard'\">\n      <li ng-repeat=\"title in pages() track by $index\"><a class=\"label\" style=\"font-size:1em;\" ng-class=\"{'label-info': ($index === form.page), 'label-default': ($index !== form.page)}\" ng-click=\"showPage($index)\">{{ title }}</a></li>\n      <li><a class=\"label label-success\" style=\"font-size:1em;\" ng-click=\"newPage()\" data-toggle=\"tooltip\" title=\"Create Page\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> page</a></li>\n    </ol>\n    <div class=\"dropzone\">\n      <div ng-if=\"form.display === 'pdf'\" ng-controller=\"formBuilderDnd\">\n        <div form-builder-droppable style=\"width:100%;height:2000px;position:absolute;\" id=\"fb-drop-zone\"></div>\n        <formio form=\"form\" ng-init=\"form.builder = true;\"></formio>\n      </div>\n      <form-builder-list ng-if=\"form.display !== 'pdf'\" component=\"form\" form=\"form\" formio=\"::formio\" hide-dnd-box-count=\"hideCount\" root-list=\"true\" class=\"rootlist\" options=\"options\"></form-builder-list>\n    </div>\n  </div>\n</div>\n"
     );
 
     $templateCache.put('formio/formbuilder/datagrid.html',

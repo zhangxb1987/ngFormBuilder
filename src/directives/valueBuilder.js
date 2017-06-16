@@ -39,8 +39,8 @@ module.exports = function() {
     link: function($scope, el, attrs) {
       $scope.valueProperty = $scope.valueProperty || 'value';
       $scope.labelProperty = $scope.labelProperty || 'label';
-      $scope.valueLabel = $scope.valueLabel || 'Value';
-      $scope.labelLabel = $scope.labelLabel || 'Label';
+      $scope.valueLabel = $scope.valueLabel || 'valueLabel';
+      $scope.labelLabel = $scope.labelLabel || 'labelLabel';
       $scope.data = $scope.data || [];
 
       $scope.addValue = function() {

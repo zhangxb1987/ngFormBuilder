@@ -29,20 +29,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/checkbox/validate.html'
           },
-          {
+          /*{
             name: 'API',
             template: 'formio/components/common/api.html'
-          },
-          {
+          },*/
+         /* {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#checkbox'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#checkbox'*/
       });
     }
   ]);
@@ -53,8 +53,8 @@ module.exports = function(app) {
       $templateCache.put('formio/components/checkbox/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<div class="form-group">' +
-            '<label for="inputType" form-builder-tooltip="This is the input type used for this checkbox.">Input Type</label>' +
+/*          '<div class="form-group">' +
+            '<label for="inputType" form-builder-tooltip="{{\'Checkbox.Input Type.tooltip\'|translate}}">{{\'Checkbox.Input Type\'|translate}}</label>' +
             '<select class="form-control" id="inputType" name="inputType" ng-options="inputType.name as inputType.title for inputType in inputTypes" ng-model="component.inputType"></select>' +
           '</div>' +
           '<div class="form-group" ng-if="component.inputType === \'radio\'">' +
@@ -64,16 +64,16 @@ module.exports = function(app) {
           '<div class="form-group" ng-if="component.inputType === \'radio\'">' +
           '  <label for="value" form-builder-tooltip="The value used with this radio button.">Radio Value</label>' +
           '  <input type="text" class="form-control" id="value" name="value" ng-model="component.value" placeholder="{{ component.value }}" />' +
-          '</div>' +
-          '<form-builder-option property="datagridLabel"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          '</div>' +*/
+          /*'<form-builder-option property="datagridLabel"></form-builder-option>' +*/
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+          /*'<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 

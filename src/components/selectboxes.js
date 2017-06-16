@@ -13,20 +13,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/selectboxes/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/selectboxes/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#selectboxes'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#selectboxes'*/
       });
     }
   ]);
@@ -37,16 +37,19 @@ module.exports = function(app) {
       $templateCache.put('formio/components/selectboxes/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<value-builder data="component.values" label="Select Boxes" tooltip-text="Checkboxes to display. Labels are shown in the form. Values are the corresponding values saved with the submission."></value-builder>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
-          '<form-builder-option property="inline" type="checkbox" label="Inline Layout" title="Displays the checkboxes horizontally."></form-builder-option>' +
+          '<value-builder data="component.values" ' +
+          'label="{{\'Select Boxes.values.label\'|translate}}" ' +
+          'tooltip-text="{{\'Select Boxes.values.tooltip\'|translate}}">' +
+          '</value-builder>' +
+          /*'<form-builder-option property="customClass"></form-builder-option>' +*/
+          /*'<form-builder-option property="tabindex"></form-builder-option>' +*/
+          '<form-builder-option property="inline"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
