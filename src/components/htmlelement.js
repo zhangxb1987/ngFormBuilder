@@ -18,8 +18,8 @@ module.exports = function(app) {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#html-element-component'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#html-element-component'*/
       });
     }
   ]);
@@ -33,10 +33,10 @@ module.exports = function(app) {
       // Create the settings markup.
       $templateCache.put('formio/components/htmlelement/display.html',
         '<ng-form>' +
-        '<form-builder-option property="customClass" label="Container Custom Class"></form-builder-option>' +
-          '<form-builder-option property="tag" label="HTML Tag" placeholder="HTML Element Tag" title="The tag of this HTML element."></form-builder-option>' +
-          '<form-builder-option property="className" label="CSS Class" placeholder="CSS Class" title="The CSS class for this HTML element."></form-builder-option>' +
-          '<value-builder ' +
+/*          '<form-builder-option property="customClass" label="Container Custom Class"></form-builder-option>' +*/
+          '<form-builder-option property="tag" label="{{\'HTML Tag.label\'|translate}}" placeholder="{{\'HTML Tag.placeholder\'|translate}}" title="{{\'HTML Tag.tooltip\'|translate}}"></form-builder-option>' +
+          '<form-builder-option property="className" label="{{\'CSS Class.label\'|translate}}" placeholder="{{\'CSS Class.placeholder\'|translate}}" title="{{\'CSS Class.tooltip\'|translate}}"></form-builder-option>' +
+/*          '<value-builder ' +
             'data="component.attrs" ' +
             'label="Attributes" ' +
             'tooltip-text="The attributes for this HTML element. Only safe attributes are allowed, such as src, href, and title." ' +
@@ -45,10 +45,10 @@ module.exports = function(app) {
             'value-label="Value" ' +
             'label-label="Attribute" ' +
             'no-autocomplete-value="true" ' +
-          '></value-builder>' +
+          '></value-builder>' +*/
           '<div class="form-group">' +
-            '<label for="content" form-builder-tooltip="The content of this HTML element.">Content</label>' +
-            '<textarea class="form-control" id="content" name="content" ng-model="component.content" placeholder="HTML Content" rows="3">{{ component.content }}</textarea>' +
+            '<label for="content" form-builder-tooltip="{{\'HTML Content.tooltip\'|translate}}">{{\'HTML Content.label\'|translate}}</label>' +
+            '<textarea class="form-control" id="content" name="content" ng-model="component.content" placeholder="{{\'HTML Content.placeholder\'|translate}}" rows="3">{{ component.content }}</textarea>' +
           '</div>' +
         '</ng-form>'
       );
