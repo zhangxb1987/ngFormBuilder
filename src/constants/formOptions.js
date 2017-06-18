@@ -4,18 +4,18 @@ module.exports = {
       name: 'submit',
       title: 'Submit'
     },
-    {
+/*    {
       name: 'event',
       title: 'Event'
-    },
+    },*/
     {
       name: 'reset',
       title: 'Reset'
-    },
+    }/*,
     {
       name: 'oauth',
       title: 'OAuth'
-    }
+    }*/
   ],
   themes: [
     {
