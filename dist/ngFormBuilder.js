@@ -20,8 +20,6 @@ function _interopRequireDefault(obj) {
 var _get = _dereq_('lodash/get');
 
 module.exports = {
-  jsonLogic: _jsonLogicJs2.default, // Share
-
   /**
    * Determine if a component is a layout component or not.
    *
@@ -122,17 +120,6 @@ module.exports = {
       flattened[path] = component;
     }, includeAll);
     return flattened;
-  },
-
-  /**
-   * Returns if this component has a conditional statement.
-   *
-   * @param component - The component JSON schema.
-   *
-   * @returns {boolean} - TRUE - This component has a conditional, FALSE - No conditional provided.
-   */
-  hasCondition: function hasCondition(component) {
-    return component.hasOwnProperty('customConditional') && component.customConditional || component.hasOwnProperty('conditional') && component.conditional && component.conditional.when || component.hasOwnProperty('conditional') && component.conditional && component.conditional.json;
   },
 
   /**
@@ -7107,23 +7094,23 @@ module.exports = function(app) {
             template: 'formio/components/address/display.html'
           },
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/address/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
-          },
-          {
+          },*/
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#address'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#address'*/
       });
     }
   ]);
@@ -7136,29 +7123,30 @@ module.exports = function(app) {
           '<form-builder-option property="label"></form-builder-option>' +
           '<form-builder-option property="placeholder"></form-builder-option>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
-          '<div class="form-group">' +
+          /*'<form-builder-option property="tabindex"></form-builder-option>' +*/
+/*          '<div class="form-group">' +
             '<label for="mapRegion" form-builder-tooltip="The region bias to use for this search. See <a href=\'https://developers.google.com/maps/documentation/geocoding/intro#RegionCodes\' target=\'_blank\'>Region Biasing</a> for more information.">Region Bias</label>' +
             '<input type="text" class="form-control" id="mapRegion" name="mapRegion" ng-model="component.map.region" placeholder="Dallas" />' +
           '</div>' +
           '<div class="form-group">' +
             '<label for="mapKey" form-builder-tooltip="The API key for Google Maps. See <a href=\'https://developers.google.com/maps/documentation/geocoding/get-api-key\' target=\'_blank\'>Get an API Key</a> for more information.">Google Maps API Key</label>' +
             '<input type="text" class="form-control" id="mapKey" name="mapKey" ng-model="component.map.key" placeholder="xxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxx"/>' +
-          '</div>' +
+          '</div>' +*/
           '<form-builder-option property="multiple" label="Allow Multiple Addresses"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+          /*'<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       $templateCache.put('formio/components/address/validate.html',
         '<ng-form>' +
+          '<form-builder-option-key></form-builder-option-key>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
-          '<form-builder-option property="unique"></form-builder-option>' +
+/*          '<form-builder-option property="unique"></form-builder-option>' +*/
         '</ng-form>'
       );
     }
@@ -7220,7 +7208,7 @@ module.exports = function(app) {
           '  <input type="text" class="form-control" id="event" name="event" ng-model="component.event" placeholder="event" />' +
           '</div>' +*/
           '<div class="form-group">' +
-            '<label for="theme" form-builder-tooltip="T{{\'Theme.tooltip\' | formioTranslate}}">{{\'Theme.label\' | formioTranslate}}</label>' +
+            '<label for="theme" form-builder-tooltip="{{\'Theme.tooltip\' | formioTranslate}}">{{\'Theme.label\' | formioTranslate}}</label>' +
             '<select class="form-control" id="theme" name="theme" ng-options="theme.name as theme.title for theme in themes" ng-model="component.theme"></select>' +
           '</div>' +
           '<div class="form-group">' +
@@ -7954,23 +7942,23 @@ module.exports = function(app) {
             template: 'formio/components/datetime/time.html'
           },
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/datetime/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#datetime'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#datetime'*/
       });
     }
   ]);
@@ -7984,15 +7972,15 @@ module.exports = function(app) {
           '<form-builder-option property="defaultDate"></form-builder-option>' +
           '<form-builder-option property="placeholder"></form-builder-option>' +
           '<form-builder-option property="description"></form-builder-option>' +
-          '<form-builder-option property="format" label="Date Format" placeholder="Enter the Date format" title="The format for displaying this field\'s date. The format must be specified like the <a href=\'https://docs.angularjs.org/api/ng/filter/date\' target=\'_blank\'>AngularJS date filter</a>."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          '<form-builder-option property="format" label="Date Format.label" placeholder="{{\'Date Format.placeholder\' | translate}}" title="Date Format.tooltip"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -8067,6 +8055,7 @@ module.exports = function(app) {
 
       $templateCache.put('formio/components/datetime/validate.html',
         '<ng-form>' +
+          '<form-builder-option-key></form-builder-option-key>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
           '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
         '</ng-form>'
@@ -8166,8 +8155,8 @@ module.exports = function(app) {
       });
       formioComponentsProvider.register('email', {
         icon: 'fa fa-at',
-        views: views,
-        documentation: 'http://help.form.io/userguide/#email'
+        views: views/*,
+        documentation: 'http://help.form.io/userguide/#email'*/
       });
     }
   ]);
@@ -8178,7 +8167,7 @@ module.exports = function(app) {
         '<ng-form>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
           '<form-builder-option property="unique"></form-builder-option>' +
-          '<div class="panel panel-default">' +
+          /*'<div class="panel panel-default">' +
             '<div class="panel-heading"><h3 class="panel-title">Kickbox</h3></div>' +
             '<div class="panel-body">' +
               '<p>Validate this email using the Kickbox email validation service.</p>' +
@@ -8188,7 +8177,7 @@ module.exports = function(app) {
                 '</label>' +
               '</div>' +
             '</div>' +
-          '</div>' +
+          '</div>' +*/
           '<form-builder-option property="validate.minLength"></form-builder-option>' +
           '<form-builder-option property="validate.maxLength"></form-builder-option>' +
           '<form-builder-option property="validate.pattern"></form-builder-option>' +
@@ -8886,14 +8875,14 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/phoneNumber/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
@@ -8915,15 +8904,15 @@ module.exports = function(app) {
           '<form-builder-option property="inputMask"></form-builder-option>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
           '<form-builder-option property="persistent"></form-builder-option>' +
-          '<form-builder-option property="hidden"></form-builder-option>' +
-          '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+          '<form-builder-option property="hidden"></form-builder-option>' +*/
+/*          '<form-builder-option property="disabled"></form-builder-option>' +
+          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -11259,7 +11248,7 @@ module.exports = [
 * those via attributes (except for tooltip, which you can specify with the title attribute).
 * The generated input will also carry over any other properties you specify on this directive.
 */
-module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter) {
+module.exports = ['COMMON_OPTIONS', '$filter', '$log', function(COMMON_OPTIONS, $filter,$log) {
   return {
     restrict: 'E',
     require: 'property',
@@ -11281,6 +11270,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
         'ng-model': 'component.' + property,
         placeholder: formioTranslate(placeholder)
       };
+
       // Pass through attributes from the directive to the input element
       angular.forEach(attrs.$attr, function(key) {
         inputAttrs[key] = attrs[attrs.$normalize(key)];
@@ -12019,19 +12009,19 @@ app.run([
     });
 
     $templateCache.put('formio/formbuilder/editbuttons.html',
-      "<div class=\"component-btn-group\">\n  <div class=\"btn btn-xxs btn-danger component-settings-button component-settings-button-remove\" style=\"z-index: 1000\" ng-click=\"removeComponent(component, formComponent.confirmRemove)\"><span class=\"glyphicon glyphicon-remove\"></span></div>\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-clone\" style=\"z-index: 1000\" ng-click=\"cloneComponent(component)\"><span class=\"glyphicon glyphicon-new-window\"></span></div>\n  <div ng-if=\"::!hideMoveButton\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-move\" style=\"z-index: 1000\"><span class=\"glyphicon glyphicon glyphicon-move\"></span></div>\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-edit\" style=\"z-index: 1000\" ng-click=\"editComponent(component)\"><span class=\"glyphicon glyphicon-cog\"></span></div>\n</div>\n"
+      "<div class=\"component-btn-group\">\r\n  <div class=\"btn btn-xxs btn-danger component-settings-button component-settings-button-remove\" style=\"z-index: 1000\" ng-click=\"removeComponent(component, formComponent.confirmRemove)\"><span class=\"glyphicon glyphicon-remove\"></span></div>\r\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-clone\" style=\"z-index: 1000\" ng-click=\"cloneComponent(component)\"><span class=\"glyphicon glyphicon-new-window\"></span></div>\r\n  <div ng-if=\"::!hideMoveButton\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-move\" style=\"z-index: 1000\"><span class=\"glyphicon glyphicon glyphicon-move\"></span></div>\r\n  <div ng-if=\"::formComponent.views && !component.lockConfiguration\" class=\"btn btn-xxs btn-default component-settings-button component-settings-button-edit\" style=\"z-index: 1000\" ng-click=\"editComponent(component)\"><span class=\"glyphicon glyphicon-cog\"></span></div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/component.html',
-      "<div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\n  <div ng-if=\"::!hideButtons\" ng-include=\"'formio/formbuilder/editbuttons.html'\"></div>\n  <div class=\"form-group has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\n    <form-builder-element></form-builder-element>\n  </div>\n</div>\n"
+      "<div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\r\n  <div ng-if=\"::!hideButtons\" ng-include=\"'formio/formbuilder/editbuttons.html'\"></div>\r\n  <div class=\"form-group has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\r\n    <form-builder-element></form-builder-element>\r\n  </div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/list.html',
-      "<ul class=\"component-list\"\n    dnd-list=\"component.components\"\n    dnd-drop=\"addComponent(item, index)\">\n  <li ng-if=\"component.components.length < hideCount\">\n    <div class=\"alert alert-dnd\" style=\"text-align:center; margin-bottom: 5px;\" role=\"alert\">\n      {{'Drag and Drop a form component' | translate}}\n    </div>\n  </li>\n  <!-- DO NOT PUT \"track by $index\" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->\n  <li ng-repeat=\"component in component.components\"\n      ng-if=\"!rootList || !form.display || (form.display === 'form') || (form.page === $index)\"\n      dnd-draggable=\"component\"\n      dnd-effect-allowed=\"move\"\n      dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n      dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n      dnd-moved=\"removeComponent(component, false)\">\n    <form-builder-component ng-if=\"!component.hideBuilder\"></form-builder-component>\n    <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\n  </li>\n</ul>\n"
+      "<ul class=\"component-list\"\r\n    dnd-list=\"component.components\"\r\n    dnd-drop=\"addComponent(item, index)\">\r\n  <li ng-if=\"component.components.length < hideCount\">\r\n    <div class=\"alert alert-dnd\" style=\"text-align:center; margin-bottom: 5px;\" role=\"alert\">\r\n      {{'Drag and Drop a form component' | translate}}\r\n    </div>\r\n  </li>\r\n  <!-- DO NOT PUT \"track by $index\" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->\r\n  <li ng-repeat=\"component in component.components\"\r\n      ng-if=\"!rootList || !form.display || (form.display === 'form') || (form.page === $index)\"\r\n      dnd-draggable=\"component\"\r\n      dnd-effect-allowed=\"move\"\r\n      dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n      dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n      dnd-moved=\"removeComponent(component, false)\">\r\n    <form-builder-component ng-if=\"!component.hideBuilder\"></form-builder-component>\r\n    <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\r\n  </li>\r\n</ul>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/row.html',
-      "<div class=\"formbuilder-row\">\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\n  <ul class=\"component-row formbuilder-group\"\n      dnd-list=\"component.components\"\n      dnd-drop=\"addComponent(item, index)\"\n      dnd-horizontal-list=\"true\">\n    <li ng-repeat=\"component in component.components\"\n        class=\"formbuilder-group-row pull-left\"\n        dnd-draggable=\"component\"\n        dnd-effect-allowed=\"move\"\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n        dnd-moved=\"removeComponent(component, false)\">\n      <form-builder-component></form-builder-component>\n      <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\n    </li>\n    <li class=\"formbuilder-group-row form-builder-drop\" ng-if=\"component.components.length < hideCount\">\n      <div class=\"alert alert-info\" role=\"alert\">\n        Drag and Drop a form component\n      </div>\n    </li>\n  </ul>\n  <div style=\"clear:both;\"></div>\n</div>\n"
+      "<div class=\"formbuilder-row\">\r\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\r\n  <ul class=\"component-row formbuilder-group\"\r\n      dnd-list=\"component.components\"\r\n      dnd-drop=\"addComponent(item, index)\"\r\n      dnd-horizontal-list=\"true\">\r\n    <li ng-repeat=\"component in component.components\"\r\n        class=\"formbuilder-group-row pull-left\"\r\n        dnd-draggable=\"component\"\r\n        dnd-effect-allowed=\"move\"\r\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n        dnd-moved=\"removeComponent(component, false)\">\r\n      <form-builder-component></form-builder-component>\r\n      <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\r\n    </li>\r\n    <li class=\"formbuilder-group-row form-builder-drop\" ng-if=\"component.components.length < hideCount\">\r\n      <div class=\"alert alert-info\" role=\"alert\">\r\n        Drag and Drop a form component\r\n      </div>\r\n    </li>\r\n  </ul>\r\n  <div style=\"clear:both;\"></div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/builder.html',
@@ -12039,11 +12029,11 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/datagrid.html',
-      "<div class=\"datagrid-dnd dropzone\" ng-controller=\"formBuilderDnd\">\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\n  <table class=\"table datagrid-table\" ng-class=\"{'table-striped': component.striped, 'table-bordered': component.bordered, 'table-hover': component.hover, 'table-condensed': component.condensed}\">\n    <tr>\n      <th style=\"padding:30px 0 10px 0\" ng-repeat=\"component in component.components\" ng-class=\"{'field-required': component.validate.required}\">\n        {{ (component.label || '') | formioTranslate:null:builder }}\n        <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\n      </th>\n    </tr>\n    <tr\n      class=\"component-list\"\n      dnd-list=\"component.components\"\n      dnd-drop=\"addComponent(item, index)\"\n    >\n      <td\n        ng-repeat=\"component in component.components\"\n        ng-init=\"hideMoveButton = true; component.hideLabel = true\"\n        dnd-draggable=\"component\"\n        dnd-effect-allowed=\"move\"\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\n        dnd-moved=\"removeComponent(component, false)\"\n      >\n        <div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\n          <div class=\"has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\n            <div class=\"input-group\">\n              <form-builder-component></form-builder-component>\n            </div>\n          </div>\n        </div>\n      </td>\n      <td ng-if=\"component.components.length === 0\">\n        <div class=\"alert alert-info\" role=\"alert\">\n          Datagrid Components\n        </div>\n      </td>\n    </tr>\n  </table>\n  <div style=\"clear:both;\"></div>\n</div>\n"
+      "<div class=\"datagrid-dnd dropzone\" ng-controller=\"formBuilderDnd\">\r\n  <label ng-if=\"component.label\" class=\"control-label\">{{ component.label }}</label>\r\n  <table class=\"table datagrid-table\" ng-class=\"{'table-striped': component.striped, 'table-bordered': component.bordered, 'table-hover': component.hover, 'table-condensed': component.condensed}\">\r\n    <tr>\r\n      <th style=\"padding:30px 0 10px 0\" ng-repeat=\"component in component.components\" ng-class=\"{'field-required': component.validate.required}\">\r\n        {{ (component.label || '') | formioTranslate:null:builder }}\r\n        <div ng-if=\"dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay\" class=\"dndOverlay\"></div>\r\n      </th>\r\n    </tr>\r\n    <tr\r\n      class=\"component-list\"\r\n      dnd-list=\"component.components\"\r\n      dnd-drop=\"addComponent(item, index)\"\r\n    >\r\n      <td\r\n        ng-repeat=\"component in component.components\"\r\n        ng-init=\"hideMoveButton = true; component.hideLabel = true\"\r\n        dnd-draggable=\"component\"\r\n        dnd-effect-allowed=\"move\"\r\n        dnd-dragstart=\"dndDragIframeWorkaround.isDragging = true\"\r\n        dnd-dragend=\"dndDragIframeWorkaround.isDragging = false\"\r\n        dnd-moved=\"removeComponent(component, false)\"\r\n      >\r\n        <div class=\"component-form-group component-type-{{ component.type }} form-builder-component\">\r\n          <div class=\"has-feedback form-field-type-{{ component.type }} {{component.customClass}}\" id=\"form-group-{{ component.key }}\" style=\"position:inherit\" ng-style=\"component.style\">\r\n            <div class=\"input-group\">\r\n              <form-builder-component></form-builder-component>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </td>\r\n      <td ng-if=\"component.components.length === 0\">\r\n        <div class=\"alert alert-info\" role=\"alert\">\r\n          Datagrid Components\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n  <div style=\"clear:both;\"></div>\r\n</div>\r\n"
     );
 
     $templateCache.put('formio/components/confirm-remove.html',
-      "<form id=\"confirm-remove-dialog\">\n  <p>{{'Removing this component will also' | translate}} <strong>{{'remove all of its children' | translate}}</strong>! {{'Are you sure you want to do this' | translate}}?</p>\n  <div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.REMOVE' | translate}}</button>&nbsp;\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\n    </div>\n  </div>\n</form>\n"
+      "<form id=\"confirm-remove-dialog\">\r\n  <p>{{'Removing this component will also' | translate}} <strong>{{'remove all of its children' | translate}}</strong>! {{'Are you sure you want to do this' | translate}}?</p>\r\n  <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.REMOVE' | translate}}</button>&nbsp;\r\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n  </div>\r\n</form>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/toolbar.html',
@@ -12051,19 +12041,19 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/toolbar/save.html',
-      "<form class=\"toolbar-action model-save\">\n  <div class=\"row\">\n  \t<div class=\"col-md-12\">\n  \t\t<p class=\"lead\" style=\"margin-top:0;margin-bottom:10px;\">\n            <i class=\"fa fa-cog fa-spin fa-2x fa-fw\" ng-if=\"isLoading\"></i>\n            <span ng-if=\"isLoading\">&nbsp;&nbsp;{{'TOOLBAR.ACTION.SAVE.tooltip' | translate}}</span>\n            <span class=\"text-success\" ng-if=\"(!isLoading) && requestSuccess\">{{'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip' | translate}}</span>\n            <span class=\"text-danger\" ng-if=\"(!isLoading) && (!requestSuccess)\">{{'TOOLBAR.ACTION.SAVE.FAIL.tooltip' | translate}}</span>\n        </p>\n  \t</div>\n  </div>\n  <!--<div class=\"form-group\">\n    <label for=\"modelName\">{{'MODEL.NAEM.title' | translate}}</label>\n    <input type=\"text\" class=\"form-control\" id=\"modelName\" placeholder=\"{{'MODEL.NAEM.placeholder' | translate}}\" ng-model=\"modelName\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"modelDesc\">{{'MODEL.DESC.title' | translate}}</label>\n    <textarea class=\"form-control\" id=\"modelDesc\" rows=\"3\" placeholder=\"{{'MODEL.DESC.placeholder' | translate}}\" ng-model=\"modelDesc\"></textarea>\n  </div>-->\n</form>"
+      "<form class=\"toolbar-action model-save\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-12\">\r\n  \t\t<p class=\"lead\" style=\"margin-top:0;margin-bottom:10px;\">\r\n            <i class=\"fa fa-cog fa-spin fa-2x fa-fw\" ng-if=\"isLoading\"></i>\r\n            <span ng-if=\"isLoading\">&nbsp;&nbsp;{{'TOOLBAR.ACTION.SAVE.tooltip' | translate}}</span>\r\n            <span class=\"text-success\" ng-if=\"(!isLoading) && requestSuccess\">{{'TOOLBAR.ACTION.SAVE.SUCCESS.tooltip' | translate}}</span>\r\n            <span class=\"text-danger\" ng-if=\"(!isLoading) && (!requestSuccess)\">{{'TOOLBAR.ACTION.SAVE.FAIL.tooltip' | translate}}</span>\r\n        </p>\r\n  \t</div>\r\n  </div>\r\n  <!--<div class=\"form-group\">\r\n    <label for=\"modelName\">{{'MODEL.NAEM.title' | translate}}</label>\r\n    <input type=\"text\" class=\"form-control\" id=\"modelName\" placeholder=\"{{'MODEL.NAEM.placeholder' | translate}}\" ng-model=\"modelName\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"modelDesc\">{{'MODEL.DESC.title' | translate}}</label>\r\n    <textarea class=\"form-control\" id=\"modelDesc\" rows=\"3\" placeholder=\"{{'MODEL.DESC.placeholder' | translate}}\" ng-model=\"modelDesc\"></textarea>\r\n  </div>-->\r\n</form>"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/preview.html',
-      "<div class=\"toolbar-action model-preview\">\n    <div class=\"row model-metainfo\">\n        <blockquote>\n          <h3>{{modelName}}</h3>\n          <footer>{{modelDesc}}</footer>\n        </blockquote>\n    </div>\n    \n    <div class=\"row model-render\">\n        <formio form=\"formData\"></formio>\n    </div>\n</div>"
+      "<div class=\"toolbar-action model-preview\">\r\n    <div class=\"row model-metainfo\">\r\n        <blockquote>\r\n          <h3>{{modelName}}</h3>\r\n          <footer>{{modelDesc}}</footer>\r\n        </blockquote>\r\n    </div>\r\n    \r\n    <div class=\"row model-render\">\r\n        <formio form=\"formData\"></formio>\r\n    </div>\r\n</div>"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/templates.html',
-      "<form class=\"toolbar-action model-templates\">\n    <div class=\"row\">\n        <div class=\"col-sm-6 col-md-3\" ng-repeat=\"template in formTemplates\">\n            <div class=\"thumbnail\">\n              <div class=\"caption\">\n                <h3>{{template.json_modelName}}</h3>\n                <p class=\"desc\">{{template.json_modelDesc}}</p>\n                <p>\n                    <a href=\"#\" class=\"btn btn-danger\" role=\"button\" ng-click=\"delete(template.json_modelId);\" ng-if=\"!template.json_modelDefault\">{{'ACTION.DELETE' | translate}}</a>\n                    <a href=\"#\" class=\"btn btn-primary\" role=\"button\" ng-click=\"choose(template.json_modelId);\">{{'ACTION.CHOOSE' | translate}}</a></p>\n              </div>\n            </div>\n        </div>\n        <div class=\"no-templates text-center\" ng-if=\"(!formTemplates) || (formTemplates.length == 0)\">\n            <span class=\"text-danger \">{{'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip' | translate}}</span>\n        </div>\n    </div>\n    \n    <div>\n    <div class=\"form-group\">\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\n    </div>\n  </div>\n</form>"
+      "<form class=\"toolbar-action model-templates\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-3\" ng-repeat=\"template in formTemplates\">\r\n            <div class=\"thumbnail\">\r\n              <div class=\"caption\">\r\n                <h3>{{template.json_modelName}}</h3>\r\n                <p class=\"desc\">{{template.json_modelDesc}}</p>\r\n                <p>\r\n                    <a href=\"#\" class=\"btn btn-danger\" role=\"button\" ng-click=\"delete(template.json_modelId);\" ng-if=\"!template.json_modelDefault\">{{'ACTION.DELETE' | translate}}</a>\r\n                    <a href=\"#\" class=\"btn btn-primary\" role=\"button\" ng-click=\"choose(template.json_modelId);\">{{'ACTION.CHOOSE' | translate}}</a></p>\r\n              </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"no-templates text-center\" ng-if=\"(!formTemplates) || (formTemplates.length == 0)\">\r\n            <span class=\"text-danger \">{{'TOOLBAR.ACTION.TEMPLATE.NO-TEMPLATES.tooltip' | translate}}</span>\r\n        </div>\r\n    </div>\r\n    \r\n    <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n  </div>\r\n</form>"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/import.html',
-      "<form class=\"toolbar-action model-import\" name=\"modelImportForm\">\n  <div class=\"row\">\n  \t<div class=\"col-md-12\">\n        <input type=\"file\" ngf-select ng-model=\"importModelDataFile\" name=\"file\"    \n             ngf-max-size=\"10MB\" required\n             ngf-model-invalid=\"errorFile\" />\n  \t</div>\n  </div>\n    \n    <div class=\"progress\" ng-show=\"importModelDataFile.progress >= 0\">\n      <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"45\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{importModelDataFile.progress}}%\">\n      </div>\n    </div>\n    \n    <div>\n    <div class=\"form-group\">\n      <button type=\"button\" \n              class=\"btn btn-danger pull-right\" \n              ng-disabled=\"!modelImportForm.$valid\"\n              ng-click=\"uploadModel(importModelDataFile)\">{{'DIALOG.ACTION.IMPORT' | translate}}</button>&nbsp;\n<!--\n      <button type=\"button\" \n              class=\"btn btn-default pull-right\" \n              style=\"margin-right: 5px;\" \n              ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\n-->\n    </div>\n    </div>\n</form>\n"
+      "<form class=\"toolbar-action model-import\" name=\"modelImportForm\">\r\n  <div class=\"row\">\r\n  \t<div class=\"col-md-12\">\r\n        <input type=\"file\" ngf-select ng-model=\"importModelDataFile\" name=\"file\"    \r\n             ngf-max-size=\"10MB\" required\r\n             ngf-model-invalid=\"errorFile\" />\r\n  \t</div>\r\n  </div>\r\n    \r\n    <div class=\"progress\" ng-show=\"importModelDataFile.progress >= 0\">\r\n      <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"45\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{importModelDataFile.progress}}%\">\r\n      </div>\r\n    </div>\r\n    \r\n    <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"button\" \r\n              class=\"btn btn-danger pull-right\" \r\n              ng-disabled=\"!modelImportForm.$valid\"\r\n              ng-click=\"uploadModel(importModelDataFile)\">{{'DIALOG.ACTION.IMPORT' | translate}}</button>&nbsp;\r\n<!--\r\n      <button type=\"button\" \r\n              class=\"btn btn-default pull-right\" \r\n              style=\"margin-right: 5px;\" \r\n              ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n-->\r\n    </div>\r\n    </div>\r\n</form>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/export.html',
@@ -12071,11 +12061,11 @@ app.run([
     );
 
     $templateCache.put('formio/formbuilder/toolbar/confirm-close.html',
-      "<form id=\"confirm-close-dialog\">\n    <p class=\"text-danger\"><strong>{{'TOOLBAR.ACTION.CLOSE.UNSAVED-CLOSE.tooltip' | translate}}</strong></p>\n  <div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.CLOSE-EDITOR' | translate}}</button>&nbsp;\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\n    </div>\n  </div>\n</form>\n"
+      "<form id=\"confirm-close-dialog\">\r\n    <p class=\"text-danger\"><strong>{{'TOOLBAR.ACTION.CLOSE.UNSAVED-CLOSE.tooltip' | translate}}</strong></p>\r\n  <div>\r\n    <div class=\"form-group\">\r\n      <button type=\"submit\" class=\"btn btn-danger pull-right\" ng-click=\"closeThisDialog(true)\">{{'DIALOG.ACTION.CLOSE-EDITOR' | translate}}</button>&nbsp;\r\n      <button type=\"button\" class=\"btn btn-default pull-right\" style=\"margin-right: 5px;\" ng-click=\"closeThisDialog(false)\">{{'DIALOG.ACTION.CANCEL' | translate}}</button>&nbsp;\r\n    </div>\r\n  </div>\r\n</form>\r\n"
     );
 
     $templateCache.put('formio/formbuilder/toolbar/help.html',
-      "<div class=\"toolbar-action help-info\">\n    <h3>{{'TOOLBAR.ACTION.HELP.NOT-IMPLEMENTED.tooltip' | translate}}</h3>\n</div>"
+      "<div class=\"toolbar-action help-info\">\r\n    <h3>{{'TOOLBAR.ACTION.HELP.NOT-IMPLEMENTED.tooltip' | translate}}</h3>\r\n</div>"
     );
   }
 ]);

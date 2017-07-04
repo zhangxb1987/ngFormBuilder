@@ -12,8 +12,8 @@ module.exports = function(app) {
       });
       formioComponentsProvider.register('email', {
         icon: 'fa fa-at',
-        views: views,
-        documentation: 'http://help.form.io/userguide/#email'
+        views: views/*,
+        documentation: 'http://help.form.io/userguide/#email'*/
       });
     }
   ]);
@@ -24,7 +24,7 @@ module.exports = function(app) {
         '<ng-form>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
           '<form-builder-option property="unique"></form-builder-option>' +
-          '<div class="panel panel-default">' +
+          /*'<div class="panel panel-default">' +
             '<div class="panel-heading"><h3 class="panel-title">Kickbox</h3></div>' +
             '<div class="panel-body">' +
               '<p>Validate this email using the Kickbox email validation service.</p>' +
@@ -34,7 +34,7 @@ module.exports = function(app) {
                 '</label>' +
               '</div>' +
             '</div>' +
-          '</div>' +
+          '</div>' +*/
           '<form-builder-option property="validate.minLength"></form-builder-option>' +
           '<form-builder-option property="validate.maxLength"></form-builder-option>' +
           '<form-builder-option property="validate.pattern"></form-builder-option>' +

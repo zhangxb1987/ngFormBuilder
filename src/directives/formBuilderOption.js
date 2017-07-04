@@ -8,7 +8,7 @@
 * those via attributes (except for tooltip, which you can specify with the title attribute).
 * The generated input will also carry over any other properties you specify on this directive.
 */
-module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter) {
+module.exports = ['COMMON_OPTIONS', '$filter', '$log', function(COMMON_OPTIONS, $filter,$log) {
   return {
     restrict: 'E',
     require: 'property',
@@ -30,6 +30,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', function(COMMON_OPTIONS, $filter)
         'ng-model': 'component.' + property,
         placeholder: formioTranslate(placeholder)
       };
+
       // Pass through attributes from the directive to the input element
       angular.forEach(attrs.$attr, function(key) {
         inputAttrs[key] = attrs[attrs.$normalize(key)];

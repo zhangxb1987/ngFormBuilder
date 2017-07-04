@@ -17,14 +17,14 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/phoneNumber/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
@@ -46,15 +46,15 @@ module.exports = function(app) {
           '<form-builder-option property="inputMask"></form-builder-option>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
           '<form-builder-option property="persistent"></form-builder-option>' +
-          '<form-builder-option property="hidden"></form-builder-option>' +
-          '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+          '<form-builder-option property="hidden"></form-builder-option>' +*/
+/*          '<form-builder-option property="disabled"></form-builder-option>' +
+          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 

@@ -65,23 +65,23 @@ module.exports = function(app) {
             template: 'formio/components/datetime/time.html'
           },
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/datetime/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#datetime'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#datetime'*/
       });
     }
   ]);
@@ -95,15 +95,15 @@ module.exports = function(app) {
           '<form-builder-option property="defaultDate"></form-builder-option>' +
           '<form-builder-option property="placeholder"></form-builder-option>' +
           '<form-builder-option property="description"></form-builder-option>' +
-          '<form-builder-option property="format" label="Date Format" placeholder="Enter the Date format" title="The format for displaying this field\'s date. The format must be specified like the <a href=\'https://docs.angularjs.org/api/ng/filter/date\' target=\'_blank\'>AngularJS date filter</a>."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          '<form-builder-option property="format" label="Date Format.label" placeholder="{{\'Date Format.placeholder\' | translate}}" title="Date Format.tooltip"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -178,6 +178,7 @@ module.exports = function(app) {
 
       $templateCache.put('formio/components/datetime/validate.html',
         '<ng-form>' +
+          '<form-builder-option-key></form-builder-option-key>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
           '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
         '</ng-form>'
