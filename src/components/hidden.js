@@ -6,18 +6,18 @@ module.exports = function(app) {
         fbtemplate: 'formio/formbuilder/hidden.html',
         icon: 'fa fa-user-secret',
         views: [
-          {
+/*          {
             name: 'Display',
             template: 'formio/components/hidden/display.html'
-          },
+          },*/
           {
             name: 'Data',
             template: 'formio/components/common/data.html'
-          },
+          }/*,,
           {
             name: 'Validation',
             template: 'formio/components/hidden/validation.html'
-          },
+          }
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -25,9 +25,9 @@ module.exports = function(app) {
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
-          }
-        ],
-        documentation: 'http://help.form.io/userguide/#hidden'
+          }*/
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#hidden'*/
       });
     }
   ]);

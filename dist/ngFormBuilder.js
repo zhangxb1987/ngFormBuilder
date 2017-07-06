@@ -7556,6 +7556,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('container', {
+        initial: false,
         fbtemplate: 'formio/formbuilder/container.html',
         views: [
           {
@@ -7693,20 +7694,20 @@ module.exports = function(app) {
             name: 'Validation',
             template: 'formio/components/currency/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#currency'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#currency'*/
       });
     }
   ]);
@@ -7721,13 +7722,13 @@ module.exports = function(app) {
           '<form-builder-option property="description"></form-builder-option>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="multiple"></form-builder-option>' +
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
           '<form-builder-option property="hidden"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -7749,6 +7750,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('custom', {
+        initial: false,
         icon: 'fa fa-cubes',
         views: [
           {
@@ -7821,10 +7823,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/datagrid/display.html'
           },
-          {
+          /*          {
             name: 'Validation',
             template: 'formio/components/datagrid/validate.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -7834,7 +7836,7 @@ module.exports = function(app) {
             template: 'formio/components/common/conditional.html'
           }
         ],
-        documentation: 'http://help.form.io/userguide/#datagrid',
+/*        documentation: 'http://help.form.io/userguide/#datagrid',*/
         noDndOverlay: true,
         confirmRemove: true
       });
@@ -7854,11 +7856,11 @@ module.exports = function(app) {
         '<form-builder-option property="hover"></form-builder-option>' +
         '<form-builder-option property="condensed"></form-builder-option>' +
         '<form-builder-option property="clearOnHide"></form-builder-option>' +
-        '<form-builder-option property="protected"></form-builder-option>' +
-        '<form-builder-option property="persistent"></form-builder-option>' +
+/*        '<form-builder-option property="protected"></form-builder-option>' +
+        '<form-builder-option property="persistent"></form-builder-option>' +*/
         '<form-builder-option property="hidden"></form-builder-option>' +
         '<form-builder-option property="disabled"></form-builder-option>' +
-        '<form-builder-option property="tableView"></form-builder-option>' +
+/*        '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
@@ -8077,28 +8079,28 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/day/display.html'
           },
-          {
+/*          {
             name: 'Data',
-            template: 'formio/components/common/data.html'
-          },
+            template: 'formio/components/day/data.html'
+          },*/
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/day/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#day'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#day'*/
       });
     }
   ]);
@@ -8109,30 +8111,31 @@ module.exports = function(app) {
       $templateCache.put('formio/components/day/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<form-builder-option property="fields.day.placeholder" label="Day Placeholder"></form-builder-option>' +
+         /* '<form-builder-option property="fields.day.placeholder" label="Day Placeholder"></form-builder-option>' +
           '<form-builder-option property="fields.month.placeholder" label="Month Placeholder"></form-builder-option>' +
-          '<form-builder-option property="fields.year.placeholder" label="Year Placeholder"></form-builder-option>' +
-          '<form-builder-option property="dayFirst" type="checkbox" label="Day first" title="Display the Day field before the Month field."></form-builder-option>' +
-          '<form-builder-option property="fields.day.hide" type="checkbox" label="Hide Day" title="Hide the day part of the component."></form-builder-option>' +
-          '<form-builder-option property="fields.month.hide" type="checkbox" label="Hide Month" title="Hide the month part of the component."></form-builder-option>' +
-          '<form-builder-option property="fields.year.hide" type="checkbox" label="Hide Year" title="Hide the year part of the component."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          '<form-builder-option property="fields.year.placeholder" label="Year Placeholder"></form-builder-option>' +*/
+/*          '<form-builder-option property="dayFirst" type="checkbox" label="Day first" title="Display the Day field before the Month field."></form-builder-option>' +*/
+          '<form-builder-option property="fields.year.hide" type="checkbox" label="Hide Year.label" title="Hide Year.title"></form-builder-option>' +
+          '<form-builder-option property="fields.month.hide" type="checkbox" label="Hide Month.label" title="Hide Month.title"></form-builder-option>' +
+          '<form-builder-option property="fields.day.hide" type="checkbox" label="Hide Day.label" title="Hide Day.title"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       $templateCache.put('formio/components/day/validate.html',
         '<ng-form>' +
-          '<form-builder-option property="fields.day.required" label="Require Day" type="checkbox"></form-builder-option>' +
-          '<form-builder-option property="fields.month.required" label="Require Month" type="checkbox"></form-builder-option>' +
-          '<form-builder-option property="fields.year.required" label="Require Year" type="checkbox"></form-builder-option>' +
-          '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
+          '<form-builder-option-key></form-builder-option-key>' +
+          '<form-builder-option property="fields.day.required" label="Require Day.label" type="checkbox"></form-builder-option>' +
+          '<form-builder-option property="fields.month.required" label="Require Month.label" type="checkbox"></form-builder-option>' +
+          '<form-builder-option property="fields.year.required" label="Require Year.label" type="checkbox"></form-builder-option>' +
+/*          '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +*/
         '</ng-form>'
       );
     }
@@ -8253,6 +8256,10 @@ module.exports = function(app) {
       formioComponentsProvider
     ) {
       formioComponentsProvider.register('file', {
+        settings:{
+          storage: 'url',
+          dir: 'formio'
+        },
         onEdit: [
           '$scope',
           'Formio',
@@ -8273,17 +8280,17 @@ module.exports = function(app) {
             template: 'formio/components/file/display.html'
           },
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/file/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
@@ -8300,28 +8307,29 @@ module.exports = function(app) {
       $templateCache.put('formio/components/file/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<div class="form-group">' +
+/*          '<div class="form-group">' +
             '<label for="storage" form-builder-tooltip="Which storage to save the files in.">Storage</label>' +
             '<select class="form-control" id="storage" name="storage" ng-options="store.name as store.title for store in storage" ng-model="component.storage"></select>' +
-          '</div>' +
+          '</div>' +*/
           '<form-builder-option property="url" ng-show="component.storage === \'url\'"></form-builder-option>' +
-          '<form-builder-option property="dir"></form-builder-option>' +
-          '<form-builder-option property="image"></form-builder-option>' +
-          '<form-builder-option property="imageSize" ng-if="component.image"></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
-          '<form-builder-option property="multiple"></form-builder-option>' +
-          '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="dir"></form-builder-option>' +*/
+/*          '<form-builder-option property="image"></form-builder-option>' +
+          '<form-builder-option property="imageSize" ng-if="component.image"></form-builder-option>' +*/
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
+/*          '<form-builder-option property="multiple"></form-builder-option>' +
+          '<form-builder-option property="clearOnHide"></form-builder-option>' +*/
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       $templateCache.put('formio/components/file/validate.html',
         '<ng-form>' +
+          '<form-builder-option-key></form-builder-option-key>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
         '</ng-form>'
       );
@@ -8336,6 +8344,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('form', {
+        initial: false,
         fbtemplate: 'formio/formbuilder/form.html',
         icon: 'fa fa-wpforms',
         views: [
@@ -8370,9 +8379,9 @@ module.exports = function(app) {
       });
 
       // Override the controller for form building.
-      var formComponent = formioComponentsProvider.$get().components.form;
-      var formController = formComponent.controller;
-      formComponent.controller = [
+     /* var formComponent = formioComponentsProvider.$get().components.form;*/
+      /*var formController = formComponent.controller;
+     formComponent.controller = [
         '$scope',
         '$controller',
         function(
@@ -8392,7 +8401,7 @@ module.exports = function(app) {
             });
           });
         }
-      ];
+      ];*/
     }
   ]);
   app.run([
@@ -8429,18 +8438,18 @@ module.exports = function(app) {
         fbtemplate: 'formio/formbuilder/hidden.html',
         icon: 'fa fa-user-secret',
         views: [
-          {
+/*          {
             name: 'Display',
             template: 'formio/components/hidden/display.html'
-          },
+          },*/
           {
             name: 'Data',
             template: 'formio/components/common/data.html'
-          },
+          }/*,,
           {
             name: 'Validation',
             template: 'formio/components/hidden/validation.html'
-          },
+          }
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -8448,9 +8457,9 @@ module.exports = function(app) {
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
-          }
-        ],
-        documentation: 'http://help.form.io/userguide/#hidden'
+          }*/
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#hidden'*/
       });
     }
   ]);
@@ -9003,6 +9012,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('resource', {
+        initial:false,
         onEdit: ['$scope', function($scope) {
           $scope.resources = [];
           $scope.component.project = $scope.formio.projectId;
@@ -9424,23 +9434,23 @@ module.exports = function(app) {
             template: 'formio/components/signature/display.html'
           },
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/signature/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#signature'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#signature'*/
       });
     }
   ]);
@@ -9450,22 +9460,23 @@ module.exports = function(app) {
       // Create the settings markup.
       $templateCache.put('formio/components/signature/display.html',
         '<ng-form>' +
-          '<form-builder-option property="footer" label="Footer Label" placeholder="Footer Label" title="The footer text that appears below the signature area."></form-builder-option>' +
-          '<form-builder-option property="width" label="Width" placeholder="Width" title="The width of the signature area."></form-builder-option>' +
+          '<form-builder-option property="footer" label="Sign Footer Label.label" placeholder="Sign Footer Label.placeholder" title="Sign Footer Label.title"></form-builder-option>' +
+/*          '<form-builder-option property="width" label="Width" placeholder="Width" title="The width of the signature area."></form-builder-option>' +
           '<form-builder-option property="height" label="Height" placeholder="Height" title="The height of the signature area."></form-builder-option>' +
           '<form-builder-option property="backgroundColor" label="Background Color" placeholder="Background Color" title="The background color of the signature area."></form-builder-option>' +
-          '<form-builder-option property="penColor" label="Pen Color" placeholder="Pen Color" title="The ink color for the signature area."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="penColor" label="Pen Color" placeholder="Pen Color" title="The ink color for the signature area."></form-builder-option>' +*/
+/*          '<form-builder-option property="customClass"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
           '<form-builder-option property="hidden"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       // Create the Validation markup.
       $templateCache.put('formio/components/signature/validate.html',
         '<ng-form>' +
+          '<form-builder-option-key></form-builder-option-key>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
         '</ng-form>'
       );
@@ -9480,6 +9491,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('survey', {
+        initial: false,
         icon: 'fa fa-list',
         views: [
           {

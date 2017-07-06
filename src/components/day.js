@@ -9,28 +9,28 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/day/display.html'
           },
-          {
+/*          {
             name: 'Data',
-            template: 'formio/components/common/data.html'
-          },
+            template: 'formio/components/day/data.html'
+          },*/
           {
-            name: 'Validation',
+            name: 'API&Validation',
             template: 'formio/components/day/validate.html'
           },
-          {
+/*          {
             name: 'API',
             template: 'formio/components/common/api.html'
           },
           {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'Conditional',
             template: 'formio/components/common/conditional.html'
           }
-        ],
-        documentation: 'http://help.form.io/userguide/#day'
+        ]/*,
+        documentation: 'http://help.form.io/userguide/#day'*/
       });
     }
   ]);
@@ -41,30 +41,31 @@ module.exports = function(app) {
       $templateCache.put('formio/components/day/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +
-          '<form-builder-option property="fields.day.placeholder" label="Day Placeholder"></form-builder-option>' +
+         /* '<form-builder-option property="fields.day.placeholder" label="Day Placeholder"></form-builder-option>' +
           '<form-builder-option property="fields.month.placeholder" label="Month Placeholder"></form-builder-option>' +
-          '<form-builder-option property="fields.year.placeholder" label="Year Placeholder"></form-builder-option>' +
-          '<form-builder-option property="dayFirst" type="checkbox" label="Day first" title="Display the Day field before the Month field."></form-builder-option>' +
-          '<form-builder-option property="fields.day.hide" type="checkbox" label="Hide Day" title="Hide the day part of the component."></form-builder-option>' +
-          '<form-builder-option property="fields.month.hide" type="checkbox" label="Hide Month" title="Hide the month part of the component."></form-builder-option>' +
-          '<form-builder-option property="fields.year.hide" type="checkbox" label="Hide Year" title="Hide the year part of the component."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="tabindex"></form-builder-option>' +
+          '<form-builder-option property="fields.year.placeholder" label="Year Placeholder"></form-builder-option>' +*/
+/*          '<form-builder-option property="dayFirst" type="checkbox" label="Day first" title="Display the Day field before the Month field."></form-builder-option>' +*/
+          '<form-builder-option property="fields.year.hide" type="checkbox" label="Hide Year.label" title="Hide Year.title"></form-builder-option>' +
+          '<form-builder-option property="fields.month.hide" type="checkbox" label="Hide Month.label" title="Hide Month.title"></form-builder-option>' +
+          '<form-builder-option property="fields.day.hide" type="checkbox" label="Hide Day.label" title="Hide Day.title"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="tabindex"></form-builder-option>' +*/
           '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
+/*          '<form-builder-option property="protected"></form-builder-option>' +
+          '<form-builder-option property="persistent"></form-builder-option>' +*/
           '<form-builder-option property="hidden"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+/*          '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       $templateCache.put('formio/components/day/validate.html',
         '<ng-form>' +
-          '<form-builder-option property="fields.day.required" label="Require Day" type="checkbox"></form-builder-option>' +
-          '<form-builder-option property="fields.month.required" label="Require Month" type="checkbox"></form-builder-option>' +
-          '<form-builder-option property="fields.year.required" label="Require Year" type="checkbox"></form-builder-option>' +
-          '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
+          '<form-builder-option-key></form-builder-option-key>' +
+          '<form-builder-option property="fields.day.required" label="Require Day.label" type="checkbox"></form-builder-option>' +
+          '<form-builder-option property="fields.month.required" label="Require Month.label" type="checkbox"></form-builder-option>' +
+          '<form-builder-option property="fields.year.required" label="Require Year.label" type="checkbox"></form-builder-option>' +
+/*          '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +*/
         '</ng-form>'
       );
     }

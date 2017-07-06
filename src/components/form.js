@@ -3,6 +3,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('form', {
+        initial: false,
         fbtemplate: 'formio/formbuilder/form.html',
         icon: 'fa fa-wpforms',
         views: [
@@ -37,9 +38,9 @@ module.exports = function(app) {
       });
 
       // Override the controller for form building.
-      var formComponent = formioComponentsProvider.$get().components.form;
-      var formController = formComponent.controller;
-      formComponent.controller = [
+     /* var formComponent = formioComponentsProvider.$get().components.form;*/
+      /*var formController = formComponent.controller;
+     formComponent.controller = [
         '$scope',
         '$controller',
         function(
@@ -59,7 +60,7 @@ module.exports = function(app) {
             });
           });
         }
-      ];
+      ];*/
     }
   ]);
   app.run([

@@ -3,6 +3,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('custom', {
+        initial: false,
         icon: 'fa fa-cubes',
         views: [
           {

@@ -3,6 +3,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('survey', {
+        initial: false,
         icon: 'fa fa-list',
         views: [
           {

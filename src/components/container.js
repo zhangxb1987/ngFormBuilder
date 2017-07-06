@@ -3,6 +3,7 @@ module.exports = function(app) {
     'formioComponentsProvider',
     function(formioComponentsProvider) {
       formioComponentsProvider.register('container', {
+        initial: false,
         fbtemplate: 'formio/formbuilder/container.html',
         views: [
           {

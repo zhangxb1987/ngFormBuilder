@@ -10,10 +10,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/datagrid/display.html'
           },
-          {
+          /*          {
             name: 'Validation',
             template: 'formio/components/datagrid/validate.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -23,7 +23,7 @@ module.exports = function(app) {
             template: 'formio/components/common/conditional.html'
           }
         ],
-        documentation: 'http://help.form.io/userguide/#datagrid',
+/*        documentation: 'http://help.form.io/userguide/#datagrid',*/
         noDndOverlay: true,
         confirmRemove: true
       });
@@ -43,11 +43,11 @@ module.exports = function(app) {
         '<form-builder-option property="hover"></form-builder-option>' +
         '<form-builder-option property="condensed"></form-builder-option>' +
         '<form-builder-option property="clearOnHide"></form-builder-option>' +
-        '<form-builder-option property="protected"></form-builder-option>' +
-        '<form-builder-option property="persistent"></form-builder-option>' +
+/*        '<form-builder-option property="protected"></form-builder-option>' +
+        '<form-builder-option property="persistent"></form-builder-option>' +*/
         '<form-builder-option property="hidden"></form-builder-option>' +
         '<form-builder-option property="disabled"></form-builder-option>' +
-        '<form-builder-option property="tableView"></form-builder-option>' +
+/*        '<form-builder-option property="tableView"></form-builder-option>' +*/
         '</ng-form>'
       );
 
