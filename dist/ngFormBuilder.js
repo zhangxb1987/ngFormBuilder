@@ -7324,6 +7324,79 @@ module.exports = function(app) {
   app.config([
     'formioComponentsProvider',
     function(formioComponentsProvider) {
+      formioComponentsProvider.register('chinaaddress', {
+        icon: 'fa fa-home',
+        views: [
+          {
+            name: 'Display',
+            template: 'formio/components/china-address/display.html'
+          },
+          {
+            name: 'API&Validation',
+            template: 'formio/components/china-address/validate.html'
+          },
+          /*          {
+           name: 'API',
+           template: 'formio/components/common/api.html'
+           },*/
+          /*          {
+           name: 'Layout',
+           template: 'formio/components/common/layout.html'
+           },*/
+          {
+            name: 'Conditional',
+            template: 'formio/components/common/conditional.html'
+          }
+        ]/*,
+         documentation: 'http://help.form.io/userguide/#address'*/
+      });
+    }
+  ]);
+  app.run([
+    '$templateCache',
+    function($templateCache) {
+      // Create the settings markup.
+      $templateCache.put('formio/components/china-address/display.html',
+        '<ng-form>' +
+        '<form-builder-option property="label"></form-builder-option>' +
+        '<form-builder-option property="placeholder"></form-builder-option>' +
+        '<form-builder-option property="customClass"></form-builder-option>' +
+        /*'<form-builder-option property="tabindex"></form-builder-option>' +*/
+        /*          '<div class="form-group">' +
+         '<label for="mapRegion" form-builder-tooltip="The region bias to use for this search. See <a href=\'https://developers.google.com/maps/documentation/geocoding/intro#RegionCodes\' target=\'_blank\'>Region Biasing</a> for more information.">Region Bias</label>' +
+         '<input type="text" class="form-control" id="mapRegion" name="mapRegion" ng-model="component.map.region" placeholder="Dallas" />' +
+         '</div>' +
+         '<div class="form-group">' +
+         '<label for="mapKey" form-builder-tooltip="The API key for Google Maps. See <a href=\'https://developers.google.com/maps/documentation/geocoding/get-api-key\' target=\'_blank\'>Get an API Key</a> for more information.">Google Maps API Key</label>' +
+         '<input type="text" class="form-control" id="mapKey" name="mapKey" ng-model="component.map.key" placeholder="xxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxx"/>' +
+         '</div>' +*/
+        '<form-builder-option property="multiple" label="Allow Multiple Addresses"></form-builder-option>' +
+        '<form-builder-option property="clearOnHide"></form-builder-option>' +
+        /*'<form-builder-option property="protected"></form-builder-option>' +
+         '<form-builder-option property="persistent"></form-builder-option>' +*/
+        '<form-builder-option property="hidden"></form-builder-option>' +
+        '<form-builder-option property="disabled"></form-builder-option>' +
+        /*          '<form-builder-option property="tableView"></form-builder-option>' +*/
+        '</ng-form>'
+      );
+
+      $templateCache.put('formio/components/china-address/validate.html',
+        '<ng-form>' +
+        '<form-builder-option-key></form-builder-option-key>' +
+        '<form-builder-option property="validate.required"></form-builder-option>' +
+        /*          '<form-builder-option property="unique"></form-builder-option>' +*/
+        '</ng-form>'
+      );
+    }
+  ]);
+};
+
+},{}],222:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(app) {
+  app.config([
+    'formioComponentsProvider',
+    function(formioComponentsProvider) {
       formioComponentsProvider.register('columns', {
         onEdit: ['$scope', function($scope) {
           $scope.removeColumn = function(index) {
@@ -7402,7 +7475,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],222:[function(_dereq_,module,exports){
+},{}],223:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.run([
@@ -7549,7 +7622,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],223:[function(_dereq_,module,exports){
+},{}],224:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7602,7 +7675,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],224:[function(_dereq_,module,exports){
+},{}],225:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7673,7 +7746,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],225:[function(_dereq_,module,exports){
+},{}],226:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7743,7 +7816,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],226:[function(_dereq_,module,exports){
+},{}],227:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7809,7 +7882,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],227:[function(_dereq_,module,exports){
+},{}],228:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -7875,7 +7948,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],228:[function(_dereq_,module,exports){
+},{}],229:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8066,7 +8139,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],229:[function(_dereq_,module,exports){
+},{}],230:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8142,7 +8215,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],230:[function(_dereq_,module,exports){
+},{}],231:[function(_dereq_,module,exports){
 "use strict";
 var _cloneDeep = _dereq_('lodash/cloneDeep');
 var _each = _dereq_('lodash/each');
@@ -8191,7 +8264,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/cloneDeep":173,"lodash/each":176}],231:[function(_dereq_,module,exports){
+},{"lodash/cloneDeep":173,"lodash/each":176}],232:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8205,10 +8278,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/fieldset/display.html'
           },
-          {
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -8218,7 +8291,7 @@ module.exports = function(app) {
             template: 'formio/components/common/conditional.html'
           }
         ],
-        documentation: 'http://help.form.io/userguide/#fieldset',
+/*        documentation: 'http://help.form.io/userguide/#fieldset',*/
         keepChildrenOnRemove: true,
         noDndOverlay: true,
         confirmRemove: true
@@ -8238,15 +8311,15 @@ module.exports = function(app) {
       // Create the settings markup.
       $templateCache.put('formio/components/fieldset/display.html',
         '<ng-form>' +
-          '<form-builder-option property="legend" label="Legend" placeholder="FieldSet Legend" title="The legend text to appear above this fieldset."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="legend" label="Layout Fieldset Legend.label" placeholder="{{\'Layout Fieldset Legend.placeholder\'|formioTranslate}}"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +*/
         '</ng-form>'
       );
     }
   ]);
 };
 
-},{}],232:[function(_dereq_,module,exports){
+},{}],233:[function(_dereq_,module,exports){
 "use strict";
 var _map = _dereq_('lodash/map');
 module.exports = function(app) {
@@ -8337,7 +8410,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/map":199}],233:[function(_dereq_,module,exports){
+},{"lodash/map":199}],234:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8428,7 +8501,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],234:[function(_dereq_,module,exports){
+},{}],235:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8488,7 +8561,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],235:[function(_dereq_,module,exports){
+},{}],236:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8548,7 +8621,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],236:[function(_dereq_,module,exports){
+},{}],237:[function(_dereq_,module,exports){
 "use strict";
 var app = angular.module('ngFormBuilder');
 
@@ -8570,6 +8643,7 @@ _dereq_('./button')(app);
 _dereq_('./email')(app);
 _dereq_('./phonenumber')(app);
 _dereq_('./address')(app);
+_dereq_('./chinaaddress')(app);
 _dereq_('./datetime')(app);
 _dereq_('./day')(app);
 _dereq_('./currency')(app);
@@ -8591,7 +8665,7 @@ _dereq_('./panel')(app);
 _dereq_('./table')(app);
 _dereq_('./well')(app);
 
-},{"./address":218,"./button":219,"./checkbox":220,"./columns":221,"./components":222,"./container":223,"./content":224,"./currency":225,"./custom":226,"./datagrid":227,"./datetime":228,"./day":229,"./email":230,"./fieldset":231,"./file":232,"./form":233,"./hidden":234,"./htmlelement":235,"./number":237,"./page":238,"./panel":239,"./password":240,"./phonenumber":241,"./radio":242,"./resource":243,"./select":244,"./selectboxes":245,"./signature":246,"./survey":247,"./table":248,"./textarea":249,"./textfield":250,"./well":251}],237:[function(_dereq_,module,exports){
+},{"./address":218,"./button":219,"./checkbox":220,"./chinaaddress":221,"./columns":222,"./components":223,"./container":224,"./content":225,"./currency":226,"./custom":227,"./datagrid":228,"./datetime":229,"./day":230,"./email":231,"./fieldset":232,"./file":233,"./form":234,"./hidden":235,"./htmlelement":236,"./number":238,"./page":239,"./panel":240,"./password":241,"./phonenumber":242,"./radio":243,"./resource":244,"./select":245,"./selectboxes":246,"./signature":247,"./survey":248,"./table":249,"./textarea":250,"./textfield":251,"./well":252}],238:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8666,7 +8740,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],238:[function(_dereq_,module,exports){
+},{}],239:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8687,7 +8761,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],239:[function(_dereq_,module,exports){
+},{}],240:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8721,10 +8795,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/panel/display.html'
           },
-          {
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -8734,7 +8808,7 @@ module.exports = function(app) {
             template: 'formio/components/panel/conditional.html'
           }
         ],
-        documentation: 'http://help.form.io/userguide/#panels',
+/*        documentation: 'http://help.form.io/userguide/#panels',*/
         noDndOverlay: true,
         confirmRemove: true
       });
@@ -8755,24 +8829,24 @@ module.exports = function(app) {
       // Create the settings markup.
       $templateCache.put('formio/components/panel/display.html',
         '<ng-form>' +
-          '<form-builder-option property="title" label="Title" placeholder="Panel Title" title="The title text that appears in the header of this panel."></form-builder-option>' +
+          '<form-builder-option property="title" label="Layout Panel Title.label"></form-builder-option>' +
           '<div class="form-group">' +
-            '<label for="theme" form-builder-tooltip="The color theme of this panel.">Theme</label>' +
+            '<label for="theme">{{\'Layout Panel Theme.label\' | formioTranslate}}</label>' +
             '<select class="form-control" id="theme" name="theme" ng-options="theme.name as theme.title for theme in themes" ng-model="component.theme"></select>' +
           '</div>' +
-          '<div class="form-group">' +
+/*          '<div class="form-group">' +
             '<label for="breadcrumb" form-builder-tooltip="The breadcrumb to show with this page.">Show Breadcrumb</label>' +
             '<select class="form-control" id="breadcrumb" name="breadcrumb" ng-options="breadcrumb.name as breadcrumb.title for breadcrumb in breadcrumbs" ng-model="component.breadcrumb"></select>' +
           '</div>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="customClass"></form-builder-option>' +*/
         '</ng-form>'
       );
 
       $templateCache.put('formio/components/panel/conditional.html',
-        '<form-builder-conditional></form-builder-conditional>' +
+        '<form-builder-conditional></form-builder-conditional>'/* +
         '<uib-accordion>' +
           '<div uib-accordion-group heading="Advanced Next Page" class="panel panel-default">' +
-            '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.nextPage" placeholder="/*** Example Code ***/\nnext = (data[\'mykey\'] > 1) ? \'pageA\' : \'pageB\';"></textarea>' +
+            '<textarea class="form-control" rows="5" id="custom" name="custom" ng-model="component.nextPage" placeholder="/!*** Example Code ***!/\nnext = (data[\'mykey\'] > 1) ? \'pageA\' : \'pageB\';"></textarea>' +
             '<small>' +
               '<p>Enter custom conditional code.</p>' +
               '<p>You must assign the <strong>next</strong> variable with the API key of the next page.</p>' +
@@ -8787,13 +8861,13 @@ module.exports = function(app) {
             '</small>' +
             '<textarea class="form-control" rows="5" id="json" name="json" json-input ng-model="component.nextPage" placeholder="{ ... }"></textarea>' +
           '</div>' +
-        '</uib-accordion>'
+        '</uib-accordion>'*/
       );
     }
   ]);
 };
 
-},{}],240:[function(_dereq_,module,exports){
+},{}],241:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8863,7 +8937,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],241:[function(_dereq_,module,exports){
+},{}],242:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -8936,7 +9010,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],242:[function(_dereq_,module,exports){
+},{}],243:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9005,7 +9079,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],243:[function(_dereq_,module,exports){
+},{}],244:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9097,7 +9171,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],244:[function(_dereq_,module,exports){
+},{}],245:[function(_dereq_,module,exports){
 "use strict";
 var _clone = _dereq_('lodash/clone');
 module.exports = function(app) {
@@ -9345,7 +9419,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{"lodash/clone":172}],245:[function(_dereq_,module,exports){
+},{"lodash/clone":172}],246:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9420,7 +9494,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],246:[function(_dereq_,module,exports){
+},{}],247:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9484,7 +9558,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],247:[function(_dereq_,module,exports){
+},{}],248:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9551,7 +9625,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],248:[function(_dereq_,module,exports){
+},{}],249:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9568,10 +9642,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/table/display.html'
           },
-          {
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -9611,7 +9685,7 @@ module.exports = function(app) {
       $templateCache.put('formio/components/table/display.html',
         '<ng-form>' +
           '<form-builder-table></form-builder-table>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +*/
           '<form-builder-option property="striped"></form-builder-option>' +
           '<form-builder-option property="bordered"></form-builder-option>' +
           '<form-builder-option property="hover"></form-builder-option>' +
@@ -9622,7 +9696,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],249:[function(_dereq_,module,exports){
+},{}],250:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9727,7 +9801,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],250:[function(_dereq_,module,exports){
+},{}],251:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9802,7 +9876,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],251:[function(_dereq_,module,exports){
+},{}],252:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(app) {
   app.config([
@@ -9848,7 +9922,7 @@ module.exports = function(app) {
   ]);
 };
 
-},{}],252:[function(_dereq_,module,exports){
+},{}],253:[function(_dereq_,module,exports){
 "use strict";
 /**
   * These are component options that can be reused
@@ -10122,7 +10196,7 @@ module.exports = {
   }
 };
 
-},{}],253:[function(_dereq_,module,exports){
+},{}],254:[function(_dereq_,module,exports){
 "use strict";
 /**
  * 表单设计器控制工具菜单定义
@@ -10401,7 +10475,7 @@ module.exports = {
     }
 };
 
-},{"lodash/remove":207}],254:[function(_dereq_,module,exports){
+},{"lodash/remove":207}],255:[function(_dereq_,module,exports){
 "use strict";
 module.exports = {
   actions: [
@@ -10468,7 +10542,7 @@ module.exports = {
   ]
 };
 
-},{}],255:[function(_dereq_,module,exports){
+},{}],256:[function(_dereq_,module,exports){
 "use strict";
 /*eslint max-statements: 0*/
 var _cloneDeep = _dereq_('lodash/cloneDeep');
@@ -10823,7 +10897,7 @@ module.exports = ['debounce', function(debounce) {
   };
 }];
 
-},{"lodash/capitalize":171,"lodash/cloneDeep":173,"lodash/each":176,"lodash/groupBy":180,"lodash/merge":201,"lodash/omitBy":203,"lodash/upperFirst":216}],256:[function(_dereq_,module,exports){
+},{"lodash/capitalize":171,"lodash/cloneDeep":173,"lodash/each":176,"lodash/groupBy":180,"lodash/merge":201,"lodash/omitBy":203,"lodash/upperFirst":216}],257:[function(_dereq_,module,exports){
 "use strict";
 /**
  * Create the form-builder-component directive.
@@ -10839,7 +10913,7 @@ module.exports = [
   }
 ];
 
-},{}],257:[function(_dereq_,module,exports){
+},{}],258:[function(_dereq_,module,exports){
 "use strict";
 'use strict';
 var utils = _dereq_('formiojs/utils');
@@ -10926,7 +11000,7 @@ module.exports = ['$filter',
   }
 ];
 
-},{"formiojs/utils":2,"lodash/get":179,"lodash/reject":206}],258:[function(_dereq_,module,exports){
+},{"formiojs/utils":2,"lodash/get":179,"lodash/reject":206}],259:[function(_dereq_,module,exports){
 "use strict";
 var _isNumber = _dereq_('lodash/isNumber');
 var _camelCase = _dereq_('lodash/camelCase');
@@ -11200,7 +11274,7 @@ module.exports = [
   }
 ];
 
-},{"lodash/assign":169,"lodash/camelCase":170,"lodash/isNumber":190}],259:[function(_dereq_,module,exports){
+},{"lodash/assign":169,"lodash/camelCase":170,"lodash/isNumber":190}],260:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   'formioElementDirective',
@@ -11225,7 +11299,7 @@ module.exports = [
   }
 ];
 
-},{}],260:[function(_dereq_,module,exports){
+},{}],261:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   function() {
@@ -11248,7 +11322,7 @@ module.exports = [
   }
 ];
 
-},{}],261:[function(_dereq_,module,exports){
+},{}],262:[function(_dereq_,module,exports){
 "use strict";
 /**
 * This directive creates a field for tweaking component options.
@@ -11317,7 +11391,7 @@ module.exports = ['COMMON_OPTIONS', '$filter', '$log', function(COMMON_OPTIONS, 
   };
 }];
 
-},{}],262:[function(_dereq_,module,exports){
+},{}],263:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for editing a component's custom validation.
@@ -11358,7 +11432,7 @@ module.exports = function() {
   };
 };
 
-},{}],263:[function(_dereq_,module,exports){
+},{}],264:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for a field to edit a component's key.
@@ -11404,7 +11478,7 @@ module.exports = function() {
   };
 };
 
-},{}],264:[function(_dereq_,module,exports){
+},{}],265:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive for a field to edit a component's tags.
@@ -11448,7 +11522,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/map":199}],265:[function(_dereq_,module,exports){
+},{"lodash/map":199}],266:[function(_dereq_,module,exports){
 "use strict";
 module.exports = [
   function() {
@@ -11470,7 +11544,7 @@ module.exports = [
   }
 ];
 
-},{}],266:[function(_dereq_,module,exports){
+},{}],267:[function(_dereq_,module,exports){
 "use strict";
 /**
  * A directive for a table builder
@@ -11483,11 +11557,11 @@ module.exports = function() {
     template: function() {
       return '<div class="form-builder-table">' +
         '  <div class="form-group">' +
-        '    <label for="label">Number of Rows</label>' +
+        '    <label for="label">{{\'Layout Table Number of Rows.label\'|formioTranslate}}</label>' +
         '    <input type="number" class="form-control" id="numRows" name="numRows" placeholder="Number of Rows" ng-model="component.numRows">' +
         '  </div>' +
         '  <div class="form-group">' +
-        '    <label for="label">Number of Columns</label>' +
+        '    <label for="label">{{\'Layout Table Number of Columns.label\'|formioTranslate}}</label>' +
         '    <input type="number" class="form-control" id="numCols" name="numCols" placeholder="Number of Columns" ng-model="component.numCols">' +
         '  </div>' +
         '</div>';
@@ -11524,7 +11598,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/merge":201}],267:[function(_dereq_,module,exports){
+},{"lodash/merge":201}],268:[function(_dereq_,module,exports){
 "use strict";
 var formioBuilderToolbarCongfig = _dereq_('../constants/config');
 var _slice = _dereq_('lodash/slice');
@@ -11567,7 +11641,7 @@ module.exports = function() {
 	};
 };
 
-},{"../constants/config":253,"lodash/slice":208}],268:[function(_dereq_,module,exports){
+},{"../constants/config":254,"lodash/slice":208}],269:[function(_dereq_,module,exports){
 "use strict";
 /**
 * Invokes Bootstrap's popover jquery plugin on an element
@@ -11608,7 +11682,7 @@ module.exports = ['$filter', function($filter) {
   };
 }];
 
-},{}],269:[function(_dereq_,module,exports){
+},{}],270:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function() {
   return {
@@ -11645,7 +11719,7 @@ module.exports = function() {
   };
 };
 
-},{}],270:[function(_dereq_,module,exports){
+},{}],271:[function(_dereq_,module,exports){
 "use strict";
 /*
 * Prevents user inputting invalid api key characters.
@@ -11668,7 +11742,7 @@ module.exports = function() {
   };
 };
 
-},{}],271:[function(_dereq_,module,exports){
+},{}],272:[function(_dereq_,module,exports){
 "use strict";
 /**
 * A directive that provides a UI to add {value, label} objects to an array.
@@ -11750,7 +11824,7 @@ module.exports = function() {
   };
 };
 
-},{"lodash/camelCase":170,"lodash/map":199}],272:[function(_dereq_,module,exports){
+},{"lodash/camelCase":170,"lodash/map":199}],273:[function(_dereq_,module,exports){
 "use strict";
 'use strict';
 
@@ -11859,7 +11933,7 @@ module.exports = ['FormioUtils', function(FormioUtils) {
   };
 }];
 
-},{}],273:[function(_dereq_,module,exports){
+},{}],274:[function(_dereq_,module,exports){
 "use strict";
 // Create an AngularJS service called debounce
 module.exports = ['$timeout','$q', function($timeout, $q) {
@@ -11893,7 +11967,7 @@ module.exports = ['$timeout','$q', function($timeout, $q) {
   };
 }];
 
-},{}],274:[function(_dereq_,module,exports){
+},{}],275:[function(_dereq_,module,exports){
 "use strict";
 /*! ng-formio-builder v2.19.1 | https://unpkg.com/ng-formio-builder@2.19.1/LICENSE.txt */
 /*global window: false, console: false, jQuery: false */
@@ -12084,5 +12158,5 @@ app.run([
 
 _dereq_('./components');
 
-},{"./components":236,"./constants/commonOptions":252,"./constants/formOptions":254,"./directives/formBuilder":255,"./directives/formBuilderComponent":256,"./directives/formBuilderConditional":257,"./directives/formBuilderDnd":258,"./directives/formBuilderElement":259,"./directives/formBuilderList":260,"./directives/formBuilderOption":261,"./directives/formBuilderOptionCustomValidation":262,"./directives/formBuilderOptionKey":263,"./directives/formBuilderOptionTags":264,"./directives/formBuilderRow":265,"./directives/formBuilderTable":266,"./directives/formBuilderToolbar":267,"./directives/formBuilderTooltip":268,"./directives/jsonInput":269,"./directives/validApiKey":270,"./directives/valueBuilder":271,"./factories/BuilderUtils":272,"./factories/debounce":273}]},{},[274])(274)
+},{"./components":237,"./constants/commonOptions":253,"./constants/formOptions":255,"./directives/formBuilder":256,"./directives/formBuilderComponent":257,"./directives/formBuilderConditional":258,"./directives/formBuilderDnd":259,"./directives/formBuilderElement":260,"./directives/formBuilderList":261,"./directives/formBuilderOption":262,"./directives/formBuilderOptionCustomValidation":263,"./directives/formBuilderOptionKey":264,"./directives/formBuilderOptionTags":265,"./directives/formBuilderRow":266,"./directives/formBuilderTable":267,"./directives/formBuilderToolbar":268,"./directives/formBuilderTooltip":269,"./directives/jsonInput":270,"./directives/validApiKey":271,"./directives/valueBuilder":272,"./factories/BuilderUtils":273,"./factories/debounce":274}]},{},[275])(275)
 });

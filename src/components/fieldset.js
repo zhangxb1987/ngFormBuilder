@@ -10,10 +10,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/fieldset/display.html'
           },
-          {
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -23,7 +23,7 @@ module.exports = function(app) {
             template: 'formio/components/common/conditional.html'
           }
         ],
-        documentation: 'http://help.form.io/userguide/#fieldset',
+/*        documentation: 'http://help.form.io/userguide/#fieldset',*/
         keepChildrenOnRemove: true,
         noDndOverlay: true,
         confirmRemove: true
@@ -43,8 +43,8 @@ module.exports = function(app) {
       // Create the settings markup.
       $templateCache.put('formio/components/fieldset/display.html',
         '<ng-form>' +
-          '<form-builder-option property="legend" label="Legend" placeholder="FieldSet Legend" title="The legend text to appear above this fieldset."></form-builder-option>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
+          '<form-builder-option property="legend" label="Layout Fieldset Legend.label" placeholder="{{\'Layout Fieldset Legend.placeholder\'|formioTranslate}}"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +*/
         '</ng-form>'
       );
     }

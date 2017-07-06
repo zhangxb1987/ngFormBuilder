@@ -9,11 +9,11 @@ module.exports = function() {
     template: function() {
       return '<div class="form-builder-table">' +
         '  <div class="form-group">' +
-        '    <label for="label">Number of Rows</label>' +
+        '    <label for="label">{{\'Layout Table Number of Rows.label\'|formioTranslate}}</label>' +
         '    <input type="number" class="form-control" id="numRows" name="numRows" placeholder="Number of Rows" ng-model="component.numRows">' +
         '  </div>' +
         '  <div class="form-group">' +
-        '    <label for="label">Number of Columns</label>' +
+        '    <label for="label">{{\'Layout Table Number of Columns.label\'|formioTranslate}}</label>' +
         '    <input type="number" class="form-control" id="numCols" name="numCols" placeholder="Number of Columns" ng-model="component.numCols">' +
         '  </div>' +
         '</div>';

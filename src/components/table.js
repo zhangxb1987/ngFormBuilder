@@ -13,10 +13,10 @@ module.exports = function(app) {
             name: 'Display',
             template: 'formio/components/table/display.html'
           },
-          {
+/*          {
             name: 'Layout',
             template: 'formio/components/common/layout.html'
-          },
+          },*/
           {
             name: 'API',
             template: 'formio/components/common/api.html'
@@ -56,7 +56,7 @@ module.exports = function(app) {
       $templateCache.put('formio/components/table/display.html',
         '<ng-form>' +
           '<form-builder-table></form-builder-table>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
+/*          '<form-builder-option property="customClass"></form-builder-option>' +*/
           '<form-builder-option property="striped"></form-builder-option>' +
           '<form-builder-option property="bordered"></form-builder-option>' +
           '<form-builder-option property="hover"></form-builder-option>' +
